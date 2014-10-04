@@ -1,0 +1,1030 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!--
+  Slides for the first laboratory session of the Operating Systems course
+  University of Lleida | 2014-2015
+
+  Author: Jordi Vilaplana <gatasuna@gmail.com>
+
+  URL: 
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/eps.png"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/udl.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <aside class="note">
+        <section>
+        <ul>
+          <li>Ken sitting, Dennis standing</li>
+        </ul>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Historic evolution</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>UNIX starts to be designed in late 60's at AT&T Bell laboratories by Ken Thompson, Dennis Ritchie and Douglas McIlroy</li>
+        <li>Portable, multitask and multiuser OS</li>
+        <li>Good system resources management, stability and hardware compatibility made it a referent OS</li>
+      </ul>
+      <div class="centered" style="margin-top:2em">
+        <img src="images/01/ken_den.jpg" alt="Ken Thompson (sitting)-&-Dennis Ritchie at PDP-11" title="Ken Thompson (sitting)-&-Dennis Ritchie at PDP-11" style="width: 40%;">
+      </div>
+      <footer class="source">image source: <a href="http://en.wikipedia.org/wiki/File:Ken_Thompson_(sitting)_and_Dennis_Ritchie_at_PDP-11_(2876612463).jpg">Wikimedia Commons</a></footer>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+        <section>
+        <p>In 1980, Stallman and some other hackers at the AI Lab were refused access to the source code for the software of a newly installed laser printer, the Xerox 9700. Stallman had modified the software for the Lab's previous laser printer (the XGP, Xerographic Printer), so it electronically messaged a user when the person's job was printed, and would message all logged-in users waiting for print jobs if the printer was jammed. Not being able to add these features to the new printer was a major inconvenience, as the printer was on a different floor from most of the users. This experience convinced Stallman of people's need to be able to freely modify the software they use.</p>
+        <p>The name GNU is a recursive acronym for "GNU's Not Unix."</p>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Historic evolution</h2>
+    </hgroup>
+    <article>
+      <ul class="build">
+        <li>In version 7, UNIX was no longer distributed for educational purposes nor free</li>
+        <li><b>Richard Stallman</b> creates the GNU project to develop a free UNIX-compatible OS, with a GPL license</li>
+        <li>In 1987, <b>Andrew Tanenbaum</b> creates the Mini-UNIX project with educational purposes, which leads to the MINIX OS</li>
+        <li>In 1991, <b>Linus Torvalds</b> creates a kernel for a free OS, a UNIX to be used in PCs. This is GNU/Linux</li>
+      </ul>
+      <img src="images/01/linus.jpg" alt="Linus Torvalds, creator of the Linux kernel" title="Linus Torvalds, creator of the Linux kernel" style="width: 20%; padding-left: 600px; float: right;">
+      <img src="images/01/richard.jpeg" style="position: absolute; left: 350px;" />
+      <footer class="source">image source: <a href="http://en.wikipedia.org/wiki/File:Linus_Torvalds_(cropped).jpg">Wikimedia Commons</a></footer>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+        <section>
+        <ul>
+          <li>BackTrack Linux - Penetration Testing Distribution</li>
+          <li>WiFiSlax - LiveCD y LiveUSB</li>
+        </ul>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Historic evolution</h2>
+    </hgroup>
+    <article>
+    <img src="images/01/distros.jpg" alt="Linux Distributions" title="Linux Distributions" style="position: absolute; top: 250px; left: 350px; width: 50%;">
+      <ul>
+        <li>GNU/Linux can be freely distributed, and its source code can be modified (open source)</li>
+        <li>Therefore, many GNU/Linux-based distributions have been created
+        <ul>
+            <li>Ubuntu</li>
+            <li>Debian</li>
+            <li>Fedora</li>
+            <li>Knoppix</li>
+            <li>BackTrack</li>
+            <li>...</li>
+        </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+        <section>
+        <ul>
+          <li>In 1972, Unix was rewritten in the C programming language, contrary to the general notion at the time "that something as complex as an operating system, which must deal with time-critical events, has to be written exclusively in assembly language". The migration from assembly to the higher-level language C, resulted in much more portable software, requiring only a relatively small amount of machine-dependent code to be replaced when porting Unix to other computing platforms.</li>
+        </ul>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>UNIX features</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Main UNIX features:
+        <ul class="build">
+            <li>Portability: Implemented using the C programming language - only the kernel (<10%) written in assembler</li>
+            <li>Multi-programmed: Formed by different software packages (kernel, services, applications, ...)</li>
+            <li>Multi-tasking: Several processes can be executed at the same time</li>
+            <li>Multi-user: Several users can use the resources at the same time</li>
+            <li>Security: Implementation of users/groups with system file permissions</li>
+            <li>Monolithic Kernel: OS is working in kernel space</li>
+            <li>Free: GNU/Linux is open source</li>
+        </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>UNIX structure</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="images/01/kernel.gif" alt="UNIX structure" title="UNIX structure">
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>UNIX login</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li><i>login</i> is the process of signing onto a system</li>
+        <li>The <i>login</i> process depends on the chosen connection method. Anyway, the validation is usually done providing a <b>username</b> and <b>password</b>:
+            <ul>
+                <li><b>username</b>: The user is used to identify the permissions and available resources (disk space, accessible files/directories, ...) during the connection</li>
+                <li><b>password</b>: The password is used to validate that the user is really who claims to be and, therefore, to grant access to the OS</li>
+            </ul>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>User types</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>There are two basic types of users:
+            <ul>
+                <li><b>The <i>root</i> user</b>: This user has all the OS privileges. It can perform any kind of operation without restriction; create and delete users, files/directories, processes and even delete the OS itself</li>
+                <li><b>Common user</b>: The other users, whose privileges can vary depending on the granted permissions by the <i>root</i> user</li>
+            </ul>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Connection methods</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Connection types
+            <ul>
+                <li><b>Local connection</b>: it is done directly using the machine that hosts the OS. A username and password is used to login. If the login is correct, the access is granted usually entering to the graphic interface (X-Window)
+                  <ul>
+                    <li>Also, it is possible to connect to the virtual terminals (Ctrl+Alt+F1, ...)</li>
+                    <li>To return to the graphic mode: Ctrl+Alt+F7</li>
+                  </ul>
+                </li>
+            </ul>
+        </li>
+        <li><b>Remote connection</b>:
+          <ul>
+            <li><b>X-Windows clients</b>: Software that emulates a graphic interface and allows to connect similarly as the local connection</li>
+            <li><b>SSH</b>: With SSH (Secure Shell) is possible to connect in terminal/text mode and execute any program/command that does not require a graphic interface. Using the <code>-X</code> option, SSH allows graphic output</li>
+          </ul>
+        </li>
+      </ul>
+      <pre data-lang="terminal">
+        $ ssh -X IP_address
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Logout</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Depending on the connection method:
+            <ul>
+                <li><b>Local logout</b> or <b>X-Window remote client</b>: Close the session using the corresponding menu option</li>
+                <li><b>SSH remote session</b>: Execute the ssh command <code>exit</code>
+            </ul>
+        </li>
+        <li><b>Warning</b>: Do not disconnect or reset a running UNIX system, as damages can be produced to the filesystem and therefore data loss
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>System shutdown</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Commands to shutdown the system:
+            <ul>
+                <li><code>shutdown</code>, <code>halt</code>, <code>poweroff</code>: stop the system and then disconnect the machine
+            </ul>
+        </li>
+        <li>Example: Stop the system after 10 minutes:</li>
+      </ul>
+      <pre data-lang="terminal">
+      $ shutdown -g10
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Change session</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Once logged in, we can change the current user with the <code>su [user]</code> command, that asks for the new user password. To change to <i>root</i> only <code>su</code> is needed</li>
+        <li>With the <code>-</code> option all the environment configurations of the new user are also loaded</li>
+        <li>Example:</li>
+      </ul>
+      <pre data-lang="terminal">
+      $ su - jordi
+        Password:
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Change password</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>The password can be changed using the <code>passwd</code> command</li>
+        <li>Example:</li>
+      </ul>
+      <pre data-lang="terminal">
+      $ passwd
+       Changing password for jordi.
+       (current) UNIX password:
+       Enter new UNIX password:
+       Retype new UNIX password:
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Command-line interpreter  / shell</h2>
+    </hgroup>
+    <article>
+      <ul class="build">
+        <li>Interface between user and kernel that allows execution of programs</li>
+        <li>Works like a command-line interpreter, that is, interprets and executes the commands / programs</li>
+        <li>To automate certain tasks, <i>shells</i> include its own scripting programming languages; programs written with it are called <i>scripts</i>
+        <li>There are different command-line interpreters:
+            <ul>
+            <li>Bourne shell (<code>/bin/sh</code>)</li>
+            <li>Bash shell (<code>/bin/bash</code>): Evolution of Bourne shell. Default one in many UNIX environments</li>
+            <li>C shell (<code>/usr/bin/csh</code>): Similar syntax as C</li>
+            <li>Korn shell (<code>/usr/bin/ksh</code>): Hybrid of Bourne shell with some C shell features</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Command syntax</h2>
+    </hgroup>
+    <article>
+      <ul class="build">
+        <li>Syntax of most commands:<br><code>$ command [options] [arguments]</code></li>
+        <li>Where:
+            <ul>
+            <li><code>command</code>: name of the command</li>
+            <li><code>options</code>: optional flags of each command</li>
+            <li><code>arguments</code>: objects that the command will use (usually files)</li>
+            </ul>
+        <li>Several commands can be written in a single line separated by "<code>;</code>"</li>
+        <li>In some systems, the line length is limited. It is possible to keep writing in the next line using a backlash (<code>\</code>)
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Command help</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>The <code>man</code> command (<i>manual pages</i>) gives information about:
+            <ul>
+            <li>Correct command syntax</li>
+            <li>Brief explanation of how it works</li>
+            <li>Options</li>
+            <li>Working examples</li>
+            </ul>
+        <li>Examples:</li>
+      </ul>
+      <img src="images/01/rtfm.png" style="position: absolute; top: 200px; left: 820px; width: 20%; z-index: -1;" />
+      <pre class="prettyprint" data-lang="terminal">
+      $ man passwd
+      $ man open
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Command help</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Typical <code>man</code> command items:
+            <ul>
+            <li><b>NAME</b>: Descriptive name</li>
+            <li><b>SYNOPSIS</b>: Command syntax or format. Optional arguments are between brackets <code>[]</code></li>
+            <li><b>DESCRIPTION</b>: Explanation of what the command does. If the command includes arguments, they are also explained here.</li>
+            <li><b>EXAMPLES</b>: Usage examples</li>
+            <li><b>SEE ALSO</b>: Related man pages</li>
+            </ul>
+        <li><code>man</code> pages are distributed in sections. Useful to search information or when a command and a system call have the same name</li>
+      </ul>
+      <pre class="prettyprint" data-lang="terminal">
+      $ man printf
+      $ man 3 printf
+      $ man -s3 printf
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Command help</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li><code>man</code> sections:
+            <ul>
+            <li><b>1</b> Executable programs or shell commands</li>
+            <li><b>2</b> System calls </li>
+            <li><b>3</b> Library routines</li>
+            <li><b>4</b> Special files (like devices in the /dev directory)</li>
+            <li><b>5</b> File formats</li>
+            <li><b>6</b> Games</li>
+            <li><b>7</b> Macro packages</li>
+            <li><b>8</b> System administration commands</li>
+            <li><b>9</b> Kernel routines</li>
+            </ul>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Locating commands</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>It is possible to locate binary files, fonts and man pages with the <code>whereis</code> command:</li>
+        </ul>
+        <pre class="prettyprint" data-lang="terminal">
+      $ whereis man
+       /usr/bin/man
+      </pre>
+       <ul>
+            <li>It is possible to obtain the location of a command or system call inside the <i>man page</i> files using the <code>apropos</code> command:</li>
+      </ul>
+      <pre data-lang="terminal">
+      $ apropos sudo
+       sudo(8)                  - execute a command as another user
+       sudoers(5)               - list of which users may execute what
+       visudo(8)                - edit the sudoers file
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Basic information commands</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li><code>date</code> to obtain current date and time</li>
+        </ul>
+        <ul>
+        <li><code>cal [month] [year]</code> to obtain a calendar</li>
+        </ul>
+<pre class="prettyprint" data-lang="terminal">
+$ cal
+    Octubre 2014
+di di di dm di di di
+          1  2  3  4
+ 5  6  7  8  9 10 11
+12 13 14 15 16 17 18
+19 20 21 22 23 24 25
+26 27 28 29 30 31
+
+</pre>
+<ul>
+        <li><code>who</code> to obtain all logged in users</li>
+        </ul>
+        <ul>
+        <li><code>whoami</code> to obtain the current user id</li>
+        </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+        <section>
+        <ul>
+          <li></li>
+        </ul>
+        <p><b>There are two general kinds of device files in Unix-like operating systems, known as character special files and block special files. The difference between them lies in how data written to them and read from them is processed by the operating system and hardware.</b></p>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>UNIX file systems</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>The file system is the structure used by the OS to organize and store information</li>
+        <li>It usually has:
+        <ul>
+        <li><b>Files</b>: A file is a collection of information that is stored in a disk</li>
+        <li><b>Directories</b>: Used to organize files in groups. They contain files or other directories</li>
+        <li><b>Special files</b>: Represent devices attached to the system
+            <ul>
+            <li><i>character special files</i> and <i>block special files</i></li>
+            </ul>
+        </li>
+        </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+        <section>
+        <ul>
+          <li># ln /root/file1 /root/file2</li>
+          <li>Above commands create a link to file1.
+          <li>Symbolic links refer to: A symbolic path indicating the abstract location of another file.</li>
+          <li>Hard links refer to: The specific location of physical data.</li>
+        </ul>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>File links</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Links are an ordinary file type. Its objective is to create a new name for a specific file</li>
+        <li>Once a link has been created, it allows to access the linked file the same way as its content was copied to another one, with the advantage that it was not actually copied</li>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Filesystem structure</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>A UNIX filesystem follows a hierarchical tree structure, where <i>branches</i> are <b>directories</b> and <i>leaves</i> are files</li>
+        <li>"<code>/</code>" specifies the root node of the hierarchy</li>
+        </ul>
+        <div class="centered" style="margin-top:2em">
+          <img src="images/01/tree2.gif" />
+        </div>
+    </article>
+  </slide>
+
+
+  <slide>
+    <aside class="note">
+        <section>
+        <ul>
+          <li>Last point: /usr/local: self-compiled or third party programs</li>
+        </ul>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>UNIX filesystem structure</h2>
+    </hgroup>
+    <article>
+      <ul class="build">
+        <li><b><code>/bin</code>, <code>/sbin</code></b>: commands</li>
+        <li><b><code>/etc</code></b>: system configuration files</li>
+        <li><b><code>/root</code></b>: home directory of the <i>root</i> user</li>
+        <li><b><code>/lib</code></b>: necessary libraries used by commands</li>
+        <li><b><code>/dev</code></b>: device files</li>
+        <li><b><code>/tmp</code></b>: temporal directory</li>
+        <li><b><code>/boot</code></b>: system boot files</li>
+        <li><b><code>/mnt</code></b>: temporal device mount point</li>
+        <li><b><code>/var</code></b>: editable application parts</li>
+        <li><b><code>/proc</code></b>: runtime system information</li>
+        <li><b><code>/home</code></b>: main directory for normal system users</li>
+        <li><b><code>/usr/local</code></b>: self-compiled or third party programs</li>
+        </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>UNIX filesystem structure</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Special directories:
+        <ul>
+        <li>"<code>.</code>" refers to the current directory</li>
+        <li>"<code>..</code>" refers to the parent directory</li>
+        <li>"<code>$HOME</code>" refers to main user directory</li>
+        </ul>
+        <pre class="prettyprint" data-lang="terminal">
+$ cd $HOME
+$ cd ~
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Paths</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>To work or access a file / directory in UNIX, its <i>path</i> must be specified. There are two types of paths:
+        <ul>
+        <li><b>Absolute paths</b>: Specify the full path from the <i>root</i> directory (<code>/home/jordi/docs/file</code>)</li>
+        <li><b>Relative paths</b>: Specify the path from the current directory (<code>docs/file</code>)</li>
+        </ul>
+        <li>The <code>$PATH</code> environment variable specify the paths used by the OS to execute a command</li>
+        </li>
+        <pre class="prettyprint" data-lang="terminal">
+$ echo $PATH
+$ set PATH=./:$PATH; export PATH
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Directory commands</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li><code>pwd</code> to obtain the current directory</li>
+        <li><code>cd</code> to go to a target directory</li>
+        <li><code>mkdir</code> to create a new directory</li>
+        <li><code>rmdir</code> to delete an empty directory</li>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>File protection</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>UNIX allows to control who can access its files by using permissions associated to each file / directory</li>
+        <li>There are three types of users:
+          <ul>
+        <li><b>Owner</b>: The user who has created the file</li>
+        <li><b>Group</b>: Groups of users usually related</li>
+        <li><b>Others</b>: Any other system user</li>
+      </ul>
+    </li>
+      <li>For each one of these users, there are three access modes (permissions):
+        <ul>
+          <li><b>Read [r]</b>: Gives access to see the contents of the file or to list files inside the directory</li>
+          <li><b>Write [w]</b>: Allows to change the content of the file or to create / delete files</li>
+          <li><b>Execution [x]</b>: Allows to execute the file or command or allows to search inside a directory</li>
+        </ul>
+      </li>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>File protection</h2>
+    </hgroup>
+    <article>
+      <pre>
+        <span style="color: red;">rwx</span><span style="color: green;">r-x</span><span style="color: blue;">r--</span>
+                    <span style="color: red;">Owner read/write/exec permissions</span>
+                    <span style="color: green;">Group read/exec permissions</span>
+                    <span style="color: blue;">Other read permission</span>
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>File protection</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>To change file / directory permissions the <code>chmod</code> command is used</li>
+      </ul>
+      <pre data-lang="terminal">$ chmod [who] operation permissions file</pre>
+      <ul>
+        <li>Where:
+          <ul>
+            <li><code>who</code>: user type
+              <ul>
+                <li>u: owner</li>
+                <li>g: group</li>
+                <li>o: others</li>
+                <li>a: all (u+g+o)</li>
+              </ul>
+            </li>
+            <li><code>operation</code>: <code>+</code> to add or <code>-</code> to remove</li>
+            <li><code>permissions</code>: permission type (r: read, w: write, x: exec)</li>
+            </ul>
+          </li>
+        </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+        <section>
+        <ul>
+          <li>If none is given, is like typing 'a' (all users)</li>
+        </ul>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>File protection - Example</h2>
+    </hgroup>
+    <article>
+      <pre data-lang="file1">
+        #Initial file permissions
+        --xrwxr-x</pre>
+      <div class="columns-2">
+         <pre>
+        # Add r+w to owner
+        $ chmod u+rw file1</pre>
+        <pre>
+        # Remove x to others</li>
+        $ chmod o-x file1</pre>
+        <pre>
+        # Remove w+x to group</li>
+        $ chmod g-wx file1</pre>
+        <pre>
+        # Add w to all users of file1</li>
+        $ chmod a+w file1</pre>
+         <pre data-lang="file1">
+
+          rwxrwxr-x</pre>
+          <pre data-lang="file1">
+
+          rwxrwxr--</pre>
+          <pre data-lang="file1">
+
+          rwxr--r--</pre>
+          <pre data-lang="file1">
+
+          rwxrw-rw-</pre>
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Directory contents</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>The <code>ls</code> command shows directory contents</li>
+      </ul>
+      <pre data-lang="terminal">$ ls [OPTIONS] [FILE]</pre>
+      <ul>
+        <li>Options:
+          <ul>
+            <li><code>-a</code>: list all files (including hidden)</li>
+            <li><code>-l</code>: extended information</li>
+            <li><code>-s</code>: shows the file size</li>
+            <li><code>-R</code>: recursive listing</li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Directory contents</h2>
+    </hgroup>
+    <article>
+      Extended information (<code>-l</code>):
+      <ul>
+        <li>File type:
+          <ul>
+            <li>d: directory</li>
+            <li>-: file</li>
+          </ul>
+        </li>
+        <li>Permissions:
+          <ul>
+            <li>r: read</li>
+            <li>w: write</li>
+            <li>x: execution</li>
+          </ul>
+        </li>
+        <li>Number of links to file</li>
+        <li>Owner's name</li>
+        <li>Group name</li>
+        <li>Size</li>
+        <li>Date and time of last modification</li>
+        <li>File name</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Metacharacters</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li><b>Metacharacters</b> are special symbols that allow to define patters to specify system objects (files, directories, ...)</li>
+        <li>Some of this patterns:
+          <ul>
+            <li><code>*</code>: any character string</li>
+            <li><code>?</code>: any single character</li>
+            <li><code>[]</code>: a list or range of characters</li>
+          </ul>
+        </li>
+        <li>Examples:</li>
+      </ul>
+      <pre data-lang="terminal">
+        $ ls *a       # End with 'a'
+        $ ls fic?     # Start with 'fic' plus any other character
+        $ ls [0-9]*   # Start with a number
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>File visualization</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>The <code>cat</code> command is used to concatenate files and show its contents</li>
+        <li>The <code>more</code> command is used to show the file contents</li>
+        <li>Examples:</li>
+      </ul>
+      <pre data-lang="terminal">$ cat file1</pre>
+      <pre data-lang="terminal">$ more file1</pre>
+      <p><code>q</code> to exit</p>
+      <p><code>space</code> to jump to next page</p>
+      <p><code>return</code> to go to next line</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Redirections</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>All commands, programs and processes have an associated standard input and output</li>
+        <li>Keyboard is standard input and terminal is standard output</li>
+        <li>These default assignations can be modified by using the <code><</code>, <code>></code> and <code>>></code> redirection commands</li>
+      </ul>
+      <ul>
+        <li><code>></code> redirects standard output to a file. If it exists, it's overwritten. If not, it's created</li>
+        <li><code><</code> redirects standard input from a file</li>
+        <li><code>>></code> redirects standard output to a file, adding content instead of overwriting it</li>
+      </ul>
+      <pre data-lang="terminal">
+        $ ls ../ > file.txt
+        $ command < file.txt
+        $ ls ../ >> file.txt</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>File manipulation</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>The <code>cp</code> command is used to copy files</li>
+      </ul>
+      <pre data-lang="terminal">$ cp file1 file1_copy</pre>
+      <ul>
+        <li>The <code>mv</code> command is used to move files</li>
+      </ul>
+      <pre data-lang="terminal">$ mv file1 ../</pre>
+      <ul>
+        <li>The <code>rm</code> command is used to remove files</li>
+      </ul>
+      <pre data-lang="terminal">$ rm file1_copy</pre>
+      <p><span class="red">Warning:</span> In UNIX deleted files can't be recovered!</p>
+      <ul>
+        <li>The <code>touch</code> command is used to create an empty file</li>
+      </ul>
+      <pre data-lang="terminal">$ touch new_file</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>File distribution</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>To distribute files and programs, UNIX has the <code>tar</code> and <code>gzip</code> commands</li>
+        <li>With <code>tar</code>, multiple files can be packaged into a single one. With <code>gzip</code> / <code>gunzip</code> the file can be compressed or decompressed. The <code>-z</code> option of <code>tar</code> allows to also compress the resulting packaged file</li>
+      </ul>
+      <pre data-lang="terminal">
+
+        $ tar -cvf file.tar f1 f2 f3        # Package f1, f2 and f3 into a single file
+        $ tar -cvf dir_file.tar directory   # Package all directory files
+
+        $ gzip file.gz file                 # Compress
+        $ gunzip file.gz                    # Decompress
+
+        $ tar -czvf dir.tgz dir             # Package and compress a directory
+        $ tar -xzvf dir.tgz                 # Unpack and decompress a directory
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>File edition</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>There are different options to edit files in UNIX</li>
+        <li>One of the most used text-based editors is <code>vi</code> / <code>vim</code></li>
+        <li>Another one is <code>emacs</code></li>
+        <li>There are other gui-based editors: <code>gedit</code>, <code>kedit</code>, <code>textedit</code>, ...</li>
+      </ul>
+      <div class="centered" style="margin-top:2em">
+        <img src="images/01/vi-emacs2.jpg" style="width: 60%;" />
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Other commands</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>The <code>echo</code> command writes its arguments to standard output</li>
+      </ul>
+      <pre data-lang="terminal">$ echo $PATH</pre>
+      <ul>
+        <li>The <code>history</code> command shows a list of previously executed commands identified by a number</li>
+        <li>The <code>![num]</code> command executes the <i><code>[num]</code></i> command of the previous list</li>
+        <li>The <code>df</code> command shows information of the mounted filesystems</li>
+        <li>The <code>quota</code> shows information about the users' free/used disk</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Command execution</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>A command or job can be executed in <b><i>foreground</i></b> or <b><i>background</i></b></li>
+        <li>When a job is executed in <b><i>foreground</i></b>, it takes control of the terminal until it finishes its execution</li>
+        <li>However, if the execution is done in <b><i>background</i></b>, the terminal keeps free to use before the process is finished. To execute a job in <b><i>background</i></b>, a <code>&</code> must be put in the end of the command</li>
+      </ul>
+      <pre data-lang="terminal">$ cp * /tmp/ &</pre>
+      <div class="centered" style="margin-top:2em">
+        <img src="images/01/fore-back.png" />
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Process control</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>To remove a running command (process) prematurely:
+          <ul>
+            <li>If the process is running in <b><i>foreground</i></b> mode, it can be finished typing <code>Ctrl + C</code></li>
+            <li>If the process is running in <b><i>background</i></b> mode, the <code>kill</code> command is used</li>
+          </ul>
+        </li>
+      </ul>
+      <pre data-lang="terminal">
+        $ kill [-s signal] pid
+        $ kill 666
+        $ kill -9 666</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Running processes information</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>To see the running processes the <code>ps</code> command is used</li>
+        <li>This command lists running processes, showing:
+          <ul>
+            <li>Process <code>pid</code> (identifier)</li>
+            <li>Parent process <code>pid</code></li>
+            <li>Process name</li>
+          </ul>
+        </li>
+        <li>To show all processes the <code>-e</code> option is used</li>
+        <li>To show process from a specific user the <code>-u</code> option is used</li>
+      </ul>
+      <pre data-lang="terminal">
+        $ ps -e
+        $ ps -u root</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Program location</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>To execute a program its location is needed</li>
+        <li>The location can be specified explicitly by typing the absolute path:</li>
+      </ul>
+      <pre data-lang="terminal">
+        $ /usr/bin/touch new_file</pre>
+      <ul>
+        <li>If the absolute path is not given, the OS searches in all the directories defined in the <code>PATH</code> variable</li>
+        <li>To get a program path the command <code>whereis</code> can be used</li>
+      </ul>
+      <pre data-lang="terminal">
+        $ whereis touch
+         touch: /bin/touch /usr/bin/touch /usr/bin/X11/touch</pre>
+      <ul>
+    </article>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/udl.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;That's all!&gt;</h2>
+      <p class="auto-fadein"><a href="mailto:jordi@diei.udl.cat" style="color: white;">jordi@diei.udl.cat</a></p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
