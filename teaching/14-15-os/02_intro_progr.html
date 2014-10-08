@@ -380,399 +380,271 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article>
       <ul>
-        <li><code>malloc</code> syntax:</li>
+        <li><code>malloc</code> syntax: <code>&lt;pointer_var> = malloc(&lt;memory_block_size>);</code></li>
       </ul>
-      <p><code>&lt;pointer_var> = malloc(&lt;memory_block_size>);</code></p>
-      <p>Example:
-            <ul>
-            <li>Correct command syntax</li>
-            <li>Brief explanation of how it works</li>
-            <li>Options</li>
-            <li>Working examples</li>
-            </ul>
-        <li>Examples:</li>
+      <p>Example:</p>
+      <pre class="prettyprint" data-lang="C">
+      char *string;
+      string = (char *) malloc(80 * sizeof(char));</pre>
+      <ul>
+        <li>As <code>malloc</code> can allocate memory for any type of variable, the returned type is <code>void*</code>, that is, pointer to any type</li>
+        <li>The returned value can be assigned to any pointer by doing a cast when doing the assignation</li>
       </ul>
-      <img src="images/01/rtfm.png" style="position: absolute; top: 200px; left: 820px; width: 20%; z-index: -1;" />
-      <pre class="prettyprint" data-lang="terminal">
-      $ man passwd
-      $ man open
-      </pre>
+      <ul>
+        <li><code>free</code> syntax: <code>free(&lt;pointer_var>);</code></li>
+      </ul>
+      <p>Example:</p>
+      <pre class="prettyprint" data-lang="C">free(string);</pre>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Command help</h2>
+      <h2>Dynamic memory management</h2>
     </hgroup>
     <article>
+      <p>About <b>common errors</b> in dynamic memory management:</p>
       <ul>
-        <li>Typical <code>man</code> command items:
-            <ul>
-            <li><b>NAME</b>: Descriptive name</li>
-            <li><b>SYNOPSIS</b>: Command syntax or format. Optional arguments are between brackets <code>[]</code></li>
-            <li><b>DESCRIPTION</b>: Explanation of what the command does. If the command includes arguments, they are also explained here.</li>
-            <li><b>EXAMPLES</b>: Usage examples</li>
-            <li><b>SEE ALSO</b>: Related man pages</li>
-            </ul>
-        <li><code>man</code> pages are distributed in sections. Useful to search information or when a command and a system call have the same name</li>
-      </ul>
-      <pre class="prettyprint" data-lang="terminal">
-      $ man printf
-      $ man 3 printf
-      $ man -s3 printf
-      </pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Command help</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li><code>man</code> sections:
-            <ul>
-            <li><b>1</b> Executable programs or shell commands</li>
-            <li><b>2</b> System calls </li>
-            <li><b>3</b> Library routines</li>
-            <li><b>4</b> Special files (like devices in the /dev directory)</li>
-            <li><b>5</b> File formats</li>
-            <li><b>6</b> Games</li>
-            <li><b>7</b> Macro packages</li>
-            <li><b>8</b> System administration commands</li>
-            <li><b>9</b> Kernel routines</li>
-            </ul>
+        <li>Do not reassaign a pointer memory space reserved with a <code>malloc</code> without having previously released it with the <code>free</code> function</li>
+        <li>Do not relase memory using the <code>free</code> function if it was not previously reserved with <code>malloc</code></li>
+        <li>Rembmer the difference between a pointer (<code>p</code>) and its contents (<code>p*</code>)</li>
       </ul>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Locating commands</h2>
+      <h2>Argument passing</h2>
     </hgroup>
     <article>
       <ul>
-        <li>It is possible to locate binary files, fonts and man pages with the <code>whereis</code> command:</li>
-        </ul>
-        <pre class="prettyprint" data-lang="terminal">
-      $ whereis man
-       /usr/bin/man
-      </pre>
-       <ul>
-            <li>It is possible to obtain the location of a command or system call inside the <i>man page</i> files using the <code>apropos</code> command:</li>
-      </ul>
-      <pre data-lang="terminal">
-      $ apropos sudo
-       sudo(8)                  - execute a command as another user
-       sudoers(5)               - list of which users may execute what
-       visudo(8)                - edit the sudoers file
-      </pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Basic information commands</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li><code>date</code> to obtain current date and time</li>
-        </ul>
-        <ul>
-        <li><code>cal [month] [year]</code> to obtain a calendar</li>
-        </ul>
-<pre class="prettyprint" data-lang="terminal">
-$ cal
-    Octubre 2014
-di di di dm di di di
-          1  2  3  4
- 5  6  7  8  9 10 11
-12 13 14 15 16 17 18
-19 20 21 22 23 24 25
-26 27 28 29 30 31
-
-</pre>
-<ul>
-        <li><code>who</code> to obtain all logged in users</li>
-        </ul>
-        <ul>
-        <li><code>whoami</code> to obtain the current user id</li>
-        </ul>
-    </article>
-  </slide>
-
-  <slide>
-    <aside class="note">
-        <section>
-        <ul>
-          <li></li>
-        </ul>
-        <p><b>There are two general kinds of device files in Unix-like operating systems, known as character special files and block special files. The difference between them lies in how data written to them and read from them is processed by the operating system and hardware.</b></p>
-      </section>
-    </aside>
-    <hgroup>
-      <h2>UNIX file systems</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li>The file system is the structure used by the OS to organize and store information</li>
-        <li>It usually has:
-        <ul>
-        <li><b>Files</b>: A file is a collection of information that is stored in a disk</li>
-        <li><b>Directories</b>: Used to organize files in groups. They contain files or other directories</li>
-        <li><b>Special files</b>: Represent devices attached to the system
-            <ul>
-            <li><i>character special files</i> and <i>block special files</i></li>
-            </ul>
+        <li>There are two ways of passing parameters to a function: <b>call by value</b> and <b>call by reference</b></li>
+        <li>When using <b>call by value</b>, any modification done to the argument will <b>not</b> affect the original variable value. So it is like working with a copy, not the original</li>
+        <li>When using <b>call by reference</b>:
+          <ul>
+            <li>It is sent to the function the memory address where the variable or data is located. This <b>does</b> allow to change values to the original variables.</li>
+            <li>To do a call by reference the <code>&</code> symbol is used before the variable name. This tells the compiler that the function will need to obtain the memory address where the variable is located</li>
+            <li>Parameters sent by reference are declared as pointers to receive the memory address of the variable</li>
+          </ul>
         </li>
-        </ul>
+      </ul>
     </article>
   </slide>
 
   <slide>
-    <aside class="note">
-        <section>
-        <ul>
-          <li># ln /root/file1 /root/file2</li>
-          <li>Above commands create a link to file1.
-          <li>Symbolic links refer to: A symbolic path indicating the abstract location of another file.</li>
-          <li>Hard links refer to: The specific location of physical data.</li>
-        </ul>
-      </section>
-    </aside>
     <hgroup>
-      <h2>File links</h2>
+      <h2>Argument passing</h2>
+    </hgroup>
+    <article>
+      <p>Call <b>by reference</b> example:</p>
+      <pre class="prettyprint" data-lang="C">
+        #include &lt;stdio.h>
+        void exchange(int *, int *);
+
+        void main() {
+          int a=1, b=2;
+          printf("a = %d and b = %d\n", a, b);
+          exchange(&a, &b);
+          printf("a = %d and b = %d\n", a, b);
+        }
+        void exchange(int *x, int *y) {
+          int aux;
+          aux = *x;
+          *x = *y;
+          *y = aux;
+          printf("Function: a = %d and b = %d\n", *x, *y);
+        }</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Files</h2>
     </hgroup>
     <article>
       <ul>
-        <li>Links are an ordinary file type. Its objective is to create a new name for a specific file</li>
-        <li>Once a link has been created, it allows to access the linked file the same way as its content was copied to another one, with the advantage that it was not actually copied</li>
+        <li>A file is a contiguous sequence of bytes</li>
+        <li>The OS does not specify / impose any specific format</li>
+        <li>Each byte can be addressed individually to a file on disk</li>
+        <li>A file descriptor is a positive integer specific for each process, used to identify an open file that can be accessed</li>
+        <li>The system call to open a file <code>open()</code> returns a file descriptor, an integer value
+          <ul>
+            <li>This descriptor must be used in the next file input / output operations</li>
+            <li>All files opened by an application are automatically closed when the process ends</li>
+          </ul>
+        </li>
+      </ul>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Filesystem structure</h2>
+      <h2>Files</h2>
     </hgroup>
     <article>
       <ul>
-        <li>A UNIX filesystem follows a hierarchical tree structure, where <i>branches</i> are <b>directories</b> and <i>leaves</i> are files</li>
-        <li>"<code>/</code>" specifies the root node of the hierarchy</li>
-        </ul>
-        <div class="centered" style="margin-top:2em">
-          <img src="images/01/tree2.gif" />
-        </div>
+        <li>The file descriptors for any process are:</li>
+      </ul>
+      <table>
+        <tbody>
+          <tr>
+            <th>Value</th>
+            <th>Meaning</th>
+            <th>Default</th>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>Standard input (keyboard)</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Standard output (screen)</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Standard error (screen)</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>3 .. N</td>
+            <td>Descriptors available to users</td>
+            <td>No</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>&nbsp;</p>
+      <ul>
+        <li>By default all processes have the 0, 1 and 2 file descriptors when created</li>
+      </ul>
     </article>
   </slide>
 
-
   <slide>
-    <aside class="note">
-        <section>
-        <ul>
-          <li>Last point: /usr/local: self-compiled or third party programs</li>
-        </ul>
-      </section>
-    </aside>
     <hgroup>
-      <h2>UNIX filesystem structure</h2>
+      <h2>Files</h2>
     </hgroup>
     <article>
+      <p>File descriptors organization:</p>
+      <div class="centered" style="margin-top:2em;">
+        <img src="images/02/file_descriptors.png">
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Files</h2>
+    </hgroup>
+    <article>
+      <p>UNIX system calls to work with files:</p>
       <ul class="build">
-        <li><b><code>/bin</code>, <code>/sbin</code></b>: commands</li>
-        <li><b><code>/etc</code></b>: system configuration files</li>
-        <li><b><code>/root</code></b>: home directory of the <i>root</i> user</li>
-        <li><b><code>/lib</code></b>: necessary libraries used by commands</li>
-        <li><b><code>/dev</code></b>: device files</li>
-        <li><b><code>/tmp</code></b>: temporal directory</li>
-        <li><b><code>/boot</code></b>: system boot files</li>
-        <li><b><code>/mnt</code></b>: temporal device mount point</li>
-        <li><b><code>/var</code></b>: editable application parts</li>
-        <li><b><code>/proc</code></b>: runtime system information</li>
-        <li><b><code>/home</code></b>: main directory for normal system users</li>
-        <li><b><code>/usr/local</code></b>: self-compiled or third party programs</li>
-        </ul>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>UNIX filesystem structure</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li>Special directories:
-        <ul>
-        <li>"<code>.</code>" refers to the current directory</li>
-        <li>"<code>..</code>" refers to the parent directory</li>
-        <li>"<code>$HOME</code>" refers to main user directory</li>
-        </ul>
-        <pre class="prettyprint" data-lang="terminal">
-$ cd $HOME
-$ cd ~
-</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Paths</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li>To work or access a file / directory in UNIX, its <i>path</i> must be specified. There are two types of paths:
-        <ul>
-        <li><b>Absolute paths</b>: Specify the full path from the <i>root</i> directory (<code>/home/jordi/docs/file</code>)</li>
-        <li><b>Relative paths</b>: Specify the path from the current directory (<code>docs/file</code>)</li>
-        </ul>
-        <li>The <code>$PATH</code> environment variable specify the paths used by the OS to execute a command</li>
-        </li>
-        <pre class="prettyprint" data-lang="terminal">
-$ echo $PATH
-$ set PATH=./:$PATH; export PATH
-</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Directory commands</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li><code>pwd</code> to obtain the current directory</li>
-        <li><code>cd</code> to go to a target directory</li>
-        <li><code>mkdir</code> to create a new directory</li>
-        <li><code>rmdir</code> to delete an empty directory</li>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>File protection</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li>UNIX allows to control who can access its files by using permissions associated to each file / directory</li>
-        <li>There are three types of users:
-          <ul>
-        <li><b>Owner</b>: The user who has created the file</li>
-        <li><b>Group</b>: Groups of users usually related</li>
-        <li><b>Others</b>: Any other system user</li>
+        <li><code>open()</code> : Open files to read and/or write or to create them</li>
+        <li><code>creat()</code> : Creates an empty file</li>
+        <li><code>read()</code> : Reads information from a file</li>
+        <li><code>write()</code> : Writes information to a file</li>
+        <li><code>lseek()</code> : Go to a specific byte of the file</li>
+        <li><code>unlink()</code> : Deletes a file</li>
+        <li><code>fcntl()</code> : Controls the attributes of a file</li>
       </ul>
-    </li>
-      <li>For each one of these users, there are three access modes (permissions):
-        <ul>
-          <li><b>Read [r]</b>: Gives access to see the contents of the file or to list files inside the directory</li>
-          <li><b>Write [w]</b>: Allows to change the content of the file or to create / delete files</li>
-          <li><b>Execution [x]</b>: Allows to execute the file or command or allows to search inside a directory</li>
-        </ul>
-      </li>
     </article>
   </slide>
 
+
   <slide>
     <hgroup>
-      <h2>File protection</h2>
+      <h2>Files</h2>
     </hgroup>
     <article>
-      <pre>
-        <span style="color: red;">rwx</span><span style="color: green;">r-x</span><span style="color: blue;">r--</span>
-                    <span style="color: red;">Owner read/write/exec permissions</span>
-                    <span style="color: green;">Group read/exec permissions</span>
-                    <span style="color: blue;">Other read permission</span>
+      <p>Opening files:</p>
+      <pre class="prettyprint" data-lang="C">
+        #include &lt;sys/types.h>
+        #include &lt;sys/stat.h>
+        #include &lt;fcntl.h>
+
+        int open(const char *path, int flags [, mode_t mode]);
+
+        int creat(const char *path, mode_t mode);
       </pre>
+      <ul>
+        <li>Creates / opens a file and returns its descriptor.</li>
+      </ul>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>File protection</h2>
+      <h2>Files</h2>
     </hgroup>
     <article>
       <ul>
-        <li>To change file / directory permissions the <code>chmod</code> command is used</li>
-      </ul>
-      <pre data-lang="terminal">$ chmod [who] operation permissions file</pre>
-      <ul>
-        <li>Where:
+        <li> Parameters:
           <ul>
-            <li><code>who</code>: user type
+            <li><code>path</code>: String with the relative or absolute path to the file</li>
+            <li><code>flags</code>: File open method
               <ul>
-                <li>u: owner</li>
-                <li>g: group</li>
-                <li>o: others</li>
-                <li>a: all (u+g+o)</li>
+                <li>O_RDONLY - read only</li>
+                <li>O_WRONLY - write only</li>
+                <li>O_RDWR - read and write</li>
+                <li>O_CREAT - creates the file if it doesn't exist</li>
+                <li>O_TRUNC - if it exists, opens it and truncates to 0 bytes</li>
+                <li>O_APPEND - write to the end of the file</li>
               </ul>
             </li>
-            <li><code>operation</code>: <code>+</code> to add or <code>-</code> to remove</li>
-            <li><code>permissions</code>: permission type (r: read, w: write, x: exec)</li>
-            </ul>
-          </li>
-        </ul>
-    </article>
-  </slide>
-
-  <slide>
-    <aside class="note">
-        <section>
-        <ul>
-          <li>If none is given, is like typing 'a' (all users)</li>
-        </ul>
-      </section>
-    </aside>
-    <hgroup>
-      <h2>File protection - Example</h2>
-    </hgroup>
-    <article>
-      <pre data-lang="file1">
-        #Initial file permissions
-        --xrwxr-x</pre>
-      <div class="columns-2">
-         <pre>
-        # Add r+w to owner
-        $ chmod u+rw file1</pre>
-        <pre>
-        # Remove x to others</li>
-        $ chmod o-x file1</pre>
-        <pre>
-        # Remove w+x to group</li>
-        $ chmod g-wx file1</pre>
-        <pre>
-        # Add w to all users of file1</li>
-        $ chmod a+w file1</pre>
-         <pre data-lang="file1">
-
-          rwxrwxr-x</pre>
-          <pre data-lang="file1">
-
-          rwxrwxr--</pre>
-          <pre data-lang="file1">
-
-          rwxr--r--</pre>
-          <pre data-lang="file1">
-
-          rwxrw-rw-</pre>
-      </div>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Directory contents</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li>The <code>ls</code> command shows directory contents</li>
+            <li><code>mode</code>: Specifies permissions if new file is created (0644 → -rw-r--r--)</li>
+          </ul>
+        </li>
+        <li><code>open()</code> and <code>creat()</code> return the new file descriptor, or they return <span class="red">-1</span> if there has been any <span class="red">error</span></li>
       </ul>
-      <pre data-lang="terminal">$ ls [OPTIONS] [FILE]</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Files</h2>
+    </hgroup>
+    <article>
+      <p>Closing files:</p>
+      <pre class="prettyprint" data-lang="C">
+        #include &lt;unistd.h>
+
+        int close(int fd);
+      </pre>
       <ul>
-        <li>Options:
+        <li>Closes a file descriptor so it no longer references any file</li>
+        <li>Parameters:
           <ul>
-            <li><code>-a</code>: list all files (including hidden)</li>
-            <li><code>-l</code>: extended information</li>
-            <li><code>-s</code>: shows the file size</li>
-            <li><code>-R</code>: recursive listing</li>
+            <li><code>fd</code>: File descriptor of the file that will be closed</li>
+          </ul>
+        </li>
+        <li><code>close()</code> returns <span class="green">0</span> if successful and <span class="red">-1</span> if error</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Files</h2>
+    </hgroup>
+    <article>
+      <p>File reading:</p>
+      <pre class="prettyprint" data-lang="C">
+        #include &lt;unistd.h>
+        ssize_t read(int fd, void *buf, size_t nbytes);</pre>
+      <ul>
+        <li>Tries to read up to <code>nbytes</code> bytes from the file specified by <code>fd</code> and store them in the memory area that starts in <code>buf</code></li>
+        <li>Parameters:
+          <ul>
+            <li><code>fd</code>: File descriptor of the file that will be read</li>
+            <li><code>nbytes</code>: Number of bytes to be read</li>
+            <li><code>buf</code>: Pointer to the buffer where the read information will be saved</li>
+          </ul>
+        </li>
+        <li>Returns:
+          <ul>
+            <li>If <span class="green">succesful</span>, returns the number of read bytes (0 means end of file)</li>
+            <li>If <span class="red">error</span>, returns <span class="red">-1</span> and specifies the reason in <code>errno</code></li>
           </ul>
         </li>
       </ul>
@@ -781,260 +653,137 @@ $ set PATH=./:$PATH; export PATH
 
   <slide>
     <hgroup>
-      <h2>Directory contents</h2>
+      <h2>Files</h2>
     </hgroup>
     <article>
-      Extended information (<code>-l</code>):
-      <ul>
-        <li>File type:
-          <ul>
-            <li>d: directory</li>
-            <li>-: file</li>
-          </ul>
-        </li>
-        <li>Permissions:
-          <ul>
-            <li>r: read</li>
-            <li>w: write</li>
-            <li>x: execution</li>
-          </ul>
-        </li>
-        <li>Number of links to file</li>
-        <li>Owner's name</li>
-        <li>Group name</li>
-        <li>Size</li>
-        <li>Date and time of last modification</li>
-        <li>File name</li>
-      </ul>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Metacharacters</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li><b>Metacharacters</b> are special symbols that allow to define patters to specify system objects (files, directories, ...)</li>
-        <li>Some of this patterns:
-          <ul>
-            <li><code>*</code>: any character string</li>
-            <li><code>?</code>: any single character</li>
-            <li><code>[]</code>: a list or range of characters</li>
-          </ul>
-        </li>
-        <li>Examples:</li>
-      </ul>
-      <pre data-lang="terminal">
-        $ ls *a       # End with 'a'
-        $ ls fic?     # Start with 'fic' plus any other character
-        $ ls [0-9]*   # Start with a number
+      <pre class="prettyprint" data-lang="C">
+        #include &lt;fcntl.h>  // Open modes
+        #include &lt;stdlib.h> // File functions
+        #include &lt;stdio.h>  // Standard I/O
+        void main(int argc, char* argv[]) {
+          char string[11];
+          int b_read;
+          int file = open ("my_file", O_RDONLY);
+          if(file == -1) { // Check for errors
+            perror("Error while opening file");
+            exit(1);
+          }
+          lseek(file, 400, SEEK_SET);
+          b_read = read(file, string, 10); // Read 10 bytes
+          close(file);
+          string[10] = 0;
+          printf("%d B have been read. The obtained string is: %s\n", b_read, string);
+          return 0;
+        }
       </pre>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>File visualization</h2>
+      <h2>Files</h2>
     </hgroup>
     <article>
+      <p>File writing:</p>
+      <pre class="prettyprint" data-lang="C">
+        #include &lt;unistd.h>
+        ssize_t write(int fd, const void *buf, size_t nbytes);</pre>
       <ul>
-        <li>The <code>cat</code> command is used to concatenate files and show its contents</li>
-        <li>The <code>more</code> command is used to show the file contents</li>
-        <li>Examples:</li>
-      </ul>
-      <pre data-lang="terminal">$ cat file1</pre>
-      <pre data-lang="terminal">$ more file1</pre>
-      <p><code>q</code> to exit</p>
-      <p><code>space</code> to jump to next page</p>
-      <p><code>return</code> to go to next line</p>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Redirections</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li>All commands, programs and processes have an associated standard input and output</li>
-        <li>Keyboard is standard input and terminal is standard output</li>
-        <li>These default assignations can be modified by using the <code><</code>, <code>></code> and <code>>></code> redirection commands</li>
-      </ul>
-      <ul>
-        <li><code>></code> redirects standard output to a file. If it exists, it's overwritten. If not, it's created</li>
-        <li><code><</code> redirects standard input from a file</li>
-        <li><code>>></code> redirects standard output to a file, adding content instead of overwriting it</li>
-      </ul>
-      <pre data-lang="terminal">
-        $ ls ../ > file.txt
-        $ command < file.txt
-        $ ls ../ >> file.txt</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>File manipulation</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li>The <code>cp</code> command is used to copy files</li>
-      </ul>
-      <pre data-lang="terminal">$ cp file1 file1_copy</pre>
-      <ul>
-        <li>The <code>mv</code> command is used to move files</li>
-      </ul>
-      <pre data-lang="terminal">$ mv file1 ../</pre>
-      <ul>
-        <li>The <code>rm</code> command is used to remove files</li>
-      </ul>
-      <pre data-lang="terminal">$ rm file1_copy</pre>
-      <p><span class="red">Warning:</span> In UNIX deleted files can't be recovered!</p>
-      <ul>
-        <li>The <code>touch</code> command is used to create an empty file</li>
-      </ul>
-      <pre data-lang="terminal">$ touch new_file</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>File distribution</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li>To distribute files and programs, UNIX has the <code>tar</code> and <code>gzip</code> commands</li>
-        <li>With <code>tar</code>, multiple files can be packaged into a single one. With <code>gzip</code> / <code>gunzip</code> the file can be compressed or decompressed. The <code>-z</code> option of <code>tar</code> allows to also compress the resulting packaged file</li>
-      </ul>
-      <pre data-lang="terminal">
-
-        $ tar -cvf file.tar f1 f2 f3        # Package f1, f2 and f3 into a single file
-        $ tar -cvf dir_file.tar directory   # Package all directory files
-
-        $ gzip file.gz file                 # Compress
-        $ gunzip file.gz                    # Decompress
-
-        $ tar -czvf dir.tgz dir             # Package and compress a directory
-        $ tar -xzvf dir.tgz                 # Unpack and decompress a directory
-      </pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>File edition</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li>There are different options to edit files in UNIX</li>
-        <li>One of the most used text-based editors is <code>vi</code> / <code>vim</code></li>
-        <li>Another one is <code>emacs</code></li>
-        <li>There are other gui-based editors: <code>gedit</code>, <code>kedit</code>, <code>textedit</code>, ...</li>
-      </ul>
-      <div class="centered" style="margin-top:2em">
-        <img src="images/01/vi-emacs2.jpg" style="width: 60%;" />
-      </div>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Other commands</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li>The <code>echo</code> command writes its arguments to standard output</li>
-      </ul>
-      <pre data-lang="terminal">$ echo $PATH</pre>
-      <ul>
-        <li>The <code>history</code> command shows a list of previously executed commands identified by a number</li>
-        <li>The <code>![num]</code> command executes the <i><code>[num]</code></i> command of the previous list</li>
-        <li>The <code>df</code> command shows information of the mounted filesystems</li>
-        <li>The <code>quota</code> shows information about the users' free/used disk</li>
-      </ul>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Command execution</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li>A command or job can be executed in <b><i>foreground</i></b> or <b><i>background</i></b></li>
-        <li>When a job is executed in <b><i>foreground</i></b>, it takes control of the terminal until it finishes its execution</li>
-        <li>However, if the execution is done in <b><i>background</i></b>, the terminal keeps free to use before the process is finished. To execute a job in <b><i>background</i></b>, a <code>&</code> must be put in the end of the command</li>
-      </ul>
-      <pre data-lang="terminal">$ cp * /tmp/ &</pre>
-      <div class="centered" style="margin-top:2em">
-        <img src="images/01/fore-back.png" />
-      </div>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Process control</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li>To remove a running command (process) prematurely:
+        <li>Tries to write up to <code>nbytes</code> bytes to the file specified by <code>fd</code> and from the memory area that starts in <code>buf</code></li>
+        <li>Parameters:
           <ul>
-            <li>If the process is running in <b><i>foreground</i></b> mode, it can be finished typing <code>Ctrl + C</code></li>
-            <li>If the process is running in <b><i>background</i></b> mode, the <code>kill</code> command is used</li>
+            <li><code>fd</code>: File descriptor of the file that will be written</li>
+            <li><code>nbytes</code>: Number of bytes to be written</li>
+            <li><code>buf</code>: Pointer to the buffer where the information to be written is located</li>
+          </ul>
+        </li>
+        <li>Returns:
+          <ul>
+            <li>If <span class="green">succesful</span>, returns the number of written bytes (0 means nothing was written)</li>
+            <li>If <span class="red">error</span>, returns <span class="red">-1</span> and specifies the reason in <code>errno</code></li>
           </ul>
         </li>
       </ul>
-      <pre data-lang="terminal">
-        $ kill [-s signal] pid
-        $ kill 666
-        $ kill -9 666</pre>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Running processes information</h2>
+      <h2>Files</h2>
     </hgroup>
     <article>
+      <pre class="prettyprint" data-lang="C">
+        #include &lt;string.h> // strlen() function
+        #include &lt;fcntl.h>
+        #include &lt;stdlib.h>
+
+        void main(int argc, char* argv[]) {
+          const char* string = "Winter is coming";
+          int file = open("my_file", O_CREAT|O_WRONLY, 0644);
+
+          if(file == -1) {
+            perror("Error when opening file");
+            exit(1);
+          }
+
+          write(file, string, strlen(string));
+          close(file);
+          exit(0);
+        }</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Files</h2>
+    </hgroup>
+    <article>
+      <p>Change the read / write location:</p>
+      <pre class="prettyprint" data-lang="C">
+        #include &lt;sys/types.h>
+        #include &lt;unistd.h>
+        off_t lseek(int fd, off_t offset, int whence);</pre>
       <ul>
-        <li>To see the running processes the <code>ps</code> command is used</li>
-        <li>This command lists running processes, showing:
+        <li>Move the pointer by <code>offset</code> bytes and following the <code>whence</code> directive, where:
           <ul>
-            <li>Process <code>pid</code> (identifier)</li>
-            <li>Parent process <code>pid</code></li>
-            <li>Process name</li>
+            <li><code>fd</code>: File descriptor</li>
+            <li><code>offset</code>: Relative pointer displacement in bytes</li>
+            <li><code>whence</code>: Displacement directive
+              <ul>
+                <li>SEEK_SET: the pointer is placed to <code>offset</code> bytes</li>
+                <li>SEEK_CUR: the pointer moves <code>offset</code> bytes from its current position</li>
+                <li>SEEK_END: the pointer moves <code>offset</code> bytes from the end of the file</li>
           </ul>
         </li>
-        <li>To show all processes the <code>-e</code> option is used</li>
-        <li>To show process from a specific user the <code>-u</code> option is used</li>
       </ul>
-      <pre data-lang="terminal">
-        $ ps -e
-        $ ps -u root</pre>
+      <ul>
+        <li>If <span class="green">succesful</span>, returns the absolute pointer position (in bytes)</li>
+        <li>If <span class="red">error</span>, returns <span class="red">-1</span> and specifies the reason in <code>errno</code></li>
+      </ul>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Program location</h2>
+      <h2>Files</h2>
     </hgroup>
     <article>
-      <ul>
-        <li>To execute a program its location is needed</li>
-        <li>The location can be specified explicitly by typing the absolute path:</li>
-      </ul>
-      <pre data-lang="terminal">
-        $ /usr/bin/touch new_file</pre>
-      <ul>
-        <li>If the absolute path is not given, the OS searches in all the directories defined in the <code>PATH</code> variable</li>
-        <li>To get a program path the command <code>whereis</code> can be used</li>
-      </ul>
-      <pre data-lang="terminal">
-        $ whereis touch
-         touch: /bin/touch /usr/bin/touch /usr/bin/X11/touch</pre>
-      <ul>
+      <pre class="prettyprint" data-lang="C">
+        #include &lt;unistd.h>
+        #include &lt;fcntl.h>
+        #include &lt;stdlib.h>
+        char buf1[]= "abcdefghij";
+        char buf2[]= "ABCDEFGHIJ";
+
+        int main() {
+          int fd;
+          if((fd = creat("my_file", 0644)) < 0) { perror("my_file"); exit(-1); }
+          if(write(fd, buf1, 10)!=10) perror("buf1");
+          if(lseek(fd, 40, SEEK_SET) == -1) perror("lseek");
+          if(write(fd, buf2, 10)!=10) perror("buf2");
+
+          return 0;
+        }</pre>
     </article>
   </slide>
 
