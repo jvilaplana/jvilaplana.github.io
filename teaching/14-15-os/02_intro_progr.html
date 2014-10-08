@@ -85,260 +85,305 @@ URL: https://code.google.com/p/io-2012-slides
       <ul>
         <li>Where:
           <ul>
-            <li><code>-g</code>: </li>
-            <li><code>-c</code>: </li>
-            <li><code>-o</code>: </li>
-            <li><code>-I</code>: </li>
-            <li><code>-L</code>: </li>
-            <li><code>-l</code>: </li>
+            <li><code>-g</code>: Generates debugging information</li>
+            <li><code>-c</code>: Link only the specified file</li>
+            <li><code>-o</code>: Output executable file (defaults to <code>a.out</code></li>
+            <li><code>-I</code>: Directories where .h files will be searched</li>
+            <li><code>-L</code>: Directories where libraries will be searched</li>
+            <li><code>-l</code>: Library to be linked with the program</li>
       </ul>
     </article>
   </slide>
 
   <slide>
-    <aside class="note">
-        <section>
-        <ul>
-          <li>BackTrack Linux - Penetration Testing Distribution</li>
-          <li>WiFiSlax - LiveCD y LiveUSB</li>
-        </ul>
-      </section>
-    </aside>
     <hgroup>
-      <h2>Historic evolution</h2>
+      <h2>The gcc compiler</h2>
     </hgroup>
     <article>
-    <img src="images/01/distros.jpg" alt="Linux Distributions" title="Linux Distributions" style="position: absolute; top: 250px; left: 350px; width: 50%;">
+      <p>Examples:</p>
+      <pre data-lang="terminal">
+        # Compile and link the <code>source.c</code> file, getting a <code>a.out</code> executable:
+        $ gcc source.c
+        # Compile and link the <code>source.c</code> file, getting a <code>myExe</code> executable:
+        $ gcc source.c -o myExe
+        # Compile only the <code>source.c</code> file, getting a <code>source.o</code> object:
+        $ gcc -c source.c
+        # Link the object files <code>main.o</code> and <code>file1.o</code> getting the <code>main</code> executable:
+        $ ld main.o file1.o -o main
+        # Compile and link the file <code>source.c</code>, adding <code>definitions.h</code>,
+        # that is in the <code>/usr/local/include</code> directory,
+        # and the <code>libfont.so</code> library getting a <code>myExe</code> executable:
+        $ gcc -g source.c -o myExe -I /usr/local/include -i definitions.h \
+        $ -L /usr/local/lib -lfont
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>make</h2>
+    </hgroup>
+    <article>
       <ul>
-        <li>GNU/Linux can be freely distributed, and its source code can be modified (open source)</li>
-        <li>Therefore, many GNU/Linux-based distributions have been created
-        <ul>
-            <li>Ubuntu</li>
-            <li>Debian</li>
-            <li>Fedora</li>
-            <li>Knoppix</li>
-            <li>BackTrack</li>
-            <li>...</li>
-        </ul>
+        <li>The <code>make</code> command is used to organize the linking and compiling steps of complex programs that have several different modules or libraries</li>
+        <li>When this command is executed, a new executable file is created compiling only the modified files since the last compilation</li>
+        <li>A <code>makefile</code> file must be created, that specifies the dependencies between different files and the linking and compilation method</li>
+        <li>Syntax:</li>
+      </ul>
+      <pre data-lang="terminal">
+        $ make [-f makefile_name] [-arg_opt] [exe_name]
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>make</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li><code>makefile</code> file:</li>
+        <pre data-lang="makefile">
+          main2: main2.o reverse.o statistic.o
+            gcc main2.o reverse.o statistic.o -o main2
+          main2.o: main2.c statistic.h
+            gcc -c main2.c
+          reverse.o: reverse.c reverse.h
+            gcc -c reverse.c
+          statistic.o: statistic.c statistic.h reverse.h
+            gcc -c statistic.c</pre>
+        <p>Execution:</p>
+        <pre data-lang="terminal">
+          $ make
+            gcc -c main2.c
+            gcc -c reverse.c
+            gcc -c statistic.c
+            gcc main2.o reverse.0 statistic.o -o main2</pre>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Debugging</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>To debug Linux programs, GNU provides a command-line debugger called <code>gdb</code></li>
+        <li>The <code>xxgdb</code> program provides a GUI for this debugger:</li>
+      </ul>
+      <pre data-lang="terminal">$ xxgdb myExe &</pre>
+      <ul>
+        <li>However, to debug complex programs formed by multiple processes, these debuggers may be extremelly difficult to use</li>
+        <li>In these scenarios, we can print log messages to the standard output:</li>
+      </ul>
+      <pre class="prettyprint" data-lang="C">
+        fprintf(stdout, "Current line: x=%d, y=%d.\n", x, y);
+        fflush(stdout);</pre>
+      <ul>
+        <li>It is important to call <code>fflush(stdout)</code> to ensure that the buffer is flushed and its content printed</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Error control</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Some system and library calls use the <code>errno</code> global variable, defined in the <code>errno.h</code> library, to identify the cause when there is an error</li>
+        <li>This variable value is relevant only when the call returns an error (usually the <code>-1</code> code)</li>
+        <li>For more information: <code>$ man errno</code></li>
+        <li>A descriptive error message identified by <code>errno</code> can be seen using the <code>perror</code> function of the <code>&lt;stdio.h></code> library:</li>
+      </ul>
+      <pre class="prettyprint" data-lang="C">void perror(const char*);</pre>
+      <ul>
+        <li>First the message is shown and then the error:</li>
+      </ul>
+      <pre class="prettyprint" data-lang="C">
+        perror("My message");
+          My message: No such file or directory</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Pointers</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>A pointer is a variable that contains a memory address</li>
+        <li>Usually, this address is the position of another variable. In this case, it is said that the first variable points to the second one</li>
+      </ul>
+      <pre class="prettyprint" data-lang="C">
+        #include &lt;stdio.h>
+        #include &lt;stdlib.h>
+        void main() {
+          int num = 5;
+          int *p = &num;
+
+          printf("Num: %d, &p: %p, *p: %d\n", num, p, *p);
+          exit(0);
+        }</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Pointers</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Syntax:</li>
+      </ul>
+      <pre>&lt;element type> *&lt;point variable name>;</pre>
+      <ul>
+        <li>Examples:</li>
+      </ul>
+      <pre class="prettyprint" data-lang="C">
+        char *pname;             // Pointer to char
+        int *page;              // Pointer to int
+        float *pheight;         // Pointer to float
+        struct userData *pdata; // Pointer to struct
+        void *pgeneric          // Pointer to any type</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Pointers</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>The <b>operators</b> that can be used with pointers are:
+            <ul>
+                <li><code>*</code>: Returns the contents of a variable or operand</li>
+                <li><code>&</code>: Returns the memory address of the operand</li>
+                <li><code>-></code>: Allows to access the fields of a struct from its pointer</li>
+            </ul>
         </li>
       </ul>
     </article>
   </slide>
 
   <slide>
-    <aside class="note">
-        <section>
-        <ul>
-          <li>In 1972, Unix was rewritten in the C programming language, contrary to the general notion at the time "that something as complex as an operating system, which must deal with time-critical events, has to be written exclusively in assembly language". The migration from assembly to the higher-level language C, resulted in much more portable software, requiring only a relatively small amount of machine-dependent code to be replaced when porting Unix to other computing platforms.</li>
-        </ul>
-      </section>
-    </aside>
     <hgroup>
-      <h2>UNIX features</h2>
+      <h2>Pointers</h2>
     </hgroup>
     <article>
       <ul>
-        <li>Main UNIX features:
-        <ul class="build">
-            <li>Portability: Implemented using the C programming language - only the kernel (<10%) written in assembler</li>
-            <li>Multi-programmed: Formed by different software packages (kernel, services, applications, ...)</li>
-            <li>Multi-tasking: Several processes can be executed at the same time</li>
-            <li>Multi-user: Several users can use the resources at the same time</li>
-            <li>Security: Implementation of users/groups with system file permissions</li>
-            <li>Monolithic Kernel: OS is working in kernel space</li>
-            <li>Free: GNU/Linux is open source</li>
-        </ul>
-        </li>
-      </ul>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>UNIX structure</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <img src="images/01/kernel.gif" alt="UNIX structure" title="UNIX structure">
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>UNIX login</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li><i>login</i> is the process of signing onto a system</li>
-        <li>The <i>login</i> process depends on the chosen connection method. Anyway, the validation is usually done providing a <b>username</b> and <b>password</b>:
-            <ul>
-                <li><b>username</b>: The user is used to identify the permissions and available resources (disk space, accessible files/directories, ...) during the connection</li>
-                <li><b>password</b>: The password is used to validate that the user is really who claims to be and, therefore, to grant access to the OS</li>
-            </ul>
-      </ul>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>User types</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li>There are two basic types of users:
-            <ul>
-                <li><b>The <i>root</i> user</b>: This user has all the OS privileges. It can perform any kind of operation without restriction; create and delete users, files/directories, processes and even delete the OS itself</li>
-                <li><b>Common user</b>: The other users, whose privileges can vary depending on the granted permissions by the <i>root</i> user</li>
-            </ul>
-      </ul>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Connection methods</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li>Connection types
-            <ul>
-                <li><b>Local connection</b>: it is done directly using the machine that hosts the OS. A username and password is used to login. If the login is correct, the access is granted usually entering to the graphic interface (X-Window)
-                  <ul>
-                    <li>Also, it is possible to connect to the virtual terminals (Ctrl+Alt+F1, ...)</li>
-                    <li>To return to the graphic mode: Ctrl+Alt+F7</li>
-                  </ul>
-                </li>
-            </ul>
-        </li>
-        <li><b>Remote connection</b>:
+        <li>The operations with pointers:
           <ul>
-            <li><b>X-Windows clients</b>: Software that emulates a graphic interface and allows to connect similarly as the local connection</li>
-            <li><b>SSH</b>: With SSH (Secure Shell) is possible to connect in terminal/text mode and execute any program/command that does not require a graphic interface. Using the <code>-X</code> option, SSH allows graphic output</li>
+            <li><b>Assignation (<code>=</code>)</b>: Assigns an address to a pointer</li>
+            <li><b>Comparation (<code>==</code>, <code>!=</code></b>): Equalty or inequalty</li>
+            <li><b>Initialization (<code>NULL</code>)</b>: Indicates that the pointer contains no address</li>
+            <li><b>Increment (<code>++</code>), decrement (<code>--</code>)</b>: Change a pointer to the next / previous element of a series (for example, an array)</li>
+            <li><b>Indexed (<code>[]</code>)</b>: Access to the <b>n</b> element of a series</li>
           </ul>
         </li>
       </ul>
-      <pre data-lang="terminal">
-        $ ssh -X IP_address
-      </pre>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Logout</h2>
+      <h2>Pointers</h2>
     </hgroup>
     <article>
-      <ul>
-        <li>Depending on the connection method:
-            <ul>
-                <li><b>Local logout</b> or <b>X-Window remote client</b>: Close the session using the corresponding menu option</li>
-                <li><b>SSH remote session</b>: Execute the ssh command <code>exit</code>
-            </ul>
-        </li>
-        <li><b>Warning</b>: Do not disconnect or reset a running UNIX system, as damages can be produced to the filesystem and therefore data loss
+      <pre class="prettyprint" data-lang="C">
+        #include &lt;stdio.h>
+        void main() {
+          int n1, n2; int *p1, *p2;
+          n1 = 3; n2 = 10; p1 = p2 = NULL; // variable initialization
+          p1 = &n1;  p2 = &n2; // p1 points to n1 and p2 points to n2
+          if(p1 != p2) {
+            printf("p1 and p2 point to different memory positions\n");
+            printf("Content of p1 is: %d\n", *p1);
+            printf("Content of p2 is: %d\n", *p2);
+          }
+          p2 = p1;
+          if(p1 == p2) {
+            printf("p1 and p2 point to the same memory position\n");
+            printf("Content of p1 and p2 is: %d\n", *p1);
+          }
+        }</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+        <section>
+        <ul>
+          <li>*p=x;   //p NO té adreça assignada, i el
+        //seu contingut serà alguna
+        //adreça de memòria aleatòria.</li>
+        <li>printf(“%d\n”, *p);</li>
+          <li>La crida a printf no imprimirà el valor de x  (10), si no algun valor desconegut, el que hi hagi a l'adreça 10 de memòria, ja que p=x=10. La forma correcta és: p=&x;.</li>
+        </ul>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Pointers</h2>
+    </hgroup>
+    <article>
+      <p>About <b>common errors</b> in pointers usage:</p>
+      <ul class="build">
+        <li>Do not use uninitialized pointers (no valid address or <code>NULL</code> value)</li>
+        <li>Ensure that the pointer points to a valid address before using it and initialize with a <code>NULL</code> value the ones that do not have an assigned address yet</li>
+        <li><div class="columns-2">
+          <pre class="prettyprint" data-lang="C">
+  /* Incorrect version */
+
+  #include &lt;stdio.h>
+
+  void main() {
+    int x;
+    int *p;
+    x = 10;
+    *p = x;
+  }
+</pre>
+          <pre class="prettyprint" data-lang="C">
+  /* Correct version */
+  #include &lt;stdio.h>
+  void main() {
+    int x,y, *p;
+    p = NULL;
+    x = 10;
+    y = 20;
+    if(p == NULL) p = &x;
+    *p = y;
+  }</pre></div></li>
       </ul>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>System shutdown</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li>Commands to shutdown the system:
-            <ul>
-                <li><code>shutdown</code>, <code>halt</code>, <code>poweroff</code>: stop the system and then disconnect the machine
-            </ul>
-        </li>
-        <li>Example: Stop the system after 10 minutes:</li>
-      </ul>
-      <pre data-lang="terminal">
-      $ shutdown -g10
-      </pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Change session</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li>Once logged in, we can change the current user with the <code>su [user]</code> command, that asks for the new user password. To change to <i>root</i> only <code>su</code> is needed</li>
-        <li>With the <code>-</code> option all the environment configurations of the new user are also loaded</li>
-        <li>Example:</li>
-      </ul>
-      <pre data-lang="terminal">
-      $ su - jordi
-        Password:
-      </pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Change password</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li>The password can be changed using the <code>passwd</code> command</li>
-        <li>Example:</li>
-      </ul>
-      <pre data-lang="terminal">
-      $ passwd
-       Changing password for jordi.
-       (current) UNIX password:
-       Enter new UNIX password:
-       Retype new UNIX password:
-      </pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Command-line interpreter  / shell</h2>
+      <h2>Dynamic memory management</h2>
     </hgroup>
     <article>
       <ul class="build">
-        <li>Interface between user and kernel that allows execution of programs</li>
-        <li>Works like a command-line interpreter, that is, interprets and executes the commands / programs</li>
-        <li>To automate certain tasks, <i>shells</i> include its own scripting programming languages; programs written with it are called <i>scripts</i>
-        <li>There are different command-line interpreters:
-            <ul>
-            <li>Bourne shell (<code>/bin/sh</code>)</li>
-            <li>Bash shell (<code>/bin/bash</code>): Evolution of Bourne shell. Default one in many UNIX environments</li>
-            <li>C shell (<code>/usr/bin/csh</code>): Similar syntax as C</li>
-            <li>Korn shell (<code>/usr/bin/ksh</code>): Hybrid of Bourne shell with some C shell features</li>
+        <li>The dynamic memory allocation allows to create variables during the program execution</li>
+        <li>The necessary space for these variables is obtained from the available memory</li>
+        <li>The functions that allow the dynamic allocation are <code>malloc()</code> and <code>free()</code></li>
+        <li>Each time a memory request is done via <code>malloc()</code>, a portion of the available memory is assigned.</li>
+        <li>When the <code>free()</code> function is called, the memory is released</li>
       </ul>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Command syntax</h2>
-    </hgroup>
-    <article>
-      <ul class="build">
-        <li>Syntax of most commands:<br><code>$ command [options] [arguments]</code></li>
-        <li>Where:
-            <ul>
-            <li><code>command</code>: name of the command</li>
-            <li><code>options</code>: optional flags of each command</li>
-            <li><code>arguments</code>: objects that the command will use (usually files)</li>
-            </ul>
-        <li>Several commands can be written in a single line separated by "<code>;</code>"</li>
-        <li>In some systems, the line length is limited. It is possible to keep writing in the next line using a backlash (<code>\</code>)
-      </ul>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Command help</h2>
+      <h2>Dynamic memory management</h2>
     </hgroup>
     <article>
       <ul>
-        <li>The <code>man</code> command (<i>manual pages</i>) gives information about:
+        <li><code>malloc</code> syntax:</li>
+      </ul>
+      <p><code>&lt;pointer_var> = malloc(&lt;memory_block_size>);</code></p>
+      <p>Example:
             <ul>
             <li>Correct command syntax</li>
             <li>Brief explanation of how it works</li>
