@@ -77,7 +77,7 @@ URL: https://code.google.com/p/io-2012-slides
       <ul>
         <li>C / C++ Linux software development is based on the GNU <code>gcc</code> & <code>g++</code> compilers</li>
         <li>The C / C++ Linux compilers are command-line ones, therefore there is not any GUI to ease code programming and compilation</li>
-        <li>There are GUI-based IDEs (Integrated Development Environments) like KDevelop, that integerate all the necessary development tools (compiler, debugger, ...)</li>
+        <li>There are GUI-based IDEs (Integrated Development Environments) like KDevelop, that integrate all the necessary development tools (compiler, debugger, ...)</li>
       </ul>
     </article>
   </slide>
@@ -188,7 +188,7 @@ URL: https://code.google.com/p/io-2012-slides
       </ul>
       <pre data-lang="terminal">$ xxgdb myExe &</pre>
       <ul>
-        <li>However, to debug complex programs formed by multiple processes, these debuggers may be extremelly difficult to use</li>
+        <li>However, to debug complex programs formed by multiple processes, these debuggers may be extremely difficult to use</li>
         <li>In these scenarios, we can print log messages to the standard output:</li>
       </ul>
       <pre class="prettyprint" data-lang="C">
@@ -291,7 +291,7 @@ URL: https://code.google.com/p/io-2012-slides
         <li>The operations with pointers:
           <ul>
             <li><b>Assignation (<code>=</code>)</b>: Assigns an address to a pointer</li>
-            <li><b>Comparation (<code>==</code>, <code>!=</code></b>): Equalty or inequalty</li>
+            <li><b>Comparison (<code>==</code>, <code>!=</code></b>): Equality or inequality</li>
             <li><b>Initialization (<code>NULL</code>)</b>: Indicates that the pointer contains no address</li>
             <li><b>Increment (<code>++</code>), decrement (<code>--</code>)</b>: Change a pointer to the next / previous element of a series (for example, an array)</li>
             <li><b>Indexed (<code>[]</code>)</b>: Access to the <b>n</b> element of a series</li>
@@ -422,9 +422,9 @@ URL: https://code.google.com/p/io-2012-slides
     <article>
       <p>About <b>common errors</b> in dynamic memory management:</p>
       <ul>
-        <li>Do not reassaign a pointer memory space reserved with a <code>malloc</code> without having previously released it with the <code>free</code> function</li>
-        <li>Do not relase memory using the <code>free</code> function if it was not previously reserved with <code>malloc</code></li>
-        <li>Rembmer the difference between a pointer (<code>p</code>) and its contents (<code>p*</code>)</li>
+        <li>Do not reassign a pointer memory space reserved with a <code>malloc</code> without having previously released it with the <code>free</code> function</li>
+        <li>Do not release memory using the <code>free</code> function if it was not previously reserved with <code>malloc</code></li>
+        <li>Remember the difference between a pointer (<code>p</code>) and its contents (<code>p*</code>)</li>
       </ul>
     </article>
   </slide>
@@ -659,7 +659,7 @@ URL: https://code.google.com/p/io-2012-slides
         </li>
         <li>Returns:
           <ul>
-            <li>If <span class="green">succesful</span>, returns the number of read bytes (0 means end of file)</li>
+            <li>If <span class="green">successful</span>, returns the number of read bytes (0 means end of file)</li>
             <li>If <span class="red">error</span>, returns <span class="red">-1</span> and specifies the reason in <code>errno</code></li>
           </ul>
         </li>
@@ -713,7 +713,7 @@ URL: https://code.google.com/p/io-2012-slides
         </li>
         <li>Returns:
           <ul>
-            <li>If <span class="green">succesful</span>, returns the number of written bytes (0 means nothing was written)</li>
+            <li>If <span class="green">successful</span>, returns the number of written bytes (0 means nothing was written)</li>
             <li>If <span class="red">error</span>, returns <span class="red">-1</span> and specifies the reason in <code>errno</code></li>
           </ul>
         </li>
@@ -769,7 +769,7 @@ URL: https://code.google.com/p/io-2012-slides
         </li>
       </ul>
       <ul>
-        <li>If <span class="green">succesful</span>, returns the absolute pointer position (in bytes)</li>
+        <li>If <span class="green">successful</span>, returns the absolute pointer position (in bytes)</li>
         <li>If <span class="red">error</span>, returns <span class="red">-1</span> and specifies the reason in <code>errno</code></li>
       </ul>
     </article>
