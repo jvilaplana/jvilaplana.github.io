@@ -240,6 +240,7 @@ URL: https://code.google.com/p/io-2012-slides
           printf("Num: %d, &p: %p, *p: %d\n", num, p, *p);
           exit(0);
         }</pre>
+        <footer class="source">source code: <a href="src/02/s02_01_pointers_1.c">s02_01_pointers_1.c</a></footer>
     </article>
   </slide>
 
@@ -322,6 +323,7 @@ URL: https://code.google.com/p/io-2012-slides
             printf("Content of p1 and p2 is: %d\n", *p1);
           }
         }</pre>
+        <footer class="source">source code: <a href="src/02/s02_02_pointers_2.c">s02_02_pointers_2.c</a></footer>
     </article>
   </slide>
 
@@ -351,7 +353,7 @@ URL: https://code.google.com/p/io-2012-slides
 
   #include &lt;stdio.h>
 
-  void main() {
+  int main() {
     int x;
     int *p;
     x = 10;
@@ -361,8 +363,8 @@ URL: https://code.google.com/p/io-2012-slides
           <pre class="prettyprint" data-lang="C">
   /* Correct version */
   #include &lt;stdio.h>
-  void main() {
-    int x,y, *p;
+  int main() {
+    int x, y, *p;
     p = NULL;
     x = 10;
     y = 20;
@@ -370,6 +372,7 @@ URL: https://code.google.com/p/io-2012-slides
     *p = y;
   }</pre></div></li>
       </ul>
+      <footer class="source">source code: <a href="src/02/s02_03_pointers_3.c">s02_03_pointers_3.c</a>, <a href="src/02/s02_04_pointers_4.c">s02_04_pointers_4.c</a></footer>
     </article>
   </slide>
 
@@ -454,7 +457,6 @@ URL: https://code.google.com/p/io-2012-slides
       <pre class="prettyprint" data-lang="C">
         #include &lt;stdio.h>
         void exchange(int *, int *);
-
         void main() {
           int a=1, b=2;
           printf("a = %d and b = %d\n", a, b);
@@ -462,12 +464,12 @@ URL: https://code.google.com/p/io-2012-slides
           printf("a = %d and b = %d\n", a, b);
         }
         void exchange(int *x, int *y) {
-          int aux;
-          aux = *x;
+          int aux; aux = *x;
           *x = *y;
           *y = aux;
           printf("Function: a = %d and b = %d\n", *x, *y);
         }</pre>
+        <footer class="source">source code: <a href="src/02/s02_05_args_1.c">s02_05_args_1.c</a></footer>
     </article>
   </slide>
 
@@ -675,12 +677,10 @@ URL: https://code.google.com/p/io-2012-slides
         #include &lt;stdlib.h> // File functions
         #include &lt;stdio.h>  // Standard I/O
         void main(int argc, char* argv[]) {
-          char string[11];
-          int b_read;
+          char string[11]; int b_read;
           int file = open ("my_file", O_RDONLY);
           if(file == -1) { // Check for errors
-            perror("Error while opening file");
-            exit(1);
+            perror("Error while opening file"); exit(1);
           }
           lseek(file, 400, SEEK_SET);
           b_read = read(file, string, 10); // Read 10 bytes
@@ -688,8 +688,8 @@ URL: https://code.google.com/p/io-2012-slides
           string[10] = 0;
           printf("%d B have been read. The obtained string is: %s\n", b_read, string);
           return 0;
-        }
-      </pre>
+        }</pre>
+      <footer class="source">source code: <a href="src/02/s02_06_files_1.c">s02_06_files_1.c</a>, <a href="src/02/my_file">my_file</a></footer>
     </article>
   </slide>
 
@@ -730,20 +730,18 @@ URL: https://code.google.com/p/io-2012-slides
         #include &lt;string.h> // strlen() function
         #include &lt;fcntl.h>
         #include &lt;stdlib.h>
-
         void main(int argc, char* argv[]) {
           const char* string = "Winter is coming";
           int file = open("my_file", O_CREAT|O_WRONLY, 0644);
-
           if(file == -1) {
             perror("Error when opening file");
             exit(1);
           }
-
           write(file, string, strlen(string));
           close(file);
           exit(0);
         }</pre>
+        <footer class="source">source code: <a href="src/02/s02_07_files_2.c">s02_07_files_2.c</a></footer>
     </article>
   </slide>
 
@@ -786,18 +784,19 @@ URL: https://code.google.com/p/io-2012-slides
         #include &lt;unistd.h>
         #include &lt;fcntl.h>
         #include &lt;stdlib.h>
-        char buf1[]= "abcdefghij";
-        char buf2[]= "ABCDEFGHIJ";
+        char buf1[] = "abcdefghij";
+        char buf2[] = "ABCDEFGHIJ";
 
         int main() {
           int fd;
           if((fd = creat("my_file", 0644)) < 0) { perror("my_file"); exit(-1); }
-          if(write(fd, buf1, 10)!=10) perror("buf1");
+          if(write(fd, buf1, 10) != 10) perror("buf1");
           if(lseek(fd, 40, SEEK_SET) == -1) perror("lseek");
-          if(write(fd, buf2, 10)!=10) perror("buf2");
+          if(write(fd, buf2, 10) != 10) perror("buf2");
 
           return 0;
         }</pre>
+        <footer class="source">source code: <a href="src/02/s02_08_files_3.c">s02_08_files_3.c</a></footer>
     </article>
   </slide>
 
