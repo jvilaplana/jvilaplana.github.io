@@ -66,6 +66,20 @@ URL: https://code.google.com/p/io-2012-slides
   </slide>
 
   <slide>
+    <hgroup>
+    </hgroup>
+    <article class="bigger">
+      <h2>Source files</h2>
+      <div class="centered">
+        <p>
+          Download link:
+        </p>
+        <p><big><a href="http://goo.gl/2YXspg">http://goo.gl/2YXspg</a></big></p>
+      </div>
+    </article>
+  </slide>
+
+  <slide>
     <aside class="note">
         <section>
       </section>
@@ -235,7 +249,8 @@ URL: https://code.google.com/p/io-2012-slides
         #include &lt;stdlib.h>
         void main() {
           int num = 5;
-          int *p = &num;
+          int *p;
+          p = &amp;num;
 
           printf("Num: %d, &p: %p, *p: %d\n", num, p, *p);
           exit(0);
