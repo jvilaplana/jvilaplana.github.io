@@ -1,0 +1,594 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!--
+  Slides for the third laboratory session of the Operating Systems course
+  University of Lleida | 2014-2015
+
+  Author: Jordi Vilaplana <gatasuna@gmail.com>
+
+  URL:
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/eps.png"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/udl.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+    </hgroup>
+    <article class="smaller">
+      <h2>Session 3</h2>
+      <h3>Problems #1: Process Management</h3>
+      <div class="centered">
+        <p><a target="_self" href="02_intro_progr.html">Previous session</a> - <a target="_self" href="index.html">Contents</a> - <a target="_self" href="#">Next session</a></p>
+        <img src="images/03/pointers.png" title="Pointers" alt="Pointers" />
+      </div>
+      <footer class="source">image source: <a href="http://xkcd.com/138/">xkcd.com</a></footer>
+    </article>
+  </slide>
+
+  <slide class="quote">
+    <hgroup>
+      <h2>Processes</h2>
+    </hgroup>
+    <article>
+      <q class="blue">A process is an executing (i.e., running) instance of a program. Processes are also frequently referred to as tasks.</q>
+      <div class="author">The Linux Information Project</div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Processes</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Process creation:</li>
+      </ul>
+      <pre class="prettyprint" data-lang="C">pid_t fork(void); // Include unistd.h !</pre>
+      <ul>
+        <li>
+          <ul>
+            <li><span class="blue">Parent</span>: Returns the <span class="blue">child process <code class="blue">pid</code></span> to the parent</li>
+            <li><span class="green">Child</span>: Returns <code class="green">0</code> to the son process</li>
+            <li><span class="red">Error</span>: Returns <code class="red">-1</code> if the child has not been created</li>
+          </ul>
+        </li>
+      </ul>
+      <ul>
+        <li>This function creates a new process equal to the running one</li>
+        <li>The code is the same for both processes</li>
+        <li>The child process inherits the open files of its parent</li>
+        <li>Local variables have the same initial value as when the child process was created</li>
+        <li>The memory map is different (code, data, stack): modifying a variable will only affect the process that actually modified it</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Processes</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li><b>Overlay</b>: Run a program in the context of an already existing process:</li>
+      </ul>
+      <pre class="prettyprint" data-lang="C">#include &lt;unistd.h>
+execl(const char *path, const char *arg0, ... /*, (char *)0 */);</pre>
+      <ul>
+        <li>It will only return -1 in case of error. If no error, it returns to the invoker program</li>
+        <li><b><code>path</code></b>: Path of the program to be executed</li>
+        <li><b><code>arg0</code></b>: Points to the file name associated with the file being executed</li>
+        <li>The list of arguments must be terminated by a <code>NULL</code> pointer</li>
+      </ul>
+      <pre class="prettyprint" data-lang="C">
+        #include &lt;unistd.h>
+        int main(void) {
+          execl("/home/jordi/vlc", "/home/jordi/vlc", "/home/jordi/lotr.mkv", NULL);
+          return 0;
+        }</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <p>
+          A child that terminates, but has not been waited for becomes a "zombie". The kernel maintains a minimal set of information about the zombie process (PID, termination status, resource usage information) in order to allow the parent to later perform a wait to obtain information about the child. As long as a zombie is not removed from the system via a wait, it will consume a slot in the kernel process table, and if this table fills, it will not be possible to create further processes. If a parent process terminates, then its "zombie" children (if any) are adopted by init(8), which automatically performs a wait to remove the zombies.
+        </p>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Processes</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li><b>Ending</b>: The <code>exit</code> function ends the running process, returning a <code>status</code> to its parent:</li>
+      </ul>
+      <pre class="prettyprint" data-lang="C">#include &lt;stdlib.h>
+void exit(int status);</pre>
+      <ul>
+        <li>Returns the exit code</li>
+        <li>If a <code>wait</code> is not being performed by the parent process, the terminated child remains in a <span class="red">zombie</span> state</li>
+      </ul>
+      <img src="images/03/zombie.gif" alt="Zombie" caption="Zombie" style="padding-left: 200px;" />
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <p>
+          The value of pid can be:
+          < -1 meaning wait for any child process whose process group ID is equal to the absolute value of pid.
+          -1 meaning wait for any child process.
+          0 meaning wait for any child process whose process group ID is equal to that of the calling process.
+          > 0 meaning wait for the child whose process ID is equal to the value of pid.
+        </p>
+        <p>
+          The value of options is an OR of zero or more of the following constants:
+          WNOHANG return immediately if no child has exited.
+          WUNTRACED also return if a child has stopped (but not traced via ptrace(2)). Status for traced children which have stopped is provided even if this option is not specified.
+          WCONTINUED (since Linux 2.6.10) also return if a stopped child has been resumed by delivery of SIGCONT.
+          WIFEXITED(status)
+        </p>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Processes</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li><b>Wait termination</b>: To wait until a child process ends, the following functions can be used:</li>
+      </ul>
+      <pre class="prettyprint" data-lang="C">#include &lt;sys/types.h>
+#include &lt;sys/wait.h>
+pid_t wait(int *status);
+pid_t waitpid(pid_t pid, int *status, int options);</pre>
+      <ul>
+        <li>In both cases, the invoker process execution is suspended until a child process ends</li>
+        <li>The <code>pid</code> of the ending process is returned, or <code>-1</code> if error</li>
+        <li><code>*status</code> is a pointer to the location where status information for the terminating process is to be stored</li>
+        <li>The <code>waitpid</code> function waits until a process identified by the <code>pid</code> argument ends</li>
+        <li>The <code>options</code> parameter specifies optional actions. (<code>WNOHANG|WUNTRACED</code>)</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <p>
+
+        </p>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Processes</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Check a process <code>pid</code>:</li>
+      </ul>
+      <pre class="prettyprint" data-lang="C">#include &lt;sys/types.h>
+#include &lt;unistd.h>
+
+pid_t getpid(void);
+pid_t getppid(void);</pre>
+      <ul>
+        <li><code>getpid</code> returns the <code>pid</code> of the current process</li>
+        <li><code>getppid</code> returns the <code>pid</code> of the parent process</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide class="quote">
+    <aside class="note">
+        <section>
+
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Pipes</h2>
+    </hgroup>
+    <article>
+      <q class="blue">In computer programming, especially in UNIX operating systems, a pipe is a method used to pass information from one program process to another.</q>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+        <section>
+          <p>
+            There are 2 types of pipes:
+unnamed pipes
+named pipes
+
+The examples we seen at the shell command line are unnamed. They are created, used and destroyed within the life a set of processes. Each end of the pipe has it’s own file descriptor. One end is for reading and one end is for writing. When you are done with a pipe, it is closed like any other file.
+          </p>
+          <p>
+            Named pipes are also called FIFO’s (first in first out). They have “names” and exist as special files within a file system. (file type p) They exist until they are removed with rm or unlink() They can be used with unrelated process not just descendants of the pipe creator.
+          </p>
+          <p>
+            mknod ( “mypipe”, SIFIFO, 0 ); // named pipe
+          </p>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Pipes</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Unnamed or anonymous communication and syncronized method</li>
+        <li>Only accessible between related processes (parent - child)</li>
+        <li>One-way communication with a FIFO-type structure with buffering</li>
+        <li>They work within the same machine (no network)</li>
+        <li>A pipe has two associated file descriptors p[2]:
+          <ul>
+            <li>Read: p[0]</li>
+            <li>Write: p[1]</li>
+            <li>Information written in p[1] is read in p[0]</li>
+          </ul>
+        </li>
+        <li>Unused pipe descriptors must be closed to avoid locks so processes can control when a process ends in the other end of the pipe (SIGPIPE signal)</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Pipe-related functions</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Pipe creation:</li>
+      </ul>
+      <pre class="prettyprint" data-lang="C">int pipe(int pipefd[2]); // Include unistd.h !</pre>
+      <p><code>pipefd[0]</code> for read access, <code>pipefd[1]</code> for write access</p>
+      <ul>
+        <li>File descriptor duplication:</li>
+      </ul>
+      <pre class="prettyprint" data-lang="C">int dup(int oldfd); // Include unistd.h !</pre>
+      <p>Places a copy of <code>oldfd</code> to the first available descriptor. Both descriptors will point to the same file table entry</p>
+      <pre class="prettyprint" data-lang="C">int dup(int oldfd, int newfd); // Include unistd.h !</pre>
+      <p>Places a copy to a specified location (index), closing a file descriptor if it already exists. Both return the new file descritpor value or -1 if error</p>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <p>On Linux, PIPE_BUF is 4096 bytes.</p>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Pipes</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li><b>Writing</b> is done using the standard file write system calls like <code>write()</code>, <code>fprintf()</code>, ...
+          <ul>
+            <li>If a pipe with its read descriptor is attempted to be written, the write fails and it sends the SIGPIPE signal</li>
+            <li>If less bytes than allowed by the pipe (<code>PIPE_BUF</code>) are written, the write is done atomically</li>
+            <li>If a writing attempt is done to a full pipe, the process is locked until another process reads data and frees space</li>
+          </ul>
+        </li>
+        <li><b>Reading</b> is done using the standard file read system calls like <code>read()</code>, <code>fscanf()</code>, ...
+          <ul>
+            <li>If a pipe with its write descriptor is attempted to be read, 0 is returned, indicating end of file</li>
+            <li>If more data than the available in the pipe are read, just the available bytes are read and the number of bytes read is returned</li>
+            <li>If a reading attempt is done to an empty pipe, the process is locked until new data is available</li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+
+  <slide>
+    <hgroup>
+      <h2>Problems</h2>
+    </hgroup>
+    <article>
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #1</h2>
+    </hgroup>
+    <article>
+      <p>Given the following code, reason how many processes are created. Count the parent process too:</p>
+      <pre class="prettyprint" data-lang="C">
+fork();           // 1
+if (wait(st) > 0) // 2
+  fork();         // 3</pre>
+      <ul class="build">
+        <li>[1.a] The parent process (<code>a</code>) creates a child (<code>b</code>)</li>
+        <li>[2.b] (child) The <code>wait</code> immediately returns (<code>-1</code>) as it has no children. Therefore, line #3 it not executed</li>
+        <li>[2.a] (parent) Waits until its child (<code>b</code>) ends. When it does, line #3 is executed</li>
+        <li>[3.a] (parent) Creates another process. Therefore, <b>3 processes</b> have been created (1 parent and 2 children)</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #2</h2>
+    </hgroup>
+    <article>
+      <p>How many times the <code>wait</code> is executed, and how many times it returns <code>-1</code>:</p>
+      <pre class="prettyprint" data-lang="C">
+id = fork();    // 1
+wait(st);       // 2
+if(id == 0)    // 3
+  fork();      // 4
+wait(st);      // 5
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #2</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="C">
+id = fork();    // 1
+wait(st);       // 2
+if(id == 0)    // 3
+  fork();      // 4
+wait(st);      // 5</pre>
+      <ul class="build">
+        <li>[1.a] The parent process (<code>a</code>) creates a child (<code>b</code>) <span class="blue">[0/0]</span></li>
+        <li>[2.b] (child) The <code>wait</code> immediately returns (<code>-1</code>) as it has no children <span class="blue">[1/1]</span></li>
+        <li>[3.b] (child) The <code>if</code> condition is met, so line #4 is executed by process <code>b</code> <span class="blue">[1/1]</span></li>
+        <li>[4.b] (child) The child process (<code>b</code>) creates another process (<code>c</code>) <span class="blue">[1/1]</span></li>
+        <li>[5.c] (grandson) The <code>wait</code> immediately returns (<code>-1</code>) as it has no children <span class="blue">[2/2]</span></li>
+        <li>[5.b] (child) Waits until its child (<code>c</code>) ends <span class="blue">[2/3]</span></li>
+        <li>[2.a] (parent) Waits until its child (<code>b</code>) ends <span class="blue">[2/4]</span></li>
+        <li>[3.a] (parent) The <code>if</code> condition is not met, so line #4 is not executed <span class="blue">[2/4]</span></li>
+        <li>[5.a] (parent) The <code>wait</code> immediately returns (<code>-1</code>) as it has no children <span class="blue">[3/5]</span></li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #3</h2>
+    </hgroup>
+    <article>
+      <p>How many times the <code>wait</code> is executed, and how many times it returns <code>-1</code>:</p>
+      <pre class="prettyprint" data-lang="C">
+id = fork();    // 1
+wait(st);       // 2
+if(id != 0)    // 3
+  fork();      // 4
+wait(st);      // 5
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #3</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="C">
+id = fork();    // 1
+wait(st);       // 2
+if(id != 0)    // 3
+  fork();      // 4
+wait(st);      // 5</pre>
+      <ul class="build">
+        <li>[1.a] The parent process (<code>a</code>) creates a child (<code>b</code>) <span class="blue">[0/0]</span></li>
+        <li>[2.b] (child) The <code>wait</code> immediately returns (<code>-1</code>) as it has no children <span class="blue">[1/1]</span></li>
+        <li>[3.b] (child) The <code>if</code> condition is not met, so line #4 is not executed <span class="blue">[1/1]</span></li>
+        <li>[5.b] (child) The <code>wait</code> immediately returns (<code>-1</code>) as it has no children <span class="blue">[2/2]</span></li>
+        <li>[2.a] (parent) Waits until its child (<code>b</code>) ends <span class="blue">[2/3]</span></li>
+        <li>[3.a] (parent) The <code>if</code> condition is met, so line #4 is executed <span class="blue">[2/3]</span></li>
+        <li>[4.a] (parent) The parent process (<code>a</code>) creates another process (<code>c</code>) <span class="blue">[2/3]</span></li>
+        <li>[5.c] (child2) The <code>wait</code> immediately returns (<code>-1</code>) as it has no children <span class="blue">[3/4]</span></li>
+        <li>[5.a] (parent) Waits until its child (<code>c</code>) ends <span class="blue">[3/5]</span></li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #4</h2>
+    </hgroup>
+    <article>
+      <p>Write a C program that implements the following command:</p>
+      <pre class="prettyprint" data-lang="terminal">ls -l | tee data.txt | sort -r > data_reverse.txt</pre>
+      <p>Take into account that <code>tee</code> copies standard input to standard output, making a copy in zero or more files</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #4</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="c">
+#include &lt;sys/types.h>
+#include &lt;sys/stat.h>
+#include &lt;fcntl.h>
+#include &lt;unistd.h>
+#include &lt;stdlib.h>
+
+int main() {
+  int pid;
+  int status;
+  int p1[2], p2[2];
+
+  // Execute the 'ls' part in child 1
+  // Execute the 'tee' part in child 2
+  // Write to 'data_reverse.txt' file in child 3</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #4</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="c">
+  // Execute the 'ls' part in child 1
+  pipe(p1);
+  if((pid = fork()) == 0) {
+    close(1); // Close standard output
+    dup(p1[1]); // Duplicate p1 writing into standard output
+    close(p1[0]);
+    close(p1[1]);
+
+    execlp("ls", "ls", "-l", 0);
+    exit(0);
+  }
+
+  // Execute the 'tee' part in child 2
+  // Write to 'data_reverse.txt' file in child 3</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #4</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="c">
+  // Execute the 'tee' part in child 2
+  pipe(p2);
+  if((pid = fork()) == 0) {
+    close(0); // Close standard input
+    dup(p1[0]); // Duplicate p1 reading into standard input
+    close(1); // Close standard output
+    dup(p2[1]); // Duplicate p2 writing into standard output
+    close(p1[0]);
+    close(p1[1]);
+    close(p2[0]);
+    close(p2[1]);
+    execlp("tee", "tee", "data.txt", 0);
+    exit(0);
+  }
+
+  // Write to 'data_reverse.txt' file in child 3</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #4</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="c">
+  // Write to 'data_reverse.txt' file in child 3
+  close(p1[0]);
+  close(p1[1]);
+
+  if((pid = fork()) == 0) {
+    close(0);
+    dup(p2[0]);
+    close(1);
+    if(open("data_reverse.txt", O_WRONLY|O_CREAT, 0600) < 0) {
+      exit(1);
+    }
+    close(p2[0]);
+    close(p2[1]);
+
+    execlp("sort", "sort", "-r", 0);
+    exit(0);
+  }</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #4</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="c">
+  close(p2[0]);
+  close(p2[1]);
+
+  wait(&status);
+  wait(&status);
+  wait(&status);
+
+  exit(0);
+}</pre>
+      <p><a href="03_problem_4.html" target="_blank">Problem #4 source code</a></p>
+    </article>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/udl.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;That's all!&gt;</h2>
+      <p class="auto-fadein"><a href="mailto:jordi@diei.udl.cat" style="color: white;">jordi@diei.udl.cat</a></p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-65757-2']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

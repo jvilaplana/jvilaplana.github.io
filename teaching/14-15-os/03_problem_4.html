@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Problem #4</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="js/prettify/prettify.css">
+  <script type="text/javascript" src="js/prettify/prettify.js"></script>
+</head>
+<body onload="prettyPrint()">
+  <p><a href="03_procs_mngmt.html#25"><-- return to slides</a></p>
+<pre class="prettyprint linenums" data-lang="c">
+#include &lt;sys/types.h>
+#include &lt;sys/stat.h>
+#include &lt;fcntl.h>
+#include &lt;unistd.h>
+#include &lt;stdlib.h>
+
+int main() {
+  int pid;
+  int status;
+  int p1[2], p2[2];
+
+  pipe(p1);
+  if((pid = fork()) == 0) {
+    close(1); // Close standard output
+    dup(p1[1]); // Duplicate p1 writing into standard output
+    close(p1[0]);
+    close(p1[1]);
+
+    execlp("ls", "ls", "-l", 0);
+    exit(0);
+  }
+
+  pipe(p2);
+  if((pid = fork()) == 0) {
+    close(0); // Close standard input
+    dup(p1[0]); // Duplicate p1 reading into standard input
+    close(1); // Close standard output
+    dup(p2[1]); // Duplicate p2 writing into standard output
+    close(p1[0]);
+    close(p1[1]);
+    close(p2[0]);
+    close(p2[1]);
+
+    execlp("tee", "tee", "data.txt", 0);
+    exit(0);
+  }
+
+  close(p1[0]);
+  close(p1[1]);
+
+  if((pid = fork()) == 0) {
+    close(0);
+    dup(p2[0]);
+    close(1);
+    if(open("data_reverse.txt", O_WRONLY|O_CREAT, 0600) < 0) {
+      exit(1);
+    }
+    close(p2[0]);
+    close(p2[1]);
+
+    execlp("sort", "sort", "-r", 0);
+    exit(0);
+  }
+
+  close(p2[0]);
+  close(p2[1]);
+
+  wait(&status);
+  wait(&status);
+  wait(&status);
+
+  exit(0);
+}
+</pre>
+
+</body>
+</html>
