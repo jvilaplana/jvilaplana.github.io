@@ -23,57 +23,166 @@ int main() {
   int p1[2], p2[2];
 
   pipe(p1);
+
+  /* Now we have created a pipe. Remember:
+   *  - p1[0] --> Use it to read from pipe
+   *  - p1[1] --> Use it to write to pipe
+   */
+
   if((pid = fork()) == 0) {
-    close(1); // Close standard output
-    dup(p1[1]); // Duplicate p1 writing into standard output
+    /* All these code will be only executed by the child process
+     * This child wants to send data to its parent. To do that, it will use
+     * the pipe (p1) we created before. So it will want to write to the pipe
+     */
+
+    /* Now we close the standard output. Remember:
+     *  - 0 --> standard input (stdin)
+     *  - 1 --> standard output (stdout)
+     *  - 2 --> standard error (stderr)
+     */
+    close(1);
+
+    /* Now we 'duplicate' the write file descriptor (p1[1]) into standard output
+     *
+     * Remember: dup() always uses the smallest available file descriptor,
+     *           as we just have closed 1 (stdin), we are effectively
+     *           redirecting the standard ouput into the pipe buffer
+     */
+    dup(p1[1]);
+
+    /* We can now close both pipe file descriptors */
     close(p1[0]);
     close(p1[1]);
 
+    /* We now use overaly to execute an external program */
     execlp("ls", "ls", "-l", 0);
-    exit(0);
+
+    /* 'ls' prints the data into the standard output. But hey, we have
+     * redirected the standard output to the pipe buffer
+     * So now we have all the data printed by 'ls' in our first pipe (p1)!
+     */
+
+    exit(0); // Here the child ends
   }
 
+  /* Now we are back to the parent process */
+
   pipe(p2);
+
   if((pid = fork()) == 0) {
+    /* All these code will be only executed by the child process
+     * Watch out! This child process has access to both p1 and p2 pipes,
+     * as both pipes have been created before the fork()!
+     *
+     * So this child process will read from p1 and will write to p2
+     */
+
+    /* We want to use the first pipe (p1) as our standard input,
+     * so we will use the same technique as before. Close standard input
+     * and then use dup()
+     */
     close(0); // Close standard input
     dup(p1[0]); // Duplicate p1 reading into standard input
+
+    /* Now this child process will have as standard input the information
+     * stored in p1. So we now want to also redirect the standard output to the
+     * second pipe (p2) in order to transfer the data to the parent process
+     */
     close(1); // Close standard output
     dup(p2[1]); // Duplicate p2 writing into standard output
+
+    /* At this point, we have this scenario:
+     *  - p1 --> [process] --> p2
+     *
+     * That means, this process will read from p1 and will write to p2
+     */
+
+    /* We can now close all file descriptors from p1 and p2 */
     close(p1[0]);
     close(p1[1]);
     close(p2[0]);
     close(p2[1]);
 
+    /* Again, we use overaly to call an external program. Remember:
+     *  - 'tee' takes data from standard input. Oh wait! We have just redirected
+     *    it. So, it will take the data from p1
+     *  - 'tee' prints the given data to standard output AND copies it to the
+     *    specified files. Again, we have just redirected the standard output to
+     *    p2. Therefore, in the p2 buffer we will have this data
+     */
     execlp("tee", "tee", "data.txt", 0);
-    exit(0);
+
+    exit(0); // Here the child ends
   }
 
+  /* Now we are back to the parent process, again */
+
+  /* So now the data is stored in p2, right? Then we can close p1 */
   close(p1[0]);
   close(p1[1]);
 
   if((pid = fork()) == 0) {
-    close(0);
-    dup(p2[0]);
-    close(1);
+    /* All these code will be only executed by the child process
+     * We want here to read from p2 and write to a file:
+     *  p2 ---> [process] ---> file
+     *
+     */
+
+    /* So again, we will use p2 as our standard input */
+
+    close(0); // Close standard input
+    dup(p2[0]); // Duplicate p2 reading into standard input
+
+    /* We also want to redirect our standard output to a file. Remember:
+     * open() always returns the smallest integer greater than zero that is
+     * still available. So, if we close the standard output and then we open a
+     * file, it will be automatically linked to the standard output
+     */
+
+    close(1); // Close standard output
+
     if(open("data_reverse.txt", O_WRONLY|O_CREAT, 0600) < 0) {
+      // Error check, if open() returns something < 0 it is an error
       exit(1);
     }
+
+    /* So now we have redirected our standard output to the 'data_reverse.txt'
+     * file.
+     */
+
+    /* We don't need p2 anymore, so we can close it */
     close(p2[0]);
     close(p2[1]);
 
+    /* Now, 'sort -r' gets data from standard input and prints it reversed to
+     * the standard output.
+     *
+     * So we have it: our standard input is p2 and our standard output is the
+     * 'data_reverse.txt' file!
+     */
     execlp("sort", "sort", "-r", 0);
+
+    /* We can now hapily end this child process */
     exit(0);
   }
 
+  /* Back to the parent process one last time */
+
+  /* We can now close p2, our mission is complete! */
   close(p2[0]);
   close(p2[1]);
 
+  /* Remember to wait for all the child processes
+   * ( do not abandon them, they wouldn't do it ;-( )
+   */
+
   wait(&status);
   wait(&status);
   wait(&status);
 
-  exit(0);
+  exit(0); // Finally the parent process ends :-D
 }
+
 </pre>
 
 </body>
