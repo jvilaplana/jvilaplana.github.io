@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Problem #6</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="js/prettify/prettify.css">
+  <script type="text/javascript" src="js/prettify/prettify.js"></script>
+</head>
+<body onload="prettyPrint()">
+  <p><a href="04_prmng_probl.html#10"><-- return to slides</a></p>
+<pre class="prettyprint linenums" data-lang="c">
+#include &lt;stdio.h>
+#include &lt;unistd.h>
+#include &lt;stdlib.h>
+#include &lt;string.h>
+
+int main() {
+  int status, pid;
+  int shared_var = 0;
+  char buffer[80];
+
+  if(fork() == 0) {
+    shared_var = shared_var + 15;
+    sprintf(buffer, "Child's value: %d\n", shared_var);
+     write(1, buffer, strlen(buffer));
+  }
+
+  shared_var = shared_var + 2;
+  pid = wait(&status);
+  sprintf(buffer, "Child PID: %d\n", pid);
+  write(1, buffer, strlen(buffer));
+  shared_var = shared_var + 10;
+  sprintf(buffer, "Parent's value: %d\n", shared_var);
+  write(1, buffer, strlen(buffer));
+  exit(0);
+}</pre>
+
+</body>
+</html>
