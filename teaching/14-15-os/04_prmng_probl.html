@@ -59,9 +59,11 @@ URL: https://code.google.com/p/io-2012-slides
       <h3>Problems #2: Process management</h3>
       <div class="centered">
         <p><a target="_self" href="03_procs_mngmt.html">Previous session</a> - <a target="_self" href="index.html">Contents</a> - <a target="_self" href="#">Next session</a></p>
-        <img src="images/03/pointers.png" title="Pointers" alt="Pointers" />
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <img src="images/04/forkbomb.png" title="Fork bomb" alt="Fork bomb" />
       </div>
-      <footer class="source">image source: <a href="http://xkcd.com/138/">xkcd.com</a></footer>
+      <footer class="source"><a href="http://en.wikipedia.org/wiki/Fork_bomb">Fork bomb</a></footer>
     </article>
   </slide>
 
@@ -157,7 +159,7 @@ URL: https://code.google.com/p/io-2012-slides
       </div>
       <p>&nbsp;</p>
       <ul>
-        <li>What does the program? What it will output and in which order?</li>
+        <li>What does the program do? What will it output and in which order?</li>
         <li>Explain its programming errors, its impacts and give a possible solution</li>
       </ul>
     </article>
@@ -173,19 +175,8 @@ URL: https://code.google.com/p/io-2012-slides
       </div>
       <p>&nbsp;</p>
       <ul>
-        <li>Explain its execution step by step and what it will output</li>
+        <li>Explain its execution step by step and what will be its output</li>
       </ul>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Problem #7</h2>
-    </hgroup>
-    <article>
-      <p>Write a C program that implements the following command:</p>
-      <pre class="prettyprint" data-lang="terminal">  ls | grep test > output.dat</pre>
-      <p>Use the <code>forkexec</code> system call</p>
     </article>
   </slide>
 
@@ -194,11 +185,71 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Problem #8</h2>
     </hgroup>
     <article>
-      <p>There is a <code>users</code> command located in the <code>/bin</code> directory. This command prints in the standard output the name of the connected users. It also prints the same output in the channel 4.</p>
+      <p>There is a <code>users</code> command located in the <code>/bin</code> directory. This command prints in the standard output the name of the connected users. It also prints the same output in communication channel 4.</p>
       <p>Write a C program that implements the following command:</p>
-      <pre class="prettyprint" data-lang="terminal">  users 2> errors.dat 4> connected.dat | wc -l</pre>
+      <pre data-lang="terminal">users 2> errors.dat 4> connected.dat | wc -l</pre>
       <p><b>Note:</b> 2> is a redirection of descriptor 2 (stderr)</p>
       <p><b>Note:</b> 4> is a redirection of descriptor 4</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #9</h2>
+    </hgroup>
+    <article>
+      <p>Describe the behavior of these programs. Assume that no errors are produced</p>
+      <div class="columns-2">
+        <pre class="prettyprint" data-lang="a">
+  main(int num, char *names[]) {
+    write(1, "Process start\n", 14);
+    execl(names[1], names[1], NULL);
+    write(2, "Finished\n", 9);
+  }</pre>
+        <pre class="prettyprint" data-lang="b">
+  main(int num, char *names[]){
+    write(1, "Process start\n", 14);
+    fork();
+    write(2, "Finished\n", 9);
+  }</pre>
+      </div>
+      <div class="columns-2">
+        <pre class="prettyprint" data-lang="c">
+  main(int num, char *names[]) {
+    write(1, "Process start\n", 14);
+    fork();
+    execl(names[1], names[1], 0);
+    write(2, "Finished\n", 9);
+  }
+
+
+  </pre>
+        <pre class="prettyprint" data-lang="d">
+  main(int num, char *names[]){
+    write(1, "Process start\n", 14);
+    switch(fork()) {
+      case -1: exit(1);
+      case 0:
+        execl(names[1], names[1], 0);
+        exit(1);
+      default: wait(&estat);
+        write(2, "Finished\n", 9);
+  }}</pre>
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #11</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Write a C program that allows the execution of two programs linked by a pipe (<code>prog1 | prog2</code>)</li>
+        <li>How can prog1 detect that prog2 has finished?</li>
+        <li>How can prog2 detect that prog1 has finished?</li>
+        <li>Which code should be added (and where), so if prog2 ends before prog1, prog1 will write a message showing the premature ending of prog2</li>
+      </ul>
     </article>
   </slide>
 
