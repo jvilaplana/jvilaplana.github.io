@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Problem #11</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="js/prettify/prettify.css">
+  <script type="text/javascript" src="js/prettify/prettify.js"></script>
+</head>
+<body onload="prettyPrint()">
+  <p><a href="04_prmng_probl.html#20"><-- return to slides</a></p>
+<pre class="prettyprint linenums" data-lang="c">
+#include &lt;stdio.h>
+#include &lt;unistd.h>
+#include &lt;stdlib.h>
+#include &lt;string.h>
+
+int main() {
+   int p[2];
+   int pid1, pid2;
+   int status;
+   int retrn;
+
+   pipe(p);
+   if((pid1 = fork()) == 0) { // 1st child
+     close(1);
+     dup(p[1]);
+     close(p[0]);
+     close(p[1]);
+     execlp("prog1", "prog1", NULL);
+     exit(1); // Execution error
+   }
+   if((pid2 = fork()) == 0) { // 2nd child
+     close(0);
+     dup(p[0]);
+     close(p[0]);
+     close(p[1]);
+     execlp("prog2", "prog2", NULL);
+     exit(1); // Execution error
+   }
+   close(p[0]);
+   close(p[1]);
+   retrn = wait(&status);
+   retrn = wait(&status);
+}</pre>
+
+</body>
+</html>

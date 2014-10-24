@@ -149,6 +149,19 @@ URL: https://code.google.com/p/io-2012-slides
   </slide>
 
   <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>The main process creates a new process (A)</li>
+          <li>Process A creates a new process (B)</li>
+          <li>Process A creates a new process (C)</li>
+          <li>Process A waits for 1 of his sons</li>
+          <li>The main process waits for his son</li>
+          <li></li>
+          <li></li>
+        </ul>
+      </section>
+    </aside>
     <hgroup>
       <h2>Problem #5</h2>
     </hgroup>
@@ -161,6 +174,106 @@ URL: https://code.google.com/p/io-2012-slides
         <li>What does the program do? What will it output and in which order?</li>
         <li>Explain its programming errors, its impacts and give a possible solution</li>
       </ul>
+      <ul class="build">
+        <li>We have 4 processes: <code>MAIN</code>, <code>A</code>, <code>B</code>, <code>C</code></li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #5</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="main">
+#include &lt;stdio.h>
+#include &lt;unistd.h>
+#include &lt;stdlib.h>
+
+int main() {
+  int status, result;
+
+  switch(fork()) {
+    default:
+      result = wait(&status);
+      printf("PID: %d\n", result);
+      exit(0);
+  }
+}</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #5</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="A">
+case 0:
+  printf("Hello I'm process A\n");
+  switch(fork()) {
+    default:
+      switch(fork()) {
+        default:
+          result = wait(&status);
+          printf("PID: %d\n", result);
+          exit(0);
+      }
+      <strike>result = wait(&status);</strike>
+      <strike>printf("PID: %d\n", result);</strike>
+  }</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #5</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="B">
+case 0:
+  printf("Hello I'm process B\n");
+  exit(0);</pre>
+      <pre class="prettyprint" data-lang="C">
+case 0:
+  printf("Hello I'm process C\n");
+  exit(0);</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #5</h2>
+    </hgroup>
+    <article>
+      <div class="centered">
+        <img src="images/04/problem5_timeline.png" alt="Problem 5 timeline" title="Problem 5 timeline" />
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #5</h2>
+    </hgroup>
+    <article>
+      <p>The error is in the second <code>wait()</code>, which will never be executed</p>
+      <p>Possible solution:</p>
+      <pre class="prettyprint" data-lang="c">
+// [...] Process A
+case 0:
+  printf("Hello I'm process A\n");
+  switch(fork()) {
+    default:
+      switch(fork()) {
+        default:
+          result = wait(&status);
+          printf("PID: %d\n", result);
+          result = wait(&status);
+          printf("PID: %d\n", result);
+          exit(0);
+      }
+  // [...]</pre>
     </article>
   </slide>
 
@@ -181,6 +294,23 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <hgroup>
+      <h2>Problem #6</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Output:</li>
+      </ul>
+      <pre data-lang="terminal">
+  Child's value: 15
+  Child PID: -1
+  Parent's value: 27
+  Child PID: {PID_CHILD}
+  Parent's value: 12</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
       <h2>Problem #8</h2>
     </hgroup>
     <article>
@@ -189,6 +319,9 @@ URL: https://code.google.com/p/io-2012-slides
       <pre data-lang="terminal">users 2> errors.dat 4> connected.dat | wc -l</pre>
       <p><b>Note:</b> 2> is a redirection of descriptor 2 (stderr)</p>
       <p><b>Note:</b> 4> is a redirection of descriptor 4</p>
+      <ul class="build">
+        <li><a href="04_problem_8.html">Problem 8 code</a></li>
+      </ul>
     </article>
   </slide>
 
@@ -219,22 +352,31 @@ URL: https://code.google.com/p/io-2012-slides
     fork();
     execl(names[1], names[1], 0);
     write(2, "Finished\n", 9);
-  }
+  }</pre>
+        <p><b>D</b></p>
+        <p>Write a C program that creates a new process which will execute the binary indicated by <code>names[1]</code>, and that writes in <code>stderr</code> the message "Finished" when its child process ends</p>
+      </div>
+    </article>
+  </slide>
 
-
-  </pre>
-        <pre class="prettyprint" data-lang="d">
-  main(int num, char *names[]){
+  <slide>
+    <hgroup>
+      <h2>Problem #9</h2>
+    </hgroup>
+    <article>
+      <p>Write a C program that creates a new process which will execute the binary indicated by <code>names[1]</code>, and that writes in <code>stderr</code> the message "Finished" when its child process ends</p>
+      <pre class="prettyprint" data-lang="c">
+  main(int num, char *names[]) {
     write(1, "Process start\n", 14);
     switch(fork()) {
       case -1: exit(1);
       case 0:
-        execl(names[1], names[1], 0);
+        execl(names[1], names[1], NULL);
         exit(1);
-      default: wait(&estat);
+      default: wait(&status);
         write(2, "Finished\n", 9);
-  }}</pre>
-      </div>
+    }
+  }</pre>
     </article>
   </slide>
 
@@ -244,11 +386,36 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article>
       <ul>
-        <li>Write a C program that allows the execution of two programs linked by a pipe (<code>prog1 | prog2</code>)</li>
-        <li>How can prog1 detect that prog2 has finished?</li>
-        <li>How can prog2 detect that prog1 has finished?</li>
-        <li>Which code should be added (and where), so if prog2 ends before prog1, prog1 will write a message showing the premature ending of prog2</li>
+        <li>1. Write a C program that allows the execution of two programs linked by a pipe (<code>prog1 | prog2</code>)</li>
+        <li>2. How can prog1 detect that prog2 has finished?</li>
+        <li>3. How can prog2 detect that prog1 has finished?</li>
+        <li>4. Which code should be added (and where), so if prog2 ends before prog1, prog1 will write a message showing the premature ending of prog2</li>
       </ul>
+      <ul class="build">
+        <li>1. <a href="04_problem_11.html">Problem 11 code</a></li>
+        <li>2. When <code>prog2</code> ends, p[0] will be closed. Therefore, process <code>prog1</code> will get a <code>SIGPIPE</code> signal when trying to write to pipe</li>
+        <li>3. When <code>prog1</code> ends, p[1] will be closed. Therefore, process <code>prog2</code> will get EOF (0 bytes) when trying to read from pipe</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #11</h2>
+    </hgroup>
+    <article>
+      <p>4. Code of <code>prog1</code> should be modified to handle the <code>SIGPIPE</code> signal in order to write the message:</p>
+      <pre class="prettyprint" data-lang="c">
+  void sig_handler() {
+    printf ("Some message\n");
+    exit(1);
+  }
+
+  int main() {
+    // ...
+    signal (SIGPIPE, sig_handler);
+    // ...
+  }</pre>
     </article>
   </slide>
 
