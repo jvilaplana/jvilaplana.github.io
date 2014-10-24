@@ -219,21 +219,9 @@ URL: https://code.google.com/p/io-2012-slides
     fork();
     execl(names[1], names[1], 0);
     write(2, "Finished\n", 9);
-  }
-
-
-  </pre>
-        <pre class="prettyprint" data-lang="d">
-  main(int num, char *names[]){
-    write(1, "Process start\n", 14);
-    switch(fork()) {
-      case -1: exit(1);
-      case 0:
-        execl(names[1], names[1], 0);
-        exit(1);
-      default: wait(&estat);
-        write(2, "Finished\n", 9);
-  }}</pre>
+  }</pre>
+        <p><b>D</b></p>
+        <p>Write a C program that creates a new process which will execute the binary indicated by <code>names[1]</code>, and that writes in <code>stderr</code> the message "Finished" when its child process ends</p>
       </div>
     </article>
   </slide>
