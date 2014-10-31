@@ -1,0 +1,159 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!--
+  Slides for the 5th laboratory session of the Operating Systems course
+  University of Lleida | 2014-2015
+
+  Author: Jordi Vilaplana <gatasuna@gmail.com>
+
+  URL:
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/eps.png"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/udl.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+    </hgroup>
+    <article class="smaller">
+      <h2>Session 5</h2>
+      <h3>Continuous Evaluation Problems #1 (Process Management) - Correction</h3>
+      <div class="centered">
+        <p><a target="_self" href="04_prmng_probl.html">Previous session</a> - <a target="_self" href="index.html">Contents</a> - <a target="_self" href="#">Next session</a></p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <img src="images/05/linux_halloween.png" title="Linux Halloween" alt="Linux Halloween" />
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <p><a href="http://www3.cs.stonybrook.edu/~cse533/asgn1/pipes.html">Font</a></p>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Problem #1 (3p)</h2>
+    </hgroup>
+    <article>
+      <p>Correction criteria:</p>
+      <ul>
+        <li>Incorrect processes hierarchy (<span class="red">-1p</span>)</li>
+        <li>Incorrect synchronization (<span class="red">-1p</span>)</li>
+        <li>Zombie processes, incorrect <code>wait()</code> usage (<span class="red">-1p</span>)</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #2 (4p)</h2>
+    </hgroup>
+    <article>
+      <p>Correction criteria:</p>
+      <ul>
+        <li>a) (<span class="green">2p</span>)
+          <ul>
+            <li>Incorrect explanation of signal treatment or not explained at all (<span class="red">-0.5p</span>)</li>
+            <li>Incorrect explanation of child creation and the overlay that it performs (<span class="red">-0.5p</span>)</li>
+            <li>Incorrect explanation of father's code (sleep, signals sent to children) or not explained at all (<span class="red">-0.5p</span>)</li>
+            <li>Incorrect explanation of child process (executes pgm comptador.c, infinite loop, it never ends) (<span class="red">-0.5p</span>)</li>
+          </ul>
+        </li>
+        <li>b) (<span class="green">2p</span>)
+          <ul>
+            <li>Problem not detected or incorrectly explained (<span class="red">-0.5p</span>)</li>
+            <li>No solution coded (<span class="red">-0.5p</span>)</li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #3 (3p)</h2>
+    </hgroup>
+    <article>
+      <p>Correction criteria (1 point per section):</p>
+      <ul>
+        <li>Missing redirection or done incorrectly (<span class="red">-0.25p</span>)</li>
+        <li>Incorrect <code>execlp</code> (missing path, parameters or ending <code>NULL</code> (<span class="red">-0.25p</span>)</li>
+        <li>Missing <code>wait</code> in father or <code>exit</code> in children (<span class="red">-0.25p</span>)</li>
+        <li>Pipe or inverse redirection not created or unused file descriptors not closed (<span class="red">-0.25p</span>)</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/udl.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;That's all!&gt;</h2>
+      <p class="auto-fadein"><a href="mailto:jordi@diei.udl.cat" style="color: white;">jordi@diei.udl.cat</a></p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-65757-2']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
