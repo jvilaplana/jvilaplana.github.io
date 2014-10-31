@@ -87,7 +87,7 @@ URL: https://code.google.com/p/io-2012-slides
             <td>1</td>
             <td>5</td>
             <td>1</td>
-            <td>1CPU, 1E/S, 2CPU, 1CPU</td>
+            <td>1 CPU, 1 I/O, 2 CPU, 3 I/O, 1 CPU</td>
           </tr>
           <tr>
             <td>Process B</td>
@@ -95,7 +95,7 @@ URL: https://code.google.com/p/io-2012-slides
             <td>2</td>
             <td>4</td>
             <td>2</td>
-            <td>2CPU, 3E/S, 1CPU,  3E/S, 1CPU</td>
+            <td>2 CPU, 3 I/O, 1 CPU, 3 I/O, 1 CPU</td>
           </tr>
           <tr>
             <td>Process C</td>
@@ -103,7 +103,7 @@ URL: https://code.google.com/p/io-2012-slides
             <td>3</td>
             <td>2</td>
             <td>3</td>
-            <td>4CPU, 4E/S, 2CPU,  2E/S, 1CPU</td>
+            <td>4 CPU, 4 I/O, 2 CPU, 2 I/O, 1 CPU</td>
           </tr>
           <tr>
             <td>Process D</td>
@@ -111,7 +111,7 @@ URL: https://code.google.com/p/io-2012-slides
             <td>3</td>
             <td>3</td>
             <td>4</td>
-            <td>1CPU, 4E/S, 3CPU,  4E/S, 2CPU</td>
+            <td>1 CPU, 4 I/O, 3 CPU, 4 I/O, 2 CPU</td>
           </tr>
           <tr>
             <td>Process E</td>
@@ -119,7 +119,7 @@ URL: https://code.google.com/p/io-2012-slides
             <td>4</td>
             <td>6</td>
             <td>5</td>
-            <td>2CPU, 2E/S, 4CPU, 1E/S, 2CPU</td>
+            <td>2 CPU, 2 I/O, 4 CPU, 1 I/O, 2 CPU</td>
           </tr>
           <tr>
             <td>Process F</td>
@@ -127,7 +127,7 @@ URL: https://code.google.com/p/io-2012-slides
             <td>4</td>
             <td>1</td>
             <td>6</td>
-            <td>4CPU, 1E/S, 2CPU</td>
+            <td>4 CPU, 1 I/O, 2 CPU</td>
           </tr>
         </tbody>
       </table>
@@ -2869,7 +2869,7 @@ URL: https://code.google.com/p/io-2012-slides
             <td>W</td>
             <td>W</td>
             <td>E</td>
-            <td class="highlight">F</td>
+            <td>F</td>
             <td></td>
             <td></td>
             <td></td>
@@ -2999,8 +2999,8 @@ URL: https://code.google.com/p/io-2012-slides
             <th>14</th>
             <th>15</th>
             <th>16</th>
-            <td class="highlight">17</td>
-            <th>18</th>
+            <th>17</th>
+            <td class="highlight">18</td>
             <th>19</th>
             <th>20</th>
           </tr>
@@ -3071,7 +3071,7 @@ URL: https://code.google.com/p/io-2012-slides
             <td>W</td>
             <td>W</td>
             <td>W</td>
-            <td></td>
+            <td class="highlight">P</td>
             <td></td>
             <td></td>
           </tr>
@@ -3094,7 +3094,7 @@ URL: https://code.google.com/p/io-2012-slides
             <td>W</td>
             <td>E</td>
             <td>E</td>
-            <td></td>
+            <td>E</td>
             <td></td>
             <td></td>
           </tr>
@@ -3117,7 +3117,7 @@ URL: https://code.google.com/p/io-2012-slides
             <td>E</td>
             <td>B</td>
             <td>B</td>
-            <td></td>
+            <td>B</td>
             <td></td>
             <td></td>
           </tr>
@@ -3140,9 +3140,1011 @@ URL: https://code.google.com/p/io-2012-slides
             <td>P</td>
             <td>P</td>
             <td>P</td>
+            <td>P</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <p></p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #6</h2>
+    </hgroup>
+    <article>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+            <th>9</th>
+            <th>10</th>
+            <th>11</th>
+            <th>12</th>
+            <th>13</th>
+            <th>14</th>
+            <th>15</th>
+            <th>16</th>
+            <th>17</th>
+            <th>18</th>
+            <td class="highlight">19</td>
+            <th>20</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A</td>
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
+            <td>E</td>
+            <td>W</td>
+            <td>E</td>
+            <td>E</td>
+            <td>W</td>
+            <td>W</td>
+            <td>W</td>
+            <td>E</td>
+            <td>F</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>B</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>E</td>
+            <td>B</td>
+            <td>E</td>
+            <td>W</td>
+            <td>W</td>
+            <td>W</td>
+            <td>E</td>
+            <td>W</td>
+            <td>W</td>
+            <td>W</td>
+            <td>E</td>
+            <td>F</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>C</td>
+            <td></td>
+            <td>E</td>
+            <td>E</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>E</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>E</td>
+            <td>W</td>
+            <td>W</td>
+            <td>W</td>
+            <td>W</td>
+            <td>P</td>
+            <td class="highlight">E</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>D</td>
+            <td></td>
+            <td></td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>E</td>
+            <td>W</td>
+            <td>W</td>
+            <td>W</td>
+            <td>W</td>
+            <td>E</td>
+            <td>E</td>
+            <td>E</td>
+            <td class="highlight">W</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>E</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>E</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>F</td>
+            <td>E</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <p></p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #6</h2>
+    </hgroup>
+    <article>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+            <th>9</th>
+            <th>10</th>
+            <th>11</th>
+            <th>12</th>
+            <th>13</th>
+            <th>14</th>
+            <th>15</th>
+            <th>16</th>
+            <th>17</th>
+            <th>18</th>
+            <th>19</th>
+            <td class="highlight">20</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>E</td>
+            <td>W</td>
+            <td>E</td>
+            <td>E</td>
+            <td>W</td>
+            <td>W</td>
+            <td>W</td>
+            <td>E</td>
+            <td>F</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>B</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>E</td>
+            <td>B</td>
+            <td>E</td>
+            <td>W</td>
+            <td>W</td>
+            <td>W</td>
+            <td>E</td>
+            <td>W</td>
+            <td>W</td>
+            <td>W</td>
+            <td>E</td>
+            <td>F</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>C</td>
+            <td></td>
+            <td>E</td>
+            <td>E</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>E</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>E</td>
+            <td>W</td>
+            <td>W</td>
+            <td>W</td>
+            <td>W</td>
+            <td>P</td>
+            <td>E</td>
+            <td>E</td>
+          </tr>
+          <tr>
+            <td>D</td>
+            <td></td>
+            <td></td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>E</td>
+            <td>W</td>
+            <td>W</td>
+            <td>W</td>
+            <td>W</td>
+            <td>E</td>
+            <td>E</td>
+            <td>E</td>
+            <td>W</td>
+            <td>W</td>
+          </tr>
+          <tr>
+            <td>E</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>E</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+          </tr>
+          <tr>
+            <td>F</td>
+            <td>E</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>B</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+          </tr>
+        </tbody>
+      </table>
+      <p></p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #6</h2>
+    </hgroup>
+    <article>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <td class="highlight">21</td><th>22</th><th>23</th><th>24</th>
+            <th>25</th><th>26</th><th>27</th><th>28</th>
+            <th>29</th><th>30</th><th>31</th><th>32</th>
+            <th>33</th><th>34</th><th>35</th><th>36</th>
+            <th>37</th><th>38</th><th>39</th><th>40</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>B</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>C</td>
+            <td class="highlight">W</td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>D</td>
+            <td>W</td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>E</td>
+            <td class="highlight">E</td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>F</td>
+            <td>P</td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+        </tbody>
+      </table>
+      <p></p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #6</h2>
+    </hgroup>
+    <article>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>21</th><td class="highlight">22</td><th>23</th><th>24</th>
+            <th>25</th><th>26</th><th>27</th><th>28</th>
+            <th>29</th><th>30</th><th>31</th><th>32</th>
+            <th>33</th><th>34</th><th>35</th><th>36</th>
+            <th>37</th><th>38</th><th>39</th><th>40</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>B</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>C</td>
+            <td>W</td><td>W</td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>D</td>
+            <td>W</td><td>W</td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>E</td>
+            <td>E</td><td class="highlight">W</td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>F</td>
+            <td>P</td><td class="highlight">E</td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+        </tbody>
+      </table>
+      <p></p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #6</h2>
+    </hgroup>
+    <article>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>21</th><th>22</th><td class="highlight">23</td><th>24</th>
+            <th>25</th><th>26</th><th>27</th><th>28</th>
+            <th>29</th><th>30</th><th>31</th><th>32</th>
+            <th>33</th><th>34</th><th>35</th><th>36</th>
+            <th>37</th><th>38</th><th>39</th><th>40</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>B</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>C</td>
+            <td>W</td><td>W</td><td class="highlight">E</td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>D</td>
+            <td>W</td><td>W</td><td class="highlight">P</td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>E</td>
+            <td>E</td><td>W</td><td>W</td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>F</td>
+            <td>P</td><td>E</td><td class="highlight">B</td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+        </tbody>
+      </table>
+      <p></p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #6</h2>
+    </hgroup>
+    <article>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>21</th><th>22</th><th>23</th><td class="highlight">24</td>
+            <th>25</th><th>26</th><th>27</th><th>28</th>
+            <th>29</th><th>30</th><th>31</th><th>32</th>
+            <th>33</th><th>34</th><th>35</th><th>36</th>
+            <th>37</th><th>38</th><th>39</th><th>40</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>B</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>C</td>
+            <td>W</td><td>W</td><td>E</td><td class="highlight">F</td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>D</td>
+            <td>W</td><td>W</td><td>P</td><td class="highlight">E</td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>E</td>
+            <td>E</td><td>W</td><td>W</td><td class="highlight">P</td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>F</td>
+            <td>P</td><td>E</td><td>B</td><td>B</td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+        </tbody>
+      </table>
+      <p></p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #6</h2>
+    </hgroup>
+    <article>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>21</th><th>22</th><th>23</th><th>24</th>
+            <td class="highlight">25</td><th>26</th><th>27</th><th>28</th>
+            <th>29</th><th>30</th><th>31</th><th>32</th>
+            <th>33</th><th>34</th><th>35</th><th>36</th>
+            <th>37</th><th>38</th><th>39</th><th>40</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>B</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>C</td>
+            <td>W</td><td>W</td><td>E</td><td>F</td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>D</td>
+            <td>W</td><td>W</td><td>P</td><td>E</td><td>E</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>E</td>
+            <td>E</td><td>W</td><td>W</td><td>P</td><td>P</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>F</td>
+            <td>P</td><td>E</td><td>B</td><td>B</td><td>B</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+        </tbody>
+      </table>
+      <p></p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #6</h2>
+    </hgroup>
+    <article>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>21</th><th>22</th><th>23</th><th>24</th>
+            <th>25</th><td class="highlight">26</td><th>27</th><th>28</th>
+            <th>29</th><th>30</th><th>31</th><th>32</th>
+            <th>33</th><th>34</th><th>35</th><th>36</th>
+            <th>37</th><th>38</th><th>39</th><th>40</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>B</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>C</td>
+            <td>W</td><td>W</td><td>E</td><td>F</td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>D</td>
+            <td>W</td><td>W</td><td>P</td><td>E</td><td>E</td>
+            <td class="highlight">F</td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>E</td>
+            <td>E</td><td>W</td><td>W</td><td>P</td><td>P</td>
+            <td>P</td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>F</td>
+            <td>P</td><td>E</td><td>B</td><td>B</td><td>B</td>
+            <td class="highlight">E</td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+        </tbody>
+      </table>
+      <p></p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #6</h2>
+    </hgroup>
+    <article>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>21</th><th>22</th><th>23</th><th>24</th>
+            <th>25</th><th>26</th><th>27</th><td class="highlight">28</td>
+            <th>29</th><th>30</th><th>31</th><th>32</th>
+            <th>33</th><th>34</th><th>35</th><th>36</th>
+            <th>37</th><th>38</th><th>39</th><th>40</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>B</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>C</td>
+            <td>W</td><td>W</td><td>E</td><td>F</td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>D</td>
+            <td>W</td><td>W</td><td>P</td><td>E</td><td>E</td>
+            <td>F</td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>E</td>
+            <td>E</td><td>W</td><td>W</td><td>P</td><td>P</td>
+            <td>P</td><td>P</td><td class="highlight">E</td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>F</td>
+            <td>P</td><td>E</td><td>B</td><td>B</td><td>B</td>
+            <td>E</td><td>E</td><td class="highlight">W</td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+        </tbody>
+      </table>
+      <p></p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #6</h2>
+    </hgroup>
+    <article>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>21</th><th>22</th><th>23</th><th>24</th>
+            <th>25</th><th>26</th><th>27</th><th>28</th>
+            <td class="highlight">29</td><th>30</th><th>31</th><th>32</th>
+            <th>33</th><th>34</th><th>35</th><th>36</th>
+            <th>37</th><th>38</th><th>39</th><th>40</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>B</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>C</td>
+            <td>W</td><td>W</td><td>E</td><td>F</td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>D</td>
+            <td>W</td><td>W</td><td>P</td><td>E</td><td>E</td>
+            <td>F</td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>E</td>
+            <td>E</td><td>W</td><td>W</td><td>P</td><td>P</td>
+            <td>P</td><td>P</td><td>E</td><td class="highlight">B</td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>F</td>
+            <td>P</td><td>E</td><td>B</td><td>B</td><td>B</td>
+            <td>E</td><td>E</td><td>W</td><td class="highlight">E</td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+        </tbody>
+      </table>
+      <p></p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #6</h2>
+    </hgroup>
+    <article>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>21</th><th>22</th><th>23</th><th>24</th>
+            <th>25</th><th>26</th><th>27</th><th>28</th>
+            <th>29</th><th>30</th><td class="highlight">31</td><th>32</th>
+            <th>33</th><th>34</th><th>35</th><th>36</th>
+            <th>37</th><th>38</th><th>39</th><th>40</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>B</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>C</td>
+            <td>W</td><td>W</td><td>E</td><td>F</td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>D</td>
+            <td>W</td><td>W</td><td>P</td><td>E</td><td>E</td>
+            <td>F</td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>E</td>
+            <td>E</td><td>W</td><td>W</td><td>P</td><td>P</td>
+            <td>P</td><td>P</td><td>E</td><td>B</td><td>B</td>
+            <td class="highlight">E</td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>F</td>
+            <td>P</td><td>E</td><td>B</td><td>B</td><td>B</td>
+            <td>E</td><td>E</td><td>W</td><td>E</td><td>E</td>
+            <td class="highlight">F</td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+        </tbody>
+      </table>
+      <p></p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #6</h2>
+    </hgroup>
+    <article>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>21</th><th>22</th><th>23</th><th>24</th>
+            <th>25</th><th>26</th><th>27</th><th>28</th>
+            <th>29</th><th>30</th><th>31</th><th>32</th>
+            <th>33</th><th>34</th><th>35</th><th>36</th>
+            <td class="highlight">37</td><th>38</th><th>39</th><th>40</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>B</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>C</td>
+            <td>W</td><td>W</td><td>E</td><td>F</td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>D</td>
+            <td>W</td><td>W</td><td>P</td><td>E</td><td>E</td>
+            <td>F</td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>E</td>
+            <td>E</td><td>W</td><td>W</td><td>P</td><td>P</td>
+            <td>P</td><td>P</td><td>E</td><td>B</td><td>B</td>
+            <td>E</td><td>E</td><td>E</td><td>W</td><td>E</td>
+            <td>E</td><td class="highlight">F</td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>F</td>
+            <td>P</td><td>E</td><td>B</td><td>B</td><td>B</td>
+            <td>E</td><td>E</td><td>W</td><td>E</td><td>E</td>
+            <td>F</td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
           </tr>
         </tbody>
       </table>
