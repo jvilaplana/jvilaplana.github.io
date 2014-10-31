@@ -1,0 +1,1 @@
+switch(fork()) {  case -1:  exit(1);  case 0:    close(0);    open("input.dat", O_RDONLY);    close(1);    open("output.dat", O_WRONLY|O_CREAT, 0600);    execlp("/bin/lister", "/bin/lister", "me", "10", NULL);    exit(1);  default:}
