@@ -4139,8 +4139,106 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Problem #6</h2>
     </hgroup>
     <article>
-      <p>CPU utilization rate</p>
+      <p>c) Justify why E and F wait times are so high compared to the processes in Queue 3</p>
+      <ul class="build">
+        <li>The waiting times are so high due to Queue 4 being the one with lowest priority. Therefore, while other queues have prepared processes, the ones in this queue will have to wait</li>
+      </ul>
+    </article>
+  </slide>
 
+  <slide>
+    <hgroup>
+      <h2>Problem #6</h2>
+    </hgroup>
+    <article>
+      <p>d) Assuming now a multiprogrammed system that has <b>2 processors</b>, plan the execution of the processes</p>
+    </article>
+  </slide>
+
+  <slide>
+    <div class="ex6table"></div>
+    <article>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>1</th><th>2</th><th>3</th><th>4</th>
+            <th>5</th><th>6</th><th>7</th><th>8</th>
+            <th>9</th><th>10</th><th>11</th><th>12</th>
+            <th>13</th><th>14</th><th>15</th><th>16</th>
+            <th>17</th><th>18</th><th>19</th><th>20</th>
+            <th>21</th><th>22</th><th>23</th><th>24</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A</td>
+            <td></td><td></td><td></td><td></td><td>E</td>
+            <td>W</td><td>E</td><td>E</td><td>W</td><td>W</td>
+            <td>W</td><td>E</td><td>F</td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>B</td>
+            <td></td><td></td><td></td><td>E</td><td>E</td>
+            <td>W</td><td>W</td><td>W</td><td>E</td><td>W</td>
+            <td>W</td><td>W</td><td>E</td><td>F</td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>C</td>
+            <td></td><td>E</td><td>E</td><td>E</td><td>B</td>
+            <td>E</td><td>W</td><td>W</td><td>W</td><td>W</td>
+            <td>E</td><td>E</td><td>W</td><td>W</td><td>E</td>
+            <td>F</td><td></td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>D</td>
+            <td></td><td></td><td>E</td><td>W</td><td>W</td>
+            <td>W</td><td>W</td><td>E</td><td>E</td><td>E</td>
+            <td>W</td><td>W</td><td>W</td><td>W</td><td>E</td>
+            <td>E</td><td>F</td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>E</td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td>P</td><td>P</td><td>P</td><td>P</td><td>P</td>
+            <td>P</td><td>P</td><td>E</td><td>E</td><td>W</td>
+            <td>W</td><td>E</td><td>E</td><td>E</td><td>E</td>
+            <td>W</td><td>E</td><td>E</td><td>F</td>
+          </tr>
+          <tr>
+            <td>F</td>
+            <td>E</td><td>E</td><td>B</td><td>B</td><td>B</td>
+            <td>E</td><td>E</td><td>W</td><td>P</td><td>E</td>
+            <td>E</td><td>F</td><td></td><td></td><td></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+        </tbody>
+      </table>
+      <p></p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #6</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li><b>CPU utilization rate:</b> <code>35/46 = 76.08%</code></li>
+        <li><b>Throughput:</b> <code>6/23 = 0.26</code></li>
+        <li><b>Mean wait time:</b> <code>(0 + 0 + 1 + 0 + 7 + 4) / 6 = 2</code></li>
+        <li><b>Mean response time:</b> <code>(0 + 0 + 0 + 0 + 7 + 0) / 6 = 1.17</code></li>
+        <li><b>Normalized return time:</b>
+          <ul>
+            <li><code>(8/8 + 10/10 + 14/13 + 14/14 + 18/11 + 11/7) / 6 = 1.21</code></li></li>
+          </ul>
+      </ul>
     </article>
   </slide>
 
