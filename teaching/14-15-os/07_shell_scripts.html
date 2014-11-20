@@ -98,6 +98,279 @@ URL: https://code.google.com/p/io-2012-slides
     </article>
   </slide>
 
+  <slide>
+    <hgroup>
+      <h2>External commands location</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>External commands are searched in the directories specified by the <code>PATH</code> environment variable</li>
+      </ul>
+      <pre data-lang="terminal">root@winterfell:~# echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games</pre>
+      <ul>
+        <li>To modify the search path:</li>
+      </ul>
+      <pre data-lang="terminal">root@winterfell:~# PATH=~/bin/:$PATH</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Environment variables</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>There are some environment variables that can have an impact to the command-line interpreter</li>
+        <li>The main ones are:
+          <ul>
+            <li><code>PATH</code> - routes to search external commands</li>
+            <li><code>HOME</code> - home directory of current user</li>
+            <li><code>USER</code> - current user</li>
+            <li><code>PWD</code> - current directory</li>
+            <li><code>MAIL</code> - file where mail is stored</li>
+          </ul>
+        </li>
+        <li>The default values of these variables can be modified in the startup files of the command-line interpreter</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <p>What is a login or non-login shell?</p>
+        <p>When you login (type username and password) via console, either sitting at the machine, or remotely via ssh: .bash_profile is executed to configure your shell before the initial command prompt.</p>
+        <p>But, if you’ve already logged into your machine and open a new terminal window (xterm) inside Gnome or KDE, then .bashrc is executed before the window command prompt. .bashrc is also run when you start a new bash instance by typing /bin/bash in a terminal.</p>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Startup shell files</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>These files prepare the execution environment that each users needs to use the system</li>
+        <li>Startup configuration files (login shell):
+          <ul>
+            <li><code>/etc/profile</code></li>
+            <li><code>~/.bash_profile</code></li>
+            <li><code>~/.bash_login</code></li>
+            <li><code>~/.profile</code></li>
+          </ul>
+        </li>
+        <li>Startup configuration files (non-login shell):
+          <ul>
+            <li><code>~/.bashrc</code></li>
+          </ul>
+        </li>
+        <li>Logout configuration files:
+          <ul>
+            <li><code>~/.bash_logout</code></li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Script programming</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Most interpreters provide their own programming language that allows the creation of programs (shell-scripts)</li>
+        <li>These scripts can invoke any command available in interactive mode</li>
+        <li>There are additional commands designed to support the programming inside the shell (variables, control structures, functions, ...)</li>
+      </ul>
+      <ul>
+        <li>Script files are plain text files with execution permission:<br /><code>chmod 755 my_script</code> or <code>chmod +x my_script</code></li>
+        <li>The first line of the script is used to specify the location of the command-line interpreter that will be used:<br /><code>#!/bin/bash</code></li>
+        <li>The execution of scripts is done in the same way as regular executables: <code>./my_script</code></li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Variables</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Bash allows the declaration and usage of variables, defined as character strings</li>
+        <li>There are three types of variables:
+          <ul>
+            <li>Environment variables (editable, read-only)</li>
+            <li>User-defined variables</li>
+            <li>Read-only variables (constants)</li>
+          </ul>
+        </li>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Read-only environment variables</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>These variables can be accessed but not modified</li>
+        <li>Relative to command-line arguments:
+          <ul>
+            <li><code>$0</code> - name of the script</li>
+            <li><code>$1-$9</code> - input arguments 1-9</li>
+            <li><code>${10},${11},...</code> - input arguments > 9</i></li>
+            <li><code>$*</code> - all the arguments</li>
+            <li><code>$@</code> - all the arguments</li>
+            <li><code>$#</code> - number of arguments</li>
+          </ul>
+        </li>
+        <li>Relative to the process:
+          <ul>
+            <li><code>$$</code> - current process id (script)</li>
+            <li><code>$!</code> - most recent background process id</li>
+            <li><code>$?</code> - most recent command exit status</li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Example</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="bash">#!/bin/bash
+echo "Script name: $0"
+echo "Number of arguments: $#"
+echo "Arguments are: $@"
+ls -lh
+echo "Last command exit code: $?"
+more wololo
+echo "Last command exit code: $?"
+echo "My PID: $$"
+top &
+echo "Last command PID: $!"
+kill -9 $!
+echo "Last command exit code: $?"
+exit 0
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <p>Double-quotes, technically, the expansion of $var is seen as one word. Without them, each element is seen as a different word</p>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>User-defined variables</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Created and initialized by the user</li>
+        <li>Their scope is restricted to the shell. Using <code>export</code> they can be made accessible to any subsequent process that runs in the same shell process</li>
+        <li>No need to declare a variable</li>
+        <li>A variable can contain a number, a character or a string of characters</li>
+      </ul>
+      <pre class="prettyprint" data-lang="bash">#!/bin/bash
+myname=Arya
+echo myname
+echo $myname
+myname="Arya       Stark"
+echo $myname
+echo "$myname"
+echo '$myname'
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Typing variables</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li><code>declare -r var=1</code> --> Read only variable</li>
+        <li><code>declare -i var=1</code> --> Integer variable</li>
+      </ul>
+      <pre class="prettyprint" data-lang="bash">#!/bin/bash
+touch data1
+touch data2
+files=data*
+echo $files
+echo "$files"
+num=666
+echo $num
+declare -i x=999
+echo $x
+x="nine"
+echo $x
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Deleting and listing variables</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Declared variables exist while the shell is active</li>
+        <li>A variable can be deleted by assigning a null value to it or using the <code>unset</code> command</li>
+        <li>To list all defined variables in a script the commands <code>set</code> and <code>env</code> can be used</li>
+      </ul>
+      <pre class="prettyprint" data-lang="bash">#!/bin/bash
+name=Arya
+echo $name
+unset name
+echo $name
+name=Stark
+echo $name
+name=
+echo $name
+set
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Lists</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>All elements within the list have the same type</li>
+        <li>The first element has the position 0</li>
+        <li>There is not a defined maximum size</li>
+        <li>It is not necessary to define all the indexes</li>
+      </ul>
+      <pre data-lang="bash">#!/bin/bash
+mylist=(Winter is comming)
+echo ${mylist[0]}
+echo ${mylist[1]}
+echo ${mylist[2]}
+mylist[10]=run
+echo ${mylist[10]}
+${mylist[*]}         # All of the items in the array
+${!mylist[*]}        # All of the indexes in the array
+${#mylist[*]}        # Number of items in the array
+${#mylist[0]}        # Length of item zero
+</pre>
+    </article>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/udl.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;That's all!&gt;</h2>
+      <p class="auto-fadein"><a href="mailto:jordi@diei.udl.cat" style="color: white;">jordi@diei.udl.cat</a></p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+    </p>
+  </slide>
+
   <slide class="thank-you-slide segue nobackground">
     <aside class="gdbar right"><img src="images/udl.png"></aside>
     <article class="flexbox vleft auto-fadein">
