@@ -85,8 +85,8 @@ URL: https://code.google.com/p/io-2012-slides
             <li>Shell script can take input from user, file and output them on screen</li>
             <li>Useful to create our own commands</li>
             <li>Save lots of time</li>
-            <li>To automate some task of day today life</li>
-            <li>System Administration part can be also automated</li>
+            <li>To automate some everyday tasks</li>
+            <li>System administration part can be also automated</li>
           </ul>
         </li>
         <li>Command types
@@ -256,6 +256,9 @@ kill -9 $!
 echo "Last command exit code: $?"
 exit 0
 </pre>
+      <footer class="source">
+        source code: <a href="src/07/script_01.sh">script_01.sh</a>
+      </footer>
     </article>
   </slide>
 
@@ -284,6 +287,9 @@ echo $myname
 echo "$myname"
 echo '$myname'
 </pre>
+      <footer class="source">
+        source code: <a href="src/07/script_02.sh">script_02.sh</a>
+      </footer>
     </article>
   </slide>
 
@@ -309,6 +315,9 @@ echo $x
 x="nine"
 echo $x
 </pre>
+      <footer class="source">
+        source code: <a href="src/07/script_03.sh">script_03.sh</a>
+      </footer>
     </article>
   </slide>
 
@@ -333,6 +342,9 @@ name=
 echo $name
 set
 </pre>
+      <footer class="source">
+        source code: <a href="src/07/script_04.sh">script_04.sh</a>
+      </footer>
     </article>
   </slide>
 
@@ -357,8 +369,10 @@ echo ${mylist[10]}
 echo ${mylist[*]}         # All of the items in the array
 echo ${!mylist[*]}        # All of the indexes in the array
 echo ${#mylist[*]}        # Number of items in the array
-echo ${#mylist[0]}        # Length of item zero
-</pre>
+echo ${#mylist[0]}        # Length of item zero</pre>
+      <footer class="source">
+        source code: <a href="src/07/script_05.sh">script_05.sh</a>
+      </footer>
     </article>
   </slide>
 
@@ -380,7 +394,10 @@ dir_list=`ls -l`
 echo $dir_list              # Removes trailing newlines
 echo "$dir_list"
       </pre>
-      <footer class="source"><a href="http://tldp.org/LDP/abs/html/commandsub.html">Further detail about Command Substitution</a></footer>
+      <footer class="source">
+        <p>source code: <a href="src/07/script_06.sh">script_06.sh</a></p>
+        <a href="http://tldp.org/LDP/abs/html/commandsub.html">Further detail about Command Substitution</a>
+      </footer>
     </article>
   </slide>
 
@@ -398,6 +415,9 @@ echo "Script $0 started"
 exec date
 echo "Script $0 finished"       # This line will not be executed
       </pre>
+      <footer class="source">
+        source code: <a href="src/07/script_07.sh">script_07.sh</a>
+      </footer>
     </article>
   </slide>
 
@@ -456,6 +476,9 @@ let a++
 let a=a+5
 echo $a
 </pre>
+      <footer class="source">
+        source code: <a href="src/07/script_08.sh">script_08.sh</a>
+      </footer>
     </article>
   </slide>
 
@@ -723,6 +746,82 @@ else
   echo "Both files are not equal (return code != 0)"
 fi
 exit 0</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2><code>case</code> structure</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Allows to implement a multiple conditional flux similar to multiple nested <code>if</code> structures</li>
+      </ul>
+      <pre>case $test-var in
+  pattern1)
+    commands
+    ;;
+  pattern2)
+    commands
+    ;;
+  pattern3)
+    commands
+    ;;
+  *)
+    commands
+    ;;
+esac</pre>
+      </article>
+    </slide>
+
+    <slide>
+      <hgroup>
+        <h2><code>case</code> structure patterns</h2>
+      </hgroup>
+      <article>
+        <ul>
+          <li>The patterns for each <code>case</code> option follow the same rules as file patterns</li>
+          <li>The following wildcards are available:
+            <ul>
+              <li><code>*</code> any character or string</li>
+              <li><code>?</code> any single character</li>
+              <li><code>[...]</code> a range of values</li>
+              <li><code>|</code> alternative characters or strings (equivalent to the or operator)</li>
+            </ul>
+          </li>
+        </ul>
+        <pre>
+[0-9]|[a-f]|[A-F]   # Hex digit
+file*.txt           # Names starting with file and ending with .txt</pre>
+        </article>
+      </slide>
+
+      <slide>
+        <hgroup>
+          <h2><code>case</code> example</h2>
+        </hgroup>
+        <article>
+          <pre data-lang="bash">
+#!/bin/bash
+echo "d: current datetime"
+echo "l: current dir listing"
+echo "q: exit program"
+echo "Chose an option: "
+read option
+case “$option” in
+  d|D) date
+    ;;
+  l|L) ls
+    ;;
+  q|Q) exit 0
+    ;;
+  *) echo "Incorrect option"
+    exit 1
+    ;;
+esac</pre>
+      <footer class="source">
+        source code: <a href="src/07/script_14.sh">script_14.sh</a>
+      </footer>
     </article>
   </slide>
 
