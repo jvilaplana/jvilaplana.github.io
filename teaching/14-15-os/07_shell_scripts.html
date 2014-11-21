@@ -66,6 +66,7 @@ URL: https://code.google.com/p/io-2012-slides
       <div class="centered">
         <p><a target="_self" href="06_procs_plani.html">Previous session</a> - <a target="_self" href="index.html">Contents</a> - <a target="_self" href="#">Next session</a></p>
         <p>&nbsp;</p>
+        <p><a href="src/07/scripts.zip">scripts source files</a></p>
         <p>&nbsp;</p>
         <img src="images/07/shell_script.png" title="Shell Script" alt="Shell Script" />
       </div>
@@ -353,22 +354,376 @@ echo ${mylist[1]}
 echo ${mylist[2]}
 mylist[10]=run
 echo ${mylist[10]}
-${mylist[*]}         # All of the items in the array
-${!mylist[*]}        # All of the indexes in the array
-${#mylist[*]}        # Number of items in the array
-${#mylist[0]}        # Length of item zero
+echo ${mylist[*]}         # All of the items in the array
+echo ${!mylist[*]}        # All of the indexes in the array
+echo ${#mylist[*]}        # Number of items in the array
+echo ${#mylist[0]}        # Length of item zero
 </pre>
     </article>
   </slide>
 
-  <slide class="thank-you-slide segue nobackground">
-    <aside class="gdbar right"><img src="images/udl.png"></aside>
-    <article class="flexbox vleft auto-fadein">
-      <h2>&lt;That's all!&gt;</h2>
-      <p class="auto-fadein"><a href="mailto:jordi@diei.udl.cat" style="color: white;">jordi@diei.udl.cat</a></p>
+  <slide>
+    <hgroup>
+      <h2>Command substitution</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Reassign the output of a command, usually to a variable or as input for another command</li>
+        <li>It can be done using <i>backquotes</i> <code>(`...`)</code> or using <code>$()</code></li>
+      </ul>
+      <pre data-lang="bash">#!/bin/bash
+current_dir=`pwd`
+echo $current_dir
+echo "Current dir is $(pwd)"
+touch `cat file_names`
+dir_list=`ls -l`
+echo $dir_list              # Removes trailing newlines
+echo "$dir_list"
+      </pre>
+      <footer class="source"><a href="http://tldp.org/LDP/abs/html/commandsub.html">Further detail about Command Substitution</a></footer>
     </article>
-    <p class="auto-fadein" data-config-contact>
-    </p>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Exec command</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Equivalent to the <code>execl</code> system call. Overlaps the code of the specified command over the process that is being executed</li>
+        <li>Once the <code>exec</code> command is completed, it is not possible to go back to the original process. Therefore the rest of the code is never executed</li>
+      </ul>
+      <pre data-lang="bash">#!/bin/bash
+echo "Script $0 started"
+exec date
+echo "Script $0 finished"       # This line will not be executed
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Arithmetic operations</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Variable values are stored as strings. To perform arithmetic or logic operations they must be transformed to integers, perform the operation and transform them back to string</li>
+        <li>There are multiple ways to perform this process:
+          <ul>
+            <li><code>let</code> command</li>
+            <li>Expansion <code>$((&lt;expression>))</code></li>
+            <li><code>expr</code> command</li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Arithmetic operators</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li><code>+</code>, <code>-</code> &#8594; Plus and minus</li>
+        <li><code>*</code>, <code>/</code>, <code>%</code> &#8594; Multiplication, division and mod</li>
+        <li><code>**</code> &#8594; Exponentiation</li>
+        <li><code><<</code>, <code><<=</code>, <code>>></code>, <code>>>=</code>, <code>~</code>, <code>!</code>, <code>&</code>, <code>|</code> &#8594; Bitwise operators</li>
+        <li><code>>=</code>, <code><=</code>, <code>></code>, <code><</code> &#8594; Comparators bigger and smaller</li>
+        <li><code>==</code>, <code>!=</code> &#8594; Comparators equal and not equal</li>
+        <li><code>&&</code>, <code>||</code> &#8594; Logical AND and OR</li>
+      </ul>
+      <footer class="source">
+        <p><a href="http://tldp.org/LDP/abs/html/ops.html">Further detail about arithmetic operators</a></p>
+        <p><a href="http://tldp.org/LDP/abs/html/comparison-ops.html">Further detail about comparison operators</a></p>
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>The <code>let</code> command</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Carries out arithmetic operations on variables. Returns <code>0</code> when args are not evaluated to 0, <code>1</code> otherwise.</li>
+      </ul>
+      <pre data-lang="bash">#!/bin/bash
+let "a=20" "b=3"
+let c=a+b
+echo $c
+let a++
+let a=a+5
+echo $a
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Expansion <code>$(())</code></h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Provides a tool for performing (integer) arithmetic operations in scripts</li>
+      </ul>
+      <pre data-lang="bash">#!/bin/bash
+n=0
+n=$((n+=2))
+echo "n&lt;&lt;2 equals to $((n&lt;&lt;2))"   # 2 bits displacement to the left (*4)
+a=66 b=600
+echo "a + b equals to $((a+b))"
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>The <code>expr</code> command</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Like <code>let</code> and <code>$(())</code>, it can also be used to evaluate an expression. Arguments must be separated by spaces. Operations may be arithmetic, comparison, string, or logical</li>
+      </ul>
+      <pre data-lang="bash">#!/bin/bash
+expr 10 + 2     # returns 12
+expr 10+2       # returns 10+2
+n=10
+n=`expr "$n" + 1`
+echo $n
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>String manipulation</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li><code>${#string}</code> Length of $string</li>
+        <li><code>${string:pos}</code> Extracts the substring starting at <i>pos</i></li>
+        <li><code>${string:pos:length}</code> Extracts a substring of <i>length</i> characters starting at <i>pos</i></li>
+        <li><code>${string#pattern}</code> Strip shortest match of $pattern from front of $string</li>
+        <li><code>${string##pattern}</code> Strip longest match of $pattern from front of $string</li>
+        <li><code>${string%pattern}</code> Strip shortest match of $pattern from back of $string</li>
+        <li><code>${string%%pattern}</code> Strip longest match of $pattern from back of $string</li>
+        <li><code>${string/substring/replacement}</code> Replace first match of $substring with $replacement</li>
+        <li><code>${string//substring/replacement}</code> Replace all matches of $substring with $replacement</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>The <code>set</code> command</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Assigns the arguments of <code>set</code> to the values of command-line arguments ($1-$9)</li>
+      </ul>
+      <pre data-lang="bash">#!/bin/bash
+set hell to highway $(date)
+echo $3 $2 $1
+echo $@
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Reading from strandard input</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>The <code>read</code> command allows to read infromation from standard input and assign it to one or multiple variables</li>
+      </ul>
+      <pre data-lang="bash">#!/bin/bash
+echo "Write your name and surname: "
+read name surname
+echo "Your name is $name $surname"
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Flow control structures</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Bash includes the following flow control structures:
+          <ul>
+            <li><code>if then</code></li>
+            <li><code>case</code></li>
+            <li><code>for</code></li>
+            <li><code>while</code></li>
+            <li><code>until</code></li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>The <code>if then</code> structure</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Allows to perform a conditional execution depending on the value of a conditional expression</li>
+      </ul>
+      <pre>if &lt;conditional_expr>
+    then
+    commands
+fi
+</pre>
+      <ul>
+        <li>The conditional expression is evaluated from the result of a command or by using the <code>test</code> command</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>The <code>test</code> command</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Allows to evaluate a condition, returning true (0) or false (1)</li>
+        <li>The following formats can be used:</li>
+      </ul>
+      <pre>test &lt;expression>
+[&lt;expression>]
+      </pre>
+      <ul>
+        <li>Allows to compare conditions about integers, strings, files or several logical expressions</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Comparison operators: files</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li><code>-e file</code> file exists</li>
+        <li><code>-r file</code> file is readable</li>
+        <li><code>-w file</code> file is writable</li>
+        <li><code>-x file</code> file is executable</li>
+        <li><code>-f file</code> file is a regular file</li>
+        <li><code>-d file</code> file is a directory</li>
+        <li><code>-h,-L file</code> file is a symbolic link</li>
+        <li><code>-c file</code> file is a character device</li>
+        <li><code>-b file</code> file is a block device</li>
+        <li><code>-p file</code> file is a pipe</li>
+      </ul>
+      <footer class="source">
+        <p><a href="http://tldp.org/LDP/abs/html/refcards.html#AEN22593">Further detail about comparison file operators</a></p>
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Comparison operators: strings and numbers</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Strings:
+          <ul>
+            <li><code>str</code> str is not a null string</li>
+            <li><code>-z str</code> str length is 0</li>
+            <li><code>-n str</code> str length is not 0</li>
+            <li><code>str = str2</code> str and str2 are equal</li>
+            <li><code>str != str2</code> str and str2 are different</li>
+          </ul>
+        </li>
+        <li>Numbers:
+          <ul>
+            <li><code>n1 -eq n2</code> n1 and n2 are equal</li>
+            <li><code>n1 -ne n2</code> n1 and n2 are different</li>
+            <li><code>n1 -gt n2</code> n1 is bigger than n2</li>
+            <li><code>n1 -ge n2</code> n1 is bigger or equal than n2</li>
+            <li><code>n1 -lt n2</code> n1 is smaller than n2</li>
+            <li><code>n1 -le n2</code> n1 is smaller or equal than n2</li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Comparison operators</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Using the following operators more complex expressions can be built:
+          <ul>
+            <li><code>!</code> negation</li>
+            <li><code>(condition)</code> to group expressions</li>
+            <li><code>-a</code> logic AND operator</li>
+            <li><code>-o</code> logic OR operator</li>
+          </ul>
+        </li>
+      </ul>
+      <pre>
+["$n1" -gt "n2" -a -z "$str"]   # n1 > n2 and str is not empty
+[! -n "$str"]                   # str is empty
+[-f f1 -a -w f1]                # f1 is a file and can be written
+[f1 -nt f2]                     # f1 is newer than f2
+[f1 -ot f2]                     # f1 is older than f2
+[f1 -ef f2]                     # f1 and f2 are links to the same file
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Conditional structures</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li><code>if else</code>, <code>if elif</code></li>
+      </ul>
+      <pre>
+if &lt;expression>
+    then
+    commands
+elif &lt;expression>
+    then
+    commands
+else
+    commands
+fi</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Example</h2>
+    </hgroup>
+    <article>
+      <pre data-lang="bash">#!/bin/bash
+if test $# -lt 2
+  then # Input parameters check
+  echo "Introduce at least 2 parameters"
+  exit -1
+fi
+if [ $1 = $2 ]
+  then # Check if it is the same file
+  echo "Files are equal"
+  exit -2
+elif cmp $1 $2
+  then # Command to compare files
+  echo "Both files are equal (return code == 0)"
+else
+  echo "Both files are not equal (return code != 0)"
+fi
+exit 0</pre>
+    </article>
   </slide>
 
   <slide class="thank-you-slide segue nobackground">
