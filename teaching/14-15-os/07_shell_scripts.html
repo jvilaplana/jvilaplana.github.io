@@ -840,6 +840,167 @@ esac</pre>
     </article>
   </slide>
 
+  <slide>
+    <hgroup>
+      <h2><code>for</code> structure</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>The <code>for</code> structure allows to implement a loop through all the words of a list</li>
+        <li>Syntax 1:</li>
+      </ul>
+      <pre>for &lt;variable> [in &lt;arg-list>]
+do
+  commands
+done</pre>
+      <ul>
+        <li>If no arg-list is supplied, the script input arguments are used</li>
+        <li>Syntax 2:</li>
+      </ul>
+      <pre>for ((initialization; end_condition; increment))
+do
+  commands
+done</pre>
+      </article>
+    </slide>
+
+  <slide>
+    <hgroup>
+      <h2><code>for</code> example</h2>
+    </hgroup>
+    <article>
+      <pre data-lang="bash">#!/bin/bash
+for i in 5 4 3 2 1
+  do
+  echo "the bomb will explode in $i..."
+done
+echo "boom"
+for ((i=5; i>0; i--))
+  do
+  echo "you will respawn in $i..."
+done
+echo "welcome back"
+exit 0</pre>
+      <footer class="source">
+        source code: <a href="src/07/script_15.sh">script_15.sh</a>
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Nested <code>for</code> example</h2>
+    </hgroup>
+    <article>
+      <pre data-lang="bash">#!/bin/bash
+if [ $# -eq 0 ]; then
+  echo "error: number missing"; exit 1
+fi
+# External loop
+for (( i=1; i<=$1; i++ )); do
+  # Inner loop
+  for (( j=1; j<=10; j++ )); do
+    echo -n "`expr $i \* $j` "
+  done
+  echo ""
+done
+exit 0</pre>
+      <footer class="source">
+        source code: <a href="src/07/script_16.sh">script_16.sh</a>
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2><code>while</code> structure</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Executes the commands inside the loop while the expression evaluates to <code>true</code></li>
+        <li>Syntax:</li>
+      </ul>
+      <pre>while &lt;expression>
+do
+  commands
+done</pre>
+      <ul>
+        <li>The loop can be altered with:
+          <ul>
+            <li><code>break</code> - exits the loop</li>
+            <li><code>continue</code> - exits the current iteration</li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2><code>while</code> example</h2>
+    </hgroup>
+    <article>
+      <pre data-lang="bash">#!/bin/bash
+if [ $# -eq 0 ]; then
+echo "error: number missing"; exit 1
+fi
+n=$1
+i=1
+while [ $i -le 10 ]; do
+  echo "$n * $i = èxpr $i \* $n`"
+  i=`expr $i++`
+done
+exit 0</pre>
+      <footer class="source">
+        source code: <a href="src/07/script_17.sh">script_17.sh</a>
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2><code>until</code> structure</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Executes the commands inside the loop while the expression evaluates to <code>false</code></li>
+        <li>Syntax:</li>
+      </ul>
+      <pre>until &lt;expression>
+do
+  commands
+done
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2><code>until</code> example</h2>
+    </hgroup>
+    <article>
+      <pre data-lang="bash">#!/bin/bash
+if [ $# -eq 0 ]; then
+  echo "error - number missing"; exit 1
+fi
+echo "Try to guess the number between 1 and 10"
+n=$RANDOM
+let "n=(n%10) + 1"
+tries=0; guess=0
+until [ "$guess" -eq "$n" -o "$tries" -ge $1 ]; do
+  echo -n "Write a number: "; read guess
+  let "tries=$tries+1"
+done
+if [ "$n" -eq "$guess" ]
+  then echo "Victory ;-)"
+  else echo "Defeat ;-("
+fi</pre>
+      <footer class="source">
+        source code: <a href="src/07/script_18.sh">script_18.sh</a>
+      </footer>
+    </article>
+  </slide>
+
   <slide class="thank-you-slide segue nobackground">
     <aside class="gdbar right"><img src="images/udl.png"></aside>
     <article class="flexbox vleft auto-fadein">
