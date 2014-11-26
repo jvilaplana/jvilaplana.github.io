@@ -20,3 +20,4 @@ if [ "$n" -eq "$guess" ]
   then echo "Victory ;-)"
   else echo "Defeat ;-("
 fi
+exit 0

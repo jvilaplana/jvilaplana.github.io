@@ -241,7 +241,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Example</h2>
     </hgroup>
     <article>
-      <pre class="prettyprint" data-lang="bash">#!/bin/bash
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
 echo "Script name: $0"
 echo "Number of arguments: $#"
 echo "Arguments are: $@"
@@ -278,7 +278,7 @@ exit 0
         <li>No need to declare a variable</li>
         <li>A variable can contain a number, a character or a string of characters</li>
       </ul>
-      <pre class="prettyprint" data-lang="bash">#!/bin/bash
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
 myname=Arya
 echo myname
 echo $myname
@@ -302,7 +302,7 @@ echo '$myname'
         <li><code>declare -r var=1</code> --> Read only variable</li>
         <li><code>declare -i var=1</code> --> Integer variable</li>
       </ul>
-      <pre class="prettyprint" data-lang="bash">#!/bin/bash
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
 touch data1
 touch data2
 files=data*
@@ -331,7 +331,7 @@ echo $x
         <li>A variable can be deleted by assigning a null value to it or using the <code>unset</code> command</li>
         <li>To list all defined variables in a script the commands <code>set</code> and <code>env</code> can be used</li>
       </ul>
-      <pre class="prettyprint" data-lang="bash">#!/bin/bash
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
 name=Arya
 echo $name
 unset name
@@ -359,7 +359,7 @@ set
         <li>There is not a defined maximum size</li>
         <li>It is not necessary to define all the indexes</li>
       </ul>
-      <pre data-lang="bash">#!/bin/bash
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
 mylist=(Winter is comming)
 echo ${mylist[0]}
 echo ${mylist[1]}
@@ -385,7 +385,7 @@ echo ${#mylist[0]}        # Length of item zero</pre>
         <li>Reassign the output of a command, usually to a variable or as input for another command</li>
         <li>It can be done using <i>backquotes</i> <code>(`...`)</code> or using <code>$()</code></li>
       </ul>
-      <pre data-lang="bash">#!/bin/bash
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
 current_dir=`pwd`
 echo $current_dir
 echo "Current dir is $(pwd)"
@@ -410,7 +410,7 @@ echo "$dir_list"
         <li>Equivalent to the <code>execl</code> system call. Overlaps the code of the specified command over the process that is being executed</li>
         <li>Once the <code>exec</code> command is completed, it is not possible to go back to the original process. Therefore the rest of the code is never executed</li>
       </ul>
-      <pre data-lang="bash">#!/bin/bash
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
 echo "Script $0 started"
 exec date
 echo "Script $0 finished"       # This line will not be executed
@@ -468,7 +468,7 @@ echo "Script $0 finished"       # This line will not be executed
       <ul>
         <li>Carries out arithmetic operations on variables. Returns <code>0</code> when args are not evaluated to 0, <code>1</code> otherwise.</li>
       </ul>
-      <pre data-lang="bash">#!/bin/bash
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
 let "a=20" "b=3"
 let c=a+b
 echo $c
@@ -490,7 +490,7 @@ echo $a
       <ul>
         <li>Provides a tool for performing (integer) arithmetic operations in scripts</li>
       </ul>
-      <pre data-lang="bash">#!/bin/bash
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
 n=0
 n=$((n+=2))
 echo "n&lt;&lt;2 equals to $((n&lt;&lt;2))"   # 2 bits displacement to the left (*4)
@@ -511,7 +511,7 @@ echo "a + b equals to $((a+b))"
       <ul>
         <li>Like <code>let</code> and <code>$(())</code>, it can also be used to evaluate an expression. Arguments must be separated by spaces. Operations may be arithmetic, comparison, string, or logical</li>
       </ul>
-      <pre data-lang="bash">#!/bin/bash
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
 expr 10 + 2     # returns 12
 expr 10+2       # returns 10+2
 n=10
@@ -551,7 +551,7 @@ echo $n
       <ul>
         <li>Assigns the arguments of <code>set</code> to the values of command-line arguments ($1-$9)</li>
       </ul>
-      <pre data-lang="bash">#!/bin/bash
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
 set hell to highway $(date)
 echo $3 $2 $1
 echo $@
@@ -570,7 +570,7 @@ echo $@
       <ul>
         <li>The <code>read</code> command allows to read infromation from standard input and assign it to one or multiple variables</li>
       </ul>
-      <pre data-lang="bash">#!/bin/bash
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
 echo "Write your name and surname: "
 read name surname
 echo "Your name is $name $surname"
@@ -741,7 +741,7 @@ fi</pre>
       <h2>Example</h2>
     </hgroup>
     <article>
-      <pre data-lang="bash">#!/bin/bash
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
 if test $# -lt 2
   then # Input parameters check
   echo "Introduce at least 2 parameters"
@@ -816,7 +816,7 @@ file*.txt           # Names starting with file and ending with .txt</pre>
           <h2><code>case</code> example</h2>
         </hgroup>
         <article>
-          <pre data-lang="bash">
+          <pre class="prettyprint lang-bash" data-lang="bash">
 #!/bin/bash
 echo "d: current datetime"
 echo "l: current dir listing"
@@ -869,7 +869,7 @@ done</pre>
       <h2><code>for</code> example</h2>
     </hgroup>
     <article>
-      <pre data-lang="bash">#!/bin/bash
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
 for i in 5 4 3 2 1
   do
   echo "the bomb will explode in $i..."
@@ -892,7 +892,7 @@ exit 0</pre>
       <h2>Nested <code>for</code> example</h2>
     </hgroup>
     <article>
-      <pre data-lang="bash">#!/bin/bash
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
 if [ $# -eq 0 ]; then
   echo "error: number missing"; exit 1
 fi
@@ -940,7 +940,7 @@ done</pre>
       <h2><code>while</code> example</h2>
     </hgroup>
     <article>
-      <pre data-lang="bash">#!/bin/bash
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
 if [ $# -eq 0 ]; then
 echo "error: number missing"; exit 1
 fi
@@ -979,7 +979,7 @@ done
       <h2><code>until</code> example</h2>
     </hgroup>
     <article>
-      <pre data-lang="bash">#!/bin/bash
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
 if [ $# -eq 0 ]; then
   echo "error - number missing"; exit 1
 fi
@@ -1000,6 +1000,538 @@ fi</pre>
       </footer>
     </article>
   </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Functions</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Before using a function, it must have been previously defined</li>
+        <li>Example:</li>
+      </ul>
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
+helloWorld
+function helloWorld {
+  echo "Hello world"
+}
+helloWorld
+exit 0
+      </pre>
+      <footer class="source">
+        source code: <a href="src/07/script_19.sh">script_19.sh</a>
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Functions: passing parameters</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Functions get their parameters the same way as shell-scripts:
+          <ul>
+            <li><code>$#</code> - number of parameters</li>
+            <li><code>$1-$9</code> - parameters 1 to 9</li>
+          </ul>
+        </li>
+        <li>Example:</li>
+      </ul>
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
+function sayMyName {
+  echo $1
+  shift
+  echo $1
+}
+sayMyName "My name is" "Heisenberg"
+exit 0
+      </pre>
+      <footer class="source">
+        source code: <a href="src/07/script_20.sh">script_20.sh</a>
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Functions: return values</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Functions can return an exit status using the <code>return</code> statement</li>
+        <li>The return value can be accessed using the <code>$?</code>environment variable</li>
+      </ul>
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
+maximum () {
+  max=0
+  while [ $# -ne 0 ]; do
+  if [ "$1" -ge "$max" ]; then
+  max=$1
+  fi
+  shift
+  done
+  return $max
+}
+maximum 4 8 15 16 23 42
+echo "Maximum [4 8 15 16 23 42] is: $?"; exit 0</pre>
+      <footer class="source">
+        source code: <a href="src/07/script_21.sh">script_21.sh</a>
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Lists of commands</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>It is possible to execute multiple linked commands. The execution of the next command in the list depends on the result returned by the previous ones and the used list type</li>
+        <li><code>and</code> commands lists:
+          <ul>
+            <li>The next command is executed if, and only if, the previous command returns an exit status of 0</li>
+            <li>Syntax: <code>cmd1 && cmd2 && ... && cmdN</code></li>
+          </ul>
+        </li>
+        <li><code>or</code> commands lists:
+          <ul>
+            <li>The next command is executed if, and only if, the previous command returns an exit status different from 0</li>
+            <li>Syntax: <code>cmd1 || cmd2 || ... || cmdN</code></li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Lists of commands example 1</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
+if [ ! -z "$1" ] && echo "arg1 = $1" && \
+   [ ! -z "$2" ] && echo "arg2 = $2"
+then
+  echo "There are at least 2 arguments"
+else
+  echo "There are less than 2 arguments"
+  exit 1
+fi
+[ "$1" == "a" ] && echo "arg1 correct"
+[ -f "$2" ] || echo "File $2 doesn't exist"
+[ -f "$2" ] && ( tar -zcvf $2$(date + %F).tar.gz $2 ) && echo "File $2 compressed"
+exit 0
+      </pre>
+      <footer class="source">
+        source code: <a href="src/07/script_22.sh">script_22.sh</a>
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Lists of commands example 2</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
+if [ ! -z "$1" ] && echo "arg1 is: $1"
+then
+  echo "arg1 exists"
+fi
+[ -z "$2" ] && echo "arg2 doesn't exist"
+[ "$2" != "a" ] && echo "arg2 incorrect"
+[ ! -f "$2" ] && echo "File $2 doesn't exist"
+[ ! -f "$2" ] || ( tar -zcvf $2_$(date +%F).tar.gz $2 ) && echo "File $2 compressed"
+exit 0
+      </pre>
+      <footer class="source">
+        source code: <a href="src/07/script_23.sh">script_23.sh</a>
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Debugging scripts</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Shell scripts can be debugged using the <code>-v</code> or <code>-x</code> bash options</li>
+        <li><code>-v</code>: Shows each line of the script before its execution and its result</li>
+        <li><code>-x</code>: Shows each line of the script after the variable replacement but before its execution, and it also shows the result of the execution</li>
+      </ul>
+      <pre data-lang="terminal">
+bash -v script_23.sh arg1 arg2
+      </pre>
+      <pre data-lang="terminal">
+bash -x script_23.sh arg1 arg2
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Redirections</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>It is allowed to use redirection operators to redirect the standard input, output and error of the commands used within the script</li>
+        <li>Descriptor 1 represents the stdin and descriptor 2 the stderr</li>
+        <li>Redirection operators:
+          <ul>
+            <li><code>>, >></code> Redirect stdout to a file</li>
+            <li><code>&lt;</code> Redirect file to stdin</li>
+            <li><code>2>, 2>></code> Redirect stderr to a file</li>
+          </ul>
+        </li>
+      </ul>
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
+ls -lh > listing.txt                              # stdout to file
+cat < script_23.sh                                # file to stdin
+grep date * 2> err.log                            # stderr to a file
+grep date * 1>&2                                  # stdout to stderr
+cat "$(find ./ -name file_names)" 2> /dev/null    # shows files and delete stderr</pre>
+      <footer class="source">
+        source code: <a href="src/07/script_24.sh">script_24.sh</a>
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Pipes</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Pipes allow to use the output of a command as the input of the next one</li>
+      </ul>
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
+ls | grep ".sh" | sort        # List, filter and sort
+ls -l | sed -e "s/[aeio]/u/g" # List, the output goes to the sed program</pre>
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
+# Execute using: ./script_26.sh | head -n 6
+IFS=:     # Internal Field Separator set to ':'
+while read name pass uid rest
+do
+echo "user with uid = $uid, name = $name, rest = $rest"
+done < /etc/passwd
+exit 0</pre>
+      <footer class="source">
+        <p>source code: <a href="src/07/script_25.sh">script_25.sh</a>, <a href="src/07/script_26.sh">script_26.sh</a></p>
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Here documents</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>A here document is a block of text or code which is redirected to the stdin of a command or program within a shell script</li>
+      </ul>
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
+echo "Script [START]"
+name="Illidan Stormrage"
+sentence="You are not prepared!"
+
+wall << endOfMessage
+.------------------------------------------------.
+| $name yells: $sentence |
+·------------------------------------------------·
+endOfMessage
+
+echo "Script [END]"
+exit 0</pre>
+      <footer class="source">
+        <p>source code: <a href="src/07/script_27.sh">script_27.sh</a></p>
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Commands</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>There are several UNIX commands that can be used when programming a shell script:
+          <ul>
+            <li><code>head</code></li>
+            <li><code>tail</code></li>
+            <li><code>cat</code></li>
+            <li><code>paste</code></li>
+            <li><code>sort</code></li>
+            <li><code>cut</code></li>
+            <li><code>find</code></li>
+            <li><code>grep</code></li>
+            <li><code>sed</code></li>
+            <li><code>awk</code></li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2><code>head</code> and <code>tail</code> commands</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>The <code>head</code> command is used to show the first <code>n</code> lines of a file</li>
+        <li>The <code>tail</code> command is used to show the last <code>n</code> lines of a file</li>
+      </ul>
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
+echo "--------------------------------"
+head /etc/passwd
+echo "--------------------------------"
+head -n 20 /etc/passwd
+echo "--------------------------------"
+tail -n 5 /etc/passwd
+echo "--------------------------------"
+ls -lh | head -n 9 | tail -n 3
+echo "--------------------------------"
+      </pre>
+      <footer class="source">
+        <p>source code: <a href="src/07/script_28.sh">script_28.sh</a></p>
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2><code>cat</code> command</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>The <code>cat</code> command is used to concatenate multiple files and output to stdout</li>
+        <li>When passing a single file, shows its contents to stdout</li>
+      </ul>
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
+touch file1 file2 file3
+echo "knock knock" > file1
+echo "penny"       > file2
+echo "WHAT!?"      > file3
+cat file1 file2 file1 file2 file1 file2 file3 > file4
+cat file4 | tail -n 3
+exit 0
+      </pre>
+      <footer class="source">
+        <p>source code: <a href="src/07/script_29.sh">script_29.sh</a></p>
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2><code>paste</code> command</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>The <code>paste</code> command is used to horizontally concatenate multiple files and output to stdout</li>
+        <li>When passing a single file, shows its contents to stdout</li>
+      </ul>
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
+touch file1 file2
+echo -e "Game of\nThe Walking\nDeath" > file1
+echo -e "Thrones\nDead\nNote" > file2
+paste -d ' ' file1 file2
+exit 0
+      </pre>
+      <footer class="source">
+        <p>source code: <a href="src/07/script_30.sh">script_30.sh</a></p>
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2><code>sort</code> command</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Used to sort the lines of a file. When sorting, multiple options can be chosen:
+          <ul>
+            <li>Alphabetical (default) or numeric (<code>-n</code>)</li>
+            <li>Ascending (default) or descending (<code>-r</code>)</li>
+            <li>Select field separator (<code>-t</code>)</li>
+            <li>Select fields used to sort (<code>-k</code>)</li>
+          </ul>
+        </li>
+      </ul>
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
+echo -e "Jon\nArya\nJaime\nDaenerys\nAerys\nNed" > file1
+sort file1 > file1_sorted
+echo -e "10\n8\n1\n2\n40\n15" > file2
+sort -n file1 > file2_sorted; sort -nr file1 > file_rsorted
+echo -e "got.loc.Winterfell\ngot.loc.Quarth\ngot.loc.Riverrun\ngot.loc.Casterly Rock" \
+        "\ngot.loc.Pyke\ngot.loc.King's Landing" > file3
+sort -t'.' -k3 file3 > file3_sorted</pre>
+      <footer class="source">
+        <p>source code: <a href="src/07/script_31.sh">script_31.sh</a></p>
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2><code>cut</code> command</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Used to split lines, fields or parts of a file</li>
+        <li>Fields are delimited by a tab (default), but other delimiters can be specified</li>
+      </ul>
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
+echo -e "GoT\tTWD\tTB\tDN\tTBBT" > file1
+cut -f2 file1
+cut -c1-7 file1
+uname -a | cut -d" " -f1,3,11,12
+      </pre>
+      <footer class="source">
+        <p>source code: <a href="src/07/script_32.sh">script_32.sh</a></p>
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2><code>find</code> command</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Used to locate files</li>
+      </ul>
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
+find . -name 'script*'
+echo "------------------"
+find $HOME -name '*.sh' -print
+      </pre>
+      <footer class="source">
+        <p>source code: <a href="src/07/script_33.sh">script_33.sh</a></p>
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2><code>grep</code> command</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Used to find patterns in files</li>
+        <li>Main options:
+          <ul>
+            <li><code>-c</code> Only print the number of lines that match the pattern</li>
+            <li><code>-i</code> Case insensitive (a == A)</li>
+            <li><code>-n</code> Print the line number before each line</li>
+            <li><code>-v</code> Print lines that don't match the pattern</li>
+            <li><code>-f</code> Pattern file</li>
+          </ul>
+        </li>
+      </ul>
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
+grep root /etc/passwd; echo "-------------------"
+ps -e | grep $USER   ; echo "-------------------"
+ps -e | grep -c $USER; echo "-------------------"
+ps -e | grep -n $USER; echo "-------------------"</pre>
+      <footer class="source">
+        <p>source code: <a href="src/07/script_34.sh">script_34.sh</a></p>
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Regular expressions</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>There are the following metacharacters:
+          <ul>
+            <li><code>^</code> Match with the line start</li>
+            <li><code>$</code> Match with the line end</li>
+            <li><code>.</code> Match any single character</li>
+            <li><code>*</code> Preceding item will be matched 0 or more times</li>
+            <li><code>?</code> Preceding item is optional and will be matched, at most, once</li>
+            <li><code>{N}</code> Preceding item is matched exactly N times</li>
+            <li><code>{N,}</code> Preceding item is matched N or more times</li>
+            <li><code>{N,M}</code> Preceding item is matched from N to M times</li>
+            <li><code>[...]</code> Match with any of the characters included in the brackets</li>
+            <li><code>[^...]</code> Match with any character not included in the brackets</li>
+            <li><code>\&lt;</code> Match with word start</li>
+            <li><code>\></code> Match with word end</li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Regular expressions example</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
+grep -nv '^$' $0          # Get the lines (with line number) that are not blank
+
+ls -lh | grep '^d'        # List only directories
+
+ls -lh | grep '[^\.sh]$'  # List all files not ending in .sh
+
+grep '[a-z]\{5\}' $0      # List all lines with at least 5 consecutive lowercase letters
+
+exit 0
+      </pre>
+      <footer class="source">
+        <p>source code: <a href="src/07/script_35.sh">script_35.sh</a></p>
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Other commands</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li><code>wc</code> word, line, character and byte count</li>
+        <li><code>basename</code> return filename portion of pathname</li>
+        <li><code>dirname</code> return directory portion of pathname</li>
+        <li><code>nohup</code> invoke a utility immune to hangups</li>
+        <li><code>trap</code> execute a function / command when a signal is received</li>
+      </ul>
+      <pre class="prettyprint lang-bash" data-lang="bash">#!/bin/bash
+wc -l /etc/passwd
+basename /bin/ls
+dirname /bin/ls
+nohup ls &                        # Output goes to nohub.out
+trap 'echo "ctrl+c disabled"' 2   # Signal 2 (ctrl+c) disabled
+read something
+exit 0</pre>
+      <footer class="source">
+        <p>source code: <a href="src/07/script_36.sh">script_36.sh</a></p>
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Bonus slide: Cheat Sheets</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li><a href="http://www.johnstowers.co.nz/blog/pages/bash-cheat-sheet.html">Bash Cheat Sheet</a></li>
+        <li><a href="http://www.talug.org/events/20071020/presentation/bash_cheat_sheet.pdf">Bash Cheat Sheet [PDF]</a></li>
+        <li><a href="http://www.linux-sxs.org/programming/bashcheat.html">Bash Programming Cheat Sheet</a></li>
+      </ul>
+      <ul>
+        <li><a href="http://bit.ly/1zurUE9">And more...</a></li>
+      </ul>
+      </article>
+    </slide>
 
   <slide class="thank-you-slide segue nobackground">
     <aside class="gdbar right"><img src="images/udl.png"></aside>
