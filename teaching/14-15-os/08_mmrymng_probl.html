@@ -1,0 +1,239 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!--
+  Slides for the 6th laboratory session of the Operating Systems course
+  University of Lleida | 2014-2015
+
+  Author: Jordi Vilaplana <gatasuna@gmail.com>
+
+  URL:
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script src="js/jquery.js"></script>
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+  <script>
+    $(function() {
+      $(".ex6table").html('<article class="smaller"><table><tbody><tr><td>A</td><td>1</td><td>5</td><td>1</td><td>1E,1W,2E,3W,1E</td><td>D</td><td>3</td><td>3</td><td>4</td><td>1E,4W,3E,4W,2E</td></tr><tr><td>B</td><td>2</td><td>4</td><td>2</td><td>2E,3W,1E,3W,1E</td><td>E</td><td>4</td><td>6</td><td>5</td><td>2E,2W,4E,1W,2E</td></tr><tr><td>C</td><td>3</td><td>2</td><td>3</td><td>4E,4W,2E,2W,1E</td><td>F</td><td>4</td><td>1</td><td>6</td><td>4E,1W,2E</td></tr></tbody></table></article>');
+    });
+    </script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/eps.png"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/udl.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+    </hgroup>
+    <article class="smaller">
+      <h2>Session 8</h2>
+      <h3>Continuous Evaluation Problems #2 (Memory Management) - Correction</h3>
+      <div class="centered">
+        <p><a target="_self" href="07_shell_scripts.html">Previous session</a> - <a target="_self" href="index.html">Contents</a> - <a target="_self" href="#">Next session</a></p>
+        <p>&nbsp;</p>
+        <p><a href="src/07/scripts.zip">scripts source files</a></p>
+        <p>&nbsp;</p>
+        <img src="images/07/shell_script.png" title="Shell Script" alt="Shell Script" />
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <article class="smaller">
+      <h2>Problem #1 (4p)</h2>
+      <p>&nbsp;</p>
+      <p>Memory management system with 512 Bytes page size, 2 MBytes memory and 1 Byte word size. 4 KBytes maximum segment size. All tables implemented in main memory. Given the following processes:</p>
+      <table>
+        <thead>
+          <th></th>
+          <th>Process 1</th>
+          <th>Process 2</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Procedure A (512 Bytes)</td>
+            <td>x</td>
+            <td>x</td>
+          </tr>
+          <tr>
+            <td>Procedure B (2560 Bytes)</td>
+            <td>x</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Data L (1024 Bytes)</td>
+            <td>x</td>
+            <td>x</td>
+          </tr>
+        </tbody>
+      </table>
+      <ul>
+        <li><code>x</code> indicates which procedures and data are assigned to each process. A row with 2 <code>x</code> means shared procedure or data. Each process is formed by a 1 KByte <code>stack</code> segment. First 50 addresses and all the pair ones are already taken.</li>
+        <li>Give an example, if possible, that shows which information and its size (in Bytes) that the OS has to store in order to make the address translation of both processes when they are executed inside the CPU for the following memory management systems:</li>
+      </ul>
+      <p>(a) [1.5p] Pagination</p>
+      <p>(b) [1p] Is possible the Segmentation? Why?</p>
+      <p>(c) [2.5p] Paged segmentation</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #1 (a)</h2>
+    </hgroup>
+    <article>
+      <div class="centered">
+        <img src="images/08/os_memory_management_01.png" />
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #1 (a)</h2>
+    </hgroup>
+    <article>
+      <div class="centered">
+        <img src="images/08/os_memory_management_02.png" />
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #1 (a)</h2>
+    </hgroup>
+    <article>
+      <div class="centered">
+        <img src="images/08/os_memory_management_03.png" />
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #1 (a)</h2>
+    </hgroup>
+    <article>
+      <div class="centered">
+        <img src="images/08/os_memory_management_04.png" />
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #1 (a)</h2>
+    </hgroup>
+    <article>
+      <div class="centered">
+        <img src="images/08/os_memory_management_05.png" />
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #1 (a)</h2>
+    </hgroup>
+    <article>
+      <div class="centered">
+        <img src="images/08/os_memory_management_06.png" />
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #1 (b)</h2>
+    </hgroup>
+    <article>
+      <p>Is possible the Segmentation? Why?</p>
+      <ul class="build">
+        <li>No</li>
+        <li>The memory space of each segment must be contiguous</li>
+        <li><code>Proc<sub>B</sub></code> needs 5 pages (2560 B / 512 B)</li>
+        <li><code>Data<sub>L</sub></code> and the <code>stack</code> need 2 pages (1024 B / 512 B)</li>
+        <li>We only have 1 contiguous page (all pairs are already taken)</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #1 (c) - Paged segmentation</h2>
+    </hgroup>
+    <article>
+      <div class="centered">
+        <img src="images/08/os_memory_management_07.png" />
+      </div>
+    </article>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/udl.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;That's all!&gt;</h2>
+      <p class="auto-fadein"><a href="mailto:jordi@diei.udl.cat" style="color: white;">jordi@diei.udl.cat</a></p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-65757-2']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
