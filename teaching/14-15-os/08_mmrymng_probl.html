@@ -75,7 +75,7 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <article class="smaller">
-      <h2>Problem #1 (4p)</h2>
+      <h2>Problem #1 (5p)</h2>
       <p>&nbsp;</p>
       <p>Memory management system with 512 Bytes page size, 2 MBytes memory and 1 Byte word size. 4 KBytes maximum segment size. All tables implemented in main memory. Given the following processes:</p>
       <table>
@@ -201,6 +201,99 @@ URL: https://code.google.com/p/io-2012-slides
     <article>
       <div class="centered">
         <img src="images/08/os_memory_management_07.png" />
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #1 (c) - Paged segmentation</h2>
+    </hgroup>
+    <article>
+      <div class="centered">
+        <img src="images/08/os_memory_management_08.png" />
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #1 (c) - Paged segmentation</h2>
+    </hgroup>
+    <article>
+      <div class="centered">
+        <img src="images/08/os_memory_management_09.png" />
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>El STLR (límit) s'ha de mirar que no se faci referència a un segment que no existeixi. P1 té 4 segments (0, 1, 2, 3), per tant el valor és 3. P2 té 3 segments (0, 1, 2), per tant el valor és 2.</li>
+          <li>Al STBR (base), el valor surt del número de pàgina (columna esquerra) on comença la taula de segments.</li>
+        </p>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Problem #1 (c) - Paged segmentation</h2>
+    </hgroup>
+    <article>
+      <div class="centered">
+        <img src="images/08/os_memory_management_10.png" />
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <article class="smaller">
+      <h2>Problem #2 (5p)</h2>
+      <p>&nbsp;</p>
+      <p>Paged segmentation memory management system. 1 KByte page size, 1 Byte word size. A program has at most 3 segments. 8 KBytes maximum segment size. All tables are implemented in main memory.</p>
+      <p>&nbsp;</p>
+      <p>(a) [1.5p] Which is the logical addresses range for P1 and P2?</p>
+      <p>(b) [1p] How could P1 and P2 share the address 20 (if possible)?</p>
+      <p>(c) [2.5p] A new process (P4) is created, with 5 KBytes code size, 5 KBytes data and 1 Kbyte stack. If this process fits into the memory, give an example of how would its segments and pages tables be (OS puts them in address 49). Also give their size in bytes.</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #2 (a)</h2>
+    </hgroup>
+    <article>
+      <div class="centered">
+        <img src="images/08/os_memory_management_11.png" />
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Problem #2 (b)</h2>
+    </hgroup>
+    <article>
+      <div class="centered">
+        <img src="images/08/os_memory_management_12.png" />
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Les cel·les 18 i 19 podrien seguir en valor 12, 14, ... El SO ho posa en qualsevol cel·la lliure segons el seu algorisme. Tot està bé mentre la cel·la estigui lliure</li>
+        </p>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Problem #2 (c)</h2>
+    </hgroup>
+    <article>
+      <div class="centered">
+        <img src="images/08/os_memory_management_13.png" />
       </div>
     </article>
   </slide>
