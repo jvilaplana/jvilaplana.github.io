@@ -1,0 +1,1033 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/defense.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Management of Cloud systems applied to eHealth</h1>
+					<section>
+						<h3>Jordi Vilaplana</h3>
+						<div>
+							<img width="100" src="img/logos/udl.png" alt="Grenoble INP" class="logo" />
+							<img width="100" src="img/logos/gcd.png" alt="G-SCOP" class="logo" />
+						</div>
+						<div style="margin-top: .5em; font-size: .75em; line-height: 1">
+							Lleida<br/>
+							September 10, 2015
+						</div>
+					</section>
+					<section>
+						<p>
+							<small><i>Supervised by</i></small>
+						</p>
+						<h4>Francesc Solsona &amp; Francesc Abella</h4>
+
+					</section>
+				</section>
+
+				<section>
+					<h2>Outline</h2>
+					<div style="text-align: left;">
+						<ul>
+							<li>Introduction</li>
+							<li>Methodology</li>
+							<li>Conclusions and future directions</li>
+							<li>Questions and discussion</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>Introduction</h2>
+					<div style="text-align: left;">
+						<ul>
+							<li>Modelling Cloud systems</li>
+							<li>Cloud computing challenges and issues</li>
+							<li>Motivations for eHealth</li>
+							<li>Description of eHealth</li>
+							<li>Applied cases: Smoking and Hypertension</li>
+							<li>Research objectives</li>
+							<li>Contributions</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h2>Introduction</h2>
+					<p>
+						<img width="800" src="img/fig_overview.png" alt="Overview">
+					</p>
+					<aside class="notes">
+        		Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+    			</aside>
+				</section>
+
+				<section>
+					<section>
+						<h2>Modelling Cloud systems</h2>
+					</section>
+					<section>
+						<h2>What is Cloud computing?</h2>
+						<p>
+							Cloud computing is a general term for anything that involves delivering hosted services over the Internet
+						</p>
+						<p>
+							<img style="padding: 30px;" width="60%" src="img/fig_cloud_vs_inhouse.jpg" />
+						</p>
+						<p class="fragment">
+							Clouds can be delivered according to different service and deployment models
+						</p>
+					</section>
+					<section>
+						<h2>Service models</h2>
+						<img width="80%" src="img/fig_cloud_service_models.png" alt="Overview">
+					</section>
+					<section>
+						<h2>Deployment models</h2>
+						<table class="hanoi">
+								<colgroup>
+									<col style="width: 33%" />
+									<col style="width: 33%" />
+									<col style="width: 33%" />
+								</colgroup>
+								<tr>
+									<td>
+										<figure>
+											<img class="embedded fragment" src="img/fig_cloud_deployment_models_private.png" width="100%" data-fragment-index="1" />
+											<figcaption></figcaption>
+										</figure>
+									</td>
+									<td>
+										<figure>
+											<img class="embedded fragment" src="img/fig_cloud_deployment_models_community.png" width="100%" data-fragment-index="2" />
+											<figcaption></figcaption>
+										</figure>
+									</td>
+									<td>
+										<figure>
+											<img class="embedded fragment" src="img/fig_cloud_deployment_models_public.png" width="100%" data-fragment-index="3" />
+											<figcaption></figcaption>
+										</figure>
+									</td>
+								</tr>
+							</table>
+					</section>
+					<section>
+						<h2>Advantages</h2>
+						<table class="hanoi">
+								<colgroup>
+									<col style="width: 20%" />
+									<col style="width: 50%" />
+									<col style="width: 30%" />
+								</colgroup>
+								<tr>
+									<td>
+										<figure>
+											<img class="embedded fragment push" src="img/fig_cloud_scalability.gif" width="100%" data-fragment-index="1" />
+											<img class="fragment push" src="img/fig_cloud_scalability.png" width="100%" data-fragment-index="2" />
+											<img class="fragment push" src="img/fig_cloud_scalability.png" width="100%" data-fragment-index="3" />
+											<img class="fragment push" src="img/fig_cloud_scalability.png" width="100%" data-fragment-index="4" />
+											<img class="fragment push" src="img/fig_cloud_scalability.png" width="100%" data-fragment-index="5" />
+											<img class="fragment push" src="img/fig_cloud_scalability.png" width="100%" data-fragment-index="6" />
+											<img class="fragment push" src="img/fig_cloud_scalability.png" width="100%" data-fragment-index="7" />
+											<img class="fragment push" src="img/fig_cloud_scalability.png" width="100%" data-fragment-index="8" />
+											<img class="fragment push" src="img/fig_cloud_scalability.png" width="100%" data-fragment-index="9" />
+											<img class="fragment push" src="img/fig_cloud_scalability.png" width="100%" data-fragment-index="10" />
+											<img class="fragment push" src="img/fig_cloud_scalability.png" width="100%" data-fragment-index="11" />
+											<img class="fragment push" src="img/fig_cloud_scalability.png" width="100%" data-fragment-index="12" />
+											<figcaption></figcaption>
+										</figure>
+									</td>
+									<td>
+										<ul>
+											<li class="fragment" data-fragment-index="1">Scalability</li>
+											<li class="fragment" data-fragment-index="2">Adaptability</li>
+											<li class="fragment" data-fragment-index="3">Accessiblity</li>
+											<li class="fragment" data-fragment-index="4">Maintenance</li>
+											<li class="fragment" data-fragment-index="5">Reduced cost</li>
+										</ul>
+									</td>
+									<td>
+										<figure>
+											<img class="fragment" src="img/fig_cloud_cost.gif" width="100%" data-fragment-index="5" />
+											<figcaption></figcaption>
+										</figure>
+									</td>
+								</tr>
+							</table>
+							<table>
+								<colgroup>
+									<col style="width: 20%" />
+									<col style="width: 50%" />
+									<col style="width: 10%" />
+									<col style="width: 20%" />
+								</colgroup>
+								<tr>
+									<td style="padding: 30px 20px;">
+										<p class="fragment" data-fragment-index="6">However...</p>
+									</td>
+									<td>
+										<p class="fragment" data-fragment-index="7">Cloud systems are <strong>complex</strong></p>
+									</td>
+									<td>
+										<p class="fragment" data-fragment-index="8">&#8680;</p>
+									</td>
+									<td>
+										<p class="fragment" data-fragment-index="8"><u>Modelling</u></p>
+									</td>
+								</tr>
+							</table>
+							<table>
+								<colgroup>
+									<col style="width: 20%" />
+									<col style="width: 20%" />
+									<col style="width: 20%" />
+									<col style="width: 20%" />
+								</colgroup>
+								<tr>
+									<td style="padding: 30px 0px;">
+										<p class="fragment definition" data-fragment-index="9">Queueing theory</p>
+									</td>
+									<td>
+										<p class="fragment definition" data-fragment-index="10">Nonlinear programming</p>
+									</td>
+									<td>
+										<p class="fragment definition" data-fragment-index="11">Cloud simulation</p>
+									</td>
+									<td>
+										<p class="fragment definition" data-fragment-index="12">Cloud platform</p>
+									</td>
+								</tr>
+							</table>
+
+							<!--
+							<table class="hanoi">
+							<colgroup>
+								<col style="width: 30%" />
+								<col style="width: 70%" />
+							</colgroup>
+
+							<tr><td style="line-height: 1; letter-spacing: 0">
+								<img src="images/ci_types_0.png" width="300px" class="embedded fragment push" data-fragment-index="1">
+								<img src="images/ci_types_1.png" width="300px" class="embedded fragment push" data-fragment-index="2">
+								<img src="images/ci_types_2.png" width="300px" class="embedded fragment push" data-fragment-index="3">
+								<img src="images/ci_types_3.png" width="300px" class="embedded fragment push-in" data-fragment-index="4">
+							</td>
+							<td style="text-align: left">
+								<h2 class="fragment definition" data-fragment-index="1">CI types</h2>
+								<ul style="width: 100%">
+									<li class="fragment" data-fragment-index="2">
+										<span class="fragment grow" data-fragment-index="5">Contact;</span>
+										<span style="width: 60%; float: right">curve or surface</span>
+									</li>
+									<li class="fragment" data-fragment-index="3">
+										<span class="fragment grow" data-fragment-index="5">Interference;</span>
+										<span style="width: 60%; float: right">shared volume</span>
+									</li>
+									<li class="fragment" data-fragment-index="4">
+										<span class="fragment strike-through" data-fragment-index="5">Clearance.</span>
+										<span style="width: 60%; float: right">play distance</span>
+									</li>
+								</ul>
+							</td></tr>
+						</table>
+						-->
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Queueing Theory</h2>
+					</section>
+					<section>
+						<ul>
+							<li>
+								Queueing theory is a mathematical method of analyzing the congestions and delays of waiting in line
+						</li>
+						<li>
+							Queuing theory is used to develop more efficient queuing systems that reduce customer wait times and increase the number of customers that can be served
+						</li>
+						</ul>
+					</section>
+					<section>
+						<img width="100%" src="img/queueing_before.png" />
+						<p>
+							A Cloud system can be transformed to...
+						</p>
+					</section>
+					<section>
+						<p>
+							A queueing theory model
+						</p>
+						<img width="800" src="img/fig_queueing_theory.png" alt="Overview">
+						<aside class="notes">
+							Although queueing theory can provide very efficient models for relatively simple scenarios, the complex mathematical analyses hinder us from obtaining simple and fast solutions for more elaborate systems.
+	    			</aside>
+					</section>
+					<section>
+						<h2></h2>
+						<p>
+							Transform Cloud systems to queueing theory assets
+						</p>
+						<p>
+							Predict behaviours through queueing theory formulas
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Nonlinear programming</h2>
+					</section>
+					<section>
+						<h2></h2>
+						<p>
+							A nonlinear programming problem
+(NLP) deals with mathematical optimization problems where the objective function
+to be maximized or minimized, or some of its constraints, are nonlinear.
+						</p>
+					</section>
+					<section>
+						<h2></h2>
+						<p>
+							Generally, a NLP can be defined as:
+						</p>
+						<p>
+							\begin{equation}
+							Max(f(x_{1},x_{2}, ..., x_{n})),
+							\end{equation}
+
+							s.t. (subject to):
+
+							\begin{equation}
+							\begin{split}
+							h_{i}(x) = b_{i} & \quad (i = 1, 2, ..., m) \\
+							x_{j} \geq 0 & \quad (j = 1, 2, ..., n)
+							\end{split}
+							\end{equation}
+						</p>
+						<p>
+							Once the NLP has been defined, it can be processed by a solver (i.e. CPLEX, lp\_solve, Excel Solver Function, etc.) to extract an optimal solution.
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Cloud simulation</h2>
+					</section>
+					<section>
+						<h2>Why Cloud simulation?</h2>
+						<p>
+							The wide ecosystem of cloud architectures, demand timely, repeatable, and controllable methodologies for evaluation of algorithms, applications, and policies before actual development of cloud products.
+						</p>
+						<p>
+							Because utilization of real testbeds limits the experiments to the scale of the testbed and makes the reproduction of results an extremely difficult undertaking, alternative approaches for testing and experimentation leverage development of new Cloud technologies.
+						</p>
+						<p>
+							A suitable alternative is the utilization of simulations tools, which open the possibility of evaluating the hypothesis prior to software development in an environment where one can reproduce tests.
+						</p>
+					</section>
+					<section>
+						<h2>Cloud simulation tools</h2>
+						<ul>
+							<li class="fragment highlight-blue">
+								CloudSim
+							</li>
+							<li>
+								CloudAnalyst
+							</li>
+							<li>
+								GreenCloud
+							</li>
+							<li>
+								iCanCloud
+							</li>
+							<li>
+								MDCSim
+							</li>
+							<li>
+								NetworkCloudSim
+							</li>
+							<li>
+								VirtualCloud
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>CloudSim</h2>
+						<p>Overview of CloudSim functionalities:
+							<ul>
+								<li>Modeling and simulation of large scale Cloud computing data centers</li>
+								<li>Modeling and simulation of virtualized server hosts, with customizable policies for provisioning host resources to virtual machines</li>
+								<li>Modeling and simulation of energy-aware computational resources</li>
+								<li>Modeling and simulation of data center network topologies and message-passing applications</li>
+								<li>Modeling and simulation of federated clouds</li>
+								<li>Dynamic insertion of simulation elements, stop and resume of simulation</li>
+								<li>User-defined policies for allocation of hosts to virtual machines and policies for allocation of host resources to virtual machines</li>
+							</ul>
+						</p>
+					</section>
+					<section>
+						<h2>Cloud system as a CloudSim model</h2>
+						<img width="800" src="img/fig_cloud_simulation.png" alt="Overview">
+					</section>
+					<section>
+						<h2></h2>
+						<p>
+
+							In addition, it is not possible to perform benchmarking tests in dependable, repeatable and scalable environments using real Cloud environments \cite{Calheiros2011,Bai2011}.
+
+							Cloud simulator tools are best suited for large Cloud system testing to decrease the complexity and enable performance analysts to assess system behavior by focusing on quality issues of specific components under different scenarios \cite{Malhotra2013}.
+
+							Several Cloud simulators have been specifically developed for the performance analysis of Cloud computing environments, with CloudSim\footnote{CloudSim webpage: http://www.cloudbus.org/cloudsim/}, CloudAnalysit \cite{Wickremasinghe2010}, GreenCloud\footnote{GreenCloud webpage: http://greencloud.gforge.uni.lu/}, iCanCloud\footnote{iCanCloud webpage: http://www.arcos.inf.uc3m.es/~icancloud/Home.html}, MDCSim \cite{Lim2009}, NetworkCloudSim \cite{Garg2011} and VirtualCloud\footnote{VirtualCloud webpage: http://sourceforge.net/projects/virtualcloud/} being the most prominent ones. Among all these tools, CloudSim is considered to be the most sophisticated \cite{Malhotra2013} and is also the most widely-used and referenced in the literature.
+
+							CloudSim is an event-driven and extensible simulation toolkit that enables Cloud systems and scenarios to be modelled and simulated. It facilitates the development of personalized settings involving multiple data centers, physical hosts and virtual machines with their own characteristics. It also allows custom allocation policies to be developed for both user jobs or tasks and for virtual machines. The high level of customization and its default policies make CloudSim a remarkable tool for simulating both simple and complex scenarios.
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Cloud platform</h2>
+					</section>
+					<section>
+						<img width="800" src="img/fig_cloud_platform.png" alt="">
+					</section>
+					<section>
+						<h2></h2>
+						<p>
+							http://www.slideshare.net/OReillyOSCON/comparing-open-source-private-cloud-platforms?qid=3b429d66-fa22-4c85-81e1-80c2f887ffab&v=qf1&b=&from_search=3
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Cloud computing challenges and issues</h2>
+						<p>
+							---
+						</p>
+					</section>
+
+					<section>
+						<h2>Reliability, availability and serviceability</h2>
+						<p>
+							---
+						</p>
+					</section>
+					<section>
+						<h2>System security, user privacy and trust issues</h2>
+						<p>
+							---
+						</p>
+					</section>
+					<section>
+						<h2>Performance and energy consumption issues</h2>
+						<p>
+							---
+						</p>
+					</section>
+				</section>
+
+
+
+
+
+				<section>
+
+
+					<section>
+						<h2>eHealth</h2>
+					</section>
+					<section>
+						<h2>Motivations for eHealth</h2>
+						<p>
+							---
+						</p>
+					</section>
+
+					<section>
+						<h2>Description of eHealth</h2>
+						<p>
+							---
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<h2>Applied cases:  Smoking and Hypertension</h2>
+					<p>
+						<img width="800" src="img/fig_applied_cases.png" alt="Overview">
+					</p>
+				</section>
+
+				<section>
+					<h2>Smoking</h2>
+					<p>
+						<img width="800" src="img/fig_smoking.png" alt="">
+					</p>
+				</section>
+
+				<section>
+					<h2>Hypertension</h2>
+					<p>
+						<img width="800" src="img/fig_hypertension.png" alt="">
+					</p>
+				</section>
+
+
+				<section>
+					<section>
+						<h2>Research objectives</h2>
+						<p>
+							The main purpose of this thesis is to achieve eHealth solutions through Cloud-based technologies and architectures, specifically to allow physicians to control and communicate with patients remotely and establish a bidirectional exchange to improve treatments where such contact is essential for a successful outcome.
+						</p>
+					</section>
+					<section>
+						<p>
+							Develop models to determine performance metrics and issues in Cloud-based architectures.
+						</p>
+						<aside class="notes">
+							<p>
+								Metrics:  (i.e. response time, throughput).
+								Issues: (i.e. SLA guarantee, QoS). Specifically, present a by means of queueing theory and validate it using the OpenStack Cloud simulator.
+							</p>
+						</aside>
+					</section>
+					<section>
+						<p>
+							Design of a nonlinear programming scheduling algorithm to optimize both energy consumption and SLA guarantees.
+						</p>
+					</section>
+					<section>
+						<p>
+								Explore and analyze current solutions and environments where these models can be applied, and design a Cloud architecture for an eHealth environment and analyze its behaviour with the CloudSim simulator.
+						</p>
+					</section>
+					<section>
+						<p>
+								Design and implement a Cloud-based eHealth telemonitoring tool for smoke-quitting patients and test it in a real environment to assess its usefulness through statistical studies of prevalence.
+						</p>
+					</section>
+					<section>
+						<p>
+								Design and implement a Cloud-based eHealth telemonitoring tool for hypertensive patients, tests its performance and scalability and finally, test it in a real environment.
+						</p>
+					</section>
+					<section>
+						<p>
+							Develop a scalable and power-aware Cloud-based infrastructure to support these applications using the OpenStack platform.
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Related Work and Contributions</h2>
+						<p>
+							---
+						</p>
+					</section>
+					<section>
+						<h2>Publications</h2>
+						<p>
+
+						</p>
+					</section>
+					<section>
+						<h2>Journal Publications</h2>
+						<p>
+							<ul>
+								<li>
+									Vilaplana, J., Solsona, F., Abella, F., Filgueira, R., &amp; Rius, J. (2013). The cloud paradigm applied to e-Health. BMC Medical Informatics and Decision Making, 13, 35. doi:10.1186/1472-6947-13-35
+								</li>
+								<li>
+									Vilaplana, J., Solsona, F., Abella, F., Cuadrado, J., Alves, R., &amp; Mateo, J. (2014). S-PC: An e-treatment application for management of smoke-quitting patients. Computer Methods and Programs in Biomedicine, 115(1), 33–45. doi:10.1016/j.cmpb.2014.03.005
+								</li>
+								<li>
+									Vilaplana, J., Solsona, F., Teixid\'{o}, I., Mateo, J., Abella, F., &amp; Rius, J. (2014). A queuing theory model for cloud computing. The Journal of Supercomputing, 69(1), 492–507. doi:10.1007/s11227-014-1177-y
+								</li>
+								<li>
+									Vilaplana, J., Solsona, F., Teixid\'{o}, I., Usi\'{e}, A., Karathia, H., Alves, R., &amp; Mateo, J. (2014). Database Constraints Applied to Metabolic Pathway Reconstruction Tools. The Scientific World Journal, 2014. doi:10.1155/2014/967294
+								</li>
+								<li>
+									Vilaplana, J., Solsona, F., Abella, F., Cuadrado, J., Teixid\'{o}, I., Mateo, J., &amp; Rius, J. (2014). H-PC: a cloud computing tool for supervising hypertensive patients. The Journal of Supercomputing, 71(2), 591–612. doi:10.1007/s11227-014-1312-9
+								</li>
+								<li>
+									Vilaplana, J., Mateo, J., Teixid\'{o}, I., Solsona, F., Gin\'{e}, F., &amp; Roig, C. (2014). An SLA and power-saving scheduling consolidation strategy for shared and heterogeneous clouds. The Journal of Supercomputing. doi:10.1007/s11227-014-1351-2
+								</li>
+							</ul>
+						</p>
+					</section>
+					<section>
+						<h2>Conference publications and attendance</h2>
+						<p>
+							Abdelli, O., Usi\'{e}, A., Karathia, H., Vilaplana, J., Solsona, F. \& Alves, R.  (2011). Parallelizing Biblio-MetReS, a data mining tool. XXII Jornadas de Paralelismo JP2012. La Laguna (Tenerife), Spain.
+							Vilaplana, J., Solsona, F., Abella, F. \& Celma, J. (2012). Diseño de un Sistema Cloud Aplicado a e-Health. XXIII Jornadas de Paralelismo JP2012. Elche (Alicante), Spain.
+							Vilaplana, J., Solsona, F., Teixid\'{o}, I., Mateo, J., Rius, J. \& Abella, F. (2014). An SLA\&Power Aware Strategy for a Cloud. International Conference on Information Technology and Management Engineering (ITME2014), Hong Kong.
+							Vilaplana, J., Mateo, J., Teixid\'{o}, I. \& Solsona, F. (2014). A Green Job Scheduling Policy for Heterogeneous Clouds. 14th International Conference on Computational and Mathematical Methods in Science and Engineering (CMMSE 2014), Rota, C\'{a}diz - Spain, Volume: 4.
+							Vilaplana, J. \& Solsona, F. (2014). SLA-Aware Load Balancing in a Web-Based Cloud System over OpenStack. LLNCS vol. 8377:281-293. ICSOC 2013 Workshops. CCSA. Berlin, Germany. doi: 10.1007/978-3-319-06859-6\_26.
+							Vilaplana, J., Solsona, F., Teixid\'{o}, I., Mateo, J., Rius, J. \& Abella, F. (2014). A Green Scheduling Policy for Cloud Computing. First International Workshop, ARMS-CC 2014, held in Conjunction with ACM Symposium on Principles of Distributed Computing, PODC 2014, Paris, France, Volume: 8907.
+							Vilaplana, J., Solsona, F. \& Teixid\'{o}, I. A performance model for scalable cloud computing. 13th Australasian Symposium on Parallel and Distributed Computing (AusPDC 2015), Sydney, Australia, Volume: 163.
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<h2>Methodology</h2>
+					<p>
+						<ol>
+							<li>
+								The cloud paradigm applied to e-Health
+							</li>
+							<li>
+								S-PC: An e-treatment application for management of smoke-quitting patients
+							</li>
+							<li>
+								H-PC: a cloud computing tool for supervising hypertensive patients
+							</li>
+							<li>
+								An SLA and power-saving scheduling consolidation strategy for shared and heterogeneous clouds
+							</li>
+						</ol>
+					</p>
+				</section>
+
+				<section>
+					<h2>A queuing theory model for cloud computing</h2>
+					<section>
+						<p>Jordi Vilaplana, Francesc Solsona, Ivan Teixidó, Jordi Mateo, Francesc Abella, Josep Rius</p>
+						<p>J Supercomput (2014) 69:492–507</p>
+						<p>DOI 10.1007/s11227-014-1177-y</p>
+						<p>Published online: 9 April 2014</p>
+					</section>
+					<section>
+						This article presents the design of a cloud platform with QoS guarantees based on response time for services. Response time is defined as the time spent by a request to be serviced, in other words, the sum of the waiting and servicing times in the cloud.
+					</section>
+					<section>
+						The main contribution of this paper consists of a computer service QoS model for the cloud architecture of the back-end (or simply called a cloud) made up of processing servers and a data service that, in line with the explanation above, consists of only one database server (see Figure \ref{Cloud_Architecture}). In this model, the cloud is a single access point for the computing needs of the customers being served \cite{Xiong7} through a web browser supported by a web server. The service center is a collection of service resources used by a service provider to host service applications for customers. A service request sent by a user is transmitted to the web server running a service application \cite{Martin}, which is associated with an SLA (Service Layer Agreement). This process is performed at the front-end. The SLA  is a contract negotiated and agreed between a customer and a service provider and so a customer pays only for the resources and services used. Thus, the customer, who may represent multiple users, generates service requests at a given rate for processing at the service center hosted by the service provider through the cloud according to negotiated QoS requirements at a given price.
+					</section>
+					<section>
+						<img width="800" src="img/fig_paper1_01.png" alt="">
+					</section>
+					<section>
+						<img width="800" src="img/fig_paper1_02.png" alt="">
+					</section>
+					<section>
+						The response time ($T$) of the global cloud architecture, as a result of being considered as an open Jackson network, is the following:
+						\begin{equation}
+						\label{eq_T}
+						T = T_{ES} + T_{PS} + T_{DS} + T_{OS} + T_{CS}
+						\end{equation}
+					</section>
+					<section>
+						Then, each term of the equation \ref{eq_T} is explained separately.
+
+						\subsection{Obtaining $T_{ES}$}
+						\label{$T_{ES}$}
+
+						$T_{ES}$ represents the response time of the Entering Server ($ES$) which acts as a load balancer. The $ES$ node is modeled as an $M/M/1$ queue. Thus, the formula for obtaining the response time for an $M/M/1$ queue is:
+
+						\begin{equation}
+						\label{eqTES}
+						T_{ES}=\frac{1/L}{1-\lambda/L},
+						\end{equation}
+
+						where $\lambda$ is the arrival rate (see Figure~\ref{fig:model}), and $L$ is the service rate of the node $ES$.
+					</section>
+				</section>
+
+				<section>
+					<h2>S-PC: An e-treatment application for management of smoke-quitting patients</h2>
+				</section>
+
+				<section>
+					<h2>H-PC: a cloud computing tool for supervising hypertensive patients</h2>
+				</section>
+
+				<section>
+					<h2>An SLA and power-saving scheduling consolidation strategy for shared and heterogeneous clouds</h2>
+				</section>
+
+				<section>
+					<h2>Three-month doctoral stay</h2>
+					<p>
+						---
+					</p>
+				</section>
+
+				<section>
+					<h2>Conclusions and future directions</h2>
+					<p>
+						---
+					</p>
+				</section>
+
+				<section>
+					<h2>Questions and discussion</h2>
+					<p>
+
+					</p>
+				</section>
+
+
+
+
+
+
+
+				<section>
+					<h2>Point of View</h2>
+					<p>
+						Press <strong>ESC</strong> to enter the slide overview.
+					</p>
+					<p>
+						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
+					</p>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+						## Markdown support
+
+						Write content using inline or external Markdown.
+						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+
+						```
+						<section data-markdown>
+						  ## Markdown support
+
+						  Write content using inline or external Markdown.
+						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+						</section>
+						```
+					</script>
+				</section>
+
+				<section>
+					<section id="fragments">
+						<h2>Fragments</h2>
+						<p>Hit the next arrow...</p>
+						<p class="fragment">... to step through ...</p>
+						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
+
+						<aside class="notes">
+							This slide has fragments which are also stepped through in the notes window.
+						</aside>
+					</section>
+					<section>
+						<h2>Fragment Styles</h2>
+						<p>There's different types of fragments, like:</p>
+						<p class="fragment grow">grow</p>
+						<p class="fragment shrink">shrink</p>
+						<p class="fragment fade-out">fade-out</p>
+						<p class="fragment current-visible">current-visible</p>
+						<p class="fragment highlight-red">highlight-red</p>
+						<p class="fragment highlight-blue">highlight-blue</p>
+					</section>
+				</section>
+
+				<section id="transitions">
+					<h2>Transition Styles</h2>
+					<p>
+						You can select from different transitions, like: <br>
+						<a href="?transition=none#/transitions">None</a> -
+						<a href="?transition=fade#/transitions">Fade</a> -
+						<a href="?transition=slide#/transitions">Slide</a> -
+						<a href="?transition=convex#/transitions">Convex</a> -
+						<a href="?transition=concave#/transitions">Concave</a> -
+						<a href="?transition=zoom#/transitions">Zoom</a>
+					</p>
+				</section>
+
+				<section id="themes">
+					<h2>Themes</h2>
+					<p>
+						reveal.js comes with a few themes built in: <br>
+						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+					</p>
+				</section>
+
+				<section>
+					<section data-background="#dddddd">
+						<h2>Slide Backgrounds</h2>
+						<p>
+							Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
+						</p>
+						<a href="#" class="navigate-down">
+							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
+						<h2>Image Backgrounds</h2>
+						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
+					</section>
+					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
+						<h2>Tiled Backgrounds</h2>
+						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
+					</section>
+					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
+						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
+							<h2>Video Backgrounds</h2>
+							<pre><code style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
+						</div>
+					</section>
+					<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
+						<h2>... and GIFs!</h2>
+					</section>
+				</section>
+
+				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+					<h2>Background Transitions</h2>
+					<p>
+						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
+					</p>
+					<pre><code>Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
+				</section>
+
+				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+					<h2>Background Transitions</h2>
+					<p>
+						You can override background transitions per-slide.
+					</p>
+					<pre><code style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
+				</section>
+
+				<section>
+					<h2>Pretty Code</h2>
+					<pre><code data-trim contenteditable>
+function linkify( selector ) {
+  if( supports3DTransforms ) {
+
+    var nodes = document.querySelectorAll( selector );
+
+    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
+      var node = nodes[i];
+
+      if( !node.className ) {
+        node.className += ' roll';
+      }
+    }
+  }
+}
+					</code></pre>
+					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+				</section>
+
+				<section>
+					<h2>Marvelous List</h2>
+					<ul>
+						<li>No order here</li>
+						<li>Or here</li>
+						<li>Or here</li>
+						<li>Or here</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Fantastic Ordered List</h2>
+					<ol>
+						<li>One is smaller than...</li>
+						<li>Two is smaller than...</li>
+						<li>Three!</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>Tabular Tables</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>Item</th>
+								<th>Value</th>
+								<th>Quantity</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Apples</td>
+								<td>$1</td>
+								<td>7</td>
+							<tr>
+							<tr>
+								<td>Lemonade</td>
+								<td>$2</td>
+								<td>18</td>
+							<tr>
+							<tr>
+								<td>Bread</td>
+								<td>$3</td>
+								<td>2</td>
+							<tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h2>Clever Quotes</h2>
+					<p>
+						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
+					</p>
+					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
+						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
+					</blockquote>
+				</section>
+
+				<section>
+					<h2>Intergalactic Interconnections</h2>
+					<p>
+						You can link between slides internally,
+						<a href="#/2/3">like this</a>.
+					</p>
+				</section>
+
+				<section>
+					<h2>Speaker View</h2>
+					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
+					<p>Press the <em>S</em> key to try it out.</p>
+
+					<aside class="notes">
+						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+					</aside>
+				</section>
+
+				<section>
+					<h2>Export to PDF</h2>
+					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
+					<iframe src="//www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+				</section>
+
+				<section>
+					<h2>Global State</h2>
+					<p>
+						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
+						will be added as a class to the document element when the slide is open. This lets you
+						apply broader style changes, like switching the page background.
+					</p>
+				</section>
+
+				<section data-state="customevent">
+					<h2>State Events</h2>
+					<p>
+						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
+					</p>
+					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+Reveal.addEventListener( 'customevent', function() {
+	console.log( '"customevent" has fired' );
+} );
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Take a Moment</h2>
+					<p>
+						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
+					</p>
+				</section>
+
+				<section>
+					<h2>Much more</h2>
+					<ul>
+						<li>Right-to-left support</li>
+						<li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
+						<li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
+						<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
+						<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
+					</ul>
+				</section>
+
+				<section style="text-align: left;">
+					<h1>THE END</h1>
+					<p>
+						- <a href="http://slides.com">Try the online editor</a> <br>
+						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
+					</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				math: {
+	        mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+	        config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+    		},
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/math/math.js', async: true }			// MathJax
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
