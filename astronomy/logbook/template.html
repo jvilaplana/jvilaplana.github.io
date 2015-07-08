@@ -1,0 +1,50 @@
+<html>
+<head>
+  <script src="../../javascripts/jquery-2.1.4.min.js"></script>
+  <script>
+    var date = '3/4th July 2015';
+    var start_time = '';
+    var end_time = '';
+    var time_zone = '';
+
+    var telescope_name = 'Orion SkyQuest XT6';
+    var telescope_type = '';
+    var telescope_focal_length = '';
+    var telescope_focal_ratio = '';
+    var telescope_eyepiece = '';
+    var telescope_magnification = '';
+    var telescope_aFOV = '';
+
+    var filter = '';
+
+    var target_name = '';
+    var target_description = '';
+
+    var weather = '';
+
+    var location_name = 'Lleida, Catalonia';
+    var latitude = '41.655670';
+    var longitude = '0.607404';
+
+    var observations = '';
+    var personal_notes = '';
+
+    var observer_name = 'Jordi Vilaplana';
+
+    $(function() {
+      document.title = "Astronomy Logbook - " + date;
+      $('.date').html(date);
+      $('.observer_name').html(observer_name);
+    });
+  </script>
+
+  <link rel="stylesheet" type="text/css" href="../../stylesheets/astronomy_night.css">
+</head>
+<body>
+  <h1>Astronomy Logbook - <span class="date"></span></h1>
+  <div class="field">
+    <span class="label">Observer name:</span>
+    <span class="input observer_name"></span>
+  </div>
+</body>
+</html>
