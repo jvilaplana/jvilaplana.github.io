@@ -17,3 +17,17 @@ menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	color: #B40404;
 }
+
+div.fields {
+	-webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+}
+
+div.general_data {
+
+}
+
+div.instrument_data {
+
+}
