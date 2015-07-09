@@ -1,110 +1,137 @@
+<!-- ☣☣☣☣☣ ☢☢☢ ☠☠☠☠ ☢☢☢ ☣☣☣☣☣     -->
+<!--        DO NOT MODIFY THIS FILE           -->
+<!--    PROCEED AT YOUR OWN RISK      -->
+<!-- ☣☣☣☣☣ ☢☢☢ ☠☠☠☠ ☢☢☢ ☣☣☣☣☣     -->
 <html>
 <head>
+    <title>My astronomical log</title>
     <script src="../../javascripts/jquery-2.1.4.min.js"></script>
   <script src="../../javascripts/jquery-ui.min.js"></script>
   <script>
-  var data;
-  $.getJSON( "data.json", function( json_data ) {
-    data = json_data;
+  $(function() {
+  $.getJSON( "https://raw.githubusercontent.com/jvilaplana/jvilaplana.github.io/master/astronomy/logbook/data.json", function( json_data ) {
+    console.log(json_data);
+    var session_count = 0;
+    $.each(json_data, function(key, val) {
 
+        $.each(val, function(key, val) {
+          session_count++;
 
+          $("#sessions-list").append('<li><a href="#session-' + session_count + '">' + val.date + '</a></li>');
 
-  //var items = [];
-  //$.each( data, function( key, val ) {
-    //items.push( "<li id='" + key + "'>" + val + "</li>" );
+          $("#sessions").append('<div id="session-' + session_count + '">' +
+            '<h3>' + val.date + '</h3>' +
+            '<div class="field">' +
+            '<span class="label">Observer name: </span>' +
+            '<span class="input observer_name">' + val.observer_name + '</span>' +
+            '</div>' +
+            '<div class="field">' +
+            '<span class="label">Start time: </span>' +
+            '<span class="input start_time">' + val.start_time + '</span>' +
+            '</div>' +
+            '<div class="field">' +
+            '<span class="label">End time: </span>' +
+            '<span class="input end_time">' + val.end_time + '</span>' +
+            '</div>' +
+            '<div class="field">' +
+            '<span class="label">Timezone: </span>' +
+            '<span class="input time_zone">' + val.time_zone + '</span>' +
+            '</div>' +
+            '<div class="field">' +
+            '<span class="label">Location: </span>' +
+            '<span class="input location_name">' + val.location_name + '</span>' +
+            ' (<span class="input latitude longitude">' + val.latitude + ', ' + val.longitude + '</span>)' +
+            '</div>' +
+            '<div class="field">' +
+            '<span class="label">Weather: </span>' +
+            '<span class="input weather">' + val.weather + '</span>' +
+            '</div>' +
+            '<div class="field">' +
+            '<span class="label">General notes: </span>' +
+            '<span class="input general_notes">' + val.general_notes + '</span>' +
+            '</div>' +
+            '<div id="session-' + session_count + '-observations" class="observations"></div>' +
+            '</div>');
+
+          var observation_count = 0;
+          $.each(val.observations, function(key, val) {
+            observation_count++;
+
+            $('#session-' + session_count + '-observations').append(
+              '<div id="session-' + session_count + '-observation-' + observation_count + '">' +
+              '<div class="field">' +
+              '<span class="label">Telescope: </span>' +
+              '<span class="input telescope_name">' + val.telescope_name + '</span>' +
+              '</div>' +
+              '<div class="field">' +
+              '<span class="label">Telescope Type: </span>' +
+              '<span class="input telescope_type">' + val.telescope_type + '</span>' +
+              '</div>' +
+              '<div class="field">' +
+              '<span class="label">Telescope focal length: </span>' +
+              '<span class="input telescope_focal_length">' + val.telescope_focal_length + '</span>' +
+              '</div>' +
+              '<div class="field">' +
+              '<span class="label">Telescope Focal Ratio: </span>' +
+              '<span class="input telescope_focal_ratio">' + val.telescope_focal_ratio + '</span>' +
+              '</div>' +
+              '<div class="field">' +
+              '<span class="label">Telescope Eyepiece: </span>' +
+              '<span class="input telescope_eyepiece">' + val.telescope_eyepiece + '</span>' +
+              '</div>' +
+              '<div class="field">' +
+              '<span class="label">Telescope Magnification: </span>' +
+              '<span class="input telescope_magnification">' + val.telescope_magnification + '</span>' +
+              '</div>' +
+              '<div class="field">' +
+              '<span class="label">Telescope aFOV: </span>' +
+              '<span class="input telescope_aFOV">' + val.telescope_aFOV + '</span>' +
+              '</div>' +
+              '<div class="field">' +
+              '<span class="label">Filter: </span>' +
+              '<span class="input filter">' + val.filter + '</span>' +
+              '</div>' +
+              '<div class="field">' +
+              '<span class="label">Target name: </span>' +
+              '<span class="input target_name">' + val.target_name + '</span>' +
+              '</div>' +
+              '<div class="field">' +
+              '<span class="label">Target Description: </span>' +
+              '<span class="input target_description">' + val.target_description + '</span>' +
+              '</div>' +
+              '<div class="field">' +
+              '<span class="label">Target Time: </span>' +
+              '<span class="input target_time">' + val.target_time + '</span>' +
+              '</div>' +
+              '<div class="field">' +
+              '<span class="label">Target Image: </span>' +
+              '<span class="input target_image">' + val.target_image + '</span>' +
+              '</div>' +
+              '<div class="field">' +
+              '<span class="label">Comment: </span>' +
+              '<span class="input comment">' + val.comment + '</span>' +
+              '</div>' +
+              '<div class="field">' +
+              '<span class="label">Personal Notes: </span>' +
+              '<span class="input personal_notes">' + val.personal_notes + '</span>' +
+              '</div>' +
+              '</div>'
+            );
+          });
+        });
+    })
   });
-  console.log(data);
 
-
-    // Global data
-    var date = '3/4th July 2015';
-    var observer_name = 'Jordi Vilaplana';
-    var start_time = '';
-    var end_time = '';
-    var time_zone = '';
-    var location_name = 'Lleida, Catalonia';
-    var latitude = '41.655670';
-    var longitude = '0.607404';
-    var weather = '';
-    var general_notes = '';
-
-    // Equipment data
-    var telescope_name = 'Orion SkyQuest XT6';
-    var telescope_type = 'Dobsonian reflector';
-    var telescope_focal_length = '1200';
-    var telescope_focal_ratio = '';
-    var telescope_eyepiece = '';
-    var telescope_magnification = '';
-    var telescope_aFOV = '';
-
-    var filter = '';
-
-    // Session data, separate by 3 commas for multiple sessions
-    var target_names = 'Saturn,,,Moon';
-    var target_descriptions = 'Saaatuuurn,,,Mooooon';
-    var target_times = '23:34:11,,,23:46:44';
-    var target_images = 'http://www.wilkeseastna.org/files/saturn.jpg,,,http://i.space.com/images/i/000/029/533/original/full-moon-juarez-mexico.jpg';
-    var observations = 'doncs sí,,,esooo';
-    var personal_notes = 'wololooooo,,,walalalalaa';
+  $( "#sessions" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+  $( "#sessions li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+});
   </script>
-
-  <!-- ☣☣☣☣☣ ☢☢☢ ☠☠☠☠ ☢☢☢ ☣☣☣☣☣ -->
-  <!-- DO NOT MODIFY BEYOND THIS POINT -->
-  <!--    PROCEED AT YOUR OWN RISK     -->
-  <!-- ☣☣☣☣☣ ☢☢☢ ☠☠☠☠ ☢☢☢ ☣☣☣☣☣ -->
 
 
   <link rel="stylesheet" type="text/css" href="../../stylesheets/jquery-ui.min.css">
   <link rel="stylesheet" type="text/css" href="../../stylesheets/jquery-ui.structure.min.css">
   <link rel="stylesheet" type="text/css" href="../../stylesheets/jquery-ui.theme.min.css">
   <link rel="stylesheet" type="text/css" href="../../stylesheets/astronomy_night.css">
-  <script>
-    $(function() {
-      document.title = "Astronomy Logbook - " + date;
-      $('.date').html(date);
-      $('.observer_name').html(observer_name);
-      $('.date').html(date);
-      $('.start_time').html(start_time);
-      $('.end_time').html(end_time);
-      $('.time_zone').html(time_zone);
-      $('.location_name').html(location_name);
-      $('.latitude').html(latitude);
-      $('.longitude').html(longitude);
-      $('.weather').html(weather);
-      $('.general_notes').html(general_notes);
-
-      $('.telescope_name').html(telescope_name);
-      $('.telescope_type').html(telescope_type);
-      $('.telescope_focal_length').html(telescope_focal_length);
-      $('.telescope_focal_ratio').html(telescope_focal_ratio);
-      $('.telescope_eyepiece').html(telescope_eyepiece);
-      $('.telescope_magnification').html(telescope_magnification);
-      $('.telescope_aFOV').html(telescope_aFOV);
-
-      var target_names_array = target_names.split(",,,");
-      var target_descriptions_array = target_descriptions.split(",,,");
-      var target_times_array = target_times.split(",,,");
-      var target_images_array = target_images.split(",,,");
-      var observations_array = observations.split(",,,");
-      var personal_notes_array = personal_notes.split(",,,");
-
-      for(var i = 0; i < target_names_array.length; i++) {
-        $("#tab-list").append('<li><a href="#tabs-' + (i + 1) + '">' + target_names_array[i] + '</a></li>');
-
-        $("#tabs").append('<div id="tabs-' + (i + 1) + '">' +
-          '<h2>' + target_names_array[i] + '</h2>' +
-          '<p class="time">' + target_times_array[i] + '</p>' +
-          '<p class="description">' + target_descriptions_array[i] + '</p>' +
-          '<a href="' + target_images_array[i] + '" target="_blank"><img src="' + target_images_array[i] + '" width="500px" /></a>' +
-          '<p class="observations">' + observations_array[i] + '</p>' +
-          '<p class="personal_notes">' + personal_notes_array[i] + '</p>' +
-          '</div>');
-      }
-
-      $( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
-      $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
-    });
-  </script>
   <style>
   .ui-tabs-vertical { width: 55em; }
   .ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
@@ -115,8 +142,18 @@
   </style>
 </head>
 <body>
-  <h1>Astronomy Logbook - <span class="date"></span></h1>
-  <div class="fields">
+  <h1>My Astronomy Logbook</h1>
+
+  <h2>Sessions</h2>
+  <div id="sessions">
+    <ul id="sessions-list">
+    </ul>
+  </div>
+
+
+  <!--
+  <div class="sessions">
+
 
     <div class="general_data">
       <div class="field">
@@ -189,5 +226,6 @@
     <ul id="tab-list">
     </ul>
   </div>
+-->
 </body>
 </html>
