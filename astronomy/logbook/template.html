@@ -1,231 +1,151 @@
 <!-- ☣☣☣☣☣ ☢☢☢ ☠☠☠☠ ☢☢☢ ☣☣☣☣☣     -->
-<!--        DO NOT MODIFY THIS FILE           -->
-<!--    PROCEED AT YOUR OWN RISK      -->
-<!-- ☣☣☣☣☣ ☢☢☢ ☠☠☠☠ ☢☢☢ ☣☣☣☣☣     -->
+<!--        DO NOT MODIFY THIS FILE      -->
+<!--    PROCEED AT YOUR OWN RISK         -->
+<!-- ☣☣☣☣☣ ☢☢☢ ☠☠☠☠ ☢☢☢ ☣☣☣☣☣    -->
 <html>
 <head>
     <title>My astronomical log</title>
     <script src="../../javascripts/jquery-2.1.4.min.js"></script>
-  <script src="../../javascripts/jquery-ui.min.js"></script>
-  <script>
-  $(function() {
-  $.getJSON( "https://raw.githubusercontent.com/jvilaplana/jvilaplana.github.io/master/astronomy/logbook/data.json", function( json_data ) {
-    console.log(json_data);
-    var session_count = 0;
-    $.each(json_data, function(key, val) {
+    <script src="../../javascripts/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/jquery-ui.structure.min.css">
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/jquery-ui.theme.min.css">
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/astronomy_night.css">
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Inconsolata:700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <script>
+        $(function() {
+          $.getJSON( "https://raw.githubusercontent.com/jvilaplana/jvilaplana.github.io/master/astronomy/logbook/data.json", function( json_data ) {
+            var session_count = 0;
+            $.each(json_data, function(key, val) {
+                $.each(val, function(key, val) {
+                  session_count++;
 
-        $.each(val, function(key, val) {
-          session_count++;
+                  $("#sessions-list").append('<li><a href="#sessions-' + session_count + '">' + val.date + '</a></li>');
 
-          $("#sessions-list").append('<li><a href="#session-' + session_count + '">' + val.date + '</a></li>');
+                  $("#sessions").append('<div id="sessions-' + session_count + '">' +
+                    '<h3>' + val.date + '</h3>' +
+                    '<div class="field">' +
+                    '<span class="label">Observer name: </span>' +
+                    '<span class="input observer_name">' + val.observer_name + '</span>' +
+                    '</div>' +
+                    '<div class="field">' +
+                    '<span class="label">Start time: </span>' +
+                    '<span class="input start_time">' + val.start_time + '</span>' +
+                    '</div>' +
+                    '<div class="field">' +
+                    '<span class="label">End time: </span>' +
+                    '<span class="input end_time">' + val.end_time + '</span>' +
+                    '</div>' +
+                    '<div class="field">' +
+                    '<span class="label">Timezone: </span>' +
+                    '<span class="input time_zone">' + val.time_zone + '</span>' +
+                    '</div>' +
+                    '<div class="field">' +
+                    '<span class="label">Location: </span>' +
+                    '<span class="input location_name">' + val.location_name + '</span>' +
+                    ' (<span class="input latitude longitude">' + val.latitude + ', ' + val.longitude + '</span>)' +
+                    '</div>' +
+                    '<div class="field">' +
+                    '<span class="label">Weather: </span>' +
+                    '<span class="input weather">' + val.weather + '</span>' +
+                    '</div>' +
+                    '<div class="field">' +
+                    '<span class="label">General notes: </span>' +
+                    '<span class="input general_notes">' + val.general_notes + '</span>' +
+                    '</div>' +
+                    '<div id="session-' + session_count + '-observations" class="observations"></div>' +
+                    '</div>');
 
-          $("#sessions").append('<div id="session-' + session_count + '">' +
-            '<h3>' + val.date + '</h3>' +
-            '<div class="field">' +
-            '<span class="label">Observer name: </span>' +
-            '<span class="input observer_name">' + val.observer_name + '</span>' +
-            '</div>' +
-            '<div class="field">' +
-            '<span class="label">Start time: </span>' +
-            '<span class="input start_time">' + val.start_time + '</span>' +
-            '</div>' +
-            '<div class="field">' +
-            '<span class="label">End time: </span>' +
-            '<span class="input end_time">' + val.end_time + '</span>' +
-            '</div>' +
-            '<div class="field">' +
-            '<span class="label">Timezone: </span>' +
-            '<span class="input time_zone">' + val.time_zone + '</span>' +
-            '</div>' +
-            '<div class="field">' +
-            '<span class="label">Location: </span>' +
-            '<span class="input location_name">' + val.location_name + '</span>' +
-            ' (<span class="input latitude longitude">' + val.latitude + ', ' + val.longitude + '</span>)' +
-            '</div>' +
-            '<div class="field">' +
-            '<span class="label">Weather: </span>' +
-            '<span class="input weather">' + val.weather + '</span>' +
-            '</div>' +
-            '<div class="field">' +
-            '<span class="label">General notes: </span>' +
-            '<span class="input general_notes">' + val.general_notes + '</span>' +
-            '</div>' +
-            '<div id="session-' + session_count + '-observations" class="observations"></div>' +
-            '</div>');
+                  var observation_count = 0;
+                  $.each(val.observations, function(key, val) {
+                    observation_count++;
 
-          var observation_count = 0;
-          $.each(val.observations, function(key, val) {
-            observation_count++;
-
-            $('#session-' + session_count + '-observations').append(
-              '<div id="session-' + session_count + '-observation-' + observation_count + '">' +
-              '<div class="field">' +
-              '<span class="label">Telescope: </span>' +
-              '<span class="input telescope_name">' + val.telescope_name + '</span>' +
-              '</div>' +
-              '<div class="field">' +
-              '<span class="label">Telescope Type: </span>' +
-              '<span class="input telescope_type">' + val.telescope_type + '</span>' +
-              '</div>' +
-              '<div class="field">' +
-              '<span class="label">Telescope focal length: </span>' +
-              '<span class="input telescope_focal_length">' + val.telescope_focal_length + '</span>' +
-              '</div>' +
-              '<div class="field">' +
-              '<span class="label">Telescope Focal Ratio: </span>' +
-              '<span class="input telescope_focal_ratio">' + val.telescope_focal_ratio + '</span>' +
-              '</div>' +
-              '<div class="field">' +
-              '<span class="label">Telescope Eyepiece: </span>' +
-              '<span class="input telescope_eyepiece">' + val.telescope_eyepiece + '</span>' +
-              '</div>' +
-              '<div class="field">' +
-              '<span class="label">Telescope Magnification: </span>' +
-              '<span class="input telescope_magnification">' + val.telescope_magnification + '</span>' +
-              '</div>' +
-              '<div class="field">' +
-              '<span class="label">Telescope aFOV: </span>' +
-              '<span class="input telescope_aFOV">' + val.telescope_aFOV + '</span>' +
-              '</div>' +
-              '<div class="field">' +
-              '<span class="label">Filter: </span>' +
-              '<span class="input filter">' + val.filter + '</span>' +
-              '</div>' +
-              '<div class="field">' +
-              '<span class="label">Target name: </span>' +
-              '<span class="input target_name">' + val.target_name + '</span>' +
-              '</div>' +
-              '<div class="field">' +
-              '<span class="label">Target Description: </span>' +
-              '<span class="input target_description">' + val.target_description + '</span>' +
-              '</div>' +
-              '<div class="field">' +
-              '<span class="label">Target Time: </span>' +
-              '<span class="input target_time">' + val.target_time + '</span>' +
-              '</div>' +
-              '<div class="field">' +
-              '<span class="label">Target Image: </span>' +
-              '<span class="input target_image">' + val.target_image + '</span>' +
-              '</div>' +
-              '<div class="field">' +
-              '<span class="label">Comment: </span>' +
-              '<span class="input comment">' + val.comment + '</span>' +
-              '</div>' +
-              '<div class="field">' +
-              '<span class="label">Personal Notes: </span>' +
-              '<span class="input personal_notes">' + val.personal_notes + '</span>' +
-              '</div>' +
-              '</div>'
-            );
+                    $('#session-' + session_count + '-observations').append(
+                      '<div id="session-' + session_count + '-observation-' + observation_count + '">' +
+                      '<div style="float: right;">' +
+                      '<img src="' + val.target_image + '" />' +
+                      '</div>' +
+                      '<div class="field">' +
+                      '<span class="label">Telescope: </span>' +
+                      '<span class="input telescope_name">' + val.telescope_name + '</span>' +
+                      '</div>' +
+                      '<div class="field">' +
+                      '<span class="label">Telescope Type: </span>' +
+                      '<span class="input telescope_type">' + val.telescope_type + '</span>' +
+                      '</div>' +
+                      '<div class="field">' +
+                      '<span class="label">Telescope focal length: </span>' +
+                      '<span class="input telescope_focal_length">' + val.telescope_focal_length + ' mm</span>' +
+                      '</div>' +
+                      '<div class="field">' +
+                      '<span class="label">Telescope Focal Ratio: </span>' +
+                      '<span class="input telescope_focal_ratio">' + val.telescope_focal_ratio + '</span>' +
+                      '</div>' +
+                      '<div class="field">' +
+                      '<span class="label">Telescope Eyepiece: </span>' +
+                      '<span class="input telescope_eyepiece">' + val.telescope_eyepiece + '</span>' +
+                      '</div>' +
+                      '<div class="field">' +
+                      '<span class="label">Telescope Magnification: </span>' +
+                      '<span class="input telescope_magnification">' + val.telescope_magnification + '</span>' +
+                      '</div>' +
+                      '<div class="field">' +
+                      '<span class="label">Telescope aFOV: </span>' +
+                      '<span class="input telescope_aFOV">' + val.telescope_aFOV + '</span>' +
+                      '</div>' +
+                      '<div class="field">' +
+                      '<span class="label">Filter: </span>' +
+                      '<span class="input filter">' + val.filter + '</span>' +
+                      '</div>' +
+                      '<div class="field">' +
+                      '<span class="label">Target name: </span>' +
+                      '<span class="input target_name">' + val.target_name + '</span>' +
+                      '</div>' +
+                      '<div class="field">' +
+                      '<span class="label">Target Description: </span>' +
+                      '<span class="input target_description">' + val.target_description + '</span>' +
+                      '</div>' +
+                      '<div class="field">' +
+                      '<span class="label">Target Time: </span>' +
+                      '<span class="input target_time">' + val.target_time + '</span>' +
+                      '</div>' +
+                      '<div class="field">' +
+                      '<span class="label">Comment: </span>' +
+                      '<span class="input comment">' + val.comment + '</span>' +
+                      '</div>' +
+                      '<div class="field">' +
+                      '<span class="label">Personal Notes: </span>' +
+                      '<span class="input personal_notes">' + val.personal_notes + '</span>' +
+                      '</div>' +
+                      '</div>'
+                    );
+                  });
+                });
+            });
+            $( "#sessions" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+            $( "#sessions li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
           });
-        });
-    })
-  });
-
-  $( "#sessions" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
-  $( "#sessions li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
-});
-  </script>
-
-
-  <link rel="stylesheet" type="text/css" href="../../stylesheets/jquery-ui.min.css">
-  <link rel="stylesheet" type="text/css" href="../../stylesheets/jquery-ui.structure.min.css">
-  <link rel="stylesheet" type="text/css" href="../../stylesheets/jquery-ui.theme.min.css">
-  <link rel="stylesheet" type="text/css" href="../../stylesheets/astronomy_night.css">
-  <style>
-  .ui-tabs-vertical { width: 55em; }
-  .ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
-  .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
-  .ui-tabs-vertical .ui-tabs-nav li a { display:block; }
-  .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; }
-  .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
-  </style>
+      });
+    </script>
+    <style>
+      .ui-tabs-vertical { width: 55em; }
+      .ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
+      .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
+      .ui-tabs-vertical .ui-tabs-nav li a { display:block; }
+      .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; }
+      .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
+    </style>
 </head>
 <body>
   <h1>My Astronomy Logbook</h1>
-
   <h2>Sessions</h2>
   <div id="sessions">
     <ul id="sessions-list">
     </ul>
   </div>
-
-
-  <!--
-  <div class="sessions">
-
-
-    <div class="general_data">
-      <div class="field">
-        <span class="label">Observer name:</span>
-        <span class="input observer_name"></span>
-      </div>
-      <div class="field">
-        <span class="label">Date:</span>
-        <span class="input date"></span>
-      </div>
-      <div class="field">
-        <span class="label">Start time:</span>
-        <span class="input start_time"></span>
-      </div>
-      <div class="field">
-        <span class="label">End time:</span>
-        <span class="input end_time"></span>
-      </div>
-      <div class="field">
-        <span class="label">Timezone:</span>
-        <span class="input time_zone"></span>
-      </div>
-      <div class="field">
-        <span class="label">Location:</span>
-        <span class="input location_name"></span> (<span class="input latitude"></span>, <span class="input longitude"></span>)
-      </div>
-      <div class="field">
-        <span class="label">Weather:</span>
-        <span class="input weather"></span>
-      </div>
-      <div class="field">
-        <span class="label">Session notes:</span>
-        <span class="input general_notes"></span>
-      </div>
-    </div>
-    <div class="instrument_data">
-      <div class="field">
-        <span class="label">Telescope name:</span>
-        <span class="input telescope_name"></span>
-      </div>
-      <div class="field">
-        <span class="label">Telescope type:</span>
-        <span class="input telescope_type"></span>
-      </div>
-      <div class="field">
-        <span class="label">Telescope focal length:</span>
-        <span class="input telescope_focal_length"></span>mm
-      </div>
-      <div class="field">
-        <span class="label">Telescope focal ratio:</span>
-        <span class="input telescope_focal_ratio"></span>
-      </div>
-      <div class="field">
-        <span class="label">Telescope eyepiece:</span>
-        <span class="input telescope_eyepiece"></span>
-      </div>
-      <div class="field">
-        <span class="label">Telescope magnification:</span>
-        <span class="input telescope_magnification"></span>
-      </div>
-      <div class="field">
-        <span class="label">Telescope aFOV:</span>
-        <span class="input telescope_aFOV"></span>
-      </div>
-    </div>
-  </div>
-
-  <h2>Observations</h2>
-  <div id="tabs">
-    <ul id="tab-list">
-    </ul>
-  </div>
--->
 </body>
 </html>
