@@ -37,29 +37,38 @@
 	<body>
 
 		<div class="reveal">
-
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
 					<h1>Management of Cloud systems applied to eHealth</h1>
-					<section>
 						<h3>Jordi Vilaplana</h3>
-						<div>
-							<img width="100" src="img/logos/udl.png" alt="Grenoble INP" class="logo" />
-							<img width="100" src="img/logos/gcd.png" alt="G-SCOP" class="logo" />
-						</div>
+						<table>
+							<colgroup>
+								<col style="width: 50%" />
+								<col style="width: 50%" />
+							</colgroup>
+							<tr>
+								<td>
+									<img width="100" src="img/logos/udl.png" alt="Grenoble INP" class="logo" />
+								</td>
+								<td>
+									<img width="100" src="img/logos/gcd.png" alt="G-SCOP" class="logo" />
+									<figcaption>Distributed Computing Group</figcaption>
+								</td>
+							</tr>
+						</table>
+						<br />
 						<div style="margin-top: .5em; font-size: .75em; line-height: 1">
 							Lleida<br/>
 							September 10, 2015
 						</div>
-					</section>
-					<section>
+						<p>
+							&nbsp;
+						</p>
 						<p>
 							<small><i>Supervised by</i></small>
 						</p>
 						<h4>Francesc Solsona &amp; Francesc Abella</h4>
-
-					</section>
 				</section>
 
 				<section>
@@ -170,8 +179,7 @@
 											<img class="fragment push" src="img/fig_cloud_scalability.png" width="100%" data-fragment-index="9" />
 											<img class="fragment push" src="img/fig_cloud_scalability.png" width="100%" data-fragment-index="10" />
 											<img class="fragment push" src="img/fig_cloud_scalability.png" width="100%" data-fragment-index="11" />
-											<img class="fragment push" src="img/fig_cloud_scalability.png" width="100%" data-fragment-index="12" />
-											<figcaption></figcaption>
+											<img class="fragment" src="img/fig_cloud_scalability.png" width="100%" data-fragment-index="12" />
 										</figure>
 									</td>
 									<td>
@@ -274,76 +282,127 @@
 				<section>
 					<section>
 						<h2>Queueing Theory</h2>
-					</section>
-					<section>
 						<ul>
-							<li>
-								Queueing theory is a mathematical method of analyzing the congestions and delays of waiting in line
+							<li class="fragment">
+								Mathematical method of analyzing the congestions and delays of waiting in line
 						</li>
-						<li>
-							Queuing theory is used to develop more efficient queuing systems that reduce customer wait times and increase the number of customers that can be served
+						<li class="fragment">
+							Used to develop more efficient queuing systems
 						</li>
 						</ul>
+						<img class="fragment" width="80%" src="img/fig_queueing_theory2.jpg" />
+						<aside class="notes">
+							 that reduce customer wait times and increase the number of customers that can be served
+						</aside>
 					</section>
 					<section>
-						<img width="100%" src="img/queueing_before.png" />
-						<p>
-							A Cloud system can be transformed to...
-						</p>
+						<h2>Queueing Theory</h2>
+
+						<table>
+							<colgroup>
+								<col style="width: 50%" />
+								<col style="width: 50%" />
+							</colgroup>
+							<tr>
+								<td style="padding: 10px 20px;">
+									<p class="fragment" data-fragment-index="1">A Cloud system can be transformed to...</p>
+								</td>
+								<td style="padding: 10px 20px;">
+									<p class="fragment" data-fragment-index="2">A queueing theory model</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="padding: 10px 20px;">
+									<img class="fragment" data-fragment-index="1" width="100%" src="img/queueing_before.png" />
+								</td>
+								<td style="padding: 10px 20px;">
+									<img class="fragment" data-fragment-index="2" width="100%" src="img/fig_queueing_theory.png" />
+								</td>
+							</tr>
+						</table>
+
+
 					</section>
 					<section>
-						<p>
-							A queueing theory model
-						</p>
-						<img width="800" src="img/fig_queueing_theory.png" alt="Overview">
+						<h2>A queueing theory model</h2>
+						<img width="100%" src="img/fig_queueing_theory.png" />
 						<aside class="notes">
 							Although queueing theory can provide very efficient models for relatively simple scenarios, the complex mathematical analyses hinder us from obtaining simple and fast solutions for more elaborate systems.
 	    			</aside>
 					</section>
 					<section>
-						<h2></h2>
-						<p>
-							Transform Cloud systems to queueing theory assets
-						</p>
-						<p>
-							Predict behaviours through queueing theory formulas
-						</p>
+						<h2>Queueing Theory</h2>
+						<table>
+							<colgroup>
+								<col style="width: 50%" />
+								<col style="width: 5%" />
+								<col style="width: 45%" />
+							</colgroup>
+							<tr>
+								<td colspan="3" style="padding: 10px 20px;">
+									<ul>
+										<li class="fragment">Transform Cloud systems to queueing theory assets</li>
+										<li class="fragment">Predict behaviours through queueing theory formulas</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td style="padding: 10px 20px;">
+									<img class="fragment" width="100%" src="img/fig_queueing_theory.png" />
+								</td>
+								<td style="padding: 10px 20px; vertical-align: middle;">
+									<p class="fragment">&#8680;</p>
+								</td>
+								<td style="padding: 10px 20px; vertical-align: middle;">
+									<p class="fragment">Mathematical formulas</p>
+								</td>
+							</tr>
+						</table>
 					</section>
 				</section>
 				<section>
 					<section>
 						<h2>Nonlinear programming</h2>
-					</section>
-					<section>
-						<h2></h2>
-						<p>
-							A nonlinear programming problem
-(NLP) deals with mathematical optimization problems where the objective function
-to be maximized or minimized, or some of its constraints, are nonlinear.
+						<p class="fragment definition">
+							A nonlinear programming problem (NLP) deals with mathematical optimization problems where the objective function to be maximized or minimized, or some of its constraints, are nonlinear.
 						</p>
 					</section>
 					<section>
-						<h2></h2>
-						<p>
-							Generally, a NLP can be defined as:
-						</p>
-						<p>
-							\begin{equation}
-							Max(f(x_{1},x_{2}, ..., x_{n})),
-							\end{equation}
-
-							s.t. (subject to):
-
-							\begin{equation}
-							\begin{split}
-							h_{i}(x) = b_{i} & \quad (i = 1, 2, ..., m) \\
-							x_{j} \geq 0 & \quad (j = 1, 2, ..., n)
-							\end{split}
-							\end{equation}
-						</p>
-						<p>
-							Once the NLP has been defined, it can be processed by a solver (i.e. CPLEX, lp\_solve, Excel Solver Function, etc.) to extract an optimal solution.
-						</p>
+						<h2>Nonlinear programming</h2>
+						<table>
+							<colgroup>
+								<col style="width: 50%" />
+								<col style="width: 50%" />
+							</colgroup>
+							<tr>
+								<td style="padding: 10px 20px;">
+									<p class="fragment" style="padding-bottom: 20px;">
+										A NLP can be defined as:
+									</p>
+									<p class="fragment" style="padding-bottom: 20px;">
+										\begin{equation}
+										Max(f(x_{1},x_{2}, ..., x_{n})),
+										\end{equation}
+									</p>
+									<p class="fragment" style="padding-bottom: 20px;">
+										s.t. (subject to):
+									</p>
+									<p class="fragment">
+										\begin{equation}
+										\begin{split}
+										h_{i}(x) = b_{i} & \quad (i = 1, 2, ..., m) \\
+										x_{j} \geq 0 & \quad (j = 1, 2, ..., n)
+										\end{split}
+										\end{equation}
+									</p>
+								</td>
+								<td style="padding: 10px 20px; vertical-align: middle;">
+									<p class="fragment">
+										Then, it can be processed by a solver to extract an optimal solution
+									</p>
+								</td>
+							</tr>
+						</table>
 					</section>
 				</section>
 				<section>
@@ -352,73 +411,97 @@ to be maximized or minimized, or some of its constraints, are nonlinear.
 					</section>
 					<section>
 						<h2>Why Cloud simulation?</h2>
-						<p>
-							The wide ecosystem of cloud architectures, demand timely, repeatable, and controllable methodologies for evaluation of algorithms, applications, and policies before actual development of cloud products.
-						</p>
-						<p>
-							Because utilization of real testbeds limits the experiments to the scale of the testbed and makes the reproduction of results an extremely difficult undertaking, alternative approaches for testing and experimentation leverage development of new Cloud technologies.
-						</p>
-						<p>
-							A suitable alternative is the utilization of simulations tools, which open the possibility of evaluating the hypothesis prior to software development in an environment where one can reproduce tests.
-						</p>
+						<ul class="spaced">
+							<li class="fragment">
+								Timely, repeatable and controllable methodologies for evaluation of algorithms, applications and policies
+							</li>
+							<li class="fragment">
+								Utilization of real testbeds limits the experiments to their scale and makes the reproduction of results an extremely difficult undertaking
+							</li>
+							<p>
+								&nbsp;
+							</p>
+							<p class="definition fragment">
+								The utilization of simulations tools opens the possibility of evaluating the hypothesis prior to software development in an environment where one can reproduce tests
+							</p>
+							<p>
+								&nbsp;
+							</p>
+						</ul>
+						<aside class="notes">
+							<ul>
+								<li>Wide ecosystem of cloud architectures, demand...  ...before actual development of cloud products.</li>
+								<li>, alternative approaches for testing and experimentation leverage development of new Cloud technologies.</li>
+							</ul>
+						</aside>
 					</section>
 					<section>
 						<h2>Cloud simulation tools</h2>
-						<ul>
-							<li class="fragment highlight-blue">
-								CloudSim
+						<ul class="spaced">
+							<li class="fragment" data-fragment-index="1">
+								<span class="fragment grow highlight-blue" data-fragment-index="8">CloudSim</span>
 							</li>
-							<li>
+							<li class="fragment" data-fragment-index="2">
 								CloudAnalyst
 							</li>
-							<li>
+							<li class="fragment" data-fragment-index="3">
 								GreenCloud
 							</li>
-							<li>
+							<li class="fragment" data-fragment-index="4">
 								iCanCloud
 							</li>
-							<li>
+							<li class="fragment" data-fragment-index="5">
 								MDCSim
 							</li>
-							<li>
+							<li class="fragment" data-fragment-index="6">
 								NetworkCloudSim
 							</li>
-							<li>
+							<li class="fragment"data-fragment-index="7">
 								VirtualCloud
 							</li>
 						</ul>
-					</section>
-					<section>
-						<h2>CloudSim</h2>
-						<p>Overview of CloudSim functionalities:
-							<ul>
-								<li>Modeling and simulation of large scale Cloud computing data centers</li>
-								<li>Modeling and simulation of virtualized server hosts, with customizable policies for provisioning host resources to virtual machines</li>
-								<li>Modeling and simulation of energy-aware computational resources</li>
-								<li>Modeling and simulation of data center network topologies and message-passing applications</li>
-								<li>Modeling and simulation of federated clouds</li>
-								<li>Dynamic insertion of simulation elements, stop and resume of simulation</li>
-								<li>User-defined policies for allocation of hosts to virtual machines and policies for allocation of host resources to virtual machines</li>
-							</ul>
+						<p class="definition fragment">
+							CloudSim is an event-driven and extensible simulation toolkit that enables Cloud systems and scenarios to be modelled and simulated
 						</p>
 					</section>
 					<section>
-						<h2>Cloud system as a CloudSim model</h2>
-						<img width="800" src="img/fig_cloud_simulation.png" alt="Overview">
+						<h2>CloudSim</h2>
+							<p class="fragment">Modeling and simulation of...</p>
+							<ul class="spaced">
+								<li class="fragment">Large scale Cloud computing data centers</li>
+								<li class="fragment">Virtualized server hosts, with customizable policies for provisioning host resources to virtual machines</li>
+								<li class="fragment">Energy-aware computational resources</li>
+								<li class="fragment">Data center network topologies and message-passing applications</li>
+								<li class="fragment">Federated Clouds</li>
+								<li class="fragment">Dynamic insertion of simulation elements, stop and resume of simulation</li>
+								<li class="fragment">User-defined policies for allocation of hosts to VMs and policies for allocation of host resources to VMs</li>
+							</ul>
+						</p>
 					</section>
+
+					<section>
+						<h2>Cloud system as a CloudSim model</h2>
+						<p>
+							&nbsp;
+						</p>
+						<p>
+							<img width="800" src="img/fig_cloud_simulation.png" alt="Overview">
+						</p>
+					</section>
+					<!--
 					<section>
 						<h2></h2>
 						<p>
-
 							In addition, it is not possible to perform benchmarking tests in dependable, repeatable and scalable environments using real Cloud environments \cite{Calheiros2011,Bai2011}.
 
 							Cloud simulator tools are best suited for large Cloud system testing to decrease the complexity and enable performance analysts to assess system behavior by focusing on quality issues of specific components under different scenarios \cite{Malhotra2013}.
 
 							Several Cloud simulators have been specifically developed for the performance analysis of Cloud computing environments, with CloudSim\footnote{CloudSim webpage: http://www.cloudbus.org/cloudsim/}, CloudAnalysit \cite{Wickremasinghe2010}, GreenCloud\footnote{GreenCloud webpage: http://greencloud.gforge.uni.lu/}, iCanCloud\footnote{iCanCloud webpage: http://www.arcos.inf.uc3m.es/~icancloud/Home.html}, MDCSim \cite{Lim2009}, NetworkCloudSim \cite{Garg2011} and VirtualCloud\footnote{VirtualCloud webpage: http://sourceforge.net/projects/virtualcloud/} being the most prominent ones. Among all these tools, CloudSim is considered to be the most sophisticated \cite{Malhotra2013} and is also the most widely-used and referenced in the literature.
 
-							CloudSim is an event-driven and extensible simulation toolkit that enables Cloud systems and scenarios to be modelled and simulated. It facilitates the development of personalized settings involving multiple data centers, physical hosts and virtual machines with their own characteristics. It also allows custom allocation policies to be developed for both user jobs or tasks and for virtual machines. The high level of customization and its default policies make CloudSim a remarkable tool for simulating both simple and complex scenarios.
+
 						</p>
 					</section>
+				-->
 				</section>
 
 				<section>
@@ -426,66 +509,137 @@ to be maximized or minimized, or some of its constraints, are nonlinear.
 						<h2>Cloud platform</h2>
 					</section>
 					<section>
+						<h2>Current Cloud platforms</h2>
+						<table>
+							<colgroup>
+								<col style="width: 50%" />
+								<col style="width: 50%" />
+							</colgroup>
+							<tr>
+								<td>
+									<ul class="spaced">
+										<li class="fragment" data-fragment-index="1">Amazon EC2</li>
+										<li class="fragment" data-fragment-index="2">Microsoft Azure</li>
+										<li class="fragment" data-fragment-index="3">Google Cloud Platform</li>
+										<li class="fragment" data-fragment-index="4"><span class="fragment grow highlight-blue" data-fragment-index="10">OpenStack</span></li>
+										<li class="fragment" data-fragment-index="5">Apache CloudStack</li>
+										<li class="fragment" data-fragment-index="6">OpenNebula</li>
+									</ul>
+								</td>
+								<td>
+									<ul class="spaced" style="list-style-type: none;">
+										<li class="fragment" data-fragment-index="7">&#8680; <img src="img/PriceTag.png" width="32" /> Commercial</li>
+										<li class="fragment" data-fragment-index="7">&#8680; <img src="img/PriceTag.png" width="32" /> Commercial</li>
+										<li class="fragment" data-fragment-index="7">&#8680; <img src="img/PriceTag.png" width="32" /> Commercial</li>
+										<li class="fragment" data-fragment-index="8"><span class="fragment grow highlight-blue" data-fragment-index="10">&#8680; <img src="img/opensource_64.png" width="32" /> Open Source</span></li>
+										<li class="fragment" data-fragment-index="8">&#8680; <img src="img/opensource_64.png" width="32" /> Open Source</li>
+										<li class="fragment" data-fragment-index="8">&#8680; <img src="img/opensource_64.png" width="32" /> Open Source</li>
+									</ul>
+								</td>
+							</tr>
+						</table>
+						<p class="fragment" data-fragment-index="9">
+							And much more...
+						</p>
+					</section>
+					<section>
+						<h2>OpenStack History</h2>
+						<ul class="spaced">
+							<li class="fragment">Joint project with Rackspace &amp; NASA</li>
+							<li class="fragment">Launched in June 2010</li>
+							<li class="fragment">Enable anyone to create and offer Cloud computing services</li>
+							<li class="fragment">Many corporations joined</li>
+						</ul>
+					</section>
+					<section>
+						<h2>OpenStack overview</h2>
 						<img width="800" src="img/fig_cloud_platform.png" alt="">
 					</section>
 					<section>
-						<h2></h2>
-						<p>
-							http://www.slideshare.net/OReillyOSCON/comparing-open-source-private-cloud-platforms?qid=3b429d66-fa22-4c85-81e1-80c2f887ffab&v=qf1&b=&from_search=3
-						</p>
+						<h2>OpenStack Components</h2>
+						<ul class="spaced">
+							<li class="fragment">Nova (compute)</li>
+							<li class="fragment">Swift (object storage)</li>
+							<li class="fragment">Glance (image service)</li>
+							<li class="fragment">Keystone (identity management)</li>
+							<li class="fragment">Horizon (gui interface)</li>
+						</ul>
 					</section>
 				</section>
 
 				<section>
 					<section>
 						<h2>Cloud computing challenges and issues</h2>
-						<p>
-							---
-						</p>
-					</section>
-
-					<section>
-						<h2>Reliability, availability and serviceability</h2>
-						<p>
-							---
-						</p>
-					</section>
-					<section>
-						<h2>System security, user privacy and trust issues</h2>
-						<p>
-							---
-						</p>
-					</section>
-					<section>
-						<h2>Performance and energy consumption issues</h2>
-						<p>
-							---
-						</p>
-					</section>
+						<!-- <img src="img/challenge-accepted-design-stempel-d76133089.png" /> -->
+						<ul class="spaced">
+							<li class="fragment">Reliability, availability and serviceability</li>
+							<li class="fragment">System security, user privacy and trust issues</li>
+							<li class="fragment">Performance and energy consumption issues</li>
+						</ul>
 				</section>
-
-
-
-
-
+			</section>
 				<section>
-
-
 					<section>
-						<h2>eHealth</h2>
+						<img src="img/eHealthImage.png" width="80%" />
+					</section>
+					<section>
+						<h2>What is eHealth?</h2>
+						<p class="fragment definition" data-fragment-index="1">
+							Union of the healthcare and the information and communications technology (ICT) areas
+						</p>
+						<table>
+							<colgroup>
+								<col style="width: 25%" />
+								<col style="width: 25%" />
+								<col style="width: 25%" />
+								<col style="width: 25%" />
+							</colgroup>
+							<tr>
+								<td class="fragment" data-fragment-index="2"><p class="definition">Telemedicine</p></td>
+								<td class="fragment" data-fragment-index="3"><p class="definition">Electronic Health Records</p></td>
+								<td class="fragment" data-fragment-index="4"><p class="definition">Patient Data Management</p></td>
+								<td class="fragment" data-fragment-index="5"><p class="definition">mHealth</p></td>
+							</tr>
+							<tr>
+								<td class="fragment" data-fragment-index="2"><img src="img/telemedicine.png" width="100%" /></td>
+								<td class="fragment" data-fragment-index="3"><img src="img/electronic-health-records.png" width="100%" /></td>
+								<td class="fragment" data-fragment-index="4"><img src="img/patient-data-management.png" width="100%" /></td>
+								<td class="fragment" data-fragment-index="5"><img src="img/mhealth.png" width="100%" /></td>
+							</tr>
+						</table>
+						<aside class="notes">
+							e-health is an emerging field in the intersection of medical informatics, public health and business, referring to health services and information delivered or enhanced through the Internet and related technologies. In a broader sense, the term characterizes not only a technical development, but also a state-of-mind, a way of thinking, an attitude, and a commitment for networked, global thinking, to improve health care locally, regionally, and worldwide by using information and communication technology.
+						</aside>
 					</section>
 					<section>
 						<h2>Motivations for eHealth</h2>
-						<p>
-							---
+						<p class="fragment definition" data-fragment-index="1">
+							Cloud Computing + eHealth
 						</p>
-					</section>
-
-					<section>
-						<h2>Description of eHealth</h2>
-						<p>
-							---
-						</p>
+						<table>
+							<colgroup>
+								<col style="width: 50%" />
+								<col style="width: 50%" />
+							</colgroup>
+							<tr>
+								<td>
+									<img class="fragment push" data-fragment-index="2" src="img/cloud-ehealth.png" width="100%" />
+									<img class="fragment push" data-fragment-index="3" src="img/cloud-ehealth.png" width="100%" />
+									<img class="fragment push" data-fragment-index="4" src="img/cloud-ehealth.png" width="100%" />
+									<img class="fragment" data-fragment-index="5" src="img/cloud-ehealth2.png" width="100%" />
+								</td>
+								<td style="vertical-align: top;">
+									<ul class="spaced">
+										<li class="fragment" data-fragment-index="2">Access to computing resources</li>
+										<li class="fragment" data-fragment-index="3">Seamles deployment</li>
+										<li class="fragment" data-fragment-index="4">Data sharing and analysis</li>
+										<li class="fragment" data-fragment-index="5">Personalized follow-up</li>
+										<li class="fragment" data-fragment-index="6">Effective time management</li>
+										<li class="fragment" data-fragment-index="7">Reduced transport costs</li>
+									</ul>
+								</td>
+							</tr>
+						</table>
 					</section>
 				</section>
 
@@ -514,54 +668,26 @@ to be maximized or minimized, or some of its constraints, are nonlinear.
 				<section>
 					<section>
 						<h2>Research objectives</h2>
-						<p>
-							The main purpose of this thesis is to achieve eHealth solutions through Cloud-based technologies and architectures, specifically to allow physicians to control and communicate with patients remotely and establish a bidirectional exchange to improve treatments where such contact is essential for a successful outcome.
+						<p class="fragment definition">
+							Achieve eHealth solutions through Cloud-based technologies and architectures
 						</p>
-					</section>
-					<section>
-						<p>
-							Develop models to determine performance metrics and issues in Cloud-based architectures.
-						</p>
+						<ul class="spaced">
+							<li class="fragment">Design a Cloud system by means of queueing theory</li>
+							<li class="fragment">Design of a nonlinear programming scheduling algorithm to optimize both energy consumption and SLA guarantees</li>
+							<li class="fragment">Design a Cloud architecture for an eHealth environment and analyze its behaviour with the CloudSim simulator</li>
+							<li class="fragment">Design a telemonitoring tool for smoke-quitting patients</li>
+							<li class="fragment">Design a telemonitoring tool for hypertensive patients</li>
+							<li class="fragment">Develop a scalable and power-aware Cloud-based infrastructure using the OpenStack platform</li>
+						</ul>
 						<aside class="notes">
-							<p>
-								Metrics:  (i.e. response time, throughput).
-								Issues: (i.e. SLA guarantee, QoS). Specifically, present a by means of queueing theory and validate it using the OpenStack Cloud simulator.
-							</p>
+							Specifically to allow physicians to control and communicate with patients remotely and establish a bidirectional exchange to improve treatments where such contact is essential for a successful outcome.
 						</aside>
-					</section>
-					<section>
-						<p>
-							Design of a nonlinear programming scheduling algorithm to optimize both energy consumption and SLA guarantees.
-						</p>
-					</section>
-					<section>
-						<p>
-								Explore and analyze current solutions and environments where these models can be applied, and design a Cloud architecture for an eHealth environment and analyze its behaviour with the CloudSim simulator.
-						</p>
-					</section>
-					<section>
-						<p>
-								Design and implement a Cloud-based eHealth telemonitoring tool for smoke-quitting patients and test it in a real environment to assess its usefulness through statistical studies of prevalence.
-						</p>
-					</section>
-					<section>
-						<p>
-								Design and implement a Cloud-based eHealth telemonitoring tool for hypertensive patients, tests its performance and scalability and finally, test it in a real environment.
-						</p>
-					</section>
-					<section>
-						<p>
-							Develop a scalable and power-aware Cloud-based infrastructure to support these applications using the OpenStack platform.
-						</p>
 					</section>
 				</section>
 
 				<section>
 					<section>
 						<h2>Related Work and Contributions</h2>
-						<p>
-							---
-						</p>
 					</section>
 					<section>
 						<h2>Publications</h2>
@@ -571,79 +697,148 @@ to be maximized or minimized, or some of its constraints, are nonlinear.
 					</section>
 					<section>
 						<h2>Journal Publications</h2>
-						<p>
-							<ul>
-								<li>
-									Vilaplana, J., Solsona, F., Abella, F., Filgueira, R., &amp; Rius, J. (2013). The cloud paradigm applied to e-Health. BMC Medical Informatics and Decision Making, 13, 35. doi:10.1186/1472-6947-13-35
-								</li>
-								<li>
-									Vilaplana, J., Solsona, F., Abella, F., Cuadrado, J., Alves, R., &amp; Mateo, J. (2014). S-PC: An e-treatment application for management of smoke-quitting patients. Computer Methods and Programs in Biomedicine, 115(1), 33–45. doi:10.1016/j.cmpb.2014.03.005
-								</li>
-								<li>
-									Vilaplana, J., Solsona, F., Teixid\'{o}, I., Mateo, J., Abella, F., &amp; Rius, J. (2014). A queuing theory model for cloud computing. The Journal of Supercomputing, 69(1), 492–507. doi:10.1007/s11227-014-1177-y
-								</li>
-								<li>
-									Vilaplana, J., Solsona, F., Teixid\'{o}, I., Usi\'{e}, A., Karathia, H., Alves, R., &amp; Mateo, J. (2014). Database Constraints Applied to Metabolic Pathway Reconstruction Tools. The Scientific World Journal, 2014. doi:10.1155/2014/967294
-								</li>
-								<li>
-									Vilaplana, J., Solsona, F., Abella, F., Cuadrado, J., Teixid\'{o}, I., Mateo, J., &amp; Rius, J. (2014). H-PC: a cloud computing tool for supervising hypertensive patients. The Journal of Supercomputing, 71(2), 591–612. doi:10.1007/s11227-014-1312-9
-								</li>
-								<li>
-									Vilaplana, J., Mateo, J., Teixid\'{o}, I., Solsona, F., Gin\'{e}, F., &amp; Roig, C. (2014). An SLA and power-saving scheduling consolidation strategy for shared and heterogeneous clouds. The Journal of Supercomputing. doi:10.1007/s11227-014-1351-2
-								</li>
-							</ul>
-						</p>
+						<ul>
+							<li class="fragment">
+								2013 - Vilaplana, J. <i>et al</i>. The cloud paradigm applied to e-Health. BMC Medical Informatics and Decision Making
+							</li>
+							<li class="fragment">
+								2014 - Vilaplana, J. <i>et al</i>. S-PC: An e-treatment application for management of smoke-quitting patients. Computer Methods and Programs in Biomedicine
+							</li>
+							<li class="fragment">
+								2014 - Vilaplana, J. <i>et al</i>. A queuing theory model for cloud computing. The Journal of Supercomputing
+							</li>
+							<li class="fragment">
+								2014 - Vilaplana, J. <i>et al</i>. Database Constraints Applied to Metabolic Pathway Reconstruction Tools. The Scientific World Journal
+							</li>
+							<li class="fragment">
+								2014 - Vilaplana, J. <i>et al</i>. H-PC: a cloud computing tool for supervising hypertensive patients. The Journal of Supercomputing
+							</li>
+							<li class="fragment">
+								2014 - Vilaplana, J. <i>et al</i>. An SLA and power-saving scheduling consolidation strategy for shared and heterogeneous clouds. The Journal of Supercomputing
+							</li>
+						</ul>
 					</section>
+
 					<section>
 						<h2>Conference publications and attendance</h2>
-						<p>
-							Abdelli, O., Usi\'{e}, A., Karathia, H., Vilaplana, J., Solsona, F. \& Alves, R.  (2011). Parallelizing Biblio-MetReS, a data mining tool. XXII Jornadas de Paralelismo JP2012. La Laguna (Tenerife), Spain.
-							Vilaplana, J., Solsona, F., Abella, F. \& Celma, J. (2012). Diseño de un Sistema Cloud Aplicado a e-Health. XXIII Jornadas de Paralelismo JP2012. Elche (Alicante), Spain.
-							Vilaplana, J., Solsona, F., Teixid\'{o}, I., Mateo, J., Rius, J. \& Abella, F. (2014). An SLA\&Power Aware Strategy for a Cloud. International Conference on Information Technology and Management Engineering (ITME2014), Hong Kong.
-							Vilaplana, J., Mateo, J., Teixid\'{o}, I. \& Solsona, F. (2014). A Green Job Scheduling Policy for Heterogeneous Clouds. 14th International Conference on Computational and Mathematical Methods in Science and Engineering (CMMSE 2014), Rota, C\'{a}diz - Spain, Volume: 4.
-							Vilaplana, J. \& Solsona, F. (2014). SLA-Aware Load Balancing in a Web-Based Cloud System over OpenStack. LLNCS vol. 8377:281-293. ICSOC 2013 Workshops. CCSA. Berlin, Germany. doi: 10.1007/978-3-319-06859-6\_26.
-							Vilaplana, J., Solsona, F., Teixid\'{o}, I., Mateo, J., Rius, J. \& Abella, F. (2014). A Green Scheduling Policy for Cloud Computing. First International Workshop, ARMS-CC 2014, held in Conjunction with ACM Symposium on Principles of Distributed Computing, PODC 2014, Paris, France, Volume: 8907.
-							Vilaplana, J., Solsona, F. \& Teixid\'{o}, I. A performance model for scalable cloud computing. 13th Australasian Symposium on Parallel and Distributed Computing (AusPDC 2015), Sydney, Australia, Volume: 163.
-						</p>
+						<ul>
+							<li class="fragment">
+								2012 - Vilaplana, J. <i>et al</i>. Diseño de un Sistema Cloud Aplicado a e-Health. JP2012. Elche, Spain
+							</li>
+							<li class="fragment">
+								2014 - Vilaplana, J. <i>et al</i>. An SLA &amp; Power Aware Strategy for a Cloud. ITME2014. Hong Kong
+							</li>
+							<li class="fragment">
+								2014 - Vilaplana, J. <i>et al</i>. A Green Job Scheduling Policy for Heterogeneous Clouds. CMMSE 2014. Rota, Cádiz, Spain
+							</li>
+							<li class="fragment">
+								2014 - Vilaplana, J. <i>et al</i>. SLA-Aware Load Balancing in a Web-Based Cloud System over OpenStack. ICSOC 2013 Workshops. CCSA. Berlin, Germany
+							</li>
+							<li class="fragment">
+								2014 - Vilaplana, J. <i>et al</i>. A Green Scheduling Policy for Cloud Computing. ARMS-CC 2014, PODC 2014. Paris, France
+							</li>
+							<li class="fragment">
+								2015 - Vilaplana, J. <i>et al</i>. A performance model for scalable cloud computing. AusPDC 2015. Sydney, Australia
+							</li>
+						</ul>
 					</section>
 				</section>
 
 				<section>
 					<h2>Methodology</h2>
-					<p>
-						<ol>
-							<li>
-								The cloud paradigm applied to e-Health
-							</li>
-							<li>
-								S-PC: An e-treatment application for management of smoke-quitting patients
-							</li>
-							<li>
-								H-PC: a cloud computing tool for supervising hypertensive patients
-							</li>
-							<li>
-								An SLA and power-saving scheduling consolidation strategy for shared and heterogeneous clouds
-							</li>
-						</ol>
-					</p>
+					<ol class="spaced" style="text-align: left;">
+						<li class="fragment">
+							A queuing theory model for cloud computing
+						</li>
+						<li class="fragment">
+							An SLA and power-saving scheduling consolidation strategy for shared and heterogeneous clouds
+						</li>
+						<li class="fragment">
+							H-PC: a cloud computing tool for supervising hypertensive patients
+						</li>
+						<li class="fragment">
+							S-PC: An e-treatment application for management of smoke-quitting patients
+						</li>
+					</ol>
 				</section>
 
 				<section>
-					<h2>A queuing theory model for cloud computing</h2>
+					<h2 style="font-size: 1.27em">A queuing theory model for cloud computing</h2>
 					<section>
-						<p>Jordi Vilaplana, Francesc Solsona, Ivan Teixidó, Jordi Mateo, Francesc Abella, Josep Rius</p>
-						<p>J Supercomput (2014) 69:492–507</p>
-						<p>DOI 10.1007/s11227-014-1177-y</p>
-						<p>Published online: 9 April 2014</p>
 					</section>
 					<section>
-						This article presents the design of a cloud platform with QoS guarantees based on response time for services. Response time is defined as the time spent by a request to be serviced, in other words, the sum of the waiting and servicing times in the cloud.
+						<table class="spaced">
+							<colgroup>
+								<col style="width: 20%" />
+								<col style="width: 80%" />
+							</colgroup>
+							<tr>
+								<td>
+									Authors:
+								</td>
+								<td>
+									Jordi Vilaplana, Francesc Solsona, Ivan Teixidó, Jordi Mateo, Francesc Abella &amp; Josep Rius
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Journal:
+								</td>
+								<td>
+									J Supercomput (2014) 69:492–507
+								</td>
+							</tr>
+							<tr>
+								<td>
+									DOI:
+								</td>
+								<td>
+									10.1007/s11227-014-1177-y
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Published:
+								</td>
+								<td>
+									9 April 2014 (online)
+								</td>
+							</tr>
+						</table>
 					</section>
 					<section>
-						The main contribution of this paper consists of a computer service QoS model for the cloud architecture of the back-end (or simply called a cloud) made up of processing servers and a data service that, in line with the explanation above, consists of only one database server (see Figure \ref{Cloud_Architecture}). In this model, the cloud is a single access point for the computing needs of the customers being served \cite{Xiong7} through a web browser supported by a web server. The service center is a collection of service resources used by a service provider to host service applications for customers. A service request sent by a user is transmitted to the web server running a service application \cite{Martin}, which is associated with an SLA (Service Layer Agreement). This process is performed at the front-end. The SLA  is a contract negotiated and agreed between a customer and a service provider and so a customer pays only for the resources and services used. Thus, the customer, who may represent multiple users, generates service requests at a given rate for processing at the service center hosted by the service provider through the cloud according to negotiated QoS requirements at a given price.
+						<p class="definition">
+							Presents the design of a Cloud platform with QoS guarantees based on response time for services.
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p class="fragment">
+							The main contribution consists of a computer service QoS model for the Cloud architecture made up of processing servers and a data service
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<img class="fragment" width="80%" src="img/fig_paper1_01.png" alt="">
 					</section>
 					<section>
-						<img width="800" src="img/fig_paper1_01.png" alt="">
+						<ul class="spaced">
+							<li>
+								In this model the Cloud is a single access point for the computing needs of the customers being served
+							</li>
+							<li>
+								The service center is a collection of service resources used by a service provider to host service applications
+							</li>
+							<li>
+								A service request is transmitted to the web server running a service application, which is associated with an SLA
+							</li>
+							<li>
+								The SLA is a contract negotiated and agreed between a customer and a service provider
+							</li>
+							<li>
+								Customers generate service requests at a given rate for processing at the service center according to negotiated QoS requirements
+							</li>
+						</ul>
 					</section>
 					<section>
 						<img width="800" src="img/fig_paper1_02.png" alt="">
@@ -656,56 +851,1835 @@ to be maximized or minimized, or some of its constraints, are nonlinear.
 						\end{equation}
 					</section>
 					<section>
-						Then, each term of the equation \ref{eq_T} is explained separately.
-
-						\subsection{Obtaining $T_{ES}$}
-						\label{$T_{ES}$}
-
-						$T_{ES}$ represents the response time of the Entering Server ($ES$) which acts as a load balancer. The $ES$ node is modeled as an $M/M/1$ queue. Thus, the formula for obtaining the response time for an $M/M/1$ queue is:
-
-						\begin{equation}
-						\label{eqTES}
-						T_{ES}=\frac{1/L}{1-\lambda/L},
-						\end{equation}
-
-						where $\lambda$ is the arrival rate (see Figure~\ref{fig:model}), and $L$ is the service rate of the node $ES$.
+						<h3>Obtaining $T_{ES}$</h3>
+						<p>
+							$T_{ES}$ represents the response time of the Entering Server ($ES$) which acts as a load balancer. The $ES$ node is modeled as an $M/M/1$ queue. Thus, the formula for obtaining the response time for an $M/M/1$ queue is:
+						</p>
+						<p>
+							\begin{equation}
+							\label{eqTES}
+							T_{ES}=\frac{1/L}{1-\lambda/L},
+							\end{equation}
+						</p>
+						<p>
+							where $\lambda$ is the arrival rate, and $L$ is the service rate of the node $ES$.
+						</p>
+					</section>
+					<section>
+						<h3>Obtaining $T_{PS}$</h3>
+						<p>
+							$T_{PS}$ represents the response time of the $PS$ nodes. These nodes are modeled as an $M/M/m$ queue.
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p>
+							\begin{equation}
+							T_{PS}=\frac{1}{\mu}+\frac{C(m, \rho)}{m\mu-\gamma},
+							\end{equation}
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p>
+							$m$ is the number of <i>PEs</i>, $\gamma$ and $\mu=\mu_i, i=1..m$, are respectively the arrival and service rates of each <i>PE</i> respectively.
+						</p>
+					</section>
+					<section>
+						<h3>Obtaining $T_{PS}$</h3>
+						<p>
+							$C(m, \rho)$ represents Erlang's C formula, which gives the probability of a new client joining the $M/M/m$ queue:
+					 </p>
+					 <p>
+						&nbsp;
+					 </p>
+					 <p>
+						 \begin{equation}
+						 C\left ( m , \rho \right ) = \frac{\left ( \frac{(mp)^m}{m!} \right )  \left ( \frac{1}{1-\rho} \right )}{\sum_{k=0}^{m-1} \frac{(mp)^k}{k!}+\left ( \frac{(m\rho)^m}{m!} \right )  \left ( \frac{1}{1-\rho} \right )},
+						 \end{equation}
+					 </p>
+					 <p>
+						&nbsp;
+					 </p>
+					 <p>
+						 where $\rho=\gamma/\mu$.
+					 </p>
+						</p>
+					</section>
+					<section>
+						<h3>Obtaining $T_{DS}$</h3>
+						<p>
+							$T_{DS}$ represents the response time of the $DS$. Requests are sent to the $DS$ node with a probability $\delta$. The $DS$ node is modeled as a $M/M/1$ queue:
+						</p>
+						<p>
+							\begin{equation}\label{eqTDS}
+							T_{DS}=\frac{1/D}{1-\delta\gamma/D},
+							\end{equation}
+						</p>
+						<p>
+							$\delta\gamma$ is the arrival rate to $DS$, and $D$ is the service rate.
+						</p>
+						<p>
+							The arrival rate at the $OS$ is the sum of the arrival rates of the two crosspoint branches entering the summatory. The one crossing the data server is the same than at its input ($\delta\gamma$). On the other branch, the $\gamma$ term must be changed by its complement to one.
+						</p>
+						<p>
+							\begin{equation}
+							(1-\delta)\gamma + \delta\gamma = \gamma
+							\end{equation}
+						</p>
+					</section>
+					<section>
+						<h3>Obtaining $T_{OS}$</h3>
+						<p>
+							$T_{OS}$ represents the $OS$ response time. Its operation is also modeled as a $M/M/1$ queue. Its service rate is defined as $O/F$, where $O$ is its average <i>BW</i> speed, and $F$ is the averaged size of the data responses of the system.
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p>
+							\begin{eqnarray}\label{eqTOS}
+							T_{OS} &=& \frac{F/O}{1-\gamma/(O/F)} \nonumber\\
+							T_{OS} &=& \frac{F}{O-\gamma F}
+							\end{eqnarray}
+						</p>
+					</section>
+					<section>
+						<h3>Obtaining $T_{CS}$</h3>
+						<p>
+							Finally, $T_{CS}$ is the $CS$ response time, that operates as an $M/M/1$ queue. The service rate is defined as $C/F$. where $C$ is the avg <i>BW</i> speed of the client server. $F$ is the average size of the received reply files.
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p>
+							\begin{eqnarray}\label{eqTCS}
+							T_{CS} &=& \frac{F/C}{1-\gamma/(C/F)} \nonumber\\
+							T_{CS} &=& \frac{F}{C - \gamma F}
+							\end{eqnarray}
+						</p>
+					</section>
+					<section>
+						<h3>Results</h3>
+						<ul class="spaced">
+							<li>
+								Analysis of how the response time is affected by modifying some of the metrics presented in the model.
+							</li>
+							<li>
+								Our purpose is to verify if our model behaves as expected when a range of parameters and system configurations are tested.
+							</li>
+							<li>
+								The model was implemented using <a href="http://www.sagemath.org" target="_blank">Sage 5.3</a> mathematical software.
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Results</h3>
+						<p>
+							Parameters used in the implementation:
+						</p>
+						<ul class="spaced">
+							<li class="fragment">$\lambda$ Arrival rate.
+							</li>
+							<li class="fragment">
+								$F$ Average file size.
+							</li>
+							<li class="fragment">
+								$O$ Server bandwidth.
+							</li>
+							<li class="fragment">
+								$C$ Client bandwidth.
+							</li>
+							<li class="fragment">
+								$\delta$ Database access probability.
+							</li>
+							<li class="fragment">
+								$\mu$ Service rate.
+							</li>
+						</ul>
+						<aside class="notes">
+							<p>
+								$\lambda$ is the averaged number of requests reaching the system per unit of time. $1/\lambda$ is the mean inter-arrival time. We aimed to show how the total response time ($T$) is affected by varying the parameter $\lambda$.
+								The number of processing servers ($m$) represents the total number of processors, cores or nodes dedicated to servicing requests. Changing this parameter will show the impact of adding or removing servers from the system.
+							</p>
+							<p>
+								$F$ Average file size. This is the mean size of the files that are sent to clients via Internet as the service response of the overall system. This value depends on the web application that runs on top of the system, although it should be no greater than 1MB in most cases.
+							</p>
+							<p>
+								$O$ Server bandwidth. This is the network speed at which files are sent to clients over the Internet.
+							</p>
+							<p>
+								$C$ Client bandwidth. This is the average connection speed of the clients receiving the data sent from the system. This parameter will usually be outwith our control.
+							</p>
+							<p>
+								$\delta$ Database access probability. This is the probability that an incoming request needs to access the database node $DS$. As we are modeling a web-based system, not all requests will always require an access to the database server. Note, however, that this probability will usually be relatively high.
+							</p>
+							<p>
+								$\mu$ Service rate. This describes the speed at which the web servers handle the requests. \ $1/\mu$ is the mean service time. To simplify the results we have chosen the same value for all $PS_{i}$ servers. The total service rate of the system must always be greater than $\lambda$ for the system to be stable. This value is modified through the tests in order to check the performance impact.
+								Although the service rates of  $ES$, $PS_i, i=1..m$, $DS$, $OS$ and $CS$ could be different, we assumed the same value to simplify the experiments. So, in this case, $\mu=L=D=O/F=C/F$ in all the tests.
+							</p>
+						</aside>
+					</section>
+					<section>
+						<h3>Response Time</h3>
+						<div class="fragment push">
+							<img src="img/paper1/Fig3-a.png" width="65%" />
+							<figcaption>
+								$m = 1$
+							</figcaption>
+						</div>
+						<div class="fragment push">
+							<img src="img/paper1/Fig3-b.png" width="65%" />
+							<figcaption>
+								$m = 2$
+							</figcaption>
+						</div>
+						<div class="fragment">
+							<img src="img/paper1/Fig4.png" width="65%" />
+							<figcaption>
+								utilization factor
+							</figcaption>
+						</div>
+					</section>
+					<section>
+						<h3>Bottlenecks</h3>
+						<div class="fragment push">
+							<img src="img/paper1/Fig5-a.png" width="70%" />
+							<figcaption>
+								$T$ given $\lambda$ and $F$
+							</figcaption>
+						</div>
+						<div class="fragment push">
+							<img src="img/paper1/Fig5-b.png" width="70%" />
+							<figcaption>
+								$T$ given $\lambda$ and $O$
+							</figcaption>
+						</div>
+						<div class="fragment push">
+							<img src="img/paper1/Fig6.png" width="60%" />
+							<figcaption>
+								$T$ given $\lambda$ and $O$
+							</figcaption>
+						</div>
+						<div class="fragment">
+							<img src="img/paper1/Fig7.png" width="60%" />
+							<figcaption>
+								$T$ given $\lambda$ and $O$
+							</figcaption>
+						</div>
+					</section>
+					<section>
+						<h3>Model validation</h3>
+						<p class="fragment definition">
+							Implemented using the OpenStack Cloud platform
+						</p>
+						<div class="fragment push">
+							<img src="img/paper1/openstack_data1.png" width="80%" />
+							<figcaption>
+								Response time ($T$) with 1 server
+							</figcaption>
+						</div>
+						<div class="fragment">
+							<img src="img/paper1/openstack_data2.png" width="80%" />
+							<figcaption>
+								Response time ($T$) with 2 servers
+							</figcaption>
+						</div>
+					</section>
+					<section>
+						<h3>Conclusions</h3>
+						<ul class="spaced">
+							<li class="fragment">
+								Model for designing cloud computing architectures with QoS
+							</li>
+							<li class="fragment">
+								To provide good QoS, system bottlenecks have to be determined
+							</li>
+							<li class="fragment">
+								Queuing theory is a valid method to obtain performance models
+							</li>
+							<li class="fragment">
+								Such models can be very useful for tuning service performance
+							</li>
+						</ul>
 					</section>
 				</section>
 
 				<section>
-					<h2>S-PC: An e-treatment application for management of smoke-quitting patients</h2>
+					<h2 style="font-size: 1.14em">An SLA and power-saving scheduling consolidation strategy for shared and heterogeneous clouds</h2>
+					<section>
+					</section>
+					<section>
+						<table class="spaced">
+							<colgroup>
+								<col style="width: 20%" />
+								<col style="width: 80%" />
+							</colgroup>
+							<tr>
+								<td>
+									Authors:
+								</td>
+								<td>
+									Jordi Vilaplana, Jordi Mateo, Ivan Teixidó, Francesc Solsona, Francesc Giné &amp; Concepció Roig
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Journal:
+								</td>
+								<td>
+									J Supercomput (2014) 71:1817–1832
+								</td>
+							</tr>
+							<tr>
+								<td>
+									DOI:
+								</td>
+								<td>
+									10.1007/s11227-014-1351-2
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Published:
+								</td>
+								<td>
+									29 November 2014 (online)
+								</td>
+							</tr>
+						</table>
+					</section>
+					<section>
+						<p class="definition">
+							Presents a power-aware scheduling policy algorithm of VMs into nodes called GreenC
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p class="fragment">
+							GreenC takes into account optimal assignments according to physical machine and VM heterogeneity, the current host workload and communication	between the different VMs
+						</p>
+					</section>
+					<section>
+						<ul class="spaced">
+							<li class="fragment">
+								Based on nonlinear programming (NLP)
+							</li>
+							<li class="fragment">
+								Aims to minimize both energy consumption and response time
+							</li>
+							<li class="fragment">
+								Takes into account host and VM heterogeneity, workload and communication
+							</li>
+							<li class="fragment">
+								Theoretical experimentation using a solver
+							</li>
+							<li class="fragment">
+								Implementation using the OpenStack platform
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Host heterogeneity</h3>
+						<p class="spaced">
+							The relative computing power ($\Delta_{v}$) of a Host $H_{v}$ is defined as its normalized score
+						</p>
+						<p class="spaced">
+							$\Delta_{v} = \frac{\delta_{v}}{\sum_{k=1}^{V} \delta_{k}}$
+						</p>
+						<p class="spaced">
+							$\delta_{v}$ is a valid score of $H_{v}$
+						</p>
+						<hr class="fragment" />
+						<p class="spaced fragment">
+							$\delta_{v}$ is a theoretical concept &#10153; obtained using a benchmark (Linpack, SPEC, ...)
+						</p>
+					</section>
+					<section>
+						<h3>Virtual machine heterogeneity</h3>
+						<p class="spaced">
+							Each VM has its Processing cost $P_v^i$, representing the execution time of VM, $\mho^i$, in $H_{v}$ with respect to the execution time of VM $\mho_{i}$ in the less powerful $H_{v}$
+						</p>
+						<p class="spaced">
+							$M_v^i$ is the amount of Memory allocated to VM $\mho_{i}$ in $H_{v}$
+						</p>
+						<p class="spaced">
+							Once the solver is executed, $\mho_v^i$ variables will inform about the assignment of VM to hosts
+						</p>
+						<p class="spaced">
+							$\mho_v^i=1$ if $\mho^i$ is assigned to $H_v$, and $\mho_v^i=0$ otherwise
+						</p>
+					</section>
+					<section>
+						<h3>Host Workload</h3>
+						<ul class="spaced">
+							<li>If a host is underloaded, its throughput will increase as more VM are assigned to it</li>
+							<li>When the host reaches its maximum workload capacity, its throughput starts falling asymptotically towards zero</li>
+						</ul>
+						<p class="spaced fragment">
+							We can model this behaviour with an Erlang distribution density function:
+						</p>
+						<p class="spaced fragment">
+							\begin{equation}
+							\label{erlang_22}
+							E(x;\alpha,\lambda) = \lambda e^{-\lambda x} \frac{(\lambda x)^{\alpha - 1}}{(\alpha - 1)!} \forall x,\lambda \geq 0
+							\end{equation}
+						</p>
+						<aside class="notes">
+							Erlang is a continuous probability distribution with two parameters, $\alpha$ and $\lambda$. $\alpha$ is called the shape parameter, $\lambda$ is called the rate parameter. These parameters depend on the VM characteristics. When $\alpha$ equals 1, the distribution simplifies to the exponential distribution
+						</aside>
+					</section>
+					<section>
+						<h3>Erlang distributions</h3>
+						<p>
+							<img src="img/paper2/erlangs.png" width="70%" />
+							<figcaption>
+								Erlang plots for different $\alpha$ and $\lambda$ values
+							</figcaption>
+						</p>
+					</section>
+					<section>
+						<h3>Virtual Machine Communication</h3>
+						<p class="spaced">
+							The Communication Cost between VMs is denoted by $C^{ij}$
+						</p>
+						<p class="spaced">
+							Notation $C_v^{ij}$ represents the Communication Cost between $\mho^i$ residing in $H_v$ with other $\mho^j$
+						</p>
+						<ul class="spaced">
+							<li class="fragment">
+								Penalize (enhance) the communications performed between different hosts
+							</li>
+							<li class="fragment">
+								Grouping VMs inside the same host not only will depend on their respective Processing cost ($P_v^i$), but also in the relative communicating time $C_v^i$
+							</li>
+						</ul>
+						<aside class="notes">
+
+						</aside>
+					</section>
+					<section>
+						<h3>The GreenC policy</h3>
+						<p>
+							\begin{align}
+							\tiny
+							max(\sum_{v=1}^{V}(\sum_{i=1}^{T}\mho_v^i&(P_v^i+\sum_{j  \ st \ i>j}^T (C_v^{ij}\mho_v^jC_s + C_v^{ij}\mho_{\overline{v}}^j))) \Delta_{v} E(\sum_{j=1}^{T} P_v^j \cdot \mho_v^j;\alpha,\lambda))
+							\\
+							\small
+							s.t. \ \:&\sum_{v=1}^{V} \mho_v^i=1 \ \ \ \forall i \leq T
+							\\
+							\small
+							&\sum_{i=1}^{T} M_v^i  \leq M_v \ \ \ \forall v \leq V
+							\end{align}
+						</p>
+					</section>
+					<section>
+						<h3>Theoretical Experimentation</h3>
+					</section>
+					<section>
+						<table class="spaced">
+							<colgroup>
+								<col style="width: 70%" />
+								<col style="width: 30%" />
+							</colgroup>
+							<tr>
+								<td>
+									Host configurations
+								</td>
+								<td>
+									VM configurations
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<table class="reveal">
+										<tr>
+											<td>Host</td>
+											<td>Memory</td>
+											<td>Delta</td>
+											<td>Erlang</td>
+										</tr>
+										<tr>
+											<td>1</td>
+											<td>10</td>
+											<td>0.55</td>
+											<td>$\alpha = 3, \lambda=8$</td>
+										</tr>
+										<tr>
+											<td>2</td>
+											<td>10</td>
+											<td>0.35</td>
+											<td>$\alpha = 3, \lambda=8$</td>
+										</tr>
+										<tr>
+											<td>3</td>
+											<td>10</td>
+											<td>0.1</td>
+											<td>$\alpha = 3, \lambda=8$</td>
+										</tr>
+									</table>
+								</td>
+								<td>
+									<table class="reveal">
+										<tr>
+											<td>VM</td>
+											<td>Weight</td>
+										</tr>
+										<tr>
+											<td>1</td>
+											<td>1</td>
+										</tr>
+										<tr>
+											<td>2</td>
+											<td>5</td>
+										</tr>
+										<tr>
+											<td>3</td>
+											<td>7</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+						<div class="fragment">
+							<p class="spaced">
+								The resulting assignment is:
+							</p>
+							<p class="spaced">
+								$H_{1}=\{\mho^1,\mho^2,\mho^3\}$, $H_2=\varnothing$ and $H_{2}=\varnothing$
+							</p>
+						</div>
+					</section>
+					<section>
+						<p class="spaced">
+							Communication configurations
+						</p>
+						<table class="reveal">
+							<tr>
+								<td>VM i</td>
+								<td>VM j</td>
+								<td>Cost</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>2</td>
+								<td>0.2</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>3</td>
+								<td>0.6</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>3</td>
+								<td>0.3</td>
+							</tr>
+							<tr>
+								<td>$C_s$</td>
+								<td colspan="2">0.6</td>
+							</tr>
+						</table>
+					</section>
+					<section>
+						<h3>Erlang-shaped hosts</h3>
+						<p>
+							Host configurations
+						</p>
+						<table class="reveal">
+							<tr>
+								<td>Host</td>
+								<td>Memory</td>
+								<td>Delta</td>
+								<td>Erlang</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>10</td>
+								<td>0.55</td>
+								<td>$\alpha = 7, \lambda=1$</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>10</td>
+								<td>0.35</td>
+								<td>$\alpha = 8, \lambda=3$</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>10</td>
+								<td>0.1</td>
+								<td>$\alpha = 2, \lambda=1$</td>
+							</tr>
+						</table>
+						<div class="fragment">
+							<p class="spaced">
+								The resulting assignment is:
+							</p>
+							<p class="spaced">
+								$H_1=\{\mho^1,\mho^2\}$, $H_2=\varnothing$ and $H_3=\{\mho^3\}$
+							</p>
+						</div>
+					</section>
+					<section>
+						<h3>Implementation</h3>
+						<ul class="spaced">
+							<li class="fragment">
+								Four identical physical hosts
+							</li>
+							<li class="fragment">
+								Each host is a HP Proliant DL165 G7 with two AMD Opteron 6274 processors with 16 cores each at 2.2 GHz, 112 GB of RAM, 600 GB of SAS disk and 1 Gb Ethernet network
+							</li>
+							<li class="fragment">
+								CentOS release 6.5 has been used as operating system
+							</li>
+						</ul>
+					</section>
+					<section>
+						<img src="img/paper2/implementation.png" width="60%" />
+						<aside class="notes">
+							In each host, the OpenStack 2014.1 (Icehouse) software has been installed as the cloud platform. The Wake-on-LAN (WoL) program has been used in order to remotely boot the physical machines. WoL is a standard protocol for remotely waking computers up.  Both, the remote host motherboard and network card must support this functionality
+							compute01 acts as the controller node, that provides some additional services like the database (MySQL) and the web interface (Dashboard). The other three hosts act as compute nodes, that provide the processing, memory, network and storage resources to run the virtual machines.
+						</aside>
+					</section>
+					<section>
+						<ul class="spaced">
+							<li class="fragment">
+								Energy consumption has been empirically monitored
+							</li>
+							<li class="fragment">
+								The following devices were used:
+								<ul class="spaced">
+									<li class="fragment">
+										Four Individual Appliance Monitors (IAMs)
+									</li>
+									<li class="fragment">
+										EnviR that transmits all the data collected from the IAMs
+									</li>
+								</ul>
+							</li>
+							<li class="fragment">
+								These devices allow us to individually monitor the energy consumption (in Watts) of each physical host every second and transfer the data to a text file for further analysis.
+							</li>
+							<li class="fragment">
+								Room temperature was monitored with a Thermometer and remained constant at 27º C throughout the experimentation
+							</li>
+						</ul>
+					</section>
+					<section>
+						<table>
+							<tr>
+								<td>
+									<img src="img/paper2/currentcost_idle_1h_compute01.png" width="80%" />
+								</td>
+								<td>
+									<img src="img/paper2/currentcost_idle_1h_compute02.png" width="80%" />
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="img/paper2/currentcost_idle_1h_compute03.png" width="80%" />
+								</td>
+								<td>
+									<img src="img/paper2/currentcost_idle_1h_compute04.png" width="80%" />
+								</td>
+							</tr>
+						</table>
+					</section>
+					<section>
+						<img src="img/paper2/currentcost_stop_start_compute04.png" width="70%" />
+					</section>
+					<section>
+						<img src="img/paper2/currentcost_increase_load_compute02.png" width="70%" />
+					</section>
+					<section>
+						<table>
+							<tr>
+								<td>
+									<img src="img/paper2/currentcost_test2_redone_default_compute01.png" width="80%" />
+								</td>
+								<td>
+									<img src="img/paper2/currentcost_test2_redone_default_compute02.png" width="80%" />
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="img/paper2/currentcost_test2_redone_default_compute03.png" width="80%" />
+								</td>
+								<td>
+									<img src="img/paper2/currentcost_test2_redone_default_compute04.png" width="80%" />
+								</td>
+							</tr>
+						</table>
+					</section>
+					<section>
+						<table>
+							<tr>
+								<td>
+									<img src="img/paper2/currentcost_test2_redone_compute01.png" width="80%" />
+								</td>
+								<td>
+									<img src="img/paper2/currentcost_test2_redone_compute02.png" width="80%" />
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="img/paper2/currentcost_test2_redone_compute03.png" width="80%" />
+								</td>
+								<td>
+									<img src="img/paper2/currentcost_test2_redone_compute04.png" width="80%" />
+								</td>
+							</tr>
+						</table>
+					</section>
+					<section>
+						<h3>Conclusions</h3>
+						<ul class="spaced">
+							<li class="fragment">
+								Cloud-based system scheduling mechanism to reduce power consumption and maintain SLA agreements
+							</li>
+							<li class="fragment">
+								Model increasingly complex
+							</li>
+							<li class="fragment">
+								First tested using a mathematical optimizer. Obtained results proved consistent over a range of scenarios
+							</li>
+							<li class="fragment">
+								Further experimentation in a Cloud platform was performed and the energy consumption was empirically monitored
+							</li>
+							<li class="fragment">
+								Initial results proved encouraging, achieving up to a 23% energy consumption reduction
+							</li>
+						</ul>
+					</section>
 				</section>
 
 				<section>
-					<h2>H-PC: a cloud computing tool for supervising hypertensive patients</h2>
+					<h2 style="font-size: 1.3em">H-PC: a cloud computing tool for supervising hypertensive patients</h2>
+					<section>
+					</section>
+					<section>
+						<table class="spaced">
+							<colgroup>
+								<col style="width: 20%" />
+								<col style="width: 80%" />
+							</colgroup>
+							<tr>
+								<td>
+									Authors:
+								</td>
+								<td>
+									Jordi Vilaplana, Francesc Solsona, Francesc Abella, Josep Cuadrado, Ivan Teixidó, Jordi Mateo &amp; Josep Rius
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Journal:
+								</td>
+								<td>
+									J Supercomput (2015) 71:591–612
+								</td>
+							</tr>
+							<tr>
+								<td>
+									DOI:
+								</td>
+								<td>
+									10.1007/s11227-014-1312-9
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Published:
+								</td>
+								<td>
+									18 October 2014 (online)
+								</td>
+							</tr>
+						</table>
+					</section>
+					<section>
+						<p class="definition">
+							Presents the computer application H-PC (Hypertension Patient Control), which allows patients with hypertension to send their readings through mobile phone SMS (Short Message Service) or e-mail to a cloud computing datacenter
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p>
+							Clinicians can keep track of their patients, thus facilitating monitoring
+						</p>
+					</section>
+					<section>
+						<h3>H-PC features and operation</h3>
+						<ul class="spaced">
+							<li class="fragment">
+								Designed for collecting and managing data from hypertensive patients
+							</li>
+							<li class="fragment">
+								Record and print/display measurement statistics
+							</li>
+							<li class="fragment">
+								Graphically show patients' evolution using charts
+							</li>
+							<li class="fragment">
+								Automatic control of risk communication by SMS messages or e-mail to aid clinicians to diagnose and generate alerts or suggestions for treatments, patient monitoring, medication, nutrition, etc.
+							</li>
+						</ul>
+					</section>
+					<section>
+						<p class="spaced">
+							H-PC allows target limits to be established individually from both systole and diastole blood pressures, depending on patient characteristics
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p class="spaced fragment">
+							If these limits are exceeded, an alert is shown in the main page of the H-PC tool so clinicians can act quickly and, if needed, perform an intervention or send an alert to the patient
+						</p>
+					</section>
+					<section>
+						<h3>H-PC readings</h3>
+						<img src="img/paper3/FIG1.png" width="70%" />
+					</section>
+					<section>
+						<ul class="spaced">
+							<li class="fragment">
+								Readings can be registered automatically from SMS or e-mails or can be introduced manually by the clinicians
+							</li>
+							<li class="fragment">
+								H-PC automatically calculates the mean values for each day, showing only one value per day only in the plot
+							</li>
+							<li class="fragment">
+								Individual readings can also be viewed in table format
+							</li>
+						</ul>
+						<p class="spaced fragment">
+							Pulse can also be registered when manually entering the data or when sending it via e-mail
+						</p>
+						<p class="spaced fragment">
+							H-PC performs a data verification check in order to avoid incorrect or invalid measurements
+						</p>
+					</section>
+					<section>
+						<h3>H-PC operation</h3>
+						<img src="img/paper3/FIG2.png" width="80%" />
+					</section>
+					<section>
+						<h3>Design Principles</h3>
+						<ul class="spaced">
+							<li class="fragment">
+								Multi-platform and multi-language web-based application with a user-friendly graphic user interface (GUI)
+							</li>
+							<li class="fragment">
+								 Provides the clinician easy function access and utilization
+							</li>
+							<li class="fragment">
+								Implemented using Java for the back-end and Javascript, CSS, XHTML and AJAX for the front-end
+							</li>
+							<li class="fragment">
+								H-PC can run on any computer, operating system and any of the major web-browsers
+							</li>
+							<li class="fragment">
+								Interface developed using a responsive design approach
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Usability and user-friendliness criteria</h3>
+						<table class="reveal">
+							<tr>
+								<td>
+									<b>Criterion</b>
+								</td>
+								<td>
+									<b>What is measured</b>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Learnability
+								</td>
+								<td>
+									Time required for people to complete basic tasks?
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Efficiency
+								</td>
+								<td>
+									Steps required to complete basic tasks?
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Memorability
+								</td>
+								<td>
+									How much does the person remember afterwards or after periods of non-use?
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Errors
+								</td>
+								<td>
+									How many mistakes did people make using the program?
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Emotional response
+								</td>
+								<td>
+									How does the person feel about the tasks completed (confident, stressed)?
+								</td>
+							</tr>
+						</table>
+					</section>
+					<section>
+						<h3>Architecture</h3>
+
+					</section>
+					<section>
+						<h3>H-PC features</h3>
+						<ul class="spaced">
+							<li class="fragment">
+								Scalability
+							</li>
+							<li class="fragment">
+								Reliability
+							</li>
+							<li class="fragment">
+								Scheduler
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Implementation</h3>
+					</section>
+					<section>
+						<h3>Results</h3>
+						<ul class="spaced">
+							<li class="fragment">
+
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Conclusions</h3>
+						<ul class="spaced">
+							<li class="fragment">
+
+							</li>
+						</ul>
+					</section>
 				</section>
 
 				<section>
-					<h2>An SLA and power-saving scheduling consolidation strategy for shared and heterogeneous clouds</h2>
+					<h2 style="font-size: 1.3em">S-PC: An e-treatment application for management of smoke-quitting patients</h2>
+					<section>
+					</section>
+					<section>
+						<table class="spaced">
+							<colgroup>
+								<col style="width: 20%" />
+								<col style="width: 80%" />
+							</colgroup>
+							<tr>
+								<td>
+									Authors:
+								</td>
+								<td>
+									Jordi Vilaplana, Francesc Solsona, Francesc Abella, Josep Cuadrado, Rui Alves &amp; Josep Mateo
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Journal:
+								</td>
+								<td>
+									Computer Methods and Programs in Biomedicine (2014) 115:33–45
+								</td>
+							</tr>
+							<tr>
+								<td>
+									DOI:
+								</td>
+								<td>
+									10.1016/j.cmpb.2014.03.005
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Published:
+								</td>
+								<td>
+									26 March 2014 (online)
+								</td>
+							</tr>
+						</table>
+					</section>
+					<section>
+						<p class="spaced definition">
+							Presents a new program that facilitates the management of people who want to quit smoking, implemented through an e-treatment software called S-PC (Smoker Patient Control)
+						</p>
+						<p class="spaced">
+							Manages groups of patients, provides a bidirectional communication between patients and clinicians and offers advice and control to keep track of the patients and their status
+						</p>
+					</section>
+					<section>
+						<ul class="spaced">
+							<li class="fragment">
+								A total of 229 patients were enrolled in the study
+							</li>
+							<li class="fragment">
+								 Randomly divided into two groups
+							</li>
+							<li class="fragment">
+								No significant differences regarding the m/f ratio, tobacco dependence, co-oximetry, avg. cigarette consumption, current age and age when smoking started
+							</li>
+							<li class="fragment">
+								The first group was made up of 104 patients (45.4% of total) and followed a treatment that incorporated the S-PC tool
+							</li>
+							<li class="fragment">
+								The second one had 125 patients without the S-PC tool
+							</li>
+						</ul>
+					</section>
+					<section>
+						<img src="img/paper4/spc01.png" width="70%" />
+					</section>
+					<section>
+						<img src="img/paper4/spc02.png" width="70%" />
+					</section>
+					<section>
+						<img src="img/paper4/spc03.png" width="60%" />
+					</section>
+					<section>
+						<img src="img/paper4/spc04.png" width="70%" />
+					</section>
+					<section>
+						<h3>Results</h3>
+						<ul class="spaced">
+							<li class="fragment">
+								S-PC Effectiveness
+							</li>
+							<li class="fragment">
+								Patient Satisfaction
+							</li>
+						</ul>
+					</section>
+					<section>
+						<table class="reveal">
+							<tr>
+								<td><b>Patient types</b></td>
+								<td><b>SMS</b></td>
+								<td><b>No SMS</b></td>
+								<td><b>Total</b></td>
+							</tr>
+							<tr>
+								<td>Strictly following NRT</td>
+								<td>52</td>
+								<td>48</td>
+								<td>100</td>
+							</tr>
+							<tr>
+								<td>Following NRT</td>
+								<td>34</td>
+								<td>21</td>
+								<td>55</td>
+							</tr>
+							<tr>
+								<td>Left NRT</td>
+								<td>18</td>
+								<td>56</td>
+								<td>74</td>
+							</tr>
+							<tr>
+								<td>Total</td>
+								<td>104</td>
+								<td>125</td>
+								<td>229</td>
+							</tr>
+							<tr>
+								<td><b>Patient types</b></td>
+								<td><b>SMS</b></td>
+								<td><b>No SMS</b></td>
+								<td><b>Total</b></td>
+							</tr>
+							<tr>
+								<td>Strictly follow treatment</td>
+								<td>77</td>
+								<td>57</td>
+								<td>134</td>
+							</tr>
+							<tr>
+								<td>Smoking relapses during treatment</td>
+								<td>27</td>
+								<td>68</td>
+								<td>95</td>
+							</tr>
+							<tr>
+								<td>Total</td>
+								<td>104</td>
+								<td>125</td>
+								<td>229</td>
+							</tr>
+							<tr>
+								<td><b>Patient types</b></td>
+								<td><b>Men</b></td>
+								<td><b>Women</b></td>
+								<td><b>Total</b></td>
+							</tr>
+							<tr>
+								<td>Strictly follow treatment</td>
+								<td>63</td>
+								<td>71</td>
+								<td>134</td>
+							</tr>
+							<tr>
+								<td>Smoking relapses during treatment</td>
+								<td>55</td>
+								<td>40</td>
+								<td>95</td>
+							</tr>
+							<tr>
+								<td>Total</td>
+								<td>118</td>
+								<td>111</td>
+								<td>229</td>
+							</tr>
+						</table>
+					</section>
+					<section>
+						<h3>Patient Satisfaction</h3>
+						<ul class="spaced">
+							<li class="fragment">95% followed the treatment</li>
+							<li class="fragment">92% of the patients were either satisfied or completely satisfied with the support given by S-PC</li>
+							<li class="fragment">20% felt that they would still have managed without the system</li>
+							<li class="fragment">70% strongly agreed that the S-PC system helped them remain smoke-free</li>
+							<li class="fragment">20% disagreed or strongly disagreed that S-PC helped them remain smoke-free</li>
+							<li class="fragment">10% had no opinion about this issue</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Conclusions</h3>
+						<ul class="spaced">
+							<li class="fragment">
+								S-PC was successfully designed, implemented and used in the context of the quit smoking treatment
+							</li>
+							<li class="fragment">
+								Usefulness of text messaging in improving:
+								<ul class="spaced">
+									<li class="fragment">
+										 Outcome likelihood of smoking cessation interventions
+									</li>
+									<li class="fragment">
+										Management of time and patients by clinicians, optimizing the health care resources and the reduction of waiting lists
+									</li>
+									<li class="fragment">
+										Patient’s perception of constant psychological support by the clinician
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
 				</section>
 
 				<section>
 					<h2>Three-month doctoral stay</h2>
-					<p>
-						---
-					</p>
+					<section>
+
+					</section>
+					<section>
+						<table>
+							<colgroup>
+								<col style="width: 50%" />
+								<col style="width: 50%" />
+							</colgroup>
+							<tr>
+								<td>
+									<img src="img/logos/ulster.png" />
+								</td>
+								<td style="vertical-align: middle;">
+									Ulster University
+								</td>
+							</tr>
+						</table>
+						<p>
+							&nbsp;
+						</p>
+						<p>
+							<i>Belfast, Northern Ireland</i>
+						</p>
+						<p>
+							<img src="img/University-ulster-jordanstown-polytechnic.jpg" width="50%" />
+						</p>
+						<p>
+							<i>February - March 2015</i>
+						</p>
+					</section>
+					<section>
+						<table>
+							<colgroup>
+								<col style="width: 40%" />
+								<col style="width: 60%" />
+							</colgroup>
+							<tr>
+								<td vertical-align="middle">
+									<img style="vertical-align: top;" src="img/photo-yaxin-4.PNG" width="60%" />
+									<br />
+									<i>Prof. Yaxin Bi</i>
+								</td>
+								<td vertical-align="top">
+									<p>
+										Reader in Computer Science
+									</p>
+									<br />
+									<ul>
+										<li>
+											Big data analytics for satellite data exploitation
+										</li>
+										<li>
+											Dempster-Shafer theory of evidence and Bayesian belief statistics
+										</li>
+										<li>
+											Sensor fusion for activity recognition in smart environments
+										</li>
+										<li>
+											Multiple classification systems
+										</li>
+										<li>
+											Ensemble learning for text mining and sentiment analysis
+										</li>
+									</ul>
+								</td>
+							</tr>
+						</table>
+					</section>
+					<section>
+						<p>
+							Involved in the project:
+						</p>
+						<p class="definition">
+							Identifying cyberbullying from social media
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p class="fragment">
+							What is cyberbullying?
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p class="fragment definition">
+							The use of cell phones, instant messaging, e-mail, chat rooms or social networking sites such as Facebook and Twitter to harass, threaten or intimidate someone
+						</p>
+					</section>
+					<section>
+						<p>
+							Is cyberbullying a real issue?
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<table>
+							<colgroup>
+								<col style="width: 33%" />
+								<col style="width: 33%" />
+								<col style="width: 33%" />
+							</colgroup>
+							<tr>
+								<td>
+									<div class="fragment">
+										<img src="img/megan-meier.jpg" width="100%" />
+										<br />
+										Megan Meier case
+										<br />
+										1992 - 2006
+									</div>
+								</td>
+								<td>
+									<div class="fragment">
+										<img src="img/amanda-todd.jpg" width="100%" />
+										<br />
+										Amanda Todd case
+										<br />
+										1996 - 2012
+									</div>
+								</td>
+								<td>
+									<div class="fragment">
+										<img src="img/bilde.jpeg" width="100%" />
+										<br />
+										Jessica Logan case
+										<br />
+										1990 – 2008
+									</div>
+								</td>
+							</tr>
+						</table>
+						<br />
+						<p class="fragment definition">
+							Cyberbullying can severly affect mental and physical health and, in extreme cases, lead to suicidal behavior.
+						</p>
+						<aside class="notes">
+							http://nobullying.com/six-unforgettable-cyber-bullying-cases/
+						</aside>
+					</section>
+					<section>
+						<p>
+							The cyberbullying project
+						</p>
+						<br />
+						<img class="fragment push" data-fragment-index="1" src="img/fig_cyberbullying_engine.png" width="100%" />
+						<table>
+							<colgroup>
+								<col style="width: 33%" />
+								<col style="width: 33%" />
+								<col style="width: 33%" />
+							</colgroup>
+							<tr>
+								<td>
+									<div class="fragment" data-fragment-index="4">
+										<img src="img/twitter_api.png" width="70%" />
+										<p>
+											<i style="color: blue;">Data input</i>
+										</p>
+									</div>
+								</td>
+								<td>
+									<div class="fragment" data-fragment-index="2">
+										<img src="img/fig_cyberbullying_engine2.png" width="100%" />
+										<p>
+											<i>Data analysis</i>
+										</p>
+										<br />
+										<img class="fragment" data-fragment-index="3" src="img/fig_done.png" />
+									</div>
+								</td>
+								<td>
+									<div class="fragment" data-fragment-index="5">
+										<img src="img/fig_data_visualization.png" width="100%" />
+										<p>
+											<i style="color: blue;">Data visualization</i>
+										</p>
+									</div>
+								</td>
+							</tr>
+						</table>
+						<!--
+						<p>
+							My work consisted of developing a user-friendly interface for an existing sentiment
+	analysis engine that could detect bullying behaviour in text messages and connect it
+	to the Twitter network with the aim of identifying possible bullies within that social
+	network.
+	The main objective of my work was to develop a client application that would
+	access Twitter datasets through its APIs based on predened search queries and
+	hashtags. Once the data is retrieved, the client sends it to the previously-developed
+	server application through its APIs. Then, the results are retrieved from the server
+	in JSON format and presented to the user through a web-based dashboard
+						</p>
+					-->
+					<aside class="notes">
+
+					</aside>
+					</section>
+					<section>
+						<p>
+							Contributions
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<ul class="spaced">
+							<li class="fragment">
+								Define search queries to seek potential bullying messages in Twitter
+							</li>
+							<li class="fragment">
+								Perform recurrent searches to Twitter using its APIs
+							</li>
+							<li class="fragment">
+								Connect to the existing sentiment analysis engine
+							</li>
+							<li class="fragment">
+								Develop a web-based application to:
+								<ul>
+									<li class="fragment">
+										Manage existing queries and create new ones
+									</li>
+									<li class="fragment">
+										Manually review the potential bullying messages
+									</li>
+									<li class="fragment">
+										Visualize the data to extract valuable information
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<p>
+							&nbsp;
+						</p>
+						<br />
+						<img class="fragment push" src="img/fig_cbullying_flowchart_01.png" width="90%" />
+						<img class="fragment push" src="img/fig_cbullying_flowchart_02.png" width="90%" />
+						<img class="fragment push" src="img/fig_cbullying_flowchart_03.png" width="90%" />
+						<img class="fragment push" src="img/fig_cbullying_flowchart_04.png" width="90%" />
+						<img class="fragment push" src="img/fig_cbullying_flowchart_05.png" width="90%" />
+						<img class="fragment push" src="img/fig_cbullying_flowchart_06.png" width="90%" />
+						<img class="fragment push" src="img/fig_cbullying_flowchart_07.png" width="90%" />
+						<img class="fragment push" src="img/fig_cbullying_flowchart_08.png" width="90%" />
+						<img class="fragment push" src="img/fig_cbullying_flowchart_09.png" width="90%" />
+						<img class="fragment push" src="img/fig_cbullying_flowchart_10.png" width="90%" />
+						<img class="fragment" src="img/fig_cbullying_flowchart_11.png" width="90%" />
+					</section>
+					<section>
+						<img src="img/fig_belfastdiary_01.png" width="70%" />
+					</section>
+					<section>
+						<img src="img/fig_belfastdiary_02.png" width="60%" />
+					</section>
+					<section>
+						<img src="img/fig_belfastdiary_03.png" width="90%" />
+					</section>
+					<section>
+						<img src="img/fig_belfastdiary_04.png" width="70%" />
+					</section>
+					<section>
+						<img src="img/fig_belfastdiary_05.png" width="65%" />
+					</section>
+					<section>
+						<img src="img/fig_belfastdiary_06.png" width="70%" />
+					</section>
 				</section>
 
 				<section>
 					<h2>Conclusions and future directions</h2>
-					<p>
-						---
-					</p>
+					<section>
+
+					</section>
+					<section>
+						<p>This thesis proposed and investigated multiple Cloud architectures
+	and models and implemented them using dierent techniques and scenarios, such as
+	queueing theory, nonlinear programming and Cloud simulation.</p>
+					</section>
+					<section>
+						<p>
+							A Cloud infrastructure was developed using OpenStack.
+						</p>
+					</section>
+					<section>
+						<p>
+							A scheduling mechanism called GreenC was developed to achieve energy eciency while maintaining the performance of the Cloud system. This policy obtained a reduction in energy consumption of up to 23% compared with the default policy
+						</p>
+					</section>
+					<section>
+						<p>
+							Two eHealth telemonitoring applications were implemented and deployed on the developed Cloud infrastructure.
+						</p>
+					</section>
+					<section>
+						<p>
+							Smoking Patient Control (S-PC) was deployed and tested in two hospitals with a total of 229 real patients, where 104 patients were treated using the S-PC tool and 125 without it.
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p>
+							74% of the patients treated using the S-PC tool successfully completed the treatment without relapses, while only 45.6% of those who followed the conventional treatment successfully achieved long-term abstinence.
+						</p>
+					</section>
+					<section>
+						<p>
+							Hypertension Patient Control (H-PC) was successfully designed and implemented, and the computing boundaries were measured, proving its good behavior in terms of performance and scalability.
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p>
+							These performance results are also directly applicable to the S-PC tool.
+						</p>
+					</section>
+					<section>
+						<p>
+							What's next?
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p class="fragment">
+							There are a number of open research challenges to address in order to further advance in these areas.
+						</p>
+					</section>
+					<section>
+						<p class="fragment">
+							The eHealth tools will be deployed in more hospitals and healthcare centers.
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p class="fragment">
+							The <i>Sant Joan de Deu</i> hospital in Manresa has agreed to test the S-PC tool with its patients.
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p class="fragment">
+							Healthcare centres are being contacted to expand the testing both in the number of patients and the geographic location.
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p class="fragment">
+							The H-PC tool has entered the testing phase with real patients in three different centers: the Arnau de Vilanova and Santa Maria hospitals in Lleida and the Clinic Hospital in Barcelona.
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p class="fragment">
+							A smartphone app is being developed for both tools.
+						</p>
+					</section>
+					<section>
+						<p class="fragment">
+							Explore additional treatments and diseases.
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p class="fragment">
+							Expand the number of healthcare centers, patients and treatments.
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p class="fragment">
+							Additional performance and scalability tests to avoid performance issues.
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p class="fragment">
+							Analysis of social networks
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p class="fragment">
+							Internet of Things
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p class="fragment">
+							Big Data techniques applied to eHealth
+						</p>
+						<p>
+							&nbsp;
+						</p>
+					</section>
 				</section>
 
 				<section>
 					<h2>Questions and discussion</h2>
-					<p>
+					<section>
+						<p>
+							Thank you for your kind attention!
+						</p>
+					</section>
+				</section>
 
+
+
+
+
+
+				<!--
+				<section>
+					<h2>Point of View</h2>
+					<p>
+						Press <strong>ESC</strong> to enter the slide overview.
+					</p>
+					<p>
+						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
 					</p>
 				</section>
 
+				<section data-markdown>
+					<script type="text/template">
+						## Markdown support
+
+						Write content using inline or external Markdown.
+						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+
+						```
+						<section data-markdown>
+						  ## Markdown support
+
+						  Write content using inline or external Markdown.
+						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+						</section>
+						```
+					</script>
+				</section>
+
+				<section>
+					<section id="fragments">
+						<h2>Fragments</h2>
+						<p>Hit the next arrow...</p>
+						<p class="fragment">... to step through ...</p>
+						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
+
+						<aside class="notes">
+							This slide has fragments which are also stepped through in the notes window.
+						</aside>
+					</section>
+					<section>
+						<h2>Fragment Styles</h2>
+						<p>There's different types of fragments, like:</p>
+						<p class="fragment grow">grow</p>
+						<p class="fragment shrink">shrink</p>
+						<p class="fragment fade-out">fade-out</p>
+						<p class="fragment current-visible">current-visible</p>
+						<p class="fragment highlight-red">highlight-red</p>
+						<p class="fragment highlight-blue">highlight-blue</p>
+					</section>
+				</section>
+
+				<section id="transitions">
+					<h2>Transition Styles</h2>
+					<p>
+						You can select from different transitions, like: <br>
+						<a href="?transition=none#/transitions">None</a> -
+						<a href="?transition=fade#/transitions">Fade</a> -
+						<a href="?transition=slide#/transitions">Slide</a> -
+						<a href="?transition=convex#/transitions">Convex</a> -
+						<a href="?transition=concave#/transitions">Concave</a> -
+						<a href="?transition=zoom#/transitions">Zoom</a>
+					</p>
+				</section>
+
+				<section id="themes">
+					<h2>Themes</h2>
+					<p>
+						reveal.js comes with a few themes built in: <br>
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+					</p>
+				</section>
+
+				<section>
+					<section data-background="#dddddd">
+						<h2>Slide Backgrounds</h2>
+						<p>
+							Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
+						</p>
+						<a href="#" class="navigate-down">
+							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
+						<h2>Image Backgrounds</h2>
+						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
+					</section>
+					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
+						<h2>Tiled Backgrounds</h2>
+						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
+					</section>
+					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
+						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
+							<h2>Video Backgrounds</h2>
+							<pre><code style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
+						</div>
+					</section>
+					<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
+						<h2>... and GIFs!</h2>
+					</section>
+				</section>
+
+				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+					<h2>Background Transitions</h2>
+					<p>
+						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
+					</p>
+					<pre><code>Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
+				</section>
+
+				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+					<h2>Background Transitions</h2>
+					<p>
+						You can override background transitions per-slide.
+					</p>
+					<pre><code style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
+				</section>
+
+				<section>
+					<h2>Pretty Code</h2>
+					<pre><code data-trim contenteditable>
+function linkify( selector ) {
+  if( supports3DTransforms ) {
+
+    var nodes = document.querySelectorAll( selector );
+
+    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
+      var node = nodes[i];
+
+      if( !node.className ) {
+        node.className += ' roll';
+      }
+    }
+  }
+}
+					</code></pre>
+					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+				</section>
+
+				<section>
+					<h2>Marvelous List</h2>
+					<ul>
+						<li>No order here</li>
+						<li>Or here</li>
+						<li>Or here</li>
+						<li>Or here</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Fantastic Ordered List</h2>
+					<ol>
+						<li>One is smaller than...</li>
+						<li>Two is smaller than...</li>
+						<li>Three!</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>Tabular Tables</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>Item</th>
+								<th>Value</th>
+								<th>Quantity</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Apples</td>
+								<td>$1</td>
+								<td>7</td>
+							<tr>
+							<tr>
+								<td>Lemonade</td>
+								<td>$2</td>
+								<td>18</td>
+							<tr>
+							<tr>
+								<td>Bread</td>
+								<td>$3</td>
+								<td>2</td>
+							<tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h2>Clever Quotes</h2>
+					<p>
+						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
+					</p>
+					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
+						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
+					</blockquote>
+				</section>
+
+				<section>
+					<h2>Intergalactic Interconnections</h2>
+					<p>
+						You can link between slides internally,
+						<a href="#/2/3">like this</a>.
+					</p>
+				</section>
+
+				<section>
+					<h2>Speaker View</h2>
+					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
+					<p>Press the <em>S</em> key to try it out.</p>
+
+					<aside class="notes">
+						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+					</aside>
+				</section>
+
+				<section>
+					<h2>Export to PDF</h2>
+					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
+					<iframe src="//www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+				</section>
+
+				<section>
+					<h2>Global State</h2>
+					<p>
+						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
+						will be added as a class to the document element when the slide is open. This lets you
+						apply broader style changes, like switching the page background.
+					</p>
+				</section>
+
+				<section data-state="customevent">
+					<h2>State Events</h2>
+					<p>
+						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
+					</p>
+					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+Reveal.addEventListener( 'customevent', function() {
+	console.log( '"customevent" has fired' );
+} );
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Take a Moment</h2>
+					<p>
+						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
+					</p>
+				</section>
+
+				<section>
+					<h2>Much more</h2>
+					<ul>
+						<li>Right-to-left support</li>
+						<li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
+						<li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
+						<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
+						<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
+					</ul>
+				</section>
+
+				<section style="text-align: left;">
+					<h1>THE END</h1>
+					<p>
+						- <a href="http://slides.com">Try the online editor</a> <br>
+						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
+					</p>
+				</section>
+			-->
 			</div>
+
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
@@ -716,7 +2690,7 @@ to be maximized or minimized, or some of its constraints, are nonlinear.
 			// Full list of configuration options available at:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
-				controls: true,
+				controls: false,
 				progress: true,
 				history: true,
 				center: true,
@@ -738,7 +2712,19 @@ to be maximized or minimized, or some of its constraints, are nonlinear.
 					{ src: 'plugin/math/math.js', async: true }			// MathJax
 				]
 			});
+			// Shows the slide number using default formatting
+			Reveal.configure({ slideNumber: true });
+			Reveal.configure({ slideNumber: 'c / t' });
+			/*
+			var resizeSlide = function() {
+   Reveal.configure({
+     width: window.innerWidth,
+     height: window.innerHeight
+   });
+}
 
+setInterval(resizeSlide, 1000);
+*/
 		</script>
 
 	</body>

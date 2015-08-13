@@ -30,6 +30,31 @@ body{
 	color: #f7f3de;
 }
 
+b {
+  font-weight: bold !important;
+}
+
+ul.spaced li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+ol.spaced li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+table.spaced td,tr {
+  text-align: left;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+p.spaced {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 /**
  * Inner theme intro: #f7f2d3:#f7f3de, #333333, #8b743d; #c0a86e
  */
