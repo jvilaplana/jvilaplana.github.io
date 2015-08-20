@@ -1459,13 +1459,7 @@
 							</li>
 						</ul>
 					</section>
-					<section>
-						<img src="img/paper2/implementation.png" width="60%" />
-						<aside class="notes">
-							In each host, the OpenStack 2014.1 (Icehouse) software has been installed as the cloud platform. The Wake-on-LAN (WoL) program has been used in order to remotely boot the physical machines. WoL is a standard protocol for remotely waking computers up.  Both, the remote host motherboard and network card must support this functionality
-							compute01 acts as the controller node, that provides some additional services like the database (MySQL) and the web interface (Dashboard). The other three hosts act as compute nodes, that provide the processing, memory, network and storage resources to run the virtual machines.
-						</aside>
-					</section>
+					<!-- TODO: Unir aquesta i la següent i sobreposar-ho al diagrama -->
 					<section>
 						<ul class="spaced">
 							<li class="fragment">
@@ -1482,13 +1476,22 @@
 									</li>
 								</ul>
 							</li>
+							<!--
 							<li class="fragment">
 								These devices allow us to individually monitor the energy consumption (in Watts) of each physical host every second and transfer the data to a text file for further analysis.
 							</li>
+						-->
 							<li class="fragment">
 								Room temperature was monitored with a Thermometer and remained constant at 27º C throughout the experimentation
 							</li>
 						</ul>
+					</section>
+					<section>
+						<img src="img/paper2/implementation.png" width="60%" />
+						<aside class="notes">
+							In each host, the OpenStack 2014.1 (Icehouse) software has been installed as the cloud platform. The Wake-on-LAN (WoL) program has been used in order to remotely boot the physical machines. WoL is a standard protocol for remotely waking computers up.  Both, the remote host motherboard and network card must support this functionality
+							compute01 acts as the controller node, that provides some additional services like the database (MySQL) and the web interface (Dashboard). The other three hosts act as compute nodes, that provide the processing, memory, network and storage resources to run the virtual machines.
+						</aside>
 					</section>
 					<section>
 						<table>
@@ -1630,7 +1633,7 @@
 							&nbsp;
 						</p>
 						<p>
-							Clinicians can keep track of their patients, thus facilitating monitoring
+							Offers an efficient eHealth solution to facilitate monitoring of hypertensive patients
 						</p>
 					</section>
 					<section>
@@ -1650,6 +1653,7 @@
 							</li>
 						</ul>
 					</section>
+					<!-- TODO: Dir de paraula a la següent
 					<section>
 						<p class="spaced">
 							H-PC allows target limits to be established individually from both systole and diastole blood pressures, depending on patient characteristics
@@ -1661,6 +1665,7 @@
 							If these limits are exceeded, an alert is shown in the main page of the H-PC tool so clinicians can act quickly and, if needed, perform an intervention or send an alert to the patient
 						</p>
 					</section>
+				-->
 					<section>
 						<h3>H-PC readings</h3>
 						<img src="img/paper3/FIG1.png" width="70%" />
@@ -1708,6 +1713,7 @@
 							</li>
 						</ul>
 					</section>
+					<!--
 					<section>
 						<h3>Usability and user-friendliness criteria</h3>
 						<table class="reveal">
@@ -1761,6 +1767,7 @@
 							</tr>
 						</table>
 					</section>
+					-->
 					<section>
 						<h3>Architecture implementation</h3>
 						<img src="img/paper3/FIG4.png" width="80%" />
@@ -1774,9 +1781,7 @@
 							<li class="fragment">
 								Reliability
 							</li>
-							<li class="fragment">
-								Scheduler
-							</li>
+							<!-- TODO: Afegir 2 punts més de eHealth -->
 						</ul>
 					</section>
 					<!--
@@ -1784,6 +1789,7 @@
 						<h3>Implementation</h3>
 					</section>
 					-->
+					<!-- TODO: Afegir més gràfiques -->
 					<section>
 						<h3>Results</h3>
 						<!--
@@ -1807,10 +1813,10 @@
 						<h3>Conclusions</h3>
 						<ul class="spaced">
 							<li class="fragment">
-								Improved the control of patients
+								Aims to improve the control of patients
 							</li>
 							<li class="fragment">
-								Management of time and patients by clinicians
+								Helps clinicians to follow-up patients
 							</li>
 							<li class="fragment">
 								H-PC computing boundaries measured
