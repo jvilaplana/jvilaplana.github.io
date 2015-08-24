@@ -6,8 +6,8 @@
 
 		<title>Jordi Vilaplana's thesis slides</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="Doctoral thesis 'Management of Cloud systems applied to eHealth' defense slides">
+		<meta name="author" content="Jordi Vilaplana">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -19,7 +19,7 @@
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
-
+		<!-- TODO: Download locally the font (defense.css line 1) -->
 		<!-- Printing and PDF exports -->
 		<script>
 			var link = document.createElement( 'link' );
@@ -148,7 +148,7 @@
 						</p>
 					</section>
 					<section>
-						<h2>Service models</h2>
+						<h2>Cloud Service models</h2>
 						<img width="80%" src="img/fig_cloud_service_models.png" alt="Overview">
 					</section>
 					<section>
@@ -341,7 +341,7 @@
 						</table>
 					</section>
 					<!-- TODO: Mirar si se pot fer efecte zoom -->
-					<section>
+					<section transition="zoom">
 						<h2>A queueing theory model</h2>
 						<img width="100%" src="img/fig_queueing_theory.png" />
 						<aside class="notes">
@@ -898,6 +898,7 @@
 						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_16.png" alt="">
 						<img class="fragment" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_17.png" alt="">
 					</section>
+					<!--
 					<section>
 						<img width="100%" src="img/fig_paper1_02.png" alt="">
 					</section>
@@ -1016,6 +1017,7 @@
 							\end{eqnarray}
 						</p>
 					</section>
+					-->
 					<section>
 						<h3>Results</h3>
 						<ul class="spaced">
@@ -2854,8 +2856,10 @@ Reveal.addEventListener( 'customevent', function() {
 				progress: true,
 				history: true,
 				center: false,
+				width: '100%',
+    		height: '100%',
 				math: {
-	        mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+	        mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js', //TODO: Download locally
 	        config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
     		},
 
