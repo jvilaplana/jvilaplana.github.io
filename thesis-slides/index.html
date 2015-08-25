@@ -341,10 +341,13 @@
 						</table>
 					</section>
 					<!-- TODO: Mirar si se pot fer efecte zoom -->
-					<section transition="zoom">
+					<section data-transition="zoom">
 						<h2>A queueing theory model</h2>
 						<img width="100%" src="img/fig_queueing_theory.png" />
 						<aside class="notes">
+							<p>
+								Lambda is the arrival rate (exponential function), Mu is the service rate (exponential function)
+							</p>
 							Although queueing theory can provide very efficient models for relatively simple scenarios, the complex mathematical analyses hinder us from obtaining simple and fast solutions for more elaborate systems.
 	    			</aside>
 					</section>
@@ -378,6 +381,9 @@
 							</tr>
 						</table>
 						<p class="fragment">
+							Response time &#8680; $T = \frac{1/\mu}{1 - \lambda / \mu}$
+						</p>
+						<p class="fragment">
 							Utilization factor &#8680; $\rho = \frac{\lambda}{\mu}$
 						</p>
 						<p class="fragment">
@@ -389,12 +395,9 @@
 				<section>
 					<section>
 						<h2>Nonlinear programming</h2>
-						<p class="fragment definition">
-							A nonlinear programming problem (NLP) deals with mathematical optimization problems where the objective function to be maximized or minimized, or some of its constraints, are nonlinear.
+						<p class="definition">
+							A nonlinear programming problem (NLP) deals with mathematical optimization problems
 						</p>
-					</section>
-					<section>
-						<h2>Nonlinear programming</h2>
 						<table>
 							<colgroup>
 								<col style="width: 50%" />
@@ -402,33 +405,38 @@
 							</colgroup>
 							<tr>
 								<td style="padding: 10px 20px;">
-									<p class="fragment" style="padding-bottom: 20px;">
-										A NLP can be defined as:
-									</p>
-									<p class="fragment" style="padding-bottom: 20px;">
-										\begin{equation}
-										[Max | Min](f(x_{1},x_{2}, ..., x_{n})),
-										\end{equation}
-									</p>
-									<p class="fragment" style="padding-bottom: 20px;">
-										s.t. (subject to):
-									</p>
-									<p class="fragment">
-										\begin{equation}
-										\begin{split}
-										h_{i}(x) = b_{i} & \quad (i = 1, 2, ..., m) \\
-										x_{j} \geq 0 & \quad (j = 1, 2, ..., n)
-										\end{split}
-										\end{equation}
-									</p>
+									<div class="fragment">
+										<p style="padding-bottom: 20px;">
+											A NLP can be defined as:
+										</p>
+										<p style="padding-bottom: 20px;">
+											\begin{equation}
+											[Max | Min](f(x_{1},x_{2}, ..., x_{n})),
+											\end{equation}
+										</p>
+										<p style="padding-bottom: 20px;">
+											s.t. (subject to):
+										</p>
+										<p>
+											\begin{equation}
+											\begin{split}
+											h_{i}(x) = b_{i} & \quad (i = 1, 2, ..., m) \\
+											x_{j} \geq 0 & \quad (j = 1, 2, ..., n)
+											\end{split}
+											\end{equation}
+										</p>
+									</div>
 								</td>
 								<td style="padding: 10px 20px; vertical-align: middle;">
 									<p class="fragment">
-										Then, it can be processed by a solver (i.e. IBM CPLEX) to extract an optimal solution
+										&#8680; Processed by a solver (i.e. IBM CPLEX) to extract an optimal solution
 									</p>
 								</td>
 							</tr>
 						</table>
+						<aside class="notes">
+							Where the objective function to be maximized or minimized, or some of its constraints, are nonlinear
+						</aside>
 					</section>
 				</section>
 				<section>
@@ -490,23 +498,23 @@
 							<li>
 								VirtualCloud
 							</li>
+							<li>
+								...
+							</li>
 						</ul>
-						<p class="definition fragment">
-							CloudSim is an event-driven and extensible simulation toolkit that enables real Cloud systems to be modelled and simulated
-						</p>
 					</section>
 					<section>
 						<h2>CloudSim</h2>
-						<img style="width: 100%;" class="fragment push" src ="img/cloudsim-model_1440349657049_block_0.png" />
-						<img style="width: 100%;" class="fragment push" src ="img/cloudsim-model_1440349657049_block_1.png" />
-						<img style="width: 100%;" class="fragment push" src ="img/cloudsim-model_1440349657049_block_2.png" />
-						<img style="width: 100%;" class="fragment push" src ="img/cloudsim-model_1440349657049_block_3.png" />
-						<img style="width: 100%;" class="fragment push" src ="img/cloudsim-model_1440349657049_block_4.png" />
-						<img style="width: 100%;" class="fragment push" src ="img/cloudsim-model_1440349657049_block_5.png" />
-						<img style="width: 100%;" class="fragment push" src ="img/cloudsim-model_1440349657049_block_6.png" />
-						<img style="width: 100%;" class="fragment push" src ="img/cloudsim-model_1440349657049_block_7.png" />
-						<img style="width: 100%;" class="fragment push" src ="img/cloudsim-model_1440349657049_block_8.png" />
-						<img style="width: 100%;" class="fragment" src ="img/cloudsim-model_1440349657049_block_9.png" />
+						<img style="width: 100%;" class="fragment push" src ="img/cloudsim-model_1440498483819_block_0.png" />
+						<img style="width: 100%;" class="fragment push" src ="img/cloudsim-model_1440498483819_block_1.png" />
+						<img style="width: 100%;" class="fragment push" src ="img/cloudsim-model_1440498483819_block_2.png" />
+						<img style="width: 100%;" class="fragment push" src ="img/cloudsim-model_1440498483819_block_3.png" />
+						<img style="width: 100%;" class="fragment push" src ="img/cloudsim-model_1440498483819_block_4.png" />
+						<img style="width: 100%;" class="fragment push" src ="img/cloudsim-model_1440498483819_block_5.png" />
+						<img style="width: 100%;" class="fragment push" src ="img/cloudsim-model_1440498483819_block_6.png" />
+						<img style="width: 100%;" class="fragment push" src ="img/cloudsim-model_1440498483819_block_7.png" />
+						<img style="width: 100%;" class="fragment push" src ="img/cloudsim-model_1440498483819_block_8.png" />
+						<img style="width: 100%;" class="fragment" src ="img/cloudsim-model_1440498483819_block_9.png" />
 					</section>
 					<!--
 					<section>
@@ -564,27 +572,30 @@
 							<tr>
 								<td>
 									<ul class="spaced">
-										<li class="fragment" data-fragment-index="1">Amazon EC2</li>
-										<li class="fragment" data-fragment-index="2">Microsoft Azure</li>
-										<li class="fragment" data-fragment-index="3">Google Cloud Platform</li>
-										<li class="fragment" data-fragment-index="4"><span class="fragment grow highlight-blue" data-fragment-index="10">OpenStack</span></li>
-										<li class="fragment" data-fragment-index="5">Apache CloudStack</li>
-										<li class="fragment" data-fragment-index="6">OpenNebula</li>
+										<li class="fragment" data-fragment-index="1"><span class="fragment grow highlight-blue" data-fragment-index="10">OpenStack</span></li>
+										<li class="fragment" data-fragment-index="2">Apache CloudStack</li>
+										<li class="fragment" data-fragment-index="3">OpenNebula</li>
+										<li class="fragment" data-fragment-index="4">Amazon EC2</li>
+										<li class="fragment" data-fragment-index="5">Microsoft Azure</li>
+										<li class="fragment" data-fragment-index="6">Google Cloud Platform</li>
 									</ul>
 								</td>
 								<td>
 									<ul class="spaced" style="list-style-type: none;">
-										<li class="fragment" data-fragment-index="7">&#8680; <img src="img/PriceTag.png" width="32" /> Commercial</li>
-										<li class="fragment" data-fragment-index="7">&#8680; <img src="img/PriceTag.png" width="32" /> Commercial</li>
-										<li class="fragment" data-fragment-index="7">&#8680; <img src="img/PriceTag.png" width="32" /> Commercial</li>
 										<li class="fragment" data-fragment-index="8"><span class="fragment grow highlight-blue" data-fragment-index="10">&#8680; <img src="img/opensource_64.png" width="32" /> Open Source</span></li>
 										<li class="fragment" data-fragment-index="8">&#8680; <img src="img/opensource_64.png" width="32" /> Open Source</li>
 										<li class="fragment" data-fragment-index="8">&#8680; <img src="img/opensource_64.png" width="32" /> Open Source</li>
+										<li class="fragment" data-fragment-index="9">&#8680; <img src="img/PriceTag.png" width="32" /> Commercial</li>
+										<li class="fragment" data-fragment-index="9">&#8680; <img src="img/PriceTag.png" width="32" /> Commercial</li>
+										<li class="fragment" data-fragment-index="9">&#8680; <img src="img/PriceTag.png" width="32" /> Commercial</li>
 									</ul>
 								</td>
 							</tr>
 						</table>
-						<p class="fragment" data-fragment-index="9">
+						<p>
+							&nbsp;
+						</p>
+						<p class="fragment" data-fragment-index="7">
 							And much more...
 						</p>
 					</section>
@@ -599,38 +610,15 @@
 						</ul>
 					</section>
 					-->
-
-					<!-- TODO: Fusionar overview amb components -->
 					<section>
 						<h2>OpenStack overview</h2>
-						<table class="reveal">
-							<colgroup>
-								<col style="width: 65%" />
-								<col style="width: 35%" />
-							</colgroup>
-							<tr>
-								<td>
-									<img width="100%" src="img/fig_cloud_platform.png" alt="">
-								</td>
-								<td>
-									<ul class="spaced">
-										<li class="fragment">Nova (compute)</li>
-										<li class="fragment">Swift (object storage)</li>
-										<li class="fragment">Glance (image service)</li>
-										<li class="fragment">Keystone (identity management)</li>
-										<li class="fragment">Horizon (gui interface)</li>
-									</ul>
-								</td>
-							</tr>
-						</table>
-
+						<img width="100%" class="fragment push" src="img/openstack_1440500378603_block_0.png" />
+						<img width="100%" class="fragment push" src="img/openstack_1440500378603_block_1.png" />
+						<img width="100%" class="fragment push" src="img/openstack_1440500378603_block_2.png" />
+						<img width="100%" class="fragment push" src="img/openstack_1440500378603_block_3.png" />
+						<img width="100%" class="fragment push" src="img/openstack_1440500378603_block_4.png" />
+						<img width="100%" class="fragment" src="img/openstack_1440500378603_block_5.png" />
 					</section>
-					<!--
-					<section>
-						<h2>OpenStack Components</h2>
-
-					</section>
-				-->
 				</section>
 
 				<section>
@@ -684,15 +672,15 @@
 							</colgroup>
 							<tr>
 								<td class="fragment" data-fragment-index="2"><p class="definition">Telemedicine</p></td>
-								<td class="fragment" data-fragment-index="3"><p class="definition">Electronic Health Records</p></td>
-								<td class="fragment" data-fragment-index="4"><p class="definition">Patient Data Management</p></td>
-								<td class="fragment" data-fragment-index="5"><p class="definition">mHealth</p></td>
+								<td class="fragment" data-fragment-index="2"><p class="definition">Electronic Health Records</p></td>
+								<td class="fragment" data-fragment-index="2"><p class="definition">Patient Data Management</p></td>
+								<td class="fragment" data-fragment-index="2"><p class="definition">mHealth</p></td>
 							</tr>
 							<tr>
 								<td class="fragment" data-fragment-index="2"><img src="img/telemedicine.png" width="100%" /></td>
-								<td class="fragment" data-fragment-index="3"><img src="img/electronic-health-records.png" width="100%" /></td>
-								<td class="fragment" data-fragment-index="4"><img src="img/patient-data-management.png" width="100%" /></td>
-								<td class="fragment" data-fragment-index="5"><img src="img/mhealth.png" width="100%" /></td>
+								<td class="fragment" data-fragment-index="2"><img src="img/electronic-health-records.png" width="100%" /></td>
+								<td class="fragment" data-fragment-index="2"><img src="img/patient-data-management.png" width="100%" /></td>
+								<td class="fragment" data-fragment-index="2"><img src="img/mhealth.png" width="100%" /></td>
 							</tr>
 						</table>
 						<aside class="notes">
@@ -701,29 +689,29 @@
 					</section>
 					<section>
 						<h2>Motivations for eHealth</h2>
-						<p class="fragment definition" data-fragment-index="1">
+						<p class="definition">
 							Cloud Computing + eHealth
 						</p>
 						<table>
 							<colgroup>
-								<col style="width: 50%" />
-								<col style="width: 50%" />
+								<col style="width: 40%" />
+								<col style="width: 60%" />
 							</colgroup>
 							<tr>
 								<td>
-									<img class="fragment push" data-fragment-index="2" src="img/cloud-ehealth.png" width="100%" />
-									<img class="fragment push" data-fragment-index="3" src="img/cloud-ehealth.png" width="100%" />
-									<img class="fragment push" data-fragment-index="4" src="img/cloud-ehealth.png" width="100%" />
-									<img class="fragment" data-fragment-index="5" src="img/cloud-ehealth2.png" width="100%" />
+									<img class="fragment push" data-fragment-index="1" src="img/cloud-ehealth.png" width="440" />
+									<img class="fragment push" data-fragment-index="2" src="img/cloud-ehealth.png" width="440" />
+									<img class="fragment push" data-fragment-index="3" src="img/cloud-ehealth.png" width="440" />
+									<img class="fragment" data-fragment-index="4" src="img/cloud-ehealth2.png" width="440" />
 								</td>
 								<td style="vertical-align: top;">
 									<ul class="spaced">
-										<li class="fragment" data-fragment-index="2">Access to computing resources</li>
-										<li class="fragment" data-fragment-index="3">Seamless deployment</li>
-										<li class="fragment" data-fragment-index="4">Data sharing and analysis</li>
-										<li class="fragment" data-fragment-index="5">Personalized follow-up</li>
-										<li class="fragment" data-fragment-index="6">Effective time management</li>
-										<li class="fragment" data-fragment-index="7">Reduced transport costs</li>
+										<li class="fragment" data-fragment-index="1">Access to computing resources</li>
+										<li class="fragment" data-fragment-index="2">Seamless deployment</li>
+										<li class="fragment" data-fragment-index="3">Data sharing and analysis</li>
+										<li class="fragment" data-fragment-index="4">Personalized follow-up</li>
+										<li class="fragment" data-fragment-index="5">Effective time management</li>
+										<li class="fragment" data-fragment-index="6">Reduced transport costs</li>
 									</ul>
 								</td>
 							</tr>
@@ -763,12 +751,12 @@
 				<section>
 					<section>
 						<h2>Research objectives</h2>
-						<p class="fragment definition">
+						<p style="font-size: 0.9em;" class="fragment definition">
 							Achieve eHealth solutions through Cloud-based technologies and architectures
 						</p>
 						<ul class="spaced">
 							<li class="fragment">Design a Cloud system by means of queueing theory</li>
-							<li class="fragment">Design of a nonlinear programming scheduling algorithm to optimize both energy consumption and SLA guarantees</li>
+							<li class="fragment">Design of a NLP algorithm to optimize energy and SLA guarantees</li>
 							<li class="fragment">Design a Cloud architecture for an eHealth environment and analyze its behaviour with the CloudSim simulator</li>
 							<li class="fragment">Design an eHealth tool for smoke-quitting patients</li>
 							<li class="fragment">Design an eHealth tool for hypertensive patients</li>
@@ -783,16 +771,16 @@
 				<section>
 					<h2>Papers</h2>
 					<ol class="spaced" style="text-align: left;">
-						<li class="fragment">
+						<li>
 							A queuing theory model for cloud computing
 						</li>
-						<li class="fragment">
+						<li>
 							An SLA and power-saving scheduling consolidation strategy for shared and heterogeneous clouds
 						</li>
-						<li class="fragment">
+						<li>
 							H-PC: a cloud computing tool for supervising hypertensive patients
 						</li>
-						<li class="fragment">
+						<li>
 							S-PC: An e-treatment application for management of smoke-quitting patients
 						</li>
 					</ol>
