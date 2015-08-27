@@ -97,13 +97,15 @@
 					<h2>Introduction</h2>
 					<div style="text-align: left;">
 						<ul class="spaced">
-							<li>Modelling Cloud systems</li>
-							<!--
-							<li>Queueing theory</li>
-							<li>Nonlinear programming</li>
-							<li>Cloud simulation</li>
-							<li>Cloud platform</li>
-							-->
+							<li>Modelling Cloud systems
+								<br />
+								<ul>
+									<li>Queueing theory</li>
+									<li>Nonlinear programming</li>
+									<li>Cloud simulation</li>
+									<li>Cloud platform</li>
+								</ul>
+							</li>
 							<li>Cloud computing challenges and issues</li>
 							<li>eHealth</li>
 							<li>Applied cases: Smoking and Hypertension</li>
@@ -128,6 +130,12 @@
 						<div style="text-align: left;">
 							<ul class="spaced">
 								<li style="font-weight: bold;">Modelling Cloud systems</li>
+								<ul>
+									<li>Queueing theory</li>
+									<li>Nonlinear programming</li>
+									<li>Cloud simulation</li>
+									<li>Cloud platform</li>
+								</ul>
 								<li style="color: grey;">Cloud computing challenges and issues</li>
 								<li style="color: grey;">eHealth</li>
 								<li style="color: grey;">Applied cases: Smoking and Hypertension</li>
@@ -149,7 +157,7 @@
 					</section>
 					<section>
 						<h2>Cloud Service models</h2>
-						<img width="80%" src="img/fig_cloud_service_models.png" alt="Overview">
+						<img width="70%" src="img/fig_cloud_service_models.png" alt="Overview">
 					</section>
 					<section>
 						<h2>Deployment models</h2>
@@ -727,8 +735,52 @@
 					</p>
 				</section>
 				-->
-
-				<section>
+				<section data-background="img/smoking-hyper.png">
+					<h2>eHealth applied cases</h2>
+					<table class="reveal">
+						<colgroup>
+							<col style="width: 50%;" />
+							<col style="width: 50%;" />
+						</colgroup>
+						<tr>
+							<td>
+								Smoking
+							</td>
+							<td>
+								Hypertension
+							</td>
+						</tr>
+						<tr class="fragment">
+							<td>
+								<p class="definition">
+									One of the leading causes of preventable death and a major public health concern
+								</p>
+							</td>
+							<td>
+								<p class="definition">
+									Chronic medical condition in which the blood pressure in the arteries is elevated
+								</p>
+							</td>
+						</tr>
+						<tr class="fragment">
+							<td>
+								<ul class="spaced">
+									<li>29 associated health problems</li>
+									<li>Elevated cost (1.7% Europe GDP)</li>
+									<li>26.5% smokers (Catalonia, 2013)</li>
+								</ul>
+							</td>
+							<td>
+								<ul class="spaced">
+									<li>Condition on the rise</li>
+									<li>Spreading to younger sectors</li>
+									<li>Cardiovascular disease</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</section>
+				<section data-background="img/smoking.png" data-transition="zoom">
 					<h2>eHealth applied case: Smoking</h2>
 					<p>
 						&nbsp;
@@ -738,7 +790,7 @@
 					</p>
 				</section>
 
-				<section>
+				<section data-background="img/hypertension.png" data-transition="zoom">
 					<h2>eHealth applied case: Hypertension</h2>
 					<p>
 						&nbsp;
@@ -1076,25 +1128,25 @@
 					<section>
 						<h3>Response Time (ms)</h3>
 						<div class="fragment push">
-							<img src="img/paper1/paper1-response-time_1440593656386_block_0.png" width="55%" />
+							<img src="img/paper1/paper1-response-time_1440593656386_block_0.png" width="80%" />
 							<figcaption>
 								$m = 1$
 							</figcaption>
 						</div>
 						<div class="fragment push">
-							<img src="img/paper1/paper1-response-time_1440593656386_block_1.png" width="55%" />
+							<img src="img/paper1/paper1-response-time_1440593656386_block_1.png" width="80%" />
 							<figcaption>
 								$m = 1$
 							</figcaption>
 						</div>
 						<div class="fragment push">
-							<img src="img/paper1/paper1-response-time_1440593656386_block_2.png" width="55%" />
+							<img src="img/paper1/paper1-response-time_1440593656386_block_2.png" width="80%" />
 							<figcaption>
 								$m = 1$
 							</figcaption>
 						</div>
 						<div class="fragment push">
-							<img src="img/paper1/paper1-response-time_1440593656386_block_3.png" width="55%" />
+							<img src="img/paper1/paper1-response-time_1440593656386_block_3.png" width="80%" />
 							<figcaption>
 								$m = 2$
 							</figcaption>
@@ -1125,7 +1177,7 @@
 						</div>
 						-->
 						<div>
-							<img src="img/paper1/Fig6.png" width="50%" />
+							<img src="img/paper1/Fig6.png" width="60%" />
 							<figcaption>
 								$T$ given $\lambda$ and $O$
 							</figcaption>
@@ -1350,43 +1402,43 @@
 					-->
 					<section>
 						<h3>The GreenC policy</h3>
-						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_0.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_1.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_2.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_3.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_4.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_5.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_6.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_7.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_8.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_9.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_10.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_11.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_12.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_13.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_14.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_15.png" width="70%" />
+						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_0.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_1.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_2.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_3.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_4.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_5.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_6.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_7.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_8.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_9.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_10.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_11.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_12.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_13.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_14.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_15.png" width="80%" />
 					</section>
 					<section>
 						<h3>Experimentation</h3>
-						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_0.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_1.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_2.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_3.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_4.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_5.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_6.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_7.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_8.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_9.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_10.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_11.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_12.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_13.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_14.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_15.png" width="70%" />
-						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_16.png" width="70%" />
-						<img class="fragment" src="img/paper2/greenc-experimentation_1440610627583_block_17.png" width="70%" />
+						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_0.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_1.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_2.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_3.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_4.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_5.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_6.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_7.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_8.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_9.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_10.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_11.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_12.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_13.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_14.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_15.png" width="80%" />
+						<img class="fragment push" src="img/paper2/greenc-experimentation_1440610627583_block_16.png" width="80%" />
+						<img class="fragment" src="img/paper2/greenc-experimentation_1440610627583_block_17.png" width="80%" />
 					</section>
 					<!--
 					<section>
@@ -1780,8 +1832,9 @@
 					</section>
 					<section>
 						<h3>H-PC operation</h3>
-						<img src="img/paper3/FIG2.png" width="80%" />
+						<img src="img/paper3/FIG2.png" width="70%" />
 					</section>
+					<!--
 					<section>
 						<h3>Design Principles</h3>
 						<ul class="spaced">
@@ -1802,6 +1855,7 @@
 							</li>
 						</ul>
 					</section>
+					-->
 					<!--
 					<section>
 						<h3>Usability and user-friendliness criteria</h3>
@@ -1977,6 +2031,19 @@
 						</p>
 					</section>
 					<section>
+						<img class="fragment push" src="img/paper4/ehealth-cases_1440668944381_block_0.png" />
+						<img class="fragment push" src="img/paper4/ehealth-cases_1440668944381_block_1.png" />
+						<img class="fragment push" src="img/paper4/ehealth-cases_1440668944381_block_2.png" />
+						<img class="fragment push" src="img/paper4/ehealth-cases_1440668944381_block_3.png" />
+						<img class="fragment push" src="img/paper4/ehealth-cases_1440668944381_block_4.png" />
+						<img class="fragment push" src="img/paper4/ehealth-cases_1440668944381_block_5.png" />
+						<img class="fragment push" src="img/paper4/ehealth-cases_1440668944381_block_6.png" />
+						<img class="fragment push" src="img/paper4/ehealth-cases_1440668944381_block_7.png" />
+						<img class="fragment push" src="img/paper4/ehealth-cases_1440668944381_block_8.png" />
+						<img class="fragment" src="img/paper4/ehealth-cases_1440668944381_block_9.png" />
+					</section>
+					<!--
+					<section>
 						<ul class="spaced">
 							<li class="fragment">
 								A total of 229 patients were enrolled in the study
@@ -1995,15 +2062,18 @@
 							</li>
 						</ul>
 					</section>
+					-->
 					<section>
 						<img src="img/paper4/spc01.png" width="70%" />
 					</section>
 					<section>
 						<img src="img/paper4/spc02.png" width="70%" />
 					</section>
+					<!--
 					<section>
 						<img src="img/paper4/spc03.png" width="60%" />
 					</section>
+					-->
 					<section>
 						<img src="img/paper4/spc04.png" width="70%" />
 					</section>
@@ -2100,6 +2170,7 @@
 							</tr>
 						</table>
 					</section>
+					<!--
 					<section>
 						<h3>Patient Satisfaction</h3>
 						<ul class="spaced">
@@ -2110,6 +2181,12 @@
 							<li class="fragment">20% (strongly) disagreed that it helped them remain smoke-free</li>
 							<li class="fragment">10% had no opinion about this issue</li>
 						</ul>
+					</section>
+					-->
+					<section>
+						<h3>Patient Satisfaction</h3>
+						<img class="fragment push" src="img/paper4/s-pc-satisfaction_1440673553980_block_0.png" />
+						<img class="fragment" src="img/paper4/s-pc-satisfaction_1440673553980_block_1.png" />
 					</section>
 					<section>
 						<h3>Conclusions</h3>
