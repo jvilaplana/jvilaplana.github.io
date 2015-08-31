@@ -75,19 +75,18 @@
 						<h4>Francesc Solsona &amp; Francesc Abella</h4>
 				</section>
 
-				<section>
+				<section style="vertical-align: middle;">
 					<h2>Outline</h2>
 					<div style="text-align: left;">
-						<ul class="spaced">
+						<ul class="list spaced">
 							<li>Introduction</li>
-							<li>Papers
-								<ul>
-									<li>A queuing theory model for cloud computing</li>
-									<li>An SLA and power-saving scheduling consolidation strategy for shared and heterogeneous clouds</li>
-									<li>H-PC: a cloud computing tool for supervising hypertensive patients</li>
-									<li>S-PC: An e-treatment application for management of smoke-quitting patients</li>
-								</ul>
-							</li>
+							<li>Papers</li>
+							<ul>
+								<li>A queuing theory model for cloud computing</li>
+								<li>An SLA and power-saving scheduling consolidation strategy for shared and heterogeneous clouds</li>
+								<li>H-PC: a cloud computing tool for supervising hypertensive patients</li>
+								<li>S-PC: An e-treatment application for management of smoke-quitting patients</li>
+							</ul>
 							<li>Conclusions and future directions</li>
 						</ul>
 					</div>
@@ -97,15 +96,13 @@
 					<h2>Introduction</h2>
 					<div style="text-align: left;">
 						<ul class="spaced">
-							<li>Modelling Cloud systems
-								<br />
-								<ul>
-									<li>Queueing theory</li>
-									<li>Nonlinear programming</li>
-									<li>Cloud simulation</li>
-									<li>Cloud platform</li>
-								</ul>
-							</li>
+							<li>Modelling Cloud systems</li>
+							<ul>
+								<li>Queueing theory</li>
+								<li>Nonlinear programming</li>
+								<li>Cloud simulation</li>
+								<li>Cloud platform</li>
+							</ul>
 							<li>Cloud computing challenges and issues</li>
 							<li>eHealth</li>
 							<li>Applied cases: Smoking and Hypertension</li>
@@ -361,14 +358,14 @@
 					</section>
 					<section>
 						<h2>Queueing Theory</h2>
-						<table>
+						<table class="reveal">
 							<colgroup>
 								<col style="width: 50%" />
 								<col style="width: 5%" />
 								<col style="width: 45%" />
 							</colgroup>
 							<tr>
-								<td colspan="3" style="padding: 10px 20px;">
+								<td colspan="3" style="padding: 30px 20px;">
 									<ul>
 										<li class="fragment">Transform Cloud systems to queueing theory assets</li>
 										<li class="fragment">Predict behaviours through queueing theory formulas</li>
@@ -376,27 +373,30 @@
 								</td>
 							</tr>
 							<tr>
-								<td style="padding: 10px 20px;">
+								<td style="padding: 30px 20px;">
 									<img class="fragment" width="100%" src="img/fig_queueing_theory.png" />
 								</td>
-								<td style="padding: 10px 20px; vertical-align: middle;">
+								<td style="padding: 30px 20px; vertical-align: middle;">
 									<p class="fragment">&#8680;</p>
 								</td>
-								<td style="padding: 10px 20px; vertical-align: middle;">
+								<td style="padding: 30px 20px; vertical-align: middle;">
 									<p class="fragment">Mathematical formulas</p>
-									<!-- TODO: Afegir fòrmules de waiting i return times -->
+									<p>
+										&nbsp;
+									</p>
+									<p class="fragment">
+										Response time &#8680; $T = \frac{1/\mu}{1 - \lambda / \mu}$
+									</p>
+									<p class="fragment">
+										Utilization factor &#8680; $\rho = \frac{\lambda}{\mu}$
+									</p>
+									<p class="fragment">
+										Average time waiting &#8680; $W = \frac{\rho}{(\mu - \lambda)}$
+									</p>
 								</td>
 							</tr>
 						</table>
-						<p class="fragment">
-							Response time &#8680; $T = \frac{1/\mu}{1 - \lambda / \mu}$
-						</p>
-						<p class="fragment">
-							Utilization factor &#8680; $\rho = \frac{\lambda}{\mu}$
-						</p>
-						<p class="fragment">
-							Average time waiting &#8680; $W = \frac{\rho}{(\mu - \lambda)}$
-						</p>
+
 					</section>
 				</section>
 
@@ -753,7 +753,7 @@
 						<tr class="fragment">
 							<td>
 								<p class="definition">
-									One of the leading causes of preventable death and a major public health concern
+									Leading cause of preventable death and a major public health concern
 								</p>
 							</td>
 							<td>
@@ -774,11 +774,16 @@
 								<ul class="spaced">
 									<li>Condition on the rise</li>
 									<li>Spreading to younger sectors</li>
-									<li>Cardiovascular disease</li>
+									<li>Associated with sdentary lifestyles</li>
 								</ul>
 							</td>
 						</tr>
 					</table>
+					<aside class="notes">
+						<p>
+							una persona cada 6 segons al mon occidental
+						</p>
+					</aside>
 				</section>
 				<section data-background="img/smoking.png" data-transition="zoom">
 					<h2>eHealth applied case: Smoking</h2>
@@ -797,12 +802,9 @@
 
 				<section data-background="img/hypertension.png" data-transition="zoom">
 					<h2>eHealth applied case: Hypertension</h2>
-					<p>
-						&nbsp;
-					</p>
-					<p>
-						<img width="800" src="img/fig_hypertension.png" alt="">
-					</p>
+					<img class="fragment push" src="img/smoking-case_1441008483652_block_3.png" width="90%" />
+					<img class="fragment push" src="img/smoking-case_1441008483652_block_4.png" width="90%" />
+					<img class="fragment" src="img/smoking-case_1441008483652_block_5.png" width="90%" />
 				</section>
 
 				<section>
@@ -904,7 +906,7 @@
 						</p>
 						<img class="fragment" width="60%" src="img/fig_paper1_01.png" alt="">
 					</section>
-					<!-- -->
+
 					<section>
 						<ul class="spaced">
 							<li>
@@ -924,7 +926,7 @@
 							</li>
 						</ul>
 					</section>
-					<!-- TODO: Posar les fòrmules de cada node sobreposades a la imatge. Afegir la 'L' (service rate) al node ES. -->
+
 					<section>
 						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_0.png" alt="">
 						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_1.png" alt="">
@@ -937,13 +939,7 @@
 						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_8.png" alt="">
 						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_9.png" alt="">
 						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_10.png" alt="">
-						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_11.png" alt="">
-						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_12.png" alt="">
-						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_13.png" alt="">
-						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_14.png" alt="">
-						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_15.png" alt="">
-						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_16.png" alt="">
-						<img class="fragment" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_17.png" alt="">
+						<img class="fragment" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_11.png" alt="">
 					</section>
 					<!--
 					<section>
@@ -1196,6 +1192,7 @@
 						</div>
 						-->
 					</section>
+					<!--
 					<section>
 						<h3>Model validation</h3>
 						<p class="fragment definition">
@@ -1214,6 +1211,7 @@
 							</figcaption>
 						</div>
 					</section>
+					-->
 					<section>
 						<h3>Conclusions</h3>
 						<ul class="spaced">
@@ -1287,10 +1285,11 @@
 							&nbsp;
 						</p>
 						<p class="fragment">
-							GreenC obtains optimal assignments according to physical machine and VM heterogeneity, the current host workload and communication	between the different VMs
+							Obtain optimal assignments according to physical machine and VM heterogeneity, the current host workload and communication	between the different VMs
 						</p>
-					</section>
-					<section>
+						<p>
+							&nbsp;
+						</p>
 						<ul class="spaced">
 							<li class="fragment">
 								Based on nonlinear programming (NLP)
@@ -1420,7 +1419,6 @@
 						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_10.png" width="80%" />
 						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_11.png" width="80%" />
 						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_12.png" width="80%" />
-						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_13.png" width="80%" />
 						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_14.png" width="80%" />
 						<img class="fragment push" src="img/paper2/greenc_1440598848795_block_15.png" width="80%" />
 					</section>
@@ -1781,9 +1779,9 @@
 						<p>
 							Offers an efficient eHealth solution to facilitate monitoring of hypertensive patients
 						</p>
-					</section>
-					<section>
-						<h3>H-PC features and operation</h3>
+						<p>
+							&nbsp;
+						</p>
 						<ul class="spaced">
 							<li class="fragment">
 								Designed for collecting and managing data from hypertensive patients
@@ -1916,10 +1914,12 @@
 						</table>
 					</section>
 					-->
+					<!--
 					<section>
 						<h3>Architecture implementation</h3>
 						<img src="img/paper3/FIG4.png" width="80%" />
 					</section>
+					-->
 					<section>
 						<h3>H-PC features</h3>
 						<ul class="spaced">
@@ -1955,12 +1955,39 @@
 					</section>
 					<section>
 						<img src="img/paper3/FIG5.png" width="80%" />
+						<figcaption>
+							1 VM
+						</figcaption>
 					</section>
 					<section>
 						<img src="img/paper3/FIG6.png" width="80%" />
+						<figcaption>
+							3 VMs
+						</figcaption>
 					</section>
 					<section>
-						<img src="img/paper3/FIG7.png" width="80%" />
+						<img src="img/paper3/FIG5_FIG6.png" width="80%" />
+						<figcaption>
+							1 VM - 3 VMs comparison
+						</figcaption>
+					</section>
+					<section>
+						<img src="img/paper3/FIG8.png" width="80%" />
+						<figcaption>
+							Evolution of system throughput
+						</figcaption>
+					</section>
+					<section>
+						<img src="img/paper3/FIG11.png" width="80%" />
+						<figcaption>
+							Evolution of system response time when using three VMs
+						</figcaption>
+					</section>
+					<section>
+						<img src="img/paper3/FIG12.png" width="80%" />
+						<figcaption>
+							Evolution of system response time when VMs fail
+						</figcaption>
 					</section>
 					<section>
 						<h3>Conclusions</h3>
@@ -2042,6 +2069,11 @@
 					<section>
 						<h3>Information Flow Diagram</h3>
 						<img src="img/paper4/spc04.png" width="70%" />
+						<aside class="notes">
+							<p>
+								Not sent every day to avoid routine / learning effect
+							</p>
+						</aside>
 					</section>
 					<section>
 						<h3>Clinical Study</h3>
@@ -2256,18 +2288,38 @@
 							</li>
 							<li class="fragment">
 								Usefulness of text messaging in improving:
-								<ul class="spaced">
-									<li class="fragment">
-										 Outcome likelihood of smoking cessation interventions
-									</li>
-									<li class="fragment">
-										Management of time and patients by clinicians
-									</li>
-									<li class="fragment">
-										Patient’s perception of constant support by the clinician
-									</li>
-								</ul>
 							</li>
+							<ul class="spaced">
+								<li class="fragment">
+									 Outcome likelihood of smoking cessation interventions
+								</li>
+								<li class="fragment">
+									Management of time and patients by clinicians
+								</li>
+								<li class="fragment">
+									Patient’s perception of constant support by the clinician
+								</li>
+								<li class="fragment">
+									Reduced economic cost
+								</li>
+							</ul>
+							<li class="fragment">
+								Open to be applied in other clinical aspects ...
+							</li>
+							<ul class="spaced fragment">
+								<li>
+									Medication control
+								</li>
+								<li>
+									Alcoholism
+								</li>
+								<li>
+									Diabetes
+								</li>
+								<li>
+									Dieatary
+								</li>
+							</ul>
 						</ul>
 						<aside class="notes">
 							Punt 4: optimizing the health care resources and the reduction of waiting lists
