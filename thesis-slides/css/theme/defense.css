@@ -23,6 +23,30 @@ body{
 	color: #f7f3de;
 }
 
+
+p.overVideo {
+  margin-top: 400px !important;
+  opacity: 0.9;
+  padding: 10px;
+  background: #8AC007;
+  border-radius: 25px;
+  border: 2px solid #8AC007;
+}
+
+h3.overVideo {
+  padding: 10px;
+  background: #BCF5A9;
+  border-radius: 25px;
+  border: 2px solid #8AC007;
+}
+
+table.overVideo {
+  padding: 10px;
+  background: #BCF5A9;
+  border-radius: 25px;
+  border: 2px solid #8AC007;
+}
+
 b {
   font-weight: bold !important;
 }
