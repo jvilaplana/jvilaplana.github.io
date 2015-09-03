@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Ubuntu:300,700,300italic,700italic);
+@import url(https://fonts.googleapis.com/css?family=Abel);
 
 /*********************************************
  * GLOBAL STYLES
@@ -326,7 +326,7 @@ background-color: #f7f3de; }
  */
 
 .reveal {
-  font-family: Ubuntu, "sans-serif";
+  font-family: 'Abel', "sans-serif";
   font-size: 36px;
   font-weight: normal;
   letter-spacing: -0.02em;
@@ -348,7 +348,7 @@ background-color: #f7f3de; }
 .reveal h6 {
   margin: 0 0 20px 0;
   color: #333333;
-  font-family: Ubuntu, "sans-serif";
+  font-family: 'Abel', "sans-serif";
   line-height: 1em;
   letter-spacing: 0.02em;
   text-transform: none;
