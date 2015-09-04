@@ -1,5 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Abel);
 
+
+html {
+    background-color: #f7f2d3;
+}
+
 /*********************************************
  * GLOBAL STYLES
  *********************************************/

@@ -77,6 +77,7 @@
 
 				<section style="vertical-align: middle;">
 					<h2>Outline</h2>
+					<br />
 					<div style="text-align: left;">
 						<ul class="list spaced">
 							<li>Introduction</li>
@@ -84,7 +85,7 @@
 							<ul>
 								<li>A queuing theory model for cloud computing</li>
 								<li>An SLA and power-saving scheduling consolidation strategy for shared and heterogeneous clouds</li>
-								<li>H-PC: a cloud computing tool for supervising hypertensive patients</li>
+								<li style="font-size: 0.98em;">H-PC: a cloud computing tool for supervising hypertensive patients</li>
 								<li>S-PC: An e-treatment application for management of smoke-quitting patients</li>
 							</ul>
 							<li>Conclusions and future directions</li>
@@ -114,7 +115,7 @@
 				<section>
 					<h2>Introduction</h2>
 					<p>
-						<img width="80%" src="img/fig_overview.png" alt="Overview">
+						<img width="100%" src="img/fig_overview.png" alt="Overview">
 					</p>
 					<aside class="notes">
         		Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
@@ -143,25 +144,25 @@
 					<section>
 						<h2>What is Cloud computing?</h2>
 						<p>
-							Cloud computing is a general term for anything that involves delivering hosted services over the Internet
+							General term that involves delivering hosted services over the Internet
 						</p>
 						<p>
-							<img style="padding: 30px;" width="60%" src="img/fig_cloud_vs_inhouse.jpg" />
+							<img style="padding: 30px;" width="80%" src="img/fig_cloud_vs_inhouse.jpg" />
 						</p>
-						<p class="fragment">
+						<p style="font-size: 0.9em;" class="fragment">
 							Clouds can be delivered according to different service and deployment models
 						</p>
 					</section>
 					<section>
 						<h2>Cloud Service models</h2>
 						<!--<img width="70%" src="img/fig_cloud_service_models.png" alt="Overview">-->
-						<img class="fragment push" width="80%" src="img/cloud_service_models_block_0.png">
-						<img class="fragment" width="80%" src="img/cloud_service_models_block_1.png">
+						<img class="fragment push" width="85%" src="img/cloud_service_models_block_0.png">
+						<img class="fragment" width="85%" src="img/cloud_service_models_block_1.png">
 					</section>
 					<section>
 						<h2 style="margin-bottom: 100px;">Deployment models</h2>
-						<img class="fragment push" width="90%" src="img/cloud-deployment-models_1441272391829_block_0.png" />
-						<img class="fragment" width="90%" src="img/cloud-deployment-models_1441272391829_block_1.png" />
+						<img class="fragment push" width="100%" src="img/cloud-deployment-models_1441272391829_block_0.png" />
+						<img class="fragment" width="100%" src="img/cloud-deployment-models_1441272391829_block_1.png" />
 						<!--
 						<table style="margin-top: 150px;" class="hanoi">
 								<colgroup>
@@ -316,6 +317,7 @@
 				<section>
 					<section>
 						<h2>Queueing Theory</h2>
+						<br />
 						<ul class="spaced">
 							<li class="fragment">
 								Mathematical method of analyzing congestions
@@ -339,25 +341,25 @@
 								<col style="width: 50%" />
 							</colgroup>
 							<tr>
-								<td style="padding: 10px 20px;">
-									<p class="fragment" data-fragment-index="1">A Cloud system ...</p>
+								<td style="padding: 20px 10px;">
+									<p class="fragment" data-fragment-index="1">Cloud system</p>
 								</td>
-								<td style="padding: 10px 20px;">
-									<p class="fragment" data-fragment-index="3">... a queueing theory model</p>
+								<td style="padding: 20px 10px;">
+									<p class="fragment" data-fragment-index="3">Queueing theory model</p>
 								</td>
 							</tr>
 							<tr>
-								<td style="padding: 10px 20px;">
+								<td style="padding: 20px 10px;">
 									<img class="fragment" data-fragment-index="1" width="100%" src="img/queueing_before.png" />
 								</td>
-								<td style="padding: 10px 20px;">
+								<td style="padding: 20px 10px;">
 									<img class="fragment" data-fragment-index="3" width="100%" src="img/fig_queueing_theory.png" />
 								</td>
 							</tr>
 							<tr>
 								<td colspan="2">
-									 <p class="fragment" data-fragment-index="2">
-										 &#10136; can be transformed to...&#10138;
+									 <p style="font-size: 1.3em;" class="fragment" data-fragment-index="2">
+										 &#10136; can be transformed to &#10138;
 									 </p>
 								</td>
 							</tr>
@@ -366,6 +368,9 @@
 					<!-- TODO: Mirar si se pot fer efecte zoom -->
 					<section data-transition="zoom">
 						<h2>A queueing theory model</h2>
+						<br />
+						<br />
+						<br />
 						<img width="100%" src="img/fig_queueing_theory.png" />
 						<aside class="notes">
 							<p>
@@ -927,7 +932,7 @@
 					-->
 					<section>
 						<p class="definition">
-							Presents the design of a Cloud platform with QoS guarantees based on response time for services.
+							Presents the design of a Cloud platform with QoS guarantees based on response time
 						</p>
 						<p>
 							&nbsp;
@@ -935,6 +940,23 @@
 						<p class="fragment">
 							The main contribution consists of a queueing theory model for the Cloud platform
 						</p>
+						<p>
+							&nbsp;
+						</p>
+						<ul class="spaced fragment">
+							<li>
+								Cloud as a single access point for the computing needs of the customers being served
+							</li>
+							<li>
+								The service center is a collection of service resources used by a service provider to host service applications
+							</li>
+							<li>
+								A service request is transmitted to the web server running a service application, which is associated with an SLA
+							</li>
+							<li>
+								Customers generate requests at a given rate for processing at the service center according to negotiated QoS requirements
+							</li>
+						</ul>
 						<!--
 						<p>
 							&nbsp;
@@ -943,6 +965,7 @@
 						-->
 					</section>
 
+					<!--
 					<section>
 						<ul class="spaced">
 							<li>
@@ -962,6 +985,7 @@
 							</li>
 						</ul>
 					</section>
+					-->
 					<section>
 						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_0.png" alt="">
 						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_1.png" alt="">
@@ -1110,6 +1134,7 @@
 							</li>
 						</ul>
 						<br />
+						<br />
 						<p>
 							Parameters used in the implementation
 						</p>
@@ -1212,9 +1237,11 @@
 						-->
 						<div>
 							<img src="img/paper1/Fig6.png" width="60%" />
+							<!--
 							<figcaption>
 								$T$ given $\lambda$ and $O$
 							</figcaption>
+							-->
 						</div>
 						<!--
 						<div class="fragment">
@@ -1321,7 +1348,7 @@
 							&nbsp;
 						</p>
 						<p class="fragment">
-							Obtain optimal assignments according to physical machine and VM heterogeneity, the current host workload and communication	between the different VMs
+							Obtain optimal assignments according to physical machine and VM heterogeneity, host workload and communications
 						</p>
 						<p>
 							&nbsp;
@@ -2474,23 +2501,23 @@
 						<h3>Conclusions</h3>
 						<ul class="spaced">
 							<li class="fragment">
-								S-PC was successfully designed, implemented and used in the context of the quit smoking treatment
+								S-PC successfully designed, implemented and used in the context of tobacco control
 							</li>
 							<li class="fragment">
 								Usefulness of text messaging in improving:
 							</li>
-							<ul class="spaced">
-								<li class="fragment">
+							<ul class="spaced fragment">
+								<li>
 									 Outcome likelihood of smoking cessation interventions
 								</li>
-								<li class="fragment">
+								<li>
 									Management of time and patients by clinicians
 								</li>
-								<li class="fragment">
+								<li>
 									Patient’s perception of constant support by the clinician
 								</li>
-								<li class="fragment">
-									Reduced economic cost
+								<li>
+									Economic cost
 								</li>
 							</ul>
 							<li class="fragment">
@@ -2498,13 +2525,10 @@
 							</li>
 							<ul class="spaced fragment">
 								<li>
-									Medication control
+									Diabetes
 								</li>
 								<li>
 									Alcoholism
-								</li>
-								<li>
-									Diabetes
 								</li>
 								<li>
 									Dieatary
@@ -2518,15 +2542,27 @@
 				</section>
 
 				<section>
-					<h2>Global Conclusions</h2>
-					<img class="fragment push" src="img/conclusions_1441013522290_block_0.png" width="80%" />
-					<img class="fragment push" src="img/conclusions_1441013522290_block_1.png" width="80%" />
-					<img class="fragment push" src="img/conclusions_1441013522290_block_2.png" width="80%" />
-					<img class="fragment push" src="img/conclusions_1441013522290_block_3.png" width="80%" />
-					<img class="fragment push" src="img/conclusions_1441013522290_block_4.png" width="80%" />
-					<img class="fragment" src="img/conclusions_1441013522290_block_5.png" width="80%" />
+					<section data-background="img/global-conclusions_1441357043377_block_0.png" />
+					</section>
+					<section data-background="img/global-conclusions_1441357043377_block_1.png" />
+					</section>
+					<section data-background="img/global-conclusions_1441357043377_block_2.png" />
+					</section>
+					<section data-background="img/global-conclusions_1441357043377_block_3.png" />
+					</section>
+					<section data-background="img/global-conclusions_1441357043377_block_4.png" />
+					</section>
 				</section>
-
+				<!--
+				<section>
+					<h2>Global Conclusions</h2>
+					<img class="fragment push" src="img/global-conclusions_1441357043377_block_0.png" width="80%" />
+					<img class="fragment push" src="img/global-conclusions_1441357043377_block_1.png" width="80%" />
+					<img class="fragment push" src="img/global-conclusions_1441357043377_block_2.png" width="80%" />
+					<img class="fragment push" src="img/global-conclusions_1441357043377_block_3.png" width="80%" />
+					<img class="fragment push" src="img/global-conclusions_1441357043377_block_4.png" width="80%" />
+				</section>
+				-->
 				<section data-background="img/University-ulster-jordanstown-polytechnic.png" />
 					<h2>Three-month doctoral stay</h2>
 					<section>
