@@ -61,9 +61,19 @@ ul.spaced li {
   padding-bottom: 10px;
 }
 
+ul.spaced2 li {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 ol.spaced li {
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+ol.spaced2 li {
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 table.spaced td,tr {
