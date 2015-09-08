@@ -1068,7 +1068,7 @@
 					</section>
 					-->
 					<section>
-						<br />
+						<h2>Queueing theory model</h2>
 						<img class="fragment push" style="margin-left: -70px;" width="120%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_0.png" alt="">
 						<img class="fragment push" style="margin-left: -70px;" width="120%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_1.png" alt="">
 						<img class="fragment push" style="margin-left: -70px;" width="120%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_2.png" alt="">
@@ -1218,19 +1218,13 @@
 						<br />
 						<br />
 						<p>
-							Parameters used in the implementation
+							Main parameters used in the implementation
 						</p>
 						<ul>
 							<li>$\lambda$ Arrival rate
 							</li>
 							<li>
 								$F$ Average file size
-							</li>
-							<li>
-								$O$ Server bandwidth
-							</li>
-							<li>
-								$C$ Client bandwidth
 							</li>
 							<li>
 								$\delta$ Database access probability
@@ -1270,24 +1264,28 @@
 						<h3>Response Time (ms)</h3>
 						<br />
 						<div class="fragment push">
+							<img style="position: absolute; left: 100px; top: 40px;" src="img/paper1/queueing-theory-paper-1-1server.png" width="60%" />
 							<img src="img/paper1/paper1-response-time_1440593656386_block_0.png" width="100%" />
 							<figcaption>
 								$m = 1$
 							</figcaption>
 						</div>
 						<div class="fragment push">
+							<img style="position: absolute; left: 100px; top: 40px;" src="img/paper1/queueing-theory-paper-1-1server.png" width="60%" />
 							<img src="img/paper1/paper1-response-time_1440593656386_block_1.png" width="100%" />
 							<figcaption>
 								$m = 1$
 							</figcaption>
 						</div>
 						<div class="fragment push">
+							<img style="position: absolute; left: 100px; top: 40px;" src="img/paper1/queueing-theory-paper-1-1server.png" width="60%" />
 							<img src="img/paper1/paper1-response-time_1440593656386_block_2.png" width="100%" />
 							<figcaption>
 								$m = 1$
 							</figcaption>
 						</div>
 						<div class="fragment">
+							<img style="position: absolute; left: 100px; top: 40px;" src="img/paper1/queueing-theory-paper-1-2server.png" width="60%" />
 							<img src="img/paper1/paper1-response-time_1440593656386_block_3.png" width="100%" />
 							<figcaption>
 								$m = 2$
@@ -1430,7 +1428,7 @@
 					-->
 					<section>
 						<p class="definition">
-							Presents a power-aware scheduling policy algorithm of VMs into nodes called GreenC
+							GreenC: Power-aware scheduling policy algorithm of VMs into nodes
 						</p>
 						<p>
 							&nbsp;
@@ -1448,13 +1446,54 @@
 							<li class="fragment">
 								Aims to minimize both energy consumption and response time
 							</li>
+							<!--
 							<li class="fragment">
 								Theoretical experimentation using a solver
 							</li>
 							<li class="fragment">
 								Implementation using the OpenStack platform
 							</li>
+							-->
 						</ul>
+						<table class="fragment">
+							<colgroup>
+								<col style="width: 50%" />
+								<col style="width: 50%" />
+							</colgroup>
+							<tr>
+								<td style="padding: 30px 10px;">
+										<p style="padding-bottom: 20px;">
+											\begin{equation}
+											[Max | Min](f(x_{1},x_{2}, ..., x_{n})),
+											\end{equation}
+										</p>
+										<p>
+											\begin{equation}
+											\begin{split}
+											h_{i}(x) = b_{i} & \quad (i = 1, 2, ..., m) \\
+											x_{j} \geq 0 & \quad (j = 1, 2, ..., n)
+											\end{split}
+											\end{equation}
+										</p>
+								</td>
+								<td style="padding: 30px 10px; vertical-align: middle;">
+									<p>
+										&#8592; Objective Function
+										<br /><br /><br />
+										&#8592; Constraints
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<p>
+										&#8595;
+										<br />
+										Processed by a solver (Excel) to extract an optimal solution
+									</p>
+								</td>
+							</tr>
+						</table>
 					</section>
 					<!--
 					<section>
@@ -2480,7 +2519,8 @@
 						</div>
 					</section>
 					<section>
-						<br /><br /><br />
+						<h3>Clinical Study</h3>
+						<br /><br />
 						<img class="fragment push" src="img/paper4/s-pc-groups_1441648572320_block_0.png" width="100%" />
 						<img class="fragment push" src="img/paper4/s-pc-groups_1441648572320_block_1.png" width="100%" />
 						<img class="fragment push" src="img/paper4/s-pc-groups_1441648572320_block_2.png" width="100%" />
@@ -3152,19 +3192,19 @@
 								2013 Vilaplana, J. <i>et al</i>. The cloud paradigm applied to e-Health. BMC Medical Informatics and Decision Making
 							</li>
 							<li>
-								2014 Vilaplana, J. <i>et al</i>. S-PC: An e-treatment application for management of smoke-quitting patients. Computer Methods and Programs in Biomedicine
-							</li>
-							<li>
-								2014 Vilaplana, J. <i>et al</i>. A queuing theory model for cloud computing. The Journal of Supercomputing
-							</li>
-							<li>
 								2014 Vilaplana, J. <i>et al</i>. Database Constraints Applied to Metabolic Pathway Reconstruction Tools. The Scientific World Journal
 							</li>
-							<li>
+							<li style="color: blue;">
+								2014 Vilaplana, J. <i>et al</i>. A queuing theory model for cloud computing. The Journal of Supercomputing
+							</li>
+							<li style="color: blue;">
+								2014 Vilaplana, J. <i>et al</i>. An SLA and power-saving scheduling consolidation strategy for shared and heterogeneous clouds. The Journal of Supercomputing
+							</li>
+							<li style="color: blue;">
 								2014 Vilaplana, J. <i>et al</i>. H-PC: a cloud computing tool for supervising hypertensive patients. The Journal of Supercomputing
 							</li>
-							<li>
-								2014 Vilaplana, J. <i>et al</i>. An SLA and power-saving scheduling consolidation strategy for shared and heterogeneous clouds. The Journal of Supercomputing
+							<li style="color: blue;">
+								2014 Vilaplana, J. <i>et al</i>. S-PC: An e-treatment application for management of smoke-quitting patients. Computer Methods and Programs in Biomedicine
 							</li>
 						</ol>
 					</section>
