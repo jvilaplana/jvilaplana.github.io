@@ -143,10 +143,10 @@
 					</section>
 					<section>
 						<h2>What is Cloud computing?</h2>
-						<p>
+						<p class="fragment" data-fragment-index="1">
 							General term that involves delivering hosted services over the Internet
 						</p>
-						<p>
+						<p class="fragment" data-fragment-index="1">
 							<img style="padding: 30px;" width="80%" src="img/fig_cloud_vs_inhouse.jpg" />
 						</p>
 						<p style="font-size: 0.9em;" class="fragment">
@@ -396,7 +396,7 @@
 								<col style="width: 55%" />
 							</colgroup>
 							<tr>
-								<td colspan="3" style="padding: 30px 20px;">
+								<td colspan="3" style="padding: 20px 20px;">
 									<ul class="spaced">
 										<li class="fragment">Transform Cloud systems to queueing theory assets</li>
 										<li class="fragment">Predict behaviours through queueing theory formulas</li>
@@ -404,13 +404,13 @@
 								</td>
 							</tr>
 							<tr>
-								<td style="vertical-align: middle; padding: 30px 10px;">
+								<td style="vertical-align: middle; padding: 10px 10px;">
 									<img class="fragment" width="100%" src="img/fig_queueing_theory.png" />
 								</td>
-								<td style="padding: 30px 10px; vertical-align: middle;">
+								<td style="padding: 10px 10px; vertical-align: middle;">
 									<p class="fragment">&#8680;</p>
 								</td>
-								<td style="padding: 30px 10px; vertical-align: middle;">
+								<td style="padding: 10px 10px; vertical-align: middle;">
 									<p class="fragment">Mathematical formulas</p>
 									<p>
 										&nbsp;
@@ -427,9 +427,17 @@
 								</td>
 							</tr>
 							<tr>
-								<td colspan="3">
+								<td colspan="1">
+									<p class="fragment" style="font-size: 0.8em;">
+										Performance metrics to monitor:
+									</p>
+								</td>
+								<td colspan="2">
 									<p class="fragment definition">
-										Performance metrics to monitor QoS and SLA
+										Quality of Service
+									</p>
+									<p class="fragment definition">
+										Service-Level Agreement
 									</p>
 								</td>
 							</tr>
@@ -440,9 +448,57 @@
 				<section>
 					<section>
 						<h2>Nonlinear programming</h2>
-						<p class="definition">
-							A nonlinear programming problem (NLP) deals with mathematical optimization
+						<p class="definition" style="font-size: 0.85em;">
+							Nonlinear programming problems (NLP) deal with mathematical optimization
 						</p>
+						<table>
+							<colgroup>
+								<col style="width: 50%" />
+								<col style="width: 50%" />
+							</colgroup>
+							<tr>
+								<td style="padding: 30px 10px;">
+									<div class="fragment">
+										<p style="padding-bottom: 20px;">
+											A NLP can be defined as:
+										</p>
+										<p style="padding-bottom: 20px;">
+											\begin{equation}
+											[Max | Min](f(x_{1},x_{2}, ..., x_{n})),
+											\end{equation}
+										</p>
+										<p style="padding-bottom: 20px;">
+											s.t. (subject to):
+										</p>
+										<p>
+											\begin{equation}
+											\begin{split}
+											h_{i}(x) = b_{i} & \quad (i = 1, 2, ..., m) \\
+											x_{j} \geq 0 & \quad (j = 1, 2, ..., n)
+											\end{split}
+											\end{equation}
+										</p>
+									</div>
+								</td>
+								<td style="padding: 30px 10px; vertical-align: middle;">
+									<p class="fragment">
+										&#8592; Objective Function
+										<br /><br /><br />
+										&#8592; Constraints
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<p class="fragment">
+										&#8595;
+										<br />
+										Processed by a solver (i.e. IBM CPLEX) to extract an optimal solution
+									</p>
+								</td>
+							</tr>
+						</table>
+						<!--
 						<table>
 							<colgroup>
 								<col style="width: 50%" />
@@ -481,6 +537,7 @@
 								</td>
 							</tr>
 						</table>
+						-->
 						<aside class="notes">
 							Where the objective function to be maximized or minimized, or some of its constraints, are nonlinear
 						</aside>
@@ -674,6 +731,7 @@
 				<section>
 					<section>
 						<h2>Cloud computing challenges and issues</h2>
+						<br /><br />
 						<img class="fragment push" src="img/challengesissues_1441121981422_block_0.png" width="90%" />
 						<img class="fragment push" src="img/challengesissues_1441121981422_block_1.png" width="90%" />
 						<img class="fragment push" src="img/challengesissues_1441121981422_block_2.png" width="90%" />
@@ -767,9 +825,9 @@
 										<li class="fragment" data-fragment-index="1">Access to computing resources</li>
 										<li class="fragment" data-fragment-index="2">Seamless deployment</li>
 										<li class="fragment" data-fragment-index="3">Data sharing and analysis</li>
-										<li class="fragment" data-fragment-index="4">Personalized follow-up</li>
-										<li class="fragment" data-fragment-index="5">Effective time management</li>
-										<li class="fragment" data-fragment-index="6">Reduced transport costs</li>
+										<li class="fragment" data-fragment-index="4" style="color: blue;">Personalized follow-up</li>
+										<li class="fragment" data-fragment-index="5" style="color: blue;">Effective time management</li>
+										<li class="fragment" data-fragment-index="6" style="color: blue;">Reduced transport costs</li>
 									</ul>
 								</td>
 							</tr>
@@ -880,7 +938,6 @@
 
 				<section>
 					<h2>Papers</h2>
-					<br />
 					<ol class="spaced2" style="text-align: left; margin-top: 50px; margin-left: 10px;">
 						<li>
 							A queuing theory model for cloud computing
@@ -895,6 +952,10 @@
 							S-PC: An e-treatment application for management of smoke-quitting patients
 						</li>
 					</ol>
+					<img src="img/paper1-full.png" width="20%" style="z-index: -1; opacity: 0.8; position: absolute; top: 400px; left: 350px; border: 1px black dashed; transform: rotate(-20deg);" />
+					<img src="img/paper2-full.png" width="22%" style="z-index: -1; opacity: 0.8; position: absolute; top: 400px; left: 430px; border: 1px black dashed; transform: rotate(-5deg);" />
+					<img src="img/paper3-full.png" width="21%" style="z-index: -1; opacity: 0.8; position: absolute; top: 400px; left: 550px; border: 1px black dashed; transform: rotate(5deg);" />
+					<img src="img/paper4-full.png" width="23%" style="z-index: -1; opacity: 0.8; position: absolute; top: 400px; left: 700px; border: 1px black dashed; transform: rotate(20deg);" />
 				</section>
 
 				<section>
@@ -959,6 +1020,9 @@
 						<p>
 							&nbsp;
 						</p>
+						<br />
+						<img class="fragment" src="img/queueing-theory-model_1441538104776_block_0.png" width="80%" />
+						<!--
 						<ul class="spaced2 fragment">
 							<li>
 								Cloud as a single access point for the computing needs of the customers being served
@@ -973,6 +1037,7 @@
 								Customers generate requests at a given rate for processing at the service center according to negotiated QoS requirements
 							</li>
 						</ul>
+						-->
 						<!--
 						<p>
 							&nbsp;
@@ -1003,19 +1068,19 @@
 					</section>
 					-->
 					<section>
-						<br /><br /><br />
-						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_0.png" alt="">
-						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_1.png" alt="">
-						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_2.png" alt="">
-						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_3.png" alt="">
-						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_4.png" alt="">
-						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_5.png" alt="">
-						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_6.png" alt="">
-						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_7.png" alt="">
-						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_8.png" alt="">
-						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_9.png" alt="">
-						<img class="fragment push" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_10.png" alt="">
-						<img class="fragment" width="100%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_11.png" alt="">
+						<br />
+						<img class="fragment push" style="margin-left: -70px;" width="120%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_0.png" alt="">
+						<img class="fragment push" style="margin-left: -70px;" width="120%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_1.png" alt="">
+						<img class="fragment push" style="margin-left: -70px;" width="120%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_2.png" alt="">
+						<img class="fragment push" style="margin-left: -70px;" width="120%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_3.png" alt="">
+						<img class="fragment push" style="margin-left: -70px;" width="120%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_4.png" alt="">
+						<img class="fragment push" style="margin-left: -70px;" width="120%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_5.png" alt="">
+						<img class="fragment push" style="margin-left: -70px;" width="120%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_6.png" alt="">
+						<img class="fragment push" style="margin-left: -70px;" width="120%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_7.png" alt="">
+						<img class="fragment push" style="margin-left: -70px;" width="120%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_8.png" alt="">
+						<img class="fragment push" style="margin-left: -70px;" width="120%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_9.png" alt="">
+						<img class="fragment push" style="margin-left: -70px;" width="120%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_10.png" alt="">
+						<img class="fragment" style="margin-left: -70px;" width="120%" src="img/paper1/queueing-theory-paper-1_1440365754723_block_11.png" alt="">
 					</section>
 					<!--
 					<section>
@@ -1222,7 +1287,7 @@
 								$m = 1$
 							</figcaption>
 						</div>
-						<div class="fragment push">
+						<div class="fragment">
 							<img src="img/paper1/paper1-response-time_1440593656386_block_3.png" width="100%" />
 							<figcaption>
 								$m = 2$
@@ -1237,6 +1302,7 @@
 						</div>
 						-->
 					</section>
+					<!--
 					<section>
 						<h3>Response Time (ms)</h3>
 						<!--
@@ -1253,6 +1319,7 @@
 							</figcaption>
 						</div>
 						-->
+						<!--
 						<div>
 							<img src="img/paper1/Fig6.png" width="80%" />
 							<!--
@@ -1260,6 +1327,7 @@
 								$T$ given $\lambda$ and $O$
 							</figcaption>
 							-->
+							<!--
 						</div>
 						<!--
 						<div class="fragment">
@@ -1269,6 +1337,7 @@
 							</figcaption>
 						</div>
 						-->
+						<!--
 					</section>
 					<!--
 					<section>
@@ -2400,16 +2469,17 @@
 					</section>
 					<section>
 						<br /><br /><br />
-						<img class="fragment push" src="img/paper4/ehealth-cases_1440668944381_block_0.png" width="100%" />
-						<img class="fragment push" src="img/paper4/ehealth-cases_1440668944381_block_1.png" width="100%" />
-						<img class="fragment push" src="img/paper4/ehealth-cases_1440668944381_block_2.png" width="100%" />
-						<img class="fragment push" src="img/paper4/ehealth-cases_1440668944381_block_3.png" width="100%" />
-						<img class="fragment push" src="img/paper4/ehealth-cases_1440668944381_block_4.png" width="100%" />
-						<img class="fragment push" src="img/paper4/ehealth-cases_1440668944381_block_5.png" width="100%" />
-						<img class="fragment push" src="img/paper4/ehealth-cases_1440668944381_block_6.png" width="100%" />
-						<img class="fragment push" src="img/paper4/ehealth-cases_1440668944381_block_7.png" width="100%" />
-						<img class="fragment push" src="img/paper4/ehealth-cases_1440668944381_block_8.png" width="100%" />
-						<img class="fragment" src="img/paper4/ehealth-cases_1440668944381_block_9.png" width="100%" />
+						<img class="fragment push" src="img/paper4/s-pc-groups_1441648572320_block_0.png" width="100%" />
+						<img class="fragment push" src="img/paper4/s-pc-groups_1441648572320_block_1.png" width="100%" />
+						<img class="fragment push" src="img/paper4/s-pc-groups_1441648572320_block_2.png" width="100%" />
+						<img class="fragment push" src="img/paper4/s-pc-groups_1441648572320_block_3.png" width="100%" />
+						<img class="fragment push" src="img/paper4/s-pc-groups_1441648572320_block_4.png" width="100%" />
+						<img class="fragment push" src="img/paper4/s-pc-groups_1441648572320_block_5.png" width="100%" />
+						<img class="fragment push" src="img/paper4/s-pc-groups_1441648572320_block_6.png" width="100%" />
+						<img class="fragment push" src="img/paper4/s-pc-groups_1441648572320_block_7.png" width="100%" />
+						<img class="fragment push" src="img/paper4/s-pc-groups_1441648572320_block_8.png" width="100%" />
+						<img class="fragment push" src="img/paper4/s-pc-groups_1441648572320_block_9.png" width="100%" />
+						<img class="fragment" src="img/paper4/s-pc-groups_1441648572320_block_10.png" width="100%" />
 						<aside class="notes">
 							<p>
 								Randomly divided (there were 2 doctors, one used S-PC the other one not)
@@ -2439,10 +2509,11 @@
 							</li>
 						</ul>
 					</section>
-					-->
+
 					<section>
 						<img src="img/paper4/spc01.png" width="100%" />
 					</section>
+					-->
 					<section>
 						<h3>Results</h3>
 						<br /><br />
@@ -2450,6 +2521,9 @@
 						<img class="fragment push" src="img/paper4/s-pc-result_1440840138843_block_1.png" width="100%" />
 						<img class="fragment push" src="img/paper4/s-pc-result_1440840138843_block_2.png" width="100%" />
 						<img class="fragment push" src="img/paper4/s-pc-result_1440840138843_block_3.png" width="100%" />
+						<img class="fragment push" src="img/paper4/s-pc-result_1440840138843_block_4.png" width="100%" />
+						<img class="fragment push" src="img/paper4/s-pc-result_1440840138843_block_5.png" width="100%" />
+						<img class="fragment" src="img/paper4/s-pc-result_1440840138843_block_6.png" width="100%" />
 					</section>
 					<!--
 					<section>
