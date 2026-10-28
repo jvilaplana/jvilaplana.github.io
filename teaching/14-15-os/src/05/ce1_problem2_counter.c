@@ -1,1 +1,0 @@
-#include <stdio.h>#include <stdlib.h>#include <signal.h>int counter;void count_signals() {  counter++;}int main() {  counter = 0;  signal(SIGUSR1, count_signals);  while(counter != 10);  printf("We have counted %d signals\n", counter);  exit(0);}
